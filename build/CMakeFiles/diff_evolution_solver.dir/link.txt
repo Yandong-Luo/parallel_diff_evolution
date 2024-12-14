@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o  -o diff_evolution_solver   -L/usr/local/cuda-11.1/targets/x86_64-linux/lib/stubs  -lcudadevrt -lcudart_static -lrt -lpthread -ldl 
