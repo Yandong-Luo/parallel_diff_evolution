@@ -4,8 +4,17 @@ cmake_minimum_required(VERSION 3.16) # CUDA support requires CMake 3.16 or later
 # Set the project name and languages
 project(Parallel_DiffEvolutionSolver LANGUAGES CXX CUDA)
 
+# Find the CUDA Toolkit
+find_package(CUDA REQUIRED)
+
+# Include CUDA headers and libraries
+include_directories(${CUDA_INCLUDE_DIRS})
+link_directories(${CUDA_LIBRARIES})
+
 # Set CUDA compilation options (optional)
 set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 # Include the directory for header files
 include_directories(${PROJECT_SOURCE_DIR}/include)

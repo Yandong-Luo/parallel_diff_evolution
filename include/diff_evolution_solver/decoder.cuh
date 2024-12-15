@@ -1,0 +1,48 @@
+#ifndef CUDAPROCESS_DIFF_EVOLUTION_DECODER_H
+#define CUDAPROCESS_DIFF_EVOLUTION_DECODER_H
+
+#include <iostream>
+#include <cuda_runtime.h>
+#include <cuda.h>
+#include <cuda_runtime_api.h>
+#include <sys/time.h>
+#include "data_type.h"
+
+namespace cudaprocess{
+    __global__ void InitParameter(CudaProblemDecoder* decoder, CudaEvolveData* evolve_data, int size, CudaParamClusterData<64>* new_cluster_data, CudaParamClusterData<192>* old_cluster_data){
+        int idx = threadIdx.x;
+        if (idx >= size)    return;
+
+        // initial evolve data
+        evolve_data->new_cluster_vec->data[idx].con_var_dims = decoder->con_var_dims_;
+        evolve_data->new_cluster_vec->data[idx].bin_var_dims = decoder->bin_var_dims_;
+        evolve_data->new_cluster_vec->data[idx].dims = decoder->dims_;
+        evolve_data->new_cluster_vec->data[idx].fitness = 0.f;
+        evolve_data->new_cluster_vec->data[idx].cur_scale_f1 = 0.5f;
+        evolve_data->new_cluster_vec->data[idx].cur_scale_f = 0.5f;
+        evolve_data->new_cluster_vec->data[idx].cur_Cr = 0.5f;
+
+        // initial new_cluster_data
+        for (int i = 0; i < evolve_data->new_cluster_vec->data[idx].dims; ++i) {
+            evolve_data->new_cluster_vec->data[idx].param[i] = 0;
+            new_cluster_data->all_param[idx * CUDA_PARAM_MAX_SIZE + i] = 0;        // each parameters were decode as a vector with the length of CUDA_PARAM_MAX_SIZE
+        }
+
+        if(idx == 0){
+            old_cluster_data->con_var_dims = new_cluster_data->con_var_dims = decoder->con_var_dims_;
+            old_cluster_data->bin_var_dims = new_cluster_data->bin_var_dims = decoder->bin_var_dims_;
+            old_cluster_data->dims = new_cluster_data->dims = decoder->dims_;
+        }
+
+        new_cluster_data->fitness[idx] = 0.;
+        new_cluster_data->lshade_param[idx * 3 + 0] = 0.5f;                        // scale_f
+        new_cluster_data->lshade_param[idx * 3 + 1] = 0.5f;                        // scale_f1
+        new_cluster_data->lshade_param[idx * 3 + 2] = 0.5f;                        // crossover
+
+        // initial old_cluster_data
+        old_cluster_data->fitness[idx] = 0.;
+
+        printf("Finish the initialization of thread id:%d\n", idx);
+    }
+}
+#endif

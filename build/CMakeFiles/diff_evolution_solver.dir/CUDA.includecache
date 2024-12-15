@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+../include/diff_evolution_solver/data_type.h
+utils.cuh
+../include/diff_evolution_solver/utils.cuh
+
+../include/diff_evolution_solver/decoder.cuh
+iostream
+-
+cuda_runtime.h
+-
+cuda.h
+-
+cuda_runtime_api.h
+-
+sys/time.h
+-
+data_type.h
+../include/diff_evolution_solver/data_type.h
+
 ../include/diff_evolution_solver/solver.cuh
 iostream
 -
@@ -17,8 +35,24 @@ cuda_runtime_api.h
 -
 sys/time.h
 -
+memory
+-
+data_type.h
+../include/diff_evolution_solver/data_type.h
+utils.cuh
+../include/diff_evolution_solver/utils.cuh
+
+../include/utils.cuh
+cuda.h
+-
+cuda_runtime_api.h
+-
+diff_evolution_solver/data_type.h
+../include/diff_evolution_solver/data_type.h
 
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 diff_evolution_solver/solver.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/solver.cuh
+diff_evolution_solver/decoder.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/decoder.cuh
 
