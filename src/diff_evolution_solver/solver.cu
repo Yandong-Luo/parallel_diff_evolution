@@ -62,7 +62,8 @@ void CudaDiffEvolveSolver::WarmStart(ProblemEvaluator* evaluator, CudaParamIndiv
     InitParameter<<<1, default_pop_size_, 0, cuda_utils_->streams_[0]>>>(decoder_, evolve_data_, default_pop_size_, new_cluster_data_, old_cluster_data_);
 }
 
-void CudaDiffEvolveSolver::InitSolver(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol){
+void CudaDiffEvolveSolver::InitSolver(int gpu_device, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
+    gpu_device_ = gpu_device;
     CHECK_CUDA(cudaSetDevice(gpu_device_));
     if (DEBUG_PRINT_FLAG) printf("CUDA SET DEVICE\n");
 
@@ -89,7 +90,7 @@ void CudaDiffEvolveSolver::InitSolver(ProblemEvaluator* evaluator, CudaParamIndi
     // Host --> GPU device
     CHECK_CUDA(cudaMemcpyAsync(evolve_data_, host_evolve_data_, sizeof(CudaEvolveData), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
     CHECK_CUDA(cudaMemcpyAsync(decoder_, host_decoder_, sizeof(CudaProblemDecoder), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
-
+    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // if (last_sol == nullptr){
     //     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // }

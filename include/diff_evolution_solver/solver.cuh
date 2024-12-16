@@ -15,12 +15,12 @@ namespace cudaprocess{
 
     class CudaDiffEvolveSolver{
         public:
-            CudaDiffEvolveSolver(int pop_size = 64, int gpu_device = 0){default_pop_size_ = pop_size; gpu_device_ = gpu_device;};
+            CudaDiffEvolveSolver(int pop_size = 64){default_pop_size_ = pop_size;};
             ~CudaDiffEvolveSolver();
             void MallocSetup();
             void InitDiffEvolveParam(float best = 0.0, float d_top = 0. /*0.002*/, float min_top = 0.0, float diff = 5.0, float d_diff = 0.05, float min_diff = 0.05, float pf = 0.6, float pr = 0.9);
             void WarmStart(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol);
-            void InitSolver(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol);
+            void InitSolver(int gpu_device, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
             void SetConstraints();
             void Solver();
         private:

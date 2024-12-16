@@ -177,6 +177,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/solver_center/solver_center.o: src/solver_center/solver_center.cu.o
+
+.PHONY : src/solver_center/solver_center.o
+
+# target to build an object file
+src/solver_center/solver_center.cu.o:
+	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
+.PHONY : src/solver_center/solver_center.cu.o
+
+src/solver_center/solver_center.i: src/solver_center/solver_center.cu.i
+
+.PHONY : src/solver_center/solver_center.i
+
+# target to preprocess a source file
+src/solver_center/solver_center.cu.i:
+	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.i
+.PHONY : src/solver_center/solver_center.cu.i
+
+src/solver_center/solver_center.s: src/solver_center/solver_center.cu.s
+
+.PHONY : src/solver_center/solver_center.s
+
+# target to generate assembly for a file
+src/solver_center/solver_center.cu.s:
+	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.s
+.PHONY : src/solver_center/solver_center.cu.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/solver_center/solver_center.o"
+	@echo "... src/solver_center/solver_center.i"
+	@echo "... src/solver_center/solver_center.s"
 .PHONY : help
 
 

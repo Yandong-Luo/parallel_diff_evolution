@@ -7,9 +7,16 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
  ../include/diff_evolution_solver/solver.cuh
  ../include/utils.cuh
  /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
+ ../include/diff_evolution_solver/data_type.h
+ ../include/diff_evolution_solver/solver.cuh
+ ../include/solver_center/solver_center.h
+ ../include/utils.cuh
+ /home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
  ../include/diff_evolution_solver/data_type.h
  ../include/diff_evolution_solver/solver.cuh
+ ../include/solver_center/solver_center.h
  ../include/utils.cuh
  /home/chris/parallel_diff_evolution/src/main.cpp
  /usr/local/cuda-11.1/include/builtin_types.h

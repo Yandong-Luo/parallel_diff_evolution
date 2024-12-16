@@ -42,7 +42,17 @@ data_type.h
 utils.cuh
 ../include/diff_evolution_solver/utils.cuh
 
+../include/solver_center/solver_center.h
+cassert
+-
+diff_evolution_solver/data_type.h
+../include/solver_center/diff_evolution_solver/data_type.h
+diff_evolution_solver/solver.cuh
+../include/solver_center/diff_evolution_solver/solver.cuh
+
 ../include/utils.cuh
+stdio.h
+-
 cuda.h
 -
 cuda_runtime_api.h
@@ -55,4 +65,8 @@ diff_evolution_solver/solver.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/solver.cuh
 diff_evolution_solver/decoder.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/decoder.cuh
+
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
+solver_center/solver_center.h
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center/solver_center.h
 

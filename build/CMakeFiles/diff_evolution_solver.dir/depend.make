@@ -7,8 +7,15 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../i
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../include/utils.cuh
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../src/diff_evolution_solver/solver.cu
 
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/diff_evolution_solver/data_type.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/diff_evolution_solver/solver.cuh
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/solver_center/solver_center.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/utils.cuh
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../src/solver_center/solver_center.cu
+
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/diff_evolution_solver/data_type.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/diff_evolution_solver/solver.cuh
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/solver_center/solver_center.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/utils.cuh
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/builtin_types.h
