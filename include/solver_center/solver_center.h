@@ -3,6 +3,7 @@
 #include <cassert>
 #include "diff_evolution_solver/data_type.h"
 #include "diff_evolution_solver/solver.cuh"
+#include "diff_evolution_solver/random_center.cuh"
 
 namespace cudaprocess{
 
@@ -14,6 +15,7 @@ namespace cudaprocess{
         CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *tasks_potential_sol_;
         CudaDiffEvolveSolver diff_evolve_solvers_[CUDA_MAX_TASKS];
         ProblemEvaluator *tasks_evaluator_;
+        std::shared_ptr<CudaRandomCenter> rnd_manager_;
 
         bool cudamalloc_flag{false};
     public:

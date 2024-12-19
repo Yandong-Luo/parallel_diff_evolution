@@ -2,10 +2,16 @@
 #define CUDA_DIFF_EVOLUTION_DATA_TYPE_H
 
 #include "utils.cuh"
-
 namespace cudaprocess{
 
 #define ALIGN(n) __align__(n)
+
+#define CUDA_PARAM_MAX_SIZE 16
+#define CUDA_SOLVER_POP_SIZE 64
+#define CUDA_MAX_FLOAT 1e30
+#define CUDA_MAX_TASKS 4
+#define CUDA_MAX_POTENTIAL_SOLUTION 4
+#define CUDA_MAX_ROUND_NUM 100
 
 
 template <typename T, int size>
@@ -17,10 +23,10 @@ struct CudaVector {
 struct ProblemEvaluator{
     int num_con_variable = 3;
     int num_binary_variable = 2;
-    int binary_upper_bound = 1;
-    int binary_lowwer_bound = 0;
-    float con_upper_bound = 10.;
-    float con_lower_bound = 0.;
+    float binary_upper_bound[2] = {1, 1};
+    float binary_lower_bound[2] = {0, 0};
+    float con_upper_bound[3] = {10., 10., 10.};
+    float con_lower_bound[3] = {0, 0, 0};
 };
 
 /*
@@ -57,12 +63,21 @@ struct CudaEvolveData{
     int con_var_dims, bin_var_dims, dims;
     CudaLShadePair lshade_param;
     CudaVector<CudaParamIndividual, CUDA_SOLVER_POP_SIZE> *new_cluster_vec;
-    
+    float upper_bound[CUDA_PARAM_MAX_SIZE];
+    float lower_bound[CUDA_PARAM_MAX_SIZE];
+    CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> last_potential_sol;
+    CudaParamIndividual warm_start;
+};
+
+struct CudaSolverInput{
+    CudaParamClusterData<64> *new_param;
+    CudaParamClusterData<192> *old_param;
+    ProblemEvaluator *evaluator;
 };
 
 struct CudaProblemDecoder{
     int dims_{0}, con_var_dims_{0}, bin_var_dims_{0};
-
+    
 };
 
 }

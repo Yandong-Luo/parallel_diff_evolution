@@ -9,12 +9,10 @@
 
 namespace cudaprocess {
 
-    #define CUDA_PARAM_MAX_SIZE 16
-    #define CUDA_SOLVER_POP_SIZE 64
-    #define CUDA_MAX_FLOAT 1e30
-    #define CUDA_MAX_TASKS 4
-    #define CUDA_MAX_POTENTIAL_SOLUTION 4
+    
     #define DEBUG_PRINT_FLAG true
+    #define HOST_DEVICE __device__ __forceinline__ __host__
+    #define CUDA_SOLVER_POP_SIZE 64
 
     // check the ouput of CUDA API function
     #define CHECK_CUDA(call)                                                \

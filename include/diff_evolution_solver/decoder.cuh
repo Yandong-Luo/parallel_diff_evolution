@@ -6,10 +6,11 @@
 #include <cuda.h>
 #include <cuda_runtime_api.h>
 #include <sys/time.h>
+#include <curand_kernel.h>
 #include "data_type.h"
 
 namespace cudaprocess{
-    __global__ void InitParameter(CudaProblemDecoder* decoder, CudaEvolveData* evolve_data, int size, CudaParamClusterData<64>* new_cluster_data, CudaParamClusterData<192>* old_cluster_data){
+    __global__ void InitParameter(CudaProblemDecoder* decoder, CudaEvolveData* evolve_data, int size, CudaParamClusterData<64>* new_cluster_data, CudaParamClusterData<192>* old_cluster_data, float *uniform_data){
         int idx = threadIdx.x;
         if (idx >= size)    return;
 
@@ -25,9 +26,11 @@ namespace cudaprocess{
         // initial new_cluster_data
         for (int i = 0; i < evolve_data->new_cluster_vec->data[idx].dims; ++i) {
             evolve_data->new_cluster_vec->data[idx].param[i] = 0;
-            new_cluster_data->all_param[idx * CUDA_PARAM_MAX_SIZE + i] = 0;        // each parameters were decode as a vector with the length of CUDA_PARAM_MAX_SIZE
+            // each parameters were decode as a vector with the length of CUDA_PARAM_MAX_SIZE
+            new_cluster_data->all_param[idx * CUDA_PARAM_MAX_SIZE + i] = evolve_data->lower_bound[i] + uniform_data[idx * CUDA_PARAM_MAX_SIZE + i] * (evolve_data->upper_bound[i] - evolve_data->lower_bound[i]);
+            // printf("index:%d lower bound:%f, upper bound:%f, value:%f\n",i, evolve_data->lower_bound[i], evolve_data->upper_bound[i], new_cluster_data->all_param[idx * CUDA_PARAM_MAX_SIZE + i]);
         }
-
+        // printf("\n");
         if(idx == 0){
             old_cluster_data->con_var_dims = new_cluster_data->con_var_dims = decoder->con_var_dims_;
             old_cluster_data->bin_var_dims = new_cluster_data->bin_var_dims = decoder->bin_var_dims_;
@@ -42,7 +45,7 @@ namespace cudaprocess{
         // initial old_cluster_data
         old_cluster_data->fitness[idx] = 0.;
 
-        printf("Finish the initialization of thread id:%d\n", idx);
+        // printf("Finish the initialization of thread id:%d\n", idx);
     }
 }
 #endif
