@@ -6,9 +6,29 @@
 
 #IncludeRegexTransform: 
 
+../include/diff_evolution_solver/converter.cuh
+iostream
+-
+cuda_runtime.h
+-
+cuda.h
+-
+cuda_runtime_api.h
+-
+sys/time.h
+-
+assert.h
+-
+diff_evolution_solver/data_type.h
+../include/diff_evolution_solver/diff_evolution_solver/data_type.h
+
 ../include/diff_evolution_solver/data_type.h
 utils.cuh
 ../include/diff_evolution_solver/utils.cuh
+
+../include/diff_evolution_solver/debug.cuh
+diff_evolution_solver/data_type.h
+../include/diff_evolution_solver/diff_evolution_solver/data_type.h
 
 ../include/diff_evolution_solver/decoder.cuh
 iostream
@@ -21,8 +41,18 @@ cuda_runtime_api.h
 -
 sys/time.h
 -
+curand_kernel.h
+-
 data_type.h
 ../include/diff_evolution_solver/data_type.h
+
+../include/diff_evolution_solver/random_center.cuh
+curand.h
+-
+curand_kernel.h
+-
+utils.cuh
+../include/diff_evolution_solver/utils.cuh
 
 ../include/diff_evolution_solver/solver.cuh
 iostream
@@ -35,20 +65,18 @@ cuda_runtime_api.h
 -
 sys/time.h
 -
+algorithm
+-
 memory
 -
-data_type.h
-../include/diff_evolution_solver/data_type.h
+diff_evolution_solver/data_type.h
+../include/diff_evolution_solver/diff_evolution_solver/data_type.h
 utils.cuh
 ../include/diff_evolution_solver/utils.cuh
-
-../include/solver_center/solver_center.h
-cassert
--
-diff_evolution_solver/data_type.h
-../include/solver_center/diff_evolution_solver/data_type.h
-diff_evolution_solver/solver.cuh
-../include/solver_center/diff_evolution_solver/solver.cuh
+diff_evolution_solver/converter.cuh
+../include/diff_evolution_solver/diff_evolution_solver/converter.cuh
+diff_evolution_solver/random_center.cuh
+../include/diff_evolution_solver/diff_evolution_solver/random_center.cuh
 
 ../include/utils.cuh
 stdio.h
@@ -65,8 +93,6 @@ diff_evolution_solver/solver.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/solver.cuh
 diff_evolution_solver/decoder.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/decoder.cuh
-
-/home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
-solver_center/solver_center.h
-/home/chris/parallel_diff_evolution/src/solver_center/solver_center/solver_center.h
+diff_evolution_solver/debug.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/debug.cuh
 

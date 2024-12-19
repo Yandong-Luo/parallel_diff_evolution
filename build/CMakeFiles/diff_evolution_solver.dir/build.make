@@ -70,9 +70,22 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.s: cmak
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o: CMakeFiles/diff_evolution_solver.dir/flags.make
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o: ../src/diff_evolution_solver/random_center.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o"
+	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu -o CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o
+
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: CMakeFiles/diff_evolution_solver.dir/flags.make
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../src/solver_center/solver_center.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o"
 	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu -o CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
 
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.i: cmake_force
@@ -85,7 +98,7 @@ CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.s: cmake
 
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: CMakeFiles/diff_evolution_solver.dir/flags.make
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o -c /home/chris/parallel_diff_evolution/src/main.cpp
 
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.i: cmake_force
@@ -99,6 +112,7 @@ CMakeFiles/diff_evolution_solver.dir/src/main.cpp.s: cmake_force
 # Object files for target diff_evolution_solver
 diff_evolution_solver_OBJECTS = \
 "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o" \
+"CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o" \
 "CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o" \
 "CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o"
 
@@ -106,11 +120,12 @@ diff_evolution_solver_OBJECTS = \
 diff_evolution_solver_EXTERNAL_OBJECTS =
 
 ../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
+../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o
 ../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
 ../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
 ../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/build.make
 ../diff_evolution_solver: CMakeFiles/diff_evolution_solver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../diff_evolution_solver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../diff_evolution_solver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/diff_evolution_solver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

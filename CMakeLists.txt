@@ -22,6 +22,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # Set the source files (add main.cpp here)
 set(SOURCE_FILES
     ${PROJECT_SOURCE_DIR}/src/diff_evolution_solver/solver.cu
+    ${PROJECT_SOURCE_DIR}/src/diff_evolution_solver/random_center.cu
     ${PROJECT_SOURCE_DIR}/src/solver_center/solver_center.cu
     ${PROJECT_SOURCE_DIR}/src/main.cpp
 )
