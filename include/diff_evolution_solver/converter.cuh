@@ -29,9 +29,10 @@ namespace cudaprocess{
         assert(sol_id < T);
 
         input->param[param_id] = output->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id];
-        printf("param_id: %d, value: %f\n", param_id, output->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id]);
+        // printf("param_id: %d, value: %f\n", param_id, output->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id]);
         if(param_id == 0){
             input->fitness = output->fitness[sol_id];
+            printf("aaaaaaaaaaaaaaa fitness:%f\n", input->fitness);
             input->cur_scale_f = output->lshade_param[sol_id * 3];
             input->cur_scale_f1 = output->lshade_param[sol_id * 3 + 1];
             input->cur_Cr = output->lshade_param[sol_id * 3 + 2];

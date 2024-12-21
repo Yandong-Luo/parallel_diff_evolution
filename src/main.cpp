@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cuda_runtime.h>
 #include "solver_center/solver_center.h"
-#include "diff_evolution_solver/solver.cuh"
+// #include "diff_evolution_solver/solver.cuh"
 // #include "diff_evolution_solver/data_type.h"
 
 int main(int argc,char** argv){

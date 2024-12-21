@@ -14,6 +14,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Add the solver_center for paralleling multi-differential evolution solvers.
 
-## [0.1.3] - 2024-12-18
+## [0.1.4] - 2024-12-18
 ### Changed
 - Yandong Luo: Fixed and verified random generation of solutions in constraint space. Completed conversion of data in warm start. But still missing evaluation of warm start.
+
+## [0.1.5] - 2024-12-21
+### Changed
+- Yandong Luo: Complete the evaluation part, get the best fitness and put it first in the population, and prepare for implementation and evolution

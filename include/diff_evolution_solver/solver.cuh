@@ -12,6 +12,8 @@
 #include "utils.cuh"
 #include "diff_evolution_solver/converter.cuh"
 #include "diff_evolution_solver/random_center.cuh"
+
+
 namespace cudaprocess{
     
     class CudaDiffEvolveSolver{
@@ -23,6 +25,7 @@ namespace cudaprocess{
             void WarmStart(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol);
             void InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
             void SetBoundary(ProblemEvaluator* evaluator);
+            void Evaluation(int size);
             void Solver();
         private:
             int gpu_device_;
@@ -30,7 +33,7 @@ namespace cudaprocess{
             float best_, d_best_, min_best_;
             float diff_, d_diff_, min_diff_;
             int init_pop_size_, pop_size_;
-            int dims_, con_var_dims_, bin_var_dims_;
+            int dims_, con_var_dims_, int_var_dims_;
             bool cudamalloc_flag{false};
             
             float host_upper_bound_[CUDA_PARAM_MAX_SIZE], host_lower_bound_[CUDA_PARAM_MAX_SIZE];
