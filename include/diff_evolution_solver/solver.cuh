@@ -30,7 +30,7 @@ namespace cudaprocess{
         private:
             int gpu_device_;
             int default_pop_size_;
-            float best_, d_best_, min_best_;
+            float top_, d_top_, min_top_;
             float diff_, d_diff_, min_diff_;
             int init_pop_size_, pop_size_;
             int dims_, con_var_dims_, int_var_dims_;

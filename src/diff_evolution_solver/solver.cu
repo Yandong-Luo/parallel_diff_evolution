@@ -30,10 +30,10 @@ void CudaDiffEvolveSolver::MallocSetup(){
     cudamalloc_flag = true;
 }
 
-void CudaDiffEvolveSolver::InitDiffEvolveParam(float best, float d_best, float min_best, float diff, float d_diff, float min_diff, float scale_f, float prob_crossover){
-    best_ = best;
-    d_best_ = d_best;
-    min_best_ = min_best;
+void CudaDiffEvolveSolver::InitDiffEvolveParam(float top, float d_top, float min_top, float diff, float d_diff, float min_diff, float scale_f, float prob_crossover){
+    top_ = top;
+    d_top_ = d_top;
+    min_top_ = min_top;
     diff_ = diff;
     d_diff_ = d_diff;
     min_diff_ = min_diff;
@@ -46,7 +46,7 @@ void CudaDiffEvolveSolver::InitDiffEvolveParam(float best, float d_best, float m
 __global__ void InitCudaEvolveData(CudaEvolveData* data, CudaParamClusterData<192>* old_cluster_data, int pop_size){
     int idx = threadIdx.x;
     if (idx == 0) {
-        data->best = 0.;
+        data->top_ratio = 0.;
         data->lshade_param.scale_f = data->lshade_param.scale_f1 = 0.6;
         data->lshade_param.Cr = 0.9;
         data->new_cluster_vec->len = pop_size;
@@ -344,7 +344,7 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     host_decoder_->dims_ = host_evaluator->num_con_variable + host_evaluator->num_int_variable;
 
     // Initial evolve data
-    host_evolve_data_->best = best_;
+    host_evolve_data_->top_ratio = top_;
     host_evolve_data_->new_cluster_vec = new_cluster_vec_;
     host_evolve_data_->int_var_dims = int_var_dims_;
     host_evolve_data_->con_var_dims = con_var_dims_;

@@ -14,6 +14,8 @@ namespace cudaprocess{
 #define CUDA_MAX_ROUND_NUM 100
 #define CUDA_MAX_NUM_CONSTRAINT 10
 
+enum CudaEvolveType { CON = 0, INT = 1, GLOBAL = 2 };
+
 
 template <typename T, int size>
 struct CudaVector {
@@ -77,7 +79,7 @@ struct ALIGN(64) CudaParamClusterData{
 };
 
 struct CudaEvolveData{
-    float best;
+    float top_ratio;
     int con_var_dims, int_var_dims, dims;
     CudaLShadePair lshade_param;
     CudaVector<CudaParamIndividual, CUDA_SOLVER_POP_SIZE> *new_cluster_vec;
