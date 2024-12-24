@@ -29,3 +29,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.7] - 2024-12-23
 ### Changed
 - Yandong Luo: finish update parameter part. Still need to sort the parameter when evolve is done.
+
+## [0.1.8] - 2024-12-24
+### Changed
+- Yandong Luo: finish SortParamBasedBitonic() and BitonicWarpCompare() for sorting the parameter based on fitness.
