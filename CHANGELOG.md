@@ -22,6 +22,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Complete the evaluation part, get the best fitness and put it first in the population, and prepare for implementation and evolution
 
-## [0.1.5] - 2024-12-22
+## [0.1.6] - 2024-12-22
 ### Changed
 - Yandong Luo: finish CudaEvolveProcess() function
+
+## [0.1.7] - 2024-12-23
+### Changed
+- Yandong Luo: finish update parameter part. Still need to sort the parameter when evolve is done.

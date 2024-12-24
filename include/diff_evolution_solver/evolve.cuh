@@ -13,7 +13,7 @@
 
 namespace cudaprocess{
     template <int T = 64>
-    __global__ void DuplicateBestAndReorganize(int epoch, CudaParamClusterData<64> *old_param, int copy_num){
+    __global__ void DuplicateBestAndReorganize(int epoch, CudaParamClusterData<192> *old_param, int copy_num){
         // if(epoch > 0)   return;
 
         int size = 2 * T;
@@ -61,7 +61,7 @@ namespace cudaprocess{
                                       float *normal_data, CudaEvolveData *evolve_data, int pop_size, float eliteRatio){
         int dims = evolve_data->dims, con_dims = evolve_data->con_var_dims, int_dims = evolve_data->int_var_dims;
         int sol_idx = blockIdx.x;
-        int param_idx = threadIdx.x;
+        // int param_idx = threadIdx.x;
         int UsingEliteStrategy = 0;
         int guideEliteIdx = 0;
 
@@ -109,9 +109,9 @@ namespace cudaprocess{
                 if (sorted_parent_param_idx[i] >= blockIdx.x)   sorted_parent_param_idx[i]++;
             }
 
-            scale_f = min(1.f, max(normal_data[normal_rnd_evolve_pos] * 0.01f + evolve_data->lshade_param.scale_f, 0.1));
-            scale_f1 = min(1.f, max(normal_data[normal_rnd_evolve_pos + 1] * 0.01f + evolve_data->lshade_param.scale_f, 0.1));
-            crossover = min(1.f, max(normal_data[normal_rnd_evolve_pos + 2] * 0.01f + evolve_data->lshade_param.Cr, 0.1));
+            scale_f = min(1.f, max(normal_data[normal_rnd_evolve_pos] * 0.01f + evolve_data->hist_lshade_param.scale_f, 0.1));
+            scale_f1 = min(1.f, max(normal_data[normal_rnd_evolve_pos + 1] * 0.01f + evolve_data->hist_lshade_param.scale_f, 0.1));
+            crossover = min(1.f, max(normal_data[normal_rnd_evolve_pos + 2] * 0.01f + evolve_data->hist_lshade_param.Cr, 0.1));
 
             mutationStartDim = min((int)floor(uniform_data[uniform_rnd_evolve_pos + 3] * dims), dims - 1);
 
@@ -144,7 +144,7 @@ namespace cudaprocess{
         sorted_parent_param_idx[1] = parent2_idx;
         sorted_parent_param_idx[2] = mutant_idx;
         
-        int totalsize = old_param->len;
+        // int totalsize = old_param->len;
         // check the random_idx valid or not
         if (sorted_parent_param_idx[0] >= old_param->len || sorted_parent_param_idx[1] >= old_param->len || sorted_parent_param_idx[2] >= old_param->len || old_param->len >= pop_size * 2 + 10) {
             printf("wft: %d, %d, %d, total len: %d\n", sorted_parent_param_idx[0], sorted_parent_param_idx[1], sorted_parent_param_idx[2], old_param->len);
@@ -191,6 +191,7 @@ namespace cudaprocess{
             firstMutationDimIdx = min(tmp_idx, firstMutationDimIdx);
             tmp_idx = __shfl_down_sync(0x0000ffff, firstMutationDimIdx, 1);
             firstMutationDimIdx = min(tmp_idx, firstMutationDimIdx);
+            // let all thread know the firstMutationDimIdx
             firstMutationDimIdx = __shfl_sync(0x0000ffff, firstMutationDimIdx, 0);
 
             if (threadIdx.x < dims){
@@ -228,6 +229,135 @@ namespace cudaprocess{
             reinterpret_cast<float3 *>(new_param->lshade_param)[sol_idx] = float3{scale_f, scale_f1, crossover};
         }
 
+    }
+
+    __device__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
+        float mapping_param = __shfl_xor_sync(0xffffffff, param, lane_mask);
+        float mapping_fitness = __shfl_xor_sync(0xffffffff, param, lane_mask);
+        // determine current sort order is increase (1.0) or decrease (-1.0)
+        float sortOrder = (threadIdx.x > (threadIdx.x ^ lane_mask)) ? -1.0 : 1.0;
+
+        if(sortOrder * (mapping_fitness - fitness) < 0.f){
+            param = mapping_param;
+            fitness = mapping_fitness;
+        }
+    }
+
+    // __global__ void SortParamBasedBitonic(float *param, float *fitness, fit){
+
+    // }
+
+    template <int T = CUDA_SOLVER_POP_SIZE>
+    __global__ void UpdateParameter(int epoch, CudaEvolveData *evolve, CudaParamClusterData<64> *new_param, CudaParamClusterData<192> *old_param, float eliteRatio){
+        // for old_param (current sol, delete sol, replaced sol), we select the fitness of current sol for all old param
+        // so threadIdx.x & (T-1) equal to threadIdx.x % (T-1) which can help us to mapping all old_param to current sol
+        float old_fitness = old_param->fitness[threadIdx.x & (T-1)], new_fitness = new_param->fitness[threadIdx.x & (T-1)];
+        
+        int sol_id = threadIdx.x;
+        int param_id = blockIdx.x;
+        float current_fitness = CUDA_MAX_FLOAT;
+        float current_deleted_fitness = CUDA_MAX_FLOAT;
+
+        // Update parameter
+        if (sol_id < T){
+            if (param_id < CUDA_PARAM_MAX_SIZE){
+                float old_param_value = old_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id];
+                float new_param_value = new_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id];
+
+                // compare old_fitness and new_fitness to determine which solution should be replaced.
+                if (new_fitness < old_fitness){
+                    current_fitness = new_fitness;
+                    // select better solution as current sol, and move previous solution to replaced part
+                    old_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id] = new_param_value;
+                    old_param->all_param[(sol_id + 2 * T) * CUDA_PARAM_MAX_SIZE + param_id] = old_param_value;
+                }
+                else{
+                    current_fitness = old_fitness;
+                    old_param->all_param[(sol_id + 2 * T) * CUDA_PARAM_MAX_SIZE + param_id] = new_param_value;
+                }
+            }
+            current_deleted_fitness = old_param->fitness[T + sol_id];
+        }
+        else{
+            current_deleted_fitness = (new_fitness < old_fitness) ? old_fitness : new_fitness;
+        }
+
+        // wait for all thread finish above all computation
+        __syncthreads();
+
+        /**
+         * Based on the rule of L shade to update hyperparameter
+         */
+        if (sol_id == 0){
+            // calculate 8 float data for a warp.
+            float ALIGN(64) adaptiveParamSums[8];
+            // each warp will runing parallel reduction for sum. for 64 pop_size cluster, we need 2 warp. And then, all result are storaged in a share memory array.
+            __shared__ ALIGN(64) float share_sum[2 * 8];
+
+            float3 lshade_param;
+            float scale_f, scale_f1, cr, w;
+            int num_warp = T >> 5;
+            if (sol_id < T){
+                // float3 is a built-in vector type of CUDA. And their memory addresses are continuous.
+                // It is more efficient to read parameters by this conversion method.
+                lshade_param = reinterpret_cast<float3 *>(new_param->lshade_param)[sol_id];
+                scale_f = lshade_param.x;
+                scale_f1 = lshade_param.y;
+                cr = lshade_param.z;
+                // formula (8) and (9) in https://ieeexplore.ieee.org/document/6900380
+                w  = (new_fitness - old_fitness) / max(1e-4f, new_fitness);
+
+                // calculate w*cr, w*cr*cr, w*scale_f, w*scale_f*scale_f for equation (7) in https://ieeexplore.ieee.org/document/6900380
+                adaptiveParamSums[0] = w;
+                adaptiveParamSums[1] = w * scale_f;
+                adaptiveParamSums[2] = w * scale_f * scale_f;
+                adaptiveParamSums[3] = w * scale_f1;
+                adaptiveParamSums[4] = w * scale_f1 * scale_f1;
+                adaptiveParamSums[5] = w * cr;
+                adaptiveParamSums[6] = w * cr * cr;
+                adaptiveParamSums[7] = 0;
+
+                // Warp parallel reduction sum (finish the sum part of equal (7) (8) (9))
+                for (int i = 0; i < 7; ++i) {
+                    adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 16);
+                    adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 8);
+                    adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 4);
+                    adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 2);
+                    adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 1);
+                }
+
+                // The recursive results for each warp are recorded at the shared memoery
+                if ((sol_id & 31) == 0){
+                    reinterpret_cast<float4 *>(share_sum)[num_warp * 2] = reinterpret_cast<float4 *>(adaptiveParamSums)[0];
+                    reinterpret_cast<float4 *>(share_sum)[num_warp * 2 + 1] = reinterpret_cast<float4 *>(adaptiveParamSums)[1];
+                }
+            }
+            __syncthreads();
+
+            // continue to use parallel reduction for different results of above data that have been storaged at share memory
+            if (threadIdx.x < T){
+                if (threadIdx.x < num_warp){
+                    // loading parameter from share memory to adaptiveParamSums so that each thread responsible for the from different warp
+                    reinterpret_cast<float4 *>(adaptiveParamSums)[0] = reinterpret_cast<float4 *>(share_sum)[threadIdx.x * 2];
+                    reinterpret_cast<float4 *>(adaptiveParamSums)[1] = reinterpret_cast<float4 *>(share_sum)[threadIdx.x * 2 + 1];
+                    
+                    // parallel reduction for different warp result in share memory
+                    for(int i = 0; i < 7; ++i){
+                        // !!!!!!!!!!!!!!! If the T or pop_size is not 64. This part should be modified. !!!!!!!!!!!!!!!!!!
+                        adaptiveParamSums[i] += __shfl_down_sync(0x00000003, adaptiveParamSums[i], 1);
+                    }
+
+                    // update the evolve data
+                    if(threadIdx.x == 0){
+                        if (adaptiveParamSums[2] > 1e-4f && adaptiveParamSums[4] > 1e-4f && adaptiveParamSums[6] > 1e-4f){
+                            evolve->hist_lshade_param.scale_f = adaptiveParamSums[2] * adaptiveParamSums[0] / max(1e-4f, adaptiveParamSums[1] * adaptiveParamSums[0]);
+                            evolve->hist_lshade_param.scale_f1 = adaptiveParamSums[4] * adaptiveParamSums[0] / max(1e-4f, adaptiveParamSums[3] * adaptiveParamSums[0]);
+                            evolve->hist_lshade_param.Cr = adaptiveParamSums[6] * adaptiveParamSums[0] / max(1e-4f, adaptiveParamSums[5] * adaptiveParamSums[0]);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

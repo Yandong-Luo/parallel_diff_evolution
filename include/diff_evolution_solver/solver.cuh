@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <memory>
 #include "diff_evolution_solver/data_type.h"
-#include "utils.cuh"
+#include "utils/utils.cuh"
 #include "diff_evolution_solver/converter.cuh"
 #include "diff_evolution_solver/random_center.cuh"
 
@@ -26,6 +26,7 @@ namespace cudaprocess{
             void InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
             void SetBoundary(ProblemEvaluator* evaluator);
             void Evaluation(int size);
+            void Evolution(int epoch, CudaEvolveType search_type);
             void Solver();
         private:
             int gpu_device_;
@@ -46,7 +47,7 @@ namespace cudaprocess{
 
             std::shared_ptr<CudaUtil> cuda_utils_;
             CudaParamClusterData<64>* new_cluster_data_;
-            CudaParamClusterData<192>* old_cluster_data_;
+            CudaParamClusterData<192>* old_cluster_data_;       // record current sol, delete sol, replaced sol
             CudaParamClusterData<64>* host_new_cluster_data_;
             CudaParamClusterData<192>* host_old_cluster_data_;
 

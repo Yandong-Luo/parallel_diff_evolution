@@ -2,6 +2,7 @@
 #include "diff_evolution_solver/decoder.cuh"
 #include "diff_evolution_solver/debug.cuh"
 #include "diff_evolution_solver/evolve.cuh"
+#include "utils/utils_fun.cuh"
 
 namespace cudaprocess{
 
@@ -43,13 +44,13 @@ void CudaDiffEvolveSolver::InitDiffEvolveParam(float top, float d_top, float min
 
 }
 
-__global__ void InitCudaEvolveData(CudaEvolveData* data, CudaParamClusterData<192>* old_cluster_data, int pop_size){
+__global__ void InitCudaEvolveData(CudaEvolveData* evolve, CudaParamClusterData<192>* old_cluster_data, int pop_size){
     int idx = threadIdx.x;
     if (idx == 0) {
-        data->top_ratio = 0.;
-        data->lshade_param.scale_f = data->lshade_param.scale_f1 = 0.6;
-        data->lshade_param.Cr = 0.9;
-        data->new_cluster_vec->len = pop_size;
+        evolve->top_ratio = 0.;
+        evolve->hist_lshade_param.scale_f = evolve->hist_lshade_param.scale_f1 = 0.6;
+        evolve->hist_lshade_param.Cr = 0.9;
+        evolve->new_cluster_vec->len = pop_size;
         old_cluster_data->len = pop_size;
     }
     if (idx < pop_size){
@@ -221,96 +222,6 @@ __device__ void EvaluateIndividual(CudaEvolveData *evolve, CudaParamClusterData<
     printf("thread id:%d setting fitness to %f\n", sol_id, result);
 }
 
-template <int T = 64, int PARA_SIZE>
-__global__ void ParaFindMax2(CudaParamClusterData<PARA_SIZE> *a) {
-  __shared__ int idx_list[4];
-  __shared__ float value_list[4];
-  // if (threadIdx.x > 64) return;
-  float value = a->fitness[threadIdx.x];
-  int idx = threadIdx.x;
-
-  float tmp_f;
-  int tmp_idx;
-  tmp_f = __shfl_down_sync(0xffffffff, value, 16);
-  tmp_idx = __shfl_down_sync(0xffffffff, idx, 16);
-  if (tmp_f < value) {
-    value = tmp_f;
-    idx = tmp_idx;
-  }
-  tmp_f = __shfl_down_sync(0xffffffff, value, 8);
-  tmp_idx = __shfl_down_sync(0xffffffff, idx, 8);
-  if (tmp_f < value) {
-    value = tmp_f;
-    idx = tmp_idx;
-  }
-  tmp_f = __shfl_down_sync(0xffffffff, value, 4);
-  tmp_idx = __shfl_down_sync(0xffffffff, idx, 4);
-  if (tmp_f < value) {
-    value = tmp_f;
-    idx = tmp_idx;
-  }
-  tmp_f = __shfl_down_sync(0xffffffff, value, 2);
-  tmp_idx = __shfl_down_sync(0xffffffff, idx, 2);
-  if (tmp_f < value) {
-    value = tmp_f;
-    idx = tmp_idx;
-  }
-  tmp_f = __shfl_down_sync(0xffffffff, value, 1);
-  tmp_idx = __shfl_down_sync(0xffffffff, idx, 1);
-  if (tmp_f < value) {
-    value = tmp_f;
-    idx = tmp_idx;
-  }
-
-  if ((threadIdx.x & 31) == 0) {
-    idx_list[threadIdx.x >> 5] = idx;
-    value_list[threadIdx.x >> 5] = value;
-  }
-  __syncthreads();
-
-  if (T == 128) {
-    if (threadIdx.x < 4) {
-      value = value_list[threadIdx.x];
-      idx = idx_list[threadIdx.x];
-      tmp_f = __shfl_down_sync(0x0000000f, value, 2);
-      tmp_idx = __shfl_down_sync(0x0000000f, idx, 2);
-      if (tmp_f < value) {
-        value = tmp_f;
-        idx = tmp_idx;
-      }
-      tmp_f = __shfl_down_sync(0x0000000f, value, 1);
-      tmp_idx = __shfl_down_sync(0x0000000f, idx, 1);
-      if (tmp_f < value) {
-        value = tmp_f;
-        idx = tmp_idx;
-      }
-    }
-  } else if (T == 64) {
-    if (threadIdx.x < 2) {
-      value = value_list[threadIdx.x];
-      idx = idx_list[threadIdx.x];
-      tmp_f = __shfl_down_sync(0x00000003, value, 1);
-      tmp_idx = __shfl_down_sync(0x00000003, idx, 1);
-      if (tmp_f < value) {
-        value = tmp_f;
-        idx = tmp_idx;
-      }
-    }
-  }
-
-  idx = __shfl_sync(0x0000ffff, idx, 0);
-  if (threadIdx.x < 16) {
-    float para = a->all_param[idx * CUDA_PARAM_MAX_SIZE + threadIdx.x];
-    a->all_param[idx * CUDA_PARAM_MAX_SIZE + threadIdx.x] = a->all_param[threadIdx.x];
-    a->all_param[threadIdx.x] = para;
-    if (threadIdx.x == 0) {
-      float f = a->fitness[idx];
-      a->fitness[idx] = a->fitness[0];
-      a->fitness[0] = f;
-    }
-  }
-}
-
 
 template<int T>
 __global__ void MainEvaluation(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data){
@@ -320,6 +231,13 @@ __global__ void MainEvaluation(CudaEvolveData *evolve, CudaParamClusterData<T> *
 void CudaDiffEvolveSolver::Evaluation(int size){
     MainEvaluation<64><<<size, 1, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_);
     // cudaStreamSynchronize(cuda_utils_->streams_[0]); 
+}
+
+void CudaDiffEvolveSolver::Evolution(int epoch, CudaEvolveType search_type){
+    DuplicateBestAndReorganize<<<CUDA_PARAM_MAX_SIZE, 192, 0, cuda_utils_->streams_[0]>>>(epoch, old_cluster_data_, 2);
+    CudaEvolveProcess<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(epoch, old_cluster_data_, new_cluster_data_, random_center_->uniform_data_, random_center_->normal_data_, evolve_data_, default_pop_size_, true);
+    Evaluation(default_pop_size_);
+
 }
 
 void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* host_evaluator, CudaParamIndividual* output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){

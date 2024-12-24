@@ -4,7 +4,7 @@
 
 #include <curand.h>
 #include <curand_kernel.h>
-#include "utils.cuh"
+#include "utils/utils.cuh"
 
 namespace cudaprocess{
     class CudaRandomCenter

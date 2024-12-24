@@ -23,8 +23,8 @@ diff_evolution_solver/data_type.h
 ../include/diff_evolution_solver/diff_evolution_solver/data_type.h
 
 ../include/diff_evolution_solver/data_type.h
-utils.cuh
-../include/diff_evolution_solver/utils.cuh
+utils/utils.cuh
+../include/diff_evolution_solver/utils/utils.cuh
 
 ../include/diff_evolution_solver/debug.cuh
 diff_evolution_solver/data_type.h
@@ -59,8 +59,8 @@ curand.h
 -
 curand_kernel.h
 -
-utils.cuh
-../include/diff_evolution_solver/utils.cuh
+utils/utils.cuh
+../include/diff_evolution_solver/utils/utils.cuh
 
 ../include/diff_evolution_solver/solver.cuh
 iostream
@@ -79,14 +79,14 @@ memory
 -
 diff_evolution_solver/data_type.h
 ../include/diff_evolution_solver/diff_evolution_solver/data_type.h
-utils.cuh
-../include/diff_evolution_solver/utils.cuh
+utils/utils.cuh
+../include/diff_evolution_solver/utils/utils.cuh
 diff_evolution_solver/converter.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/converter.cuh
 diff_evolution_solver/random_center.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/random_center.cuh
 
-../include/utils.cuh
+../include/utils/utils.cuh
 stdio.h
 -
 cuda.h
@@ -94,7 +94,11 @@ cuda.h
 cuda_runtime_api.h
 -
 diff_evolution_solver/data_type.h
-../include/diff_evolution_solver/data_type.h
+../include/utils/diff_evolution_solver/data_type.h
+
+../include/utils/utils_fun.cuh
+diff_evolution_solver/data_type.h
+../include/utils/diff_evolution_solver/data_type.h
 
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 diff_evolution_solver/solver.cuh
@@ -105,4 +109,6 @@ diff_evolution_solver/debug.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/debug.cuh
 diff_evolution_solver/evolve.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evolve.cuh
+utils/utils_fun.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 

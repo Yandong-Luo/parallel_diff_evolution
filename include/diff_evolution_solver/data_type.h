@@ -1,7 +1,7 @@
 #ifndef CUDA_DIFF_EVOLUTION_DATA_TYPE_H
 #define CUDA_DIFF_EVOLUTION_DATA_TYPE_H
 
-#include "utils.cuh"
+#include "utils/utils.cuh"
 namespace cudaprocess{
 
 #define ALIGN(n) __align__(n)
@@ -81,7 +81,7 @@ struct ALIGN(64) CudaParamClusterData{
 struct CudaEvolveData{
     float top_ratio;
     int con_var_dims, int_var_dims, dims;
-    CudaLShadePair lshade_param;
+    CudaLShadePair hist_lshade_param;
     CudaVector<CudaParamIndividual, CUDA_SOLVER_POP_SIZE> *new_cluster_vec;
     float upper_bound[CUDA_PARAM_MAX_SIZE];
     float lower_bound[CUDA_PARAM_MAX_SIZE];

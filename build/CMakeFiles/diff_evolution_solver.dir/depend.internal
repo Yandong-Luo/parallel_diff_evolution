@@ -4,7 +4,7 @@
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o
  ../include/diff_evolution_solver/data_type.h
  ../include/diff_evolution_solver/random_center.cuh
- ../include/utils.cuh
+ ../include/utils/utils.cuh
  /home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
  ../include/diff_evolution_solver/converter.cuh
@@ -14,7 +14,8 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
  ../include/diff_evolution_solver/evolve.cuh
  ../include/diff_evolution_solver/random_center.cuh
  ../include/diff_evolution_solver/solver.cuh
- ../include/utils.cuh
+ ../include/utils/utils.cuh
+ ../include/utils/utils_fun.cuh
  /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
  ../include/diff_evolution_solver/converter.cuh
@@ -22,7 +23,7 @@ CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
  ../include/diff_evolution_solver/random_center.cuh
  ../include/diff_evolution_solver/solver.cuh
  ../include/solver_center/solver_center.h
- ../include/utils.cuh
+ ../include/utils/utils.cuh
  /home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
  ../include/diff_evolution_solver/converter.cuh
@@ -30,7 +31,7 @@ CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
  ../include/diff_evolution_solver/random_center.cuh
  ../include/diff_evolution_solver/solver.cuh
  ../include/solver_center/solver_center.h
- ../include/utils.cuh
+ ../include/utils/utils.cuh
  /home/chris/parallel_diff_evolution/src/main.cpp
  /usr/local/cuda-11.1/include/builtin_types.h
  /usr/local/cuda-11.1/include/channel_descriptor.h
