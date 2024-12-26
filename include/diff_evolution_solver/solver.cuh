@@ -27,7 +27,7 @@ namespace cudaprocess{
             void SetBoundary(ProblemEvaluator* evaluator);
             void Evaluation(int size);
             void Evolution(int epoch, CudaEvolveType search_type);
-            void Solver();
+            void Solver(int evolve_round);
         private:
             int gpu_device_;
             int default_pop_size_;

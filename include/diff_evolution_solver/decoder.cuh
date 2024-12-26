@@ -44,10 +44,10 @@ namespace cudaprocess{
             old_cluster_data->int_var_dims = new_cluster_data->int_var_dims = decoder->int_var_dims_;
             old_cluster_data->dims = new_cluster_data->dims = decoder->dims_;
 
-            printf("Thread 0: first few params = [%f, %f, %f]\n",
-            new_cluster_data->all_param[0],
-            new_cluster_data->all_param[1],
-            new_cluster_data->all_param[2]);
+            // printf("Thread 0: first few params = [%f, %f, %f]\n",
+            // new_cluster_data->all_param[0],
+            // new_cluster_data->all_param[1],
+            // new_cluster_data->all_param[2]);
         }
 
         new_cluster_data->fitness[idx] = 0.;
@@ -58,7 +58,7 @@ namespace cudaprocess{
         // initial old_cluster_data
         old_cluster_data->fitness[idx] = 0.;
 
-        printf("Finish the initialization of thread id:%d\n", idx);
+        // printf("Finish the initialization of thread id:%d\n", idx);
     }
 }
 #endif

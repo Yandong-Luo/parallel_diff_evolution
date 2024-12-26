@@ -27,7 +27,7 @@ void CudaSolverCenter::ParallelGenerateMultiTaskSol(){
 void CudaSolverCenter::GenerateSolution(int task_id){
     printf("tasks_evaluator_[task_id]:%d\n", tasks_evaluator_[task_id].num_int_variable);
     diff_evolve_solvers_[task_id].InitSolver(gpu_device_, rnd_manager_.get(), &tasks_evaluator_[task_id], &tasks_best_sol_[task_id], &tasks_potential_sol_[task_id]);
-    // diff_evolve_solvers_[task_id].Solver();
+    diff_evolve_solvers_[task_id].Solver(60);
 }
 
 CudaSolverCenter::~CudaSolverCenter(){

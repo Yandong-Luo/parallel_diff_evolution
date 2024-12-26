@@ -15,7 +15,6 @@ namespace cudaprocess{
     template <int T = 64>
     __global__ void DuplicateBestAndReorganize(int epoch, CudaParamClusterData<192> *old_param, int copy_num){
         // if(epoch > 0)   return;
-
         int size = 2 * T;
 
         if (epoch == 0){
@@ -27,12 +26,13 @@ namespace cudaprocess{
 
         float param;
         float best_fitness;
-
+        
         if (sol_id < size + copy_num){
             if (sol_id <= copy_num){
                 // For the first copy_num solutions, use the parameters of the best solution (sol_id=0)
                 param = old_param->all_param[param_id];
                 if (param_id == 0)  best_fitness = old_param->fitness[0];   // copy the best fitness
+                
             }
             else{
                 // for the remaining solution, use the original parameters
@@ -45,6 +45,7 @@ namespace cudaprocess{
         // wait for all thread finish above all copy step
         __syncthreads();
         // reorganize
+        
         if(sol_id < size + copy_num){
             old_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id] = param;
             if (param_id == 0){
@@ -233,7 +234,7 @@ namespace cudaprocess{
 
     __device__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
         float mapping_param = __shfl_xor_sync(0xffffffff, param, lane_mask);
-        float mapping_fitness = __shfl_xor_sync(0xffffffff, param, lane_mask);
+        float mapping_fitness = __shfl_xor_sync(0xffffffff, fitness, lane_mask);
         // determine current sort order is increase (1.0) or decrease (-1.0)
         float sortOrder = (threadIdx.x > (threadIdx.x ^ lane_mask)) ? -1.0 : 1.0;
 
@@ -244,7 +245,7 @@ namespace cudaprocess{
     }
 
     template <int T=64>
-    __global__ void SortParamBasedBitonic(float *all_param, float *all_fitness){
+    __device__ void SortParamBasedBitonic(float *all_param, float *all_fitness){
         // each block have a share memory
         __shared__ float sm_sorted_fitness[T];
         __shared__ float sm_sorted_param[T];
@@ -308,13 +309,13 @@ namespace cudaprocess{
         // above all finish all sorting for fitness and param
         if (blockIdx.x < CUDA_PARAM_MAX_SIZE){
             all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id] = current_param;
-            
+            // printf("======================== Update sorted param for solution id:%d\n", threadIdx.x);
         }
         if (blockIdx.x == 0)    all_fitness[threadIdx.x] = current_fitness;
     }
 
     template <int T = CUDA_SOLVER_POP_SIZE>
-    __global__ void UpdateParameter(int epoch, CudaEvolveData *evolve, CudaParamClusterData<64> *new_param, CudaParamClusterData<192> *old_param, float eliteRatio){
+    __global__ void UpdateParameter(int epoch, CudaEvolveData *evolve, CudaParamClusterData<64> *new_param, CudaParamClusterData<192> *old_param){
         // for old_param (current sol, delete sol, replaced sol), we select the fitness of current sol for all old param
         // so threadIdx.x & (T-1) equal to threadIdx.x % (T-1) which can help us to mapping all old_param to current sol
         float old_fitness = old_param->fitness[threadIdx.x & (T-1)], new_fitness = new_param->fitness[threadIdx.x & (T-1)];
@@ -336,6 +337,7 @@ namespace cudaprocess{
                     // select better solution as current sol, and move previous solution to replaced part
                     old_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id] = new_param_value;
                     old_param->all_param[(sol_id + 2 * T) * CUDA_PARAM_MAX_SIZE + param_id] = old_param_value;
+                    old_param->fitness[sol_id] = current_fitness;
                 }
                 else{
                     current_fitness = old_fitness;
@@ -354,16 +356,15 @@ namespace cudaprocess{
         /**
          * Based on the rule of L shade to update hyperparameter
          */
-        if (sol_id == 0){
+        if (blockIdx.x == 0){
             // calculate 8 float data for a warp.
             float ALIGN(64) adaptiveParamSums[8];
             // each warp will runing parallel reduction for sum. for 64 pop_size cluster, we need 2 warp. And then, all result are storaged in a share memory array.
-            __shared__ ALIGN(64) float share_sum[2 * 8];
+            __shared__ ALIGN(64) float share_sum[4 * 8];
 
             float3 lshade_param;
             float scale_f, scale_f1, cr, w;
-            int num_warp = T >> 5;
-            if (sol_id < T){
+            if (threadIdx.x < T){
                 // float3 is a built-in vector type of CUDA. And their memory addresses are continuous.
                 // It is more efficient to read parameters by this conversion method.
                 lshade_param = reinterpret_cast<float3 *>(new_param->lshade_param)[sol_id];
@@ -391,18 +392,16 @@ namespace cudaprocess{
                     adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 2);
                     adaptiveParamSums[i] += __shfl_down_sync(0xffffffff, adaptiveParamSums[i], 1);
                 }
-
                 // The recursive results for each warp are recorded at the shared memoery
-                if ((sol_id & 31) == 0){
-                    reinterpret_cast<float4 *>(share_sum)[num_warp * 2] = reinterpret_cast<float4 *>(adaptiveParamSums)[0];
-                    reinterpret_cast<float4 *>(share_sum)[num_warp * 2 + 1] = reinterpret_cast<float4 *>(adaptiveParamSums)[1];
+                if ((threadIdx.x & 31) == 0){
+                    reinterpret_cast<float4 *>(share_sum)[(threadIdx.x >> 5) * 2] = reinterpret_cast<float4 *>(adaptiveParamSums)[0];
+                    reinterpret_cast<float4 *>(share_sum)[(threadIdx.x >> 5) * 2 + 1] = reinterpret_cast<float4 *>(adaptiveParamSums)[1];
                 }
             }
             __syncthreads();
-
             // continue to use parallel reduction for different results of above data that have been storaged at share memory
             if (threadIdx.x < T){
-                if (threadIdx.x < num_warp){
+                if (threadIdx.x < (T >> 5)){
                     // loading parameter from share memory to adaptiveParamSums so that each thread responsible for the from different warp
                     reinterpret_cast<float4 *>(adaptiveParamSums)[0] = reinterpret_cast<float4 *>(share_sum)[threadIdx.x * 2];
                     reinterpret_cast<float4 *>(adaptiveParamSums)[1] = reinterpret_cast<float4 *>(share_sum)[threadIdx.x * 2 + 1];
@@ -424,6 +423,100 @@ namespace cudaprocess{
                 }
             }
         }
+        __syncthreads();
+
+        /**
+         * sorting old param
+         */
+        // if (threadIdx.x < T){
+        //     SortParamBasedBitonic(old_param->all_param, old_param->fitness);
+        // }
+        
+
+
+        // // each block have a share memory
+        __shared__ float sm_sorted_fitness[T * 2];
+        __shared__ float sm_sorted_param[T * 2];
+        // int param_id = blockIdx.x;
+        // int sol_id = threadIdx.x;
+        float *param_input = old_param->all_param;
+        float *fitness_input = old_param->fitness;
+        float current_param;
+
+        // if (threadIdx.x < T){
+        //     if (blockIdx.x < CUDA_PARAM_MAX_SIZE){
+        //         current_param = param_input[sol_id * CUDA_PARAM_MAX_SIZE + param_id];
+        //     }
+            
+        //     // current_fitness = fitness_input[sol_id];
+
+        //     // Sort the contents of 32 threads in a warp based on Bitonic merge sort. Implement detail is the alternative representation of https://en.wikipedia.org/wiki/Bitonic_sorter
+        //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        //     BitonicWarpCompare(current_param, current_fitness, 3);
+        //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        //     BitonicWarpCompare(current_param, current_fitness, 7);
+        //     BitonicWarpCompare(current_param, current_fitness, 2);
+        //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        //     BitonicWarpCompare(current_param, current_fitness, 15);
+        //     BitonicWarpCompare(current_param, current_fitness, 4);
+        //     BitonicWarpCompare(current_param, current_fitness, 2);
+        //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        //     // above all finish the sorting 16 threads in Warp, continue to finish 2 group of 16 threads
+        //     BitonicWarpCompare(current_param, current_fitness, 31);
+        //     BitonicWarpCompare(current_param, current_fitness, 8);
+        //     BitonicWarpCompare(current_param, current_fitness, 4);
+        //     BitonicWarpCompare(current_param, current_fitness, 2);
+        //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        //     // above all finsh the sort for each warp, continue to finish the sort between different warp by share memory.
+        //     // record the warp sorting result to share memory
+        //     sm_sorted_param[threadIdx.x] = current_param;
+        //     sm_sorted_fitness[threadIdx.x] = current_fitness;
+
+        // }
+        // // printf("??????????????????\n");
+        // // if (threadIdx.x < T) {
+        //     // printf("Thread %d before sync\n", threadIdx.x);
+        // // }
+        // // Wait for all thread finish above computation
+        // __syncthreads();
+        // printf("??????????????????\n");
+        // // if (threadIdx.x < T){
+        // //     // if T == 64 (we have 2 warp), we just need to compare these 2 warp by share memory.
+        // //     // Otherwise, we need to modify the following code
+        // //     int compare_idx = sol_id ^ 63;
+        // //     float mapping_param = sm_sorted_param[compare_idx];
+        // //     float mapping_fitness = sm_sorted_fitness[compare_idx];
+
+        // //     float sortOrder = (threadIdx.x > (threadIdx.x ^ 63)) ? -1.0 : 1.0;
+
+        // //     if(sortOrder * (mapping_fitness - current_fitness) < 0.f){
+        // //         current_param = mapping_param;
+        // //         current_fitness = mapping_fitness;
+        // //     }
+        // // }
+        // // // Wait for the sort between two warp finish
+        // // __syncthreads();
+
+        // // if (threadIdx.x < T){
+        // //     // Now, we can come back to the sorting in the warp
+        // //     BitonicWarpCompare(current_param, current_fitness, 16);
+        // //     BitonicWarpCompare(current_param, current_fitness, 8);
+        // //     BitonicWarpCompare(current_param, current_fitness, 4);
+        // //     BitonicWarpCompare(current_param, current_fitness, 2);
+        // //     BitonicWarpCompare(current_param, current_fitness, 1);
+
+        // //     // above all finish all sorting for fitness and param
+        // //     if (blockIdx.x < CUDA_PARAM_MAX_SIZE){
+        // //         old_param->all_param[sol_id * CUDA_PARAM_MAX_SIZE + param_id] = current_param;
+        // //         printf("======================== Update sorted param for solution id:%d\n", threadIdx.x);
+        // //     }
+        // //     if (blockIdx.x == 0)    old_param->fitness[threadIdx.x] = current_fitness;
+        // // }
     }
 }
 

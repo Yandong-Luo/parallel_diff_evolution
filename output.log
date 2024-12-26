@@ -1,0 +1,397 @@
+tasks_evaluator_[task_id]:1
+CUDA SET DEVICE
+INIT PARAM FOR DE
+START MEMORY ASYNC
+MEMORY ASYNC SUBMIT
+cluster_data len:192
+
+Individual 0 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 1 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 
+Individual 7 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.718111 0.653816 1.920265 
+Individual 8 fitness: 2.718111, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.718111 0.653816 1.920265 
+Individual 9 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.735309 0.653816 1.920265 
+Individual 10 fitness: 2.718111, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.718111 0.653816 1.920265 
+Individual 11 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.735309 0.686399 1.920265 
+Individual 12 fitness: 2.765671, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.765671 0.769991 1.920265 
+Individual 13 fitness: 2.800847, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.800847 0.769991 1.920265 
+Individual 14 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.769991 1.920265 
+Individual 15 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.920265 
+Individual 16 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.735309 0.697956 1.920265 
+Individual 17 fitness: 2.800847, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.800847 0.769991 1.920265 
+Individual 18 fitness: 2.809597, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.809597 0.857572 1.948798 
+Individual 19 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.982957 
+Individual 20 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.952858 
+Individual 21 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.982957 
+Individual 22 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.982957 
+Individual 23 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.939680 1.982957 
+Individual 24 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.862636 1.982957 
+Individual 25 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.939680 1.982957 
+Individual 26 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.939680 1.982957 
+Individual 27 fitness: 2.923589, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.923589 1.248251 1.989763 
+Individual 28 fitness: 2.844591, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.844591 0.939680 1.989763 
+Individual 29 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.424646 2.007905 
+Individual 30 fitness: 2.891822, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.891822 0.939680 1.989763 
+Individual 31 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.424646 2.007905 
+Individual 32 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.842245 0.939680 1.989763 
+Individual 33 fitness: 2.900427, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.900427 0.939680 1.989763 
+Individual 34 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 0.959228 1.989763 
+Individual 35 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.084081 1.996185 
+Individual 36 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.019686 1.989763 
+Individual 37 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.084081 2.007905 
+Individual 38 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.140374 2.007905 
+Individual 39 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.735088 2.007905 
+Individual 40 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.084081 1.996185 
+Individual 41 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.110285 2.007905 
+Individual 42 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.110285 2.007905 
+Individual 43 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.735088 2.007905 
+Individual 44 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.226587 2.007905 
+Individual 45 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.946107 1.248251 2.007905 
+Individual 46 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.248251 2.007905 
+Individual 47 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.735088 2.007905 
+Individual 48 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.424646 2.015396 
+Individual 49 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.735088 2.056331 
+Individual 50 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.424646 2.045130 
+Individual 51 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.735088 2.056331 
+Individual 52 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.424646 2.056331 
+Individual 53 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.735088 2.056331 
+Individual 54 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.949391 1.424646 2.056331 
+Individual 55 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.056331 
+Individual 56 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.061263 
+Individual 57 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.061263 
+Individual 58 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.061263 
+Individual 59 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.073809 
+Individual 60 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.982866 1.735088 2.081452 
+Individual 61 fitness: 3.031728, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.031728 1.735088 2.131129 
+Individual 62 fitness: 3.037090, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.037090 1.735088 2.131525 
+Individual 63 fitness: 3.050578, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.050578 1.735088 2.131525 
+Individual 64 fitness: 3.063287, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.063287 1.498410 2.131525 
+Individual 65 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230660 1.982020 2.131525 
+Individual 66 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230660 1.437284 2.119939 
+Individual 67 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230660 1.437284 2.155077 
+Individual 68 fitness: 3.067407, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.067407 1.570996 2.089306 
+Individual 69 fitness: 3.067407, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.067407 2.302582 2.102869 
+Individual 70 fitness: 3.097017, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.097017 1.171444 2.121443 
+Individual 71 fitness: 3.122489, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.122489 1.309836 2.121443 
+Individual 72 fitness: 3.160849, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.160849 1.397750 2.123030 
+Individual 73 fitness: 3.160849, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.160849 1.397750 2.123030 
+Individual 74 fitness: 3.125902, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.125902 1.222538 2.244057 
+Individual 75 fitness: 3.286419, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.286419 1.238738 2.244057 
+Individual 76 fitness: 3.099474, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.099474 1.167909 2.119733 
+Individual 77 fitness: 3.099474, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.099474 1.167909 2.122317 
+Individual 78 fitness: 3.137408, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.137408 1.167909 2.133553 
+Individual 79 fitness: 3.137408, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.137408 1.167909 2.133553 
+Individual 80 fitness: 3.006220, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.006220 1.262603 2.175977 
+Individual 81 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.043955 1.263159 2.175977 
+Individual 82 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.043955 1.263159 2.175977 
+Individual 83 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.043955 1.370476 2.192693 
+Individual 84 fitness: 3.193909, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.193909 1.270021 2.102576 
+Individual 85 fitness: 3.342271, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.342271 1.397867 2.127468 
+Individual 86 fitness: 3.217461, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.217461 1.289321 2.370221 
+Individual 87 fitness: 3.217461, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.217461 1.289321 2.370221 
+Individual 88 fitness: 3.122257, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.122257 1.374605 2.135363 
+Individual 89 fitness: 3.143369, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.143369 1.985589 2.135363 
+Individual 90 fitness: 3.215331, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.215331 1.460462 2.120331 
+Individual 91 fitness: 3.215331, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.215331 1.460462 2.120331 
+Individual 92 fitness: 3.063250, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.063250 1.460462 2.103738 
+Individual 93 fitness: 3.063250, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.063250 1.460462 2.126242 
+Individual 94 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.119931 1.555913 2.071446 
+Individual 95 fitness: 3.190204, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.190204 1.693180 2.071446 
+Individual 96 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.119931 1.693180 2.071446 
+Individual 97 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.119931 1.693180 2.127165 
+Individual 98 fitness: 3.040358, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.040358 1.370036 2.180830 
+Individual 99 fitness: 3.066199, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.066199 1.827819 2.311927 
+Individual 100 fitness: 3.088415, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.088415 1.362514 2.190472 
+Individual 101 fitness: 3.097652, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.097652 1.399318 2.336486 
+Individual 102 fitness: 3.119429, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.119429 1.998902 2.156366 
+Individual 103 fitness: 3.279132, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.279132 1.998902 2.168881 
+Individual 104 fitness: 3.149204, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.149204 2.257431 2.133832 
+Individual 105 fitness: 3.159598, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.159598 2.257431 2.153620 
+Individual 106 fitness: 3.178937, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.178937 1.359164 2.153620 
+Individual 107 fitness: 3.178937, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.178937 1.489798 2.229147 
+Individual 108 fitness: 3.147090, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.147090 1.489798 2.229147 
+Individual 109 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.159550 1.489798 2.229147 
+Individual 110 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.255047 1.218203 2.153620 
+Individual 111 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.255047 1.218203 2.153620 
+Individual 112 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.255047 1.218203 2.185203 
+Individual 113 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.255047 1.343556 2.198242 
+Individual 114 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.159550 1.310548 2.198242 
+Individual 115 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.159550 1.453121 2.198242 
+Individual 116 fitness: 3.481678, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.481678 1.248763 2.153343 
+Individual 117 fitness: 3.481678, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.481678 1.587846 2.333576 
+Individual 118 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230907 1.469006 2.163977 
+Individual 119 fitness: 3.348270, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.348270 1.870712 2.163977 
+Individual 120 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230907 1.870712 2.163977 
+Individual 121 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.230907 1.870712 2.269835 
+Individual 122 fitness: 3.114476, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.114476 1.100067 2.163977 
+Individual 123 fitness: 3.114476, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.114476 1.144041 2.217151 
+Individual 124 fitness: 3.229783, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.229783 1.345238 2.199979 
+Individual 125 fitness: 3.393374, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.393374 3.472165 2.440561 
+Individual 126 fitness: 3.388472, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.388472 1.566874 2.219298 
+Individual 127 fitness: 3.473501, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.473501 1.566874 2.219298 
+Individual 128 fitness: 3.229053, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.510335 0.272594 1.798133 
+Individual 129 fitness: 3.229053, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.648082 0.600194 1.889431 
+Individual 130 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.461220 0.300656 1.792082 
+Individual 131 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 132 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.909805 
+Individual 133 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 134 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.691691 0.630134 1.902514 
+Individual 135 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.716277 0.630134 1.905987 
+Individual 136 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 137 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 138 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.620169 0.630134 1.856378 
+Individual 139 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.691691 0.630134 1.909805 
+Individual 140 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.691691 0.630134 1.909805 
+Individual 141 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 142 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 143 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 144 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 145 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 146 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.630134 1.920265 
+Individual 147 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.800335 1.920265 
+Individual 148 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 149 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 150 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 151 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.766176 0.866547 1.920265 
+Individual 152 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.718111 0.866547 1.920265 
+Individual 153 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.766176 0.871929 1.920265 
+Individual 154 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.766176 0.882862 1.920265 
+Individual 155 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.794290 0.882862 1.947554 
+Individual 156 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.794290 0.882862 1.931489 
+Individual 157 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.795863 0.882862 1.963751 
+Individual 158 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.795863 0.882862 1.947554 
+Individual 159 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.824330 0.882862 1.970279 
+Individual 160 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.799268 0.936490 1.947554 
+Individual 161 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 0.959228 1.972033 
+Individual 162 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.824330 0.882862 1.963751 
+Individual 163 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 0.882862 1.963751 
+Individual 164 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 0.959228 1.964967 
+Individual 165 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 1.054277 1.972033 
+Individual 166 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 0.959228 1.964967 
+Individual 167 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 1.021031 1.967066 
+Individual 168 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.837743 1.054277 1.970279 
+Individual 169 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 1.972033 
+Individual 170 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.054277 1.972033 
+Individual 171 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 1.972033 
+Individual 172 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 1.972033 
+Individual 173 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 1.972033 
+Individual 174 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 1.972033 
+Individual 175 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 2.014373 
+Individual 176 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 2.050483 
+Individual 177 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.891822 1.084081 2.050483 
+Individual 178 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.854974 1.084081 2.055351 
+Individual 179 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.891822 1.246178 2.055351 
+Individual 180 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.891822 1.084081 2.061263 
+Individual 181 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.901639 1.291520 2.071936 
+Individual 182 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 2.901639 1.246178 2.071936 
+Individual 183 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.012233 1.291520 2.079867 
+Individual 184 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.012233 1.291520 2.071936 
+Individual 185 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.037090 1.291520 2.088679 
+Individual 186 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.012233 1.291520 2.079867 
+Individual 187 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.037090 1.291520 2.131525 
+Individual 188 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.037090 1.437284 2.088679 
+Individual 189 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.037090 1.437284 2.131525 
+Individual 190 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.123004 1.578511 2.215151 
+Individual 191 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
+Params: 3.037090 1.498410 2.131525 
+
+Problem dimensions: con_var=2, int_var=1, total=3
+Solver completed successfully!
+========= CUDA-MEMCHECK
+========= LEAK SUMMARY: 0 bytes leaked in 0 allocations
+========= ERROR SUMMARY: 0 errors

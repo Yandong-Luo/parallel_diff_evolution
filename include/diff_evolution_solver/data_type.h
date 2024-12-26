@@ -36,9 +36,28 @@ struct ProblemEvaluator{
     float con_upper_bound[2] = {10., 10.};
     float con_lower_bound[2] = {0, 0};
 
+    float* (*constraints)(const float*);
+    float (*objective)(const float*);
+
+    ProblemEvaluator(){
+        constraints = [](const float* param) -> float* {
+            float* result = new float[2];
+            result[0] = 2 * param[0] + 3 * param[1] + param[2] - 12; 
+            result[1] = 2 * param[0] + param[1] + 3 * param[2] - 12;
+            return result; 
+        };
+
+        objective = [](const float* param) -> float {
+            return -4*param[0]-3*param[1]-5*param[2];
+        };
+    }
+
+    float lambda[2] = {10, 10};
+
+
     float constraint_param[2][4] = {
-        {-2, -3, -1, 12},
-        {-2, -1, -3, 12}
+        {2, 3, 1, -12},
+        {2, 1, 3, -12}
     };
 
     int num_constraint = 2;
@@ -47,6 +66,8 @@ struct ProblemEvaluator{
     // objective function
     float objective_param[3] = {-4., -3, -5};
     int num_objective_param = 3;
+
+    int generation = 1;
 };
 
 /*
@@ -94,6 +115,12 @@ struct CudaEvolveData{
 
     float objective_param[CUDA_PARAM_MAX_SIZE];
     int num_objective_param;
+
+    float* (*constraints)(const float*);
+    float (*objective)(const float*);
+    float lambda[CUDA_PARAM_MAX_SIZE];
+
+    // int generation;
 };
 
 struct CudaSolverInput{

@@ -11,6 +11,7 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
  ../include/diff_evolution_solver/data_type.h
  ../include/diff_evolution_solver/debug.cuh
  ../include/diff_evolution_solver/decoder.cuh
+ ../include/diff_evolution_solver/evaluate.cuh
  ../include/diff_evolution_solver/evolve.cuh
  ../include/diff_evolution_solver/random_center.cuh
  ../include/diff_evolution_solver/solver.cuh

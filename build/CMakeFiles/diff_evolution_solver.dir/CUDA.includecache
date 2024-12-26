@@ -46,6 +46,16 @@ curand_kernel.h
 data_type.h
 ../include/diff_evolution_solver/data_type.h
 
+../include/diff_evolution_solver/evaluate.cuh
+cuda.h
+-
+cuda_runtime_api.h
+-
+math.h
+-
+diff_evolution_solver/data_type.h
+../include/diff_evolution_solver/diff_evolution_solver/data_type.h
+
 ../include/diff_evolution_solver/evolve.cuh
 cuda.h
 -
@@ -109,6 +119,8 @@ diff_evolution_solver/debug.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/debug.cuh
 diff_evolution_solver/evolve.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evolve.cuh
+diff_evolution_solver/evaluate.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evaluate.cuh
 utils/utils_fun.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 

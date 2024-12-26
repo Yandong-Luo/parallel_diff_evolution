@@ -33,3 +33,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.8] - 2024-12-24
 ### Changed
 - Yandong Luo: finish SortParamBasedBitonic() and BitonicWarpCompare() for sorting the parameter based on fitness.
+
+## [0.1.8] - 2024-12-25
+### Changed
+- Yandong Luo: Fix blocking issue in update parameter. Add test unit. Fix error in BitonicWarpCompare. Reorganize the whole process and adjust warm start.
