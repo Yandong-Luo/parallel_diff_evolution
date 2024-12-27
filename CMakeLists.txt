@@ -7,12 +7,20 @@ project(Parallel_DiffEvolutionSolver LANGUAGES CXX CUDA)
 # Find the CUDA Toolkit
 find_package(CUDA REQUIRED)
 
+# Find CUBLAS
+find_library(CUBLAS_LIBRARY cublas HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
+
 # Include CUDA headers and libraries
 include_directories(${CUDA_INCLUDE_DIRS})
 link_directories(${CUDA_LIBRARIES})
 
+# Enable debug symbols and CUDA debug info
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -G -g")
+
 # Set CUDA compilation options (optional)
 set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17")
+set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -G -g -O0")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
@@ -43,3 +51,9 @@ set_target_properties(diff_evolution_solver PROPERTIES
 
 # Specify the search path for header files
 target_include_directories(diff_evolution_solver PRIVATE ${PROJECT_SOURCE_DIR}/include)
+
+# Link the executable with CUBLAS
+target_link_libraries(diff_evolution_solver 
+    ${CUDA_LIBRARIES}
+    ${CUBLAS_LIBRARY}
+)

@@ -8,6 +8,7 @@
 #include <sys/time.h>
 #include <algorithm>
 #include <memory>
+#include <cublas_v2.h>
 #include "diff_evolution_solver/data_type.h"
 #include "utils/utils.cuh"
 #include "diff_evolution_solver/converter.cuh"
@@ -55,6 +56,25 @@ namespace cudaprocess{
             ProblemEvaluator *evaluator_;
 
             CudaSolverInput *host_solver_input_, *device_solver_input_;
+
+            float *param_matrix, *host_param_matrix;
+
+            float *constraint_matrix;
+            float *constraint_constant_matrix;
+            float *objective_matrix;
+            float *obj_constant_matrix;
+
+            float *h_constraint_matrix;
+            float *h_constraint_constant_matrix;
+            float *h_objective_matrix;
+            float *h_obj_constant_matrix;
+
+            int row_constraint, col_constraint;
+            int row_constraint_constant, col_constraint_constant;
+            int row_obj, col_obj;
+            int row_obj_constant, col_obj_constant;
+
+            cublasHandle_t cublas_handle_; 
     };
 }
 

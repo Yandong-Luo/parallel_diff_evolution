@@ -3,13 +3,13 @@
 
 # compile CUDA with /usr/local/cuda-11.1/bin/nvcc
 # compile CXX with /usr/bin/c++
-CUDA_FLAGS =  
+CUDA_FLAGS = -g -G -g -G -g -O0  
 
 CUDA_DEFINES = 
 
 CUDA_INCLUDES = -I/home/chris/parallel_diff_evolution/include 
 
-CXX_FLAGS =   -std=gnu++17
+CXX_FLAGS = -g   -std=gnu++17
 
 CXX_DEFINES = 
 

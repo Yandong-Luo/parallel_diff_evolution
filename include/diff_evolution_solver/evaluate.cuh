@@ -4,6 +4,7 @@
 #include <cuda.h>
 #include <cuda_runtime_api.h>
 #include <math.h>
+#include <cublas_v2.h>
 // #ifdef __CUDACC__
 // #include <cuda.h>
 // #include <cuda_runtime_api.h>
@@ -70,6 +71,14 @@ __device__ void DynamicEvaluation2(CudaEvolveData *evolve, CudaParamClusterData<
     // printf("thread id:%d setting fitness to %f\n", idx, score);
 }
 
+template<int T>
+__global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data, float *param_matrix){
+    int sol_id = blockIdx.x;
+    int param_id = threadIdx.x;
+    param_matrix[threadIdx.x * evolve->dims + blockIdx.x] = cluster_data->all_param[threadIdx.x * CUDA_PARAM_MAX_SIZE + blockIdx.x];
+
+    // printf("finish the convert: param[%d] to matrix[%d]", threadIdx.x * CUDA_PARAM_MAX_SIZE + blockIdx.x, threadIdx.x * evolve->dims + blockIdx.x);
+}
 }
 
 

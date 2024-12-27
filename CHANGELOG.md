@@ -41,3 +41,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.10] - 2024-12-25
 ### Changed
 - Yandong Luo: Complete the sort of old param (0-127) and complete the sort test.
+
+## [0.1.11] - 2024-12-25
+### Changed
+- Yandong Luo: Some issues in random center

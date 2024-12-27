@@ -49,8 +49,15 @@ CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/includ
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/crt/sm_70_rt.hpp
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/crt/sm_80_rt.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/crt/sm_80_rt.hpp
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuComplex.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cublas_api.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cublas_v2.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_bf16.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_bf16.hpp
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_device_runtime_api.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_fp16.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_fp16.hpp
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_runtime.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_runtime_api.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/cuda_surface_types.h
