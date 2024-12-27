@@ -45,3 +45,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.11] - 2024-12-25
 ### Changed
 - Yandong Luo: Some issues in random center
+
+## [0.1.12] - 2024-12-25
+### Changed
+- Yandong Luo: Remove the compilation flag in CMakeList to solve the random center failure problem. Sucessfully verify the parameter matrix.

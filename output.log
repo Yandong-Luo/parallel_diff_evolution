@@ -1,397 +1,1302 @@
 tasks_evaluator_[task_id]:1
 CUDA SET DEVICE
 INIT PARAM FOR DE
-START MEMORY ASYNC
+??????????????????START MEMORY ASYNC
 MEMORY ASYNC SUBMIT
-cluster_data len:192
+cluster_data len:64
 
 Individual 0 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
 Params: 
 Individual 1 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
-Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
-Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
-Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
-Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
-Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 
+Params: 6.910565 5.705355 19.000000 
+Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.839302 4.443154 12.000000 
+Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.319540 1.764473 11.000000 
+Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.396704 4.603515 16.000000 
+Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 5.654207 0.862355 0.000000 
+Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.278084 0.005750 13.000000 
 Individual 7 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.718111 0.653816 1.920265 
-Individual 8 fitness: 2.718111, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.718111 0.653816 1.920265 
-Individual 9 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.735309 0.653816 1.920265 
-Individual 10 fitness: 2.718111, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.718111 0.653816 1.920265 
-Individual 11 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.735309 0.686399 1.920265 
-Individual 12 fitness: 2.765671, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.765671 0.769991 1.920265 
-Individual 13 fitness: 2.800847, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.800847 0.769991 1.920265 
-Individual 14 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.769991 1.920265 
-Individual 15 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.920265 
-Individual 16 fitness: 2.735309, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.735309 0.697956 1.920265 
-Individual 17 fitness: 2.800847, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.800847 0.769991 1.920265 
-Individual 18 fitness: 2.809597, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.809597 0.857572 1.948798 
-Individual 19 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.982957 
-Individual 20 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.952858 
-Individual 21 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.982957 
-Individual 22 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.982957 
-Individual 23 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.939680 1.982957 
-Individual 24 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.862636 1.982957 
-Individual 25 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.939680 1.982957 
-Individual 26 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.939680 1.982957 
-Individual 27 fitness: 2.923589, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.923589 1.248251 1.989763 
-Individual 28 fitness: 2.844591, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.844591 0.939680 1.989763 
-Individual 29 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.424646 2.007905 
-Individual 30 fitness: 2.891822, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.891822 0.939680 1.989763 
-Individual 31 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.424646 2.007905 
-Individual 32 fitness: 2.842245, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.842245 0.939680 1.989763 
-Individual 33 fitness: 2.900427, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.900427 0.939680 1.989763 
-Individual 34 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 0.959228 1.989763 
-Individual 35 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.084081 1.996185 
-Individual 36 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.019686 1.989763 
-Individual 37 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.084081 2.007905 
-Individual 38 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.140374 2.007905 
-Individual 39 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.735088 2.007905 
-Individual 40 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.084081 1.996185 
-Individual 41 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.110285 2.007905 
-Individual 42 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.110285 2.007905 
-Individual 43 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.735088 2.007905 
-Individual 44 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.226587 2.007905 
-Individual 45 fitness: 2.946107, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.946107 1.248251 2.007905 
-Individual 46 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.248251 2.007905 
-Individual 47 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.735088 2.007905 
-Individual 48 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.424646 2.015396 
-Individual 49 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.735088 2.056331 
-Individual 50 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.424646 2.045130 
-Individual 51 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.735088 2.056331 
-Individual 52 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.424646 2.056331 
-Individual 53 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.735088 2.056331 
-Individual 54 fitness: 2.949391, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.949391 1.424646 2.056331 
-Individual 55 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.056331 
-Individual 56 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.061263 
-Individual 57 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.061263 
-Individual 58 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.061263 
-Individual 59 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.073809 
-Individual 60 fitness: 2.982866, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 2.982866 1.735088 2.081452 
-Individual 61 fitness: 3.031728, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 3.031728 1.735088 2.131129 
-Individual 62 fitness: 3.037090, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 3.037090 1.735088 2.131525 
-Individual 63 fitness: 3.050578, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
-Params: 3.050578 1.735088 2.131525 
-Individual 64 fitness: 3.063287, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.063287 1.498410 2.131525 
-Individual 65 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230660 1.982020 2.131525 
-Individual 66 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230660 1.437284 2.119939 
-Individual 67 fitness: 3.230660, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230660 1.437284 2.155077 
-Individual 68 fitness: 3.067407, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.067407 1.570996 2.089306 
-Individual 69 fitness: 3.067407, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.067407 2.302582 2.102869 
-Individual 70 fitness: 3.097017, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.097017 1.171444 2.121443 
-Individual 71 fitness: 3.122489, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.122489 1.309836 2.121443 
-Individual 72 fitness: 3.160849, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.160849 1.397750 2.123030 
-Individual 73 fitness: 3.160849, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.160849 1.397750 2.123030 
-Individual 74 fitness: 3.125902, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.125902 1.222538 2.244057 
-Individual 75 fitness: 3.286419, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.286419 1.238738 2.244057 
-Individual 76 fitness: 3.099474, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.099474 1.167909 2.119733 
-Individual 77 fitness: 3.099474, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.099474 1.167909 2.122317 
-Individual 78 fitness: 3.137408, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.137408 1.167909 2.133553 
-Individual 79 fitness: 3.137408, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.137408 1.167909 2.133553 
-Individual 80 fitness: 3.006220, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.006220 1.262603 2.175977 
-Individual 81 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.043955 1.263159 2.175977 
-Individual 82 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.043955 1.263159 2.175977 
-Individual 83 fitness: 3.043955, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.043955 1.370476 2.192693 
-Individual 84 fitness: 3.193909, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.193909 1.270021 2.102576 
-Individual 85 fitness: 3.342271, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.342271 1.397867 2.127468 
-Individual 86 fitness: 3.217461, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.217461 1.289321 2.370221 
-Individual 87 fitness: 3.217461, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.217461 1.289321 2.370221 
-Individual 88 fitness: 3.122257, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.122257 1.374605 2.135363 
-Individual 89 fitness: 3.143369, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.143369 1.985589 2.135363 
-Individual 90 fitness: 3.215331, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.215331 1.460462 2.120331 
-Individual 91 fitness: 3.215331, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.215331 1.460462 2.120331 
-Individual 92 fitness: 3.063250, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.063250 1.460462 2.103738 
-Individual 93 fitness: 3.063250, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.063250 1.460462 2.126242 
-Individual 94 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.119931 1.555913 2.071446 
-Individual 95 fitness: 3.190204, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.190204 1.693180 2.071446 
-Individual 96 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.119931 1.693180 2.071446 
-Individual 97 fitness: 3.119931, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.119931 1.693180 2.127165 
-Individual 98 fitness: 3.040358, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.040358 1.370036 2.180830 
-Individual 99 fitness: 3.066199, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.066199 1.827819 2.311927 
-Individual 100 fitness: 3.088415, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.088415 1.362514 2.190472 
-Individual 101 fitness: 3.097652, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.097652 1.399318 2.336486 
-Individual 102 fitness: 3.119429, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.119429 1.998902 2.156366 
-Individual 103 fitness: 3.279132, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.279132 1.998902 2.168881 
-Individual 104 fitness: 3.149204, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.149204 2.257431 2.133832 
-Individual 105 fitness: 3.159598, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.159598 2.257431 2.153620 
-Individual 106 fitness: 3.178937, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.178937 1.359164 2.153620 
-Individual 107 fitness: 3.178937, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.178937 1.489798 2.229147 
-Individual 108 fitness: 3.147090, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.147090 1.489798 2.229147 
-Individual 109 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.159550 1.489798 2.229147 
-Individual 110 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.255047 1.218203 2.153620 
-Individual 111 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.255047 1.218203 2.153620 
-Individual 112 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.255047 1.218203 2.185203 
-Individual 113 fitness: 3.255047, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.255047 1.343556 2.198242 
-Individual 114 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.159550 1.310548 2.198242 
-Individual 115 fitness: 3.159550, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.159550 1.453121 2.198242 
-Individual 116 fitness: 3.481678, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.481678 1.248763 2.153343 
-Individual 117 fitness: 3.481678, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.481678 1.587846 2.333576 
-Individual 118 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230907 1.469006 2.163977 
-Individual 119 fitness: 3.348270, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.348270 1.870712 2.163977 
-Individual 120 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230907 1.870712 2.163977 
-Individual 121 fitness: 3.230907, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.230907 1.870712 2.269835 
-Individual 122 fitness: 3.114476, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.114476 1.100067 2.163977 
-Individual 123 fitness: 3.114476, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.114476 1.144041 2.217151 
-Individual 124 fitness: 3.229783, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.229783 1.345238 2.199979 
-Individual 125 fitness: 3.393374, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.393374 3.472165 2.440561 
-Individual 126 fitness: 3.388472, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.388472 1.566874 2.219298 
-Individual 127 fitness: 3.473501, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.473501 1.566874 2.219298 
-Individual 128 fitness: 3.229053, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.510335 0.272594 1.798133 
-Individual 129 fitness: 3.229053, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.648082 0.600194 1.889431 
-Individual 130 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.461220 0.300656 1.792082 
-Individual 131 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 132 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.909805 
-Individual 133 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 134 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.691691 0.630134 1.902514 
-Individual 135 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.716277 0.630134 1.905987 
-Individual 136 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 137 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 138 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.620169 0.630134 1.856378 
-Individual 139 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.691691 0.630134 1.909805 
-Individual 140 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.691691 0.630134 1.909805 
-Individual 141 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 142 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 143 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 144 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 145 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 146 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.630134 1.920265 
-Individual 147 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.800335 1.920265 
-Individual 148 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 149 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 150 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 151 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.766176 0.866547 1.920265 
-Individual 152 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.718111 0.866547 1.920265 
-Individual 153 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.766176 0.871929 1.920265 
-Individual 154 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.766176 0.882862 1.920265 
-Individual 155 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.794290 0.882862 1.947554 
-Individual 156 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.794290 0.882862 1.931489 
-Individual 157 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.795863 0.882862 1.963751 
-Individual 158 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.795863 0.882862 1.947554 
-Individual 159 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.824330 0.882862 1.970279 
-Individual 160 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.799268 0.936490 1.947554 
-Individual 161 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 0.959228 1.972033 
-Individual 162 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.824330 0.882862 1.963751 
-Individual 163 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 0.882862 1.963751 
-Individual 164 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 0.959228 1.964967 
-Individual 165 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 1.054277 1.972033 
-Individual 166 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 0.959228 1.964967 
-Individual 167 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 1.021031 1.967066 
-Individual 168 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.837743 1.054277 1.970279 
-Individual 169 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 1.972033 
-Individual 170 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.054277 1.972033 
-Individual 171 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 1.972033 
-Individual 172 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 1.972033 
-Individual 173 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 1.972033 
-Individual 174 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 1.972033 
-Individual 175 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 2.014373 
-Individual 176 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 2.050483 
-Individual 177 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.891822 1.084081 2.050483 
-Individual 178 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.854974 1.084081 2.055351 
-Individual 179 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.891822 1.246178 2.055351 
-Individual 180 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.891822 1.084081 2.061263 
-Individual 181 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.901639 1.291520 2.071936 
-Individual 182 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 2.901639 1.246178 2.071936 
-Individual 183 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.012233 1.291520 2.079867 
-Individual 184 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.012233 1.291520 2.071936 
-Individual 185 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.037090 1.291520 2.088679 
-Individual 186 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.012233 1.291520 2.079867 
-Individual 187 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.037090 1.291520 2.131525 
-Individual 188 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.037090 1.437284 2.088679 
-Individual 189 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.037090 1.437284 2.131525 
-Individual 190 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.123004 1.578511 2.215151 
-Individual 191 fitness: 0.000000, lshade params(f,f1,cr): 0.000000 0.000000 0.000000
-Params: 3.037090 1.498410 2.131525 
+Params: 9.979235 0.558961 5.000000 
+Individual 8 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.924726 7.122573 2.000000 
+Individual 9 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.604909 7.255182 9.000000 
+Individual 10 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.815001 7.969444 6.000000 
+Individual 11 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 5.984598 6.723722 11.000000 
+Individual 12 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.442540 2.396834 16.000000 
+Individual 13 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.629017 9.064425 18.000000 
+Individual 14 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.108891 6.708799 20.000000 
+Individual 15 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.212377 1.011596 17.000000 
+Individual 16 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.983602 6.715682 17.000000 
+Individual 17 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.083184 0.641342 11.000000 
+Individual 18 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.735700 7.455962 13.000000 
+Individual 19 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.809521 3.089433 9.000000 
+Individual 20 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.998567 2.277817 0.000000 
+Individual 21 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.660365 7.261546 4.000000 
+Individual 22 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 1.532880 4.075043 6.000000 
+Individual 23 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.689361 7.288037 8.000000 
+Individual 24 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.578526 0.722515 9.000000 
+Individual 25 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.503896 8.377103 10.000000 
+Individual 26 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 6.469650 5.088871 15.000000 
+Individual 27 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 5.012918 2.720631 7.000000 
+Individual 28 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.105377 0.366194 10.000000 
+Individual 29 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.114440 4.902045 0.000000 
+Individual 30 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.911676 5.530536 12.000000 
+Individual 31 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 1.535817 4.971123 16.000000 
+Individual 32 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.910877 3.443327 11.000000 
+Individual 33 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.344662 0.539960 14.000000 
+Individual 34 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 1.839951 3.993022 19.000000 
+Individual 35 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.364771 2.292506 9.000000 
+Individual 36 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.335810 5.806485 9.000000 
+Individual 37 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.225999 7.979298 15.000000 
+Individual 38 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.207467 9.675639 6.000000 
+Individual 39 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.652201 9.926561 4.000000 
+Individual 40 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.177891 0.009736 13.000000 
+Individual 41 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.546228 3.030673 3.000000 
+Individual 42 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.338026 0.947097 19.000000 
+Individual 43 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.686998 1.501677 11.000000 
+Individual 44 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 1.655646 8.545949 15.000000 
+Individual 45 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.100916 7.801183 8.000000 
+Individual 46 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.259631 0.212246 14.000000 
+Individual 47 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.834064 5.394018 9.000000 
+Individual 48 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.900133 5.318622 2.000000 
+Individual 49 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 9.549681 1.420711 20.000000 
+Individual 50 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.578598 8.718360 19.000000 
+Individual 51 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 6.761717 8.277086 15.000000 
+Individual 52 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.591362 0.768552 5.000000 
+Individual 53 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.327313 0.734614 7.000000 
+Individual 54 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.499029 4.522220 19.000000 
+Individual 55 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.101877 0.685443 17.000000 
+Individual 56 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.728080 4.578812 4.000000 
+Individual 57 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 5.658086 2.984149 20.000000 
+Individual 58 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.498298 8.376015 12.000000 
+Individual 59 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.162019 5.782017 11.000000 
+Individual 60 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 6.757983 5.493945 7.000000 
+Individual 61 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 5.498874 7.845917 11.000000 
+Individual 62 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 4.872118 7.931099 14.000000 
+Individual 63 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 3.954751 8.448252 9.000000 
 
 Problem dimensions: con_var=2, int_var=1, total=3
+finish the convert: param[784] to matrix[147], value:9.549681
+finish the convert: param[785] to matrix[148], value:1.420711
+finish the convert: param[786] to matrix[149], value:20.000000
+finish the convert: param[496] to matrix[93], value:1.535817
+finish the convert: param[497] to matrix[94], value:4.971123
+finish the convert: param[498] to matrix[95], value:16.000000
+finish the convert: param[512] to matrix[96], value:8.910877
+finish the convert: param[513] to matrix[97], value:3.443327
+finish the convert: param[514] to matrix[98], value:11.000000
+finish the convert: param[224] to matrix[42], value:7.108891
+finish the convert: param[225] to matrix[43], value:6.708799
+finish the convert: param[226] to matrix[44], value:20.000000
+finish the convert: param[768] to matrix[144], value:2.900133
+finish the convert: param[769] to matrix[145], value:5.318622
+finish the convert: param[770] to matrix[146], value:2.000000
+finish the convert: param[528] to matrix[99], value:9.344662
+finish the convert: param[529] to matrix[100], value:0.539960
+finish the convert: param[530] to matrix[101], value:14.000000
+finish the convert: param[976] to matrix[183], value:5.498874
+finish the convert: param[977] to matrix[184], value:7.845917
+finish the convert: param[978] to matrix[185], value:11.000000
+finish the convert: param[416] to matrix[78], value:6.469650
+finish the convert: param[417] to matrix[79], value:5.088871
+finish the convert: param[418] to matrix[80], value:15.000000
+finish the convert: param[544] to matrix[102], value:1.839951
+finish the convert: param[545] to matrix[103], value:3.993022
+finish the convert: param[546] to matrix[104], value:19.000000
+finish the convert: param[208] to matrix[39], value:3.629017
+finish the convert: param[209] to matrix[40], value:9.064425
+finish the convert: param[210] to matrix[41], value:18.000000
+finish the convert: param[800] to matrix[150], value:4.578598
+finish the convert: param[801] to matrix[151], value:8.718360
+finish the convert: param[802] to matrix[152], value:19.000000
+finish the convert: param[816] to matrix[153], value:6.761717
+finish the convert: param[817] to matrix[154], value:8.277086
+finish the convert: param[818] to matrix[155], value:15.000000
+finish the convert: param[240] to matrix[45], value:0.212377
+finish the convert: param[241] to matrix[46], value:1.011596
+finish the convert: param[242] to matrix[47], value:17.000000
+finish the convert: param[688] to matrix[129], value:7.686998
+finish the convert: param[689] to matrix[130], value:1.501677
+finish the convert: param[690] to matrix[131], value:11.000000
+finish the convert: param[128] to matrix[24], value:4.924726
+finish the convert: param[129] to matrix[25], value:7.122573
+finish the convert: param[130] to matrix[26], value:2.000000
+finish the convert: param[256] to matrix[48], value:7.983602
+finish the convert: param[257] to matrix[49], value:6.715682
+finish the convert: param[258] to matrix[50], value:17.000000
+finish the convert: param[400] to matrix[75], value:9.503896
+finish the convert: param[401] to matrix[76], value:8.377103
+finish the convert: param[402] to matrix[77], value:10.000000
+finish the convert: param[960] to matrix[180], value:6.757983
+finish the convert: param[961] to matrix[181], value:5.493945
+finish the convert: param[962] to matrix[182], value:7.000000
+finish the convert: param[480] to matrix[90], value:9.911676
+finish the convert: param[481] to matrix[91], value:5.530536
+finish the convert: param[482] to matrix[92], value:12.000000
+finish the convert: param[992] to matrix[186], value:4.872118
+finish the convert: param[993] to matrix[187], value:7.931099
+finish the convert: param[994] to matrix[188], value:14.000000
+finish the convert: param[432] to matrix[81], value:5.012918
+finish the convert: param[433] to matrix[82], value:2.720631
+finish the convert: param[434] to matrix[83], value:7.000000
+finish the convert: param[464] to matrix[87], value:2.114440
+finish the convert: param[465] to matrix[88], value:4.902045
+finish the convert: param[466] to matrix[89], value:0.000000
+finish the convert: param[672] to matrix[126], value:3.338026
+finish the convert: param[673] to matrix[127], value:0.947097
+finish the convert: param[674] to matrix[128], value:19.000000
+finish the convert: param[752] to matrix[141], value:4.834064
+finish the convert: param[753] to matrix[142], value:5.394018
+finish the convert: param[754] to matrix[143], value:9.000000
+finish the convert: param[112] to matrix[21], value:9.979235
+finish the convert: param[113] to matrix[22], value:0.558961
+finish the convert: param[114] to matrix[23], value:5.000000
+finish the convert: param[1008] to matrix[189], value:3.954751
+finish the convert: param[1009] to matrix[190], value:8.448252
+finish the convert: param[1010] to matrix[191], value:9.000000
+finish the convert: param[448] to matrix[84], value:3.105377
+finish the convert: param[449] to matrix[85], value:0.366194
+finish the convert: param[450] to matrix[86], value:10.000000
+finish the convert: param[736] to matrix[138], value:2.259631
+finish the convert: param[737] to matrix[139], value:0.212246
+finish the convert: param[738] to matrix[140], value:14.000000
+finish the convert: param[704] to matrix[132], value:1.655646
+finish the convert: param[705] to matrix[133], value:8.545949
+finish the convert: param[706] to matrix[134], value:15.000000
+finish the convert: param[192] to matrix[36], value:9.442540
+finish the convert: param[193] to matrix[37], value:2.396834
+finish the convert: param[194] to matrix[38], value:16.000000
+finish the convert: param[320] to matrix[60], value:8.998567
+finish the convert: param[321] to matrix[61], value:2.277817
+finish the convert: param[322] to matrix[62], value:0.000000
+finish the convert: param[880] to matrix[165], value:8.101877
+finish the convert: param[881] to matrix[166], value:0.685443
+finish the convert: param[882] to matrix[167], value:17.000000
+finish the convert: param[144] to matrix[27], value:2.604909
+finish the convert: param[145] to matrix[28], value:7.255182
+finish the convert: param[146] to matrix[29], value:9.000000
+finish the convert: param[720] to matrix[135], value:3.100916
+finish the convert: param[721] to matrix[136], value:7.801183
+finish the convert: param[722] to matrix[137], value:8.000000
+finish the convert: param[176] to matrix[33], value:5.984598
+finish the convert: param[177] to matrix[34], value:6.723722
+finish the convert: param[178] to matrix[35], value:11.000000
+finish the convert: param[592] to matrix[111], value:9.225999
+finish the convert: param[593] to matrix[112], value:7.979298
+finish the convert: param[594] to matrix[113], value:15.000000
+finish the convert: param[160] to matrix[30], value:7.815001
+finish the convert: param[161] to matrix[31], value:7.969444
+finish the convert: param[162] to matrix[32], value:6.000000
+finish the convert: param[384] to matrix[72], value:4.578526
+finish the convert: param[385] to matrix[73], value:0.722515
+finish the convert: param[386] to matrix[74], value:9.000000
+finish the convert: param[944] to matrix[177], value:0.162019
+finish the convert: param[945] to matrix[178], value:5.782017
+finish the convert: param[946] to matrix[179], value:11.000000
+finish the convert: param[32] to matrix[6], value:2.839302
+finish the convert: param[33] to matrix[7], value:4.443154
+finish the convert: param[34] to matrix[8], value:12.000000
+finish the convert: param[304] to matrix[57], value:0.809521
+finish the convert: param[305] to matrix[58], value:3.089433
+finish the convert: param[306] to matrix[59], value:9.000000
+finish the convert: param[864] to matrix[162], value:2.499029
+finish the convert: param[865] to matrix[163], value:4.522220
+finish the convert: param[866] to matrix[164], value:19.000000
+finish the convert: param[368] to matrix[69], value:2.689361
+finish the convert: param[369] to matrix[70], value:7.288037
+finish the convert: param[370] to matrix[71], value:8.000000
+finish the convert: param[928] to matrix[174], value:7.498298
+finish the convert: param[929] to matrix[175], value:8.376015
+finish the convert: param[930] to matrix[176], value:12.000000
+finish the convert: param[336] to matrix[63], value:9.660365
+finish the convert: param[337] to matrix[64], value:7.261546
+finish the convert: param[338] to matrix[65], value:4.000000
+finish the convert: param[656] to matrix[123], value:2.546228
+finish the convert: param[657] to matrix[124], value:3.030673
+finish the convert: param[658] to matrix[125], value:3.000000
+finish the convert: param[896] to matrix[168], value:4.728080
+finish the convert: param[897] to matrix[169], value:4.578812
+finish the convert: param[898] to matrix[170], value:4.000000
+finish the convert: param[576] to matrix[108], value:2.335810
+finish the convert: param[577] to matrix[109], value:5.806485
+finish the convert: param[578] to matrix[110], value:9.000000
+finish the convert: param[96] to matrix[18], value:3.278084
+finish the convert: param[97] to matrix[19], value:0.005750
+finish the convert: param[98] to matrix[20], value:13.000000
+finish the convert: param[16] to matrix[3], value:6.910565
+finish the convert: param[17] to matrix[4], value:5.705355
+finish the convert: param[18] to matrix[5], value:19.000000
+finish the convert: param[640] to matrix[120], value:0.177891
+finish the convert: param[641] to matrix[121], value:0.009736
+finish the convert: param[642] to matrix[122], value:13.000000
+finish the convert: param[352] to matrix[66], value:1.532880
+finish the convert: param[353] to matrix[67], value:4.075043
+finish the convert: param[354] to matrix[68], value:6.000000
+finish the convert: param[912] to matrix[171], value:5.658086
+finish the convert: param[913] to matrix[172], value:2.984149
+finish the convert: param[914] to matrix[173], value:20.000000
+finish the convert: param[608] to matrix[114], value:7.207467
+finish the convert: param[609] to matrix[115], value:9.675639
+finish the convert: param[610] to matrix[116], value:6.000000
+finish the convert: param[80] to matrix[15], value:5.654207
+finish the convert: param[81] to matrix[16], value:0.862355
+finish the convert: param[82] to matrix[17], value:0.000000
+finish the convert: param[48] to matrix[9], value:0.319540
+finish the convert: param[49] to matrix[10], value:1.764473
+finish the convert: param[50] to matrix[11], value:11.000000
+finish the convert: param[624] to matrix[117], value:2.652201
+finish the convert: param[625] to matrix[118], value:9.926561
+finish the convert: param[626] to matrix[119], value:4.000000
+finish the convert: param[64] to matrix[12], value:8.396704
+finish the convert: param[65] to matrix[13], value:4.603515
+finish the convert: param[66] to matrix[14], value:16.000000
+finish the convert: param[288] to matrix[54], value:4.735700
+finish the convert: param[289] to matrix[55], value:7.455962
+finish the convert: param[290] to matrix[56], value:13.000000
+finish the convert: param[848] to matrix[159], value:8.327313
+finish the convert: param[849] to matrix[160], value:0.734614
+finish the convert: param[850] to matrix[161], value:7.000000
+finish the convert: param[272] to matrix[51], value:3.083184
+finish the convert: param[273] to matrix[52], value:0.641342
+finish the convert: param[274] to matrix[53], value:11.000000
+finish the convert: param[832] to matrix[156], value:7.591362
+finish the convert: param[833] to matrix[157], value:0.768552
+finish the convert: param[834] to matrix[158], value:5.000000
+finish the convert: param[560] to matrix[105], value:0.364771
+finish the convert: param[561] to matrix[106], value:2.292506
+finish the convert: param[562] to matrix[107], value:9.000000
+finish the convert: param[0] to matrix[0], value:8.074143
+finish the convert: param[1] to matrix[1], value:6.172715
+finish the convert: param[2] to matrix[2], value:6.000000
+row:0 col:0 host_param_matrix:8.074143 row:0 col:1 host_param_matrix:6.172715 row:0 col:2 host_param_matrix:6.000000 
+row:1 col:0 host_param_matrix:7.261546 row:1 col:1 host_param_matrix:4.000000 row:1 col:2 host_param_matrix:1.532880 
+row:2 col:0 host_param_matrix:19.000000 row:2 col:1 host_param_matrix:7.686998 row:2 col:2 host_param_matrix:1.501677 
+row:3 col:0 host_param_matrix:0.000000 row:3 col:1 host_param_matrix:0.000000 row:3 col:2 host_param_matrix:0.000000 
+row:4 col:0 host_param_matrix:0.000000 row:4 col:1 host_param_matrix:0.000000 row:4 col:2 host_param_matrix:0.000000 
+row:5 col:0 host_param_matrix:0.000000 row:5 col:1 host_param_matrix:0.000000 row:5 col:2 host_param_matrix:0.000000 
+row:6 col:0 host_param_matrix:0.000000 row:6 col:1 host_param_matrix:0.000000 row:6 col:2 host_param_matrix:0.000000 
+row:7 col:0 host_param_matrix:0.000000 row:7 col:1 host_param_matrix:0.000000 row:7 col:2 host_param_matrix:0.000000 
+row:8 col:0 host_param_matrix:0.000000 row:8 col:1 host_param_matrix:0.000000 row:8 col:2 host_param_matrix:0.000000 
+row:9 col:0 host_param_matrix:0.000000 row:9 col:1 host_param_matrix:0.000000 row:9 col:2 host_param_matrix:0.000000 
+row:10 col:0 host_param_matrix:0.000000 row:10 col:1 host_param_matrix:0.000000 row:10 col:2 host_param_matrix:0.000000 
+row:11 col:0 host_param_matrix:0.000000 row:11 col:1 host_param_matrix:0.000000 row:11 col:2 host_param_matrix:0.000000 
+row:12 col:0 host_param_matrix:0.000000 row:12 col:1 host_param_matrix:0.000000 row:12 col:2 host_param_matrix:0.000000 
+row:13 col:0 host_param_matrix:0.000000 row:13 col:1 host_param_matrix:0.000000 row:13 col:2 host_param_matrix:0.000000 
+row:14 col:0 host_param_matrix:0.000000 row:14 col:1 host_param_matrix:0.000000 row:14 col:2 host_param_matrix:0.000000 
+row:15 col:0 host_param_matrix:0.000000 row:15 col:1 host_param_matrix:0.000000 row:15 col:2 host_param_matrix:0.000000 
+row:16 col:0 host_param_matrix:0.000000 row:16 col:1 host_param_matrix:0.000000 row:16 col:2 host_param_matrix:0.000000 
+row:17 col:0 host_param_matrix:0.000000 row:17 col:1 host_param_matrix:0.000000 row:17 col:2 host_param_matrix:0.000000 
+row:18 col:0 host_param_matrix:0.000000 row:18 col:1 host_param_matrix:0.000000 row:18 col:2 host_param_matrix:0.000000 
+row:19 col:0 host_param_matrix:0.000000 row:19 col:1 host_param_matrix:0.000000 row:19 col:2 host_param_matrix:0.000000 
+row:20 col:0 host_param_matrix:0.000000 row:20 col:1 host_param_matrix:0.000000 row:20 col:2 host_param_matrix:0.000000 
+row:21 col:0 host_param_matrix:0.000000 row:21 col:1 host_param_matrix:0.000000 row:21 col:2 host_param_matrix:0.000000 
+row:22 col:0 host_param_matrix:0.000000 row:22 col:1 host_param_matrix:0.000000 row:22 col:2 host_param_matrix:0.000000 
+row:23 col:0 host_param_matrix:0.000000 row:23 col:1 host_param_matrix:0.000000 row:23 col:2 host_param_matrix:0.000000 
+row:24 col:0 host_param_matrix:0.000000 row:24 col:1 host_param_matrix:0.000000 row:24 col:2 host_param_matrix:0.000000 
+row:25 col:0 host_param_matrix:0.000000 row:25 col:1 host_param_matrix:0.000000 row:25 col:2 host_param_matrix:0.000000 
+row:26 col:0 host_param_matrix:0.000000 row:26 col:1 host_param_matrix:0.000000 row:26 col:2 host_param_matrix:0.000000 
+row:27 col:0 host_param_matrix:0.000000 row:27 col:1 host_param_matrix:0.000000 row:27 col:2 host_param_matrix:0.000000 
+row:28 col:0 host_param_matrix:0.000000 row:28 col:1 host_param_matrix:0.000000 row:28 col:2 host_param_matrix:0.000000 
+row:29 col:0 host_param_matrix:0.000000 row:29 col:1 host_param_matrix:0.000000 row:29 col:2 host_param_matrix:0.000000 
+row:30 col:0 host_param_matrix:0.000000 row:30 col:1 host_param_matrix:0.000000 row:30 col:2 host_param_matrix:0.000000 
+row:31 col:0 host_param_matrix:0.000000 row:31 col:1 host_param_matrix:0.000000 row:31 col:2 host_param_matrix:0.000000 
+row:32 col:0 host_param_matrix:0.000000 row:32 col:1 host_param_matrix:0.000000 row:32 col:2 host_param_matrix:0.000000 
+row:33 col:0 host_param_matrix:0.000000 row:33 col:1 host_param_matrix:0.000000 row:33 col:2 host_param_matrix:0.000000 
+row:34 col:0 host_param_matrix:0.000000 row:34 col:1 host_param_matrix:0.000000 row:34 col:2 host_param_matrix:0.000000 
+row:35 col:0 host_param_matrix:0.000000 row:35 col:1 host_param_matrix:0.000000 row:35 col:2 host_param_matrix:0.000000 
+row:36 col:0 host_param_matrix:0.000000 row:36 col:1 host_param_matrix:0.000000 row:36 col:2 host_param_matrix:0.000000 
+row:37 col:0 host_param_matrix:0.000000 row:37 col:1 host_param_matrix:0.000000 row:37 col:2 host_param_matrix:0.000000 
+row:38 col:0 host_param_matrix:0.000000 row:38 col:1 host_param_matrix:0.000000 row:38 col:2 host_param_matrix:0.000000 
+row:39 col:0 host_param_matrix:0.000000 row:39 col:1 host_param_matrix:0.000000 row:39 col:2 host_param_matrix:0.000000 
+row:40 col:0 host_param_matrix:0.000000 row:40 col:1 host_param_matrix:0.000000 row:40 col:2 host_param_matrix:0.000000 
+row:41 col:0 host_param_matrix:0.000000 row:41 col:1 host_param_matrix:0.000000 row:41 col:2 host_param_matrix:0.000000 
+row:42 col:0 host_param_matrix:0.000000 row:42 col:1 host_param_matrix:0.000000 row:42 col:2 host_param_matrix:0.000000 
+row:43 col:0 host_param_matrix:0.000000 row:43 col:1 host_param_matrix:0.000000 row:43 col:2 host_param_matrix:0.000000 
+row:44 col:0 host_param_matrix:0.000000 row:44 col:1 host_param_matrix:0.000000 row:44 col:2 host_param_matrix:0.000000 
+row:45 col:0 host_param_matrix:0.000000 row:45 col:1 host_param_matrix:0.000000 row:45 col:2 host_param_matrix:0.000000 
+row:46 col:0 host_param_matrix:0.000000 row:46 col:1 host_param_matrix:0.000000 row:46 col:2 host_param_matrix:0.000000 
+row:47 col:0 host_param_matrix:0.000000 row:47 col:1 host_param_matrix:0.000000 row:47 col:2 host_param_matrix:0.000000 
+row:48 col:0 host_param_matrix:0.000000 row:48 col:1 host_param_matrix:0.000000 row:48 col:2 host_param_matrix:0.000000 
+row:49 col:0 host_param_matrix:0.000000 row:49 col:1 host_param_matrix:0.000000 row:49 col:2 host_param_matrix:0.000000 
+row:50 col:0 host_param_matrix:0.000000 row:50 col:1 host_param_matrix:0.000000 row:50 col:2 host_param_matrix:0.000000 
+row:51 col:0 host_param_matrix:0.000000 row:51 col:1 host_param_matrix:0.000000 row:51 col:2 host_param_matrix:0.000000 
+row:52 col:0 host_param_matrix:0.000000 row:52 col:1 host_param_matrix:0.000000 row:52 col:2 host_param_matrix:0.000000 
+row:53 col:0 host_param_matrix:0.000000 row:53 col:1 host_param_matrix:0.000000 row:53 col:2 host_param_matrix:0.000000 
+row:54 col:0 host_param_matrix:0.000000 row:54 col:1 host_param_matrix:0.000000 row:54 col:2 host_param_matrix:0.000000 
+row:55 col:0 host_param_matrix:0.000000 row:55 col:1 host_param_matrix:0.000000 row:55 col:2 host_param_matrix:0.000000 
+row:56 col:0 host_param_matrix:0.000000 row:56 col:1 host_param_matrix:0.000000 row:56 col:2 host_param_matrix:0.000000 
+row:57 col:0 host_param_matrix:0.000000 row:57 col:1 host_param_matrix:0.000000 row:57 col:2 host_param_matrix:0.000000 
+row:58 col:0 host_param_matrix:0.000000 row:58 col:1 host_param_matrix:0.000000 row:58 col:2 host_param_matrix:0.000000 
+row:59 col:0 host_param_matrix:0.000000 row:59 col:1 host_param_matrix:0.000000 row:59 col:2 host_param_matrix:0.000000 
+row:60 col:0 host_param_matrix:0.000000 row:60 col:1 host_param_matrix:0.000000 row:60 col:2 host_param_matrix:0.000000 
+row:61 col:0 host_param_matrix:0.000000 row:61 col:1 host_param_matrix:0.000000 row:61 col:2 host_param_matrix:0.000000 
+row:62 col:0 host_param_matrix:0.000000 row:62 col:1 host_param_matrix:0.000000 row:62 col:2 host_param_matrix:0.000000 
+row:63 col:0 host_param_matrix:0.000000 row:63 col:1 host_param_matrix:0.000000 row:63 col:2 host_param_matrix:0.000000 
+cluster_data len:64
+
+Individual 0 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.074143 6.172715 6.000000 
+Individual 1 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 6.910565 5.705355 19.000000 
+Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 2.839302 4.443154 12.000000 
+Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 0.319540 1.764473 11.000000 
+Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.568305 5.523969 16.000000 
+Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.783465 6.607408 0.000000 
+Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.116158 5.764791 13.000000 
+Individual 7 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.747051 6.469951 5.000000 
+Individual 8 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.453511 7.128508 2.000000 
+Individual 9 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.218261 5.999512 9.000000 
+Individual 10 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.229023 5.701791 6.000000 
+Individual 11 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.680813 6.712219 11.000000 
+Individual 12 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.907007 5.641687 16.000000 
+Individual 13 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.346523 6.937860 18.000000 
+Individual 14 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.676792 5.522792 20.000000 
+Individual 15 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.702342 6.816582 17.000000 
+Individual 16 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.358391 6.363034 17.000000 
+Individual 17 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.817684 6.941226 11.000000 
+Individual 18 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.345836 6.912732 13.000000 
+Individual 19 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.203599 5.372605 9.000000 
+Individual 20 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.207626 5.211619 0.000000 
+Individual 21 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.793500 5.520468 4.000000 
+Individual 22 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.141299 5.593930 6.000000 
+Individual 23 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.497956 6.619514 8.000000 
+Individual 24 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.944663 6.694431 9.000000 
+Individual 25 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.994775 6.683691 10.000000 
+Individual 26 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.580173 5.907695 15.000000 
+Individual 27 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.281294 7.139983 7.000000 
+Individual 28 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.980612 5.301843 10.000000 
+Individual 29 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.400431 6.569329 0.000000 
+Individual 30 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.590837 5.232919 12.000000 
+Individual 31 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.545368 5.554058 16.000000 
+Individual 32 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.716053 5.932148 11.000000 
+Individual 33 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.184474 5.706494 14.000000 
+Individual 34 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.515749 6.792026 19.000000 
+Individual 35 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.748410 6.896092 9.000000 
+Individual 36 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.616392 5.912350 9.000000 
+Individual 37 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.111842 7.098180 15.000000 
+Individual 38 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.327187 5.471828 6.000000 
+Individual 39 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.225271 6.099364 4.000000 
+Individual 40 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.469268 5.911357 13.000000 
+Individual 41 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.471786 6.681591 3.000000 
+Individual 42 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.548172 5.657465 19.000000 
+Individual 43 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.872017 5.882471 11.000000 
+Individual 44 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.110810 7.015500 15.000000 
+Individual 45 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.756576 7.142256 8.000000 
+Individual 46 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.150489 5.348238 14.000000 
+Individual 47 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.376259 6.033803 9.000000 
+Individual 48 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.570037 6.080558 2.000000 
+Individual 49 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.985009 6.549583 20.000000 
+Individual 50 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.426252 5.631793 19.000000 
+Individual 51 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.662989 6.333086 15.000000 
+Individual 52 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.663496 5.546004 5.000000 
+Individual 53 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.332214 5.873182 7.000000 
+Individual 54 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.104477 6.410383 19.000000 
+Individual 55 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.680724 7.114510 17.000000 
+Individual 56 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.370595 5.776263 4.000000 
+Individual 57 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.693589 6.428687 20.000000 
+Individual 58 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.446353 7.052964 12.000000 
+Individual 59 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.966546 7.078583 11.000000 
+Individual 60 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.160379 6.929018 7.000000 
+Individual 61 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.109951 5.658917 11.000000 
+Individual 62 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.623486 5.855259 14.000000 
+Individual 63 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.096292 6.463463 9.000000 
+
+Problem dimensions: con_var=2, int_var=1, total=3
+cluster_data len:64
+
+Individual 0 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.074143 6.172715 6.000000 
+Individual 1 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.976280 6.715059 19.000000 
+Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.421177 6.447110 12.000000 
+Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.326628 6.623961 11.000000 
+Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.568305 5.523969 16.000000 
+Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.783465 6.607408 0.000000 
+Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.116158 5.764791 13.000000 
+Individual 7 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.747051 6.469951 5.000000 
+Individual 8 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.453511 7.128508 2.000000 
+Individual 9 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.218261 5.999512 9.000000 
+Individual 10 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.229023 5.701791 6.000000 
+Individual 11 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.680813 6.712219 11.000000 
+Individual 12 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.907007 5.641687 16.000000 
+Individual 13 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.346523 6.937860 18.000000 
+Individual 14 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.676792 5.522792 20.000000 
+Individual 15 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.702342 6.816582 17.000000 
+Individual 16 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.358391 6.363034 17.000000 
+Individual 17 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.817684 6.941226 11.000000 
+Individual 18 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.345836 6.912732 13.000000 
+Individual 19 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.203599 5.372605 9.000000 
+Individual 20 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.207626 5.211619 0.000000 
+Individual 21 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.793500 5.520468 4.000000 
+Individual 22 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.141299 5.593930 6.000000 
+Individual 23 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.497956 6.619514 8.000000 
+Individual 24 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.944663 6.694431 9.000000 
+Individual 25 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.994775 6.683691 10.000000 
+Individual 26 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.580173 5.907695 15.000000 
+Individual 27 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.281294 7.139983 7.000000 
+Individual 28 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.980612 5.301843 10.000000 
+Individual 29 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.400431 6.569329 0.000000 
+Individual 30 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.590837 5.232919 12.000000 
+Individual 31 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.545368 5.554058 16.000000 
+Individual 32 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.716053 5.932148 11.000000 
+Individual 33 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.184474 5.706494 14.000000 
+Individual 34 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.515749 6.792026 19.000000 
+Individual 35 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.748410 6.896092 9.000000 
+Individual 36 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.616392 5.912350 9.000000 
+Individual 37 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.111842 7.098180 15.000000 
+Individual 38 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.327187 5.471828 6.000000 
+Individual 39 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.225271 6.099364 4.000000 
+Individual 40 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.469268 5.911357 13.000000 
+Individual 41 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.471786 6.681591 3.000000 
+Individual 42 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.548172 5.657465 19.000000 
+Individual 43 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.872017 5.882471 11.000000 
+Individual 44 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.110810 7.015500 15.000000 
+Individual 45 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.756576 7.142256 8.000000 
+Individual 46 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.150489 5.348238 14.000000 
+Individual 47 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.376259 6.033803 9.000000 
+Individual 48 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.570037 6.080558 2.000000 
+Individual 49 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.985009 6.549583 20.000000 
+Individual 50 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.426252 5.631793 19.000000 
+Individual 51 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.662989 6.333086 15.000000 
+Individual 52 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.663496 5.546004 5.000000 
+Individual 53 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.332214 5.873182 7.000000 
+Individual 54 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.104477 6.410383 19.000000 
+Individual 55 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.680724 7.114510 17.000000 
+Individual 56 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.370595 5.776263 4.000000 
+Individual 57 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.693589 6.428687 20.000000 
+Individual 58 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.446353 7.052964 12.000000 
+Individual 59 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.966546 7.078583 11.000000 
+Individual 60 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.160379 6.929018 7.000000 
+Individual 61 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.109951 5.658917 11.000000 
+Individual 62 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.623486 5.855259 14.000000 
+Individual 63 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.096292 6.463463 9.000000 
+
+Problem dimensions: con_var=2, int_var=1, total=3
+finish the convert: param[512] to matrix[96], value:7.716053
+finish the convert: param[513] to matrix[97], value:5.932148
+finish the convert: param[514] to matrix[98], value:11.000000
+finish the convert: param[784] to matrix[147], value:7.985009
+finish the convert: param[785] to matrix[148], value:6.549583
+finish the convert: param[786] to matrix[149], value:20.000000
+finish the convert: param[224] to matrix[42], value:8.676792
+finish the convert: param[225] to matrix[43], value:5.522792
+finish the convert: param[226] to matrix[44], value:20.000000
+finish the convert: param[496] to matrix[93], value:8.545368
+finish the convert: param[497] to matrix[94], value:5.554058
+finish the convert: param[498] to matrix[95], value:16.000000
+finish the convert: param[768] to matrix[144], value:7.570037
+finish the convert: param[769] to matrix[145], value:6.080558
+finish the convert: param[770] to matrix[146], value:2.000000
+finish the convert: param[528] to matrix[99], value:7.184474
+finish the convert: param[529] to matrix[100], value:5.706494
+finish the convert: param[530] to matrix[101], value:14.000000
+finish the convert: param[976] to matrix[183], value:7.109951
+finish the convert: param[977] to matrix[184], value:5.658917
+finish the convert: param[978] to matrix[185], value:11.000000
+finish the convert: param[416] to matrix[78], value:8.580173
+finish the convert: param[417] to matrix[79], value:5.907695
+finish the convert: param[418] to matrix[80], value:15.000000
+finish the convert: param[544] to matrix[102], value:7.515749
+finish the convert: param[545] to matrix[103], value:6.792026
+finish the convert: param[546] to matrix[104], value:19.000000
+finish the convert: param[208] to matrix[39], value:8.346523
+finish the convert: param[209] to matrix[40], value:6.937860
+finish the convert: param[210] to matrix[41], value:18.000000
+finish the convert: param[800] to matrix[150], value:8.426252
+finish the convert: param[801] to matrix[151], value:5.631793
+finish the convert: param[802] to matrix[152], value:19.000000
+finish the convert: param[688] to matrix[129], value:7.872017
+finish the convert: param[689] to matrix[130], value:5.882471
+finish the convert: param[690] to matrix[131], value:11.000000
+finish the convert: param[816] to matrix[153], value:7.662989
+finish the convert: param[817] to matrix[154], value:6.333086
+finish the convert: param[818] to matrix[155], value:15.000000
+finish the convert: param[240] to matrix[45], value:8.702342
+finish the convert: param[241] to matrix[46], value:6.816582
+finish the convert: param[242] to matrix[47], value:17.000000
+finish the convert: param[128] to matrix[24], value:7.453511
+finish the convert: param[129] to matrix[25], value:7.128508
+finish the convert: param[130] to matrix[26], value:2.000000
+finish the convert: param[960] to matrix[180], value:8.160379
+finish the convert: param[961] to matrix[181], value:6.929018
+finish the convert: param[962] to matrix[182], value:7.000000
+finish the convert: param[400] to matrix[75], value:8.994775
+finish the convert: param[401] to matrix[76], value:6.683691
+finish the convert: param[402] to matrix[77], value:10.000000
+finish the convert: param[256] to matrix[48], value:7.358391
+finish the convert: param[257] to matrix[49], value:6.363034
+finish the convert: param[258] to matrix[50], value:17.000000
+finish the convert: param[480] to matrix[90], value:7.590837
+finish the convert: param[481] to matrix[91], value:5.232919
+finish the convert: param[482] to matrix[92], value:12.000000
+finish the convert: param[992] to matrix[186], value:7.623486
+finish the convert: param[993] to matrix[187], value:5.855259
+finish the convert: param[994] to matrix[188], value:14.000000
+finish the convert: param[432] to matrix[81], value:8.281294
+finish the convert: param[433] to matrix[82], value:7.139983
+finish the convert: param[434] to matrix[83], value:7.000000
+finish the convert: param[464] to matrix[87], value:8.400431
+finish the convert: param[465] to matrix[88], value:6.569329
+finish the convert: param[466] to matrix[89], value:0.000000
+finish the convert: param[672] to matrix[126], value:8.548172
+finish the convert: param[673] to matrix[127], value:5.657465
+finish the convert: param[674] to matrix[128], value:19.000000
+finish the convert: param[752] to matrix[141], value:8.376259
+finish the convert: param[753] to matrix[142], value:6.033803
+finish the convert: param[754] to matrix[143], value:9.000000
+finish the convert: param[112] to matrix[21], value:7.747051
+finish the convert: param[113] to matrix[22], value:6.469951
+finish the convert: param[114] to matrix[23], value:5.000000
+finish the convert: param[1008] to matrix[189], value:8.096292
+finish the convert: param[1009] to matrix[190], value:6.463463
+finish the convert: param[1010] to matrix[191], value:9.000000
+finish the convert: param[448] to matrix[84], value:8.980612
+finish the convert: param[449] to matrix[85], value:5.301843
+finish the convert: param[450] to matrix[86], value:10.000000
+finish the convert: param[736] to matrix[138], value:7.150489
+finish the convert: param[737] to matrix[139], value:5.348238
+finish the convert: param[738] to matrix[140], value:14.000000
+finish the convert: param[704] to matrix[132], value:8.110810
+finish the convert: param[705] to matrix[133], value:7.015500
+finish the convert: param[706] to matrix[134], value:15.000000
+finish the convert: param[192] to matrix[36], value:7.907007
+finish the convert: param[193] to matrix[37], value:5.641687
+finish the convert: param[194] to matrix[38], value:16.000000
+finish the convert: param[320] to matrix[60], value:8.207626
+finish the convert: param[321] to matrix[61], value:5.211619
+finish the convert: param[322] to matrix[62], value:0.000000
+finish the convert: param[880] to matrix[165], value:8.680724
+finish the convert: param[881] to matrix[166], value:7.114510
+finish the convert: param[882] to matrix[167], value:17.000000
+finish the convert: param[144] to matrix[27], value:7.218261
+finish the convert: param[145] to matrix[28], value:5.999512
+finish the convert: param[146] to matrix[29], value:9.000000
+finish the convert: param[176] to matrix[33], value:8.680813
+finish the convert: param[177] to matrix[34], value:6.712219
+finish the convert: param[178] to matrix[35], value:11.000000
+finish the convert: param[720] to matrix[135], value:7.756576
+finish the convert: param[721] to matrix[136], value:7.142256
+finish the convert: param[722] to matrix[137], value:8.000000
+finish the convert: param[592] to matrix[111], value:7.111842
+finish the convert: param[593] to matrix[112], value:7.098180
+finish the convert: param[594] to matrix[113], value:15.000000
+finish the convert: param[160] to matrix[30], value:7.229023
+finish the convert: param[161] to matrix[31], value:5.701791
+finish the convert: param[162] to matrix[32], value:6.000000
+finish the convert: param[384] to matrix[72], value:7.944663
+finish the convert: param[385] to matrix[73], value:6.694431
+finish the convert: param[386] to matrix[74], value:9.000000
+finish the convert: param[304] to matrix[57], value:7.203599
+finish the convert: param[305] to matrix[58], value:5.372605
+finish the convert: param[306] to matrix[59], value:9.000000
+finish the convert: param[944] to matrix[177], value:8.966546
+finish the convert: param[945] to matrix[178], value:7.078583
+finish the convert: param[946] to matrix[179], value:11.000000
+finish the convert: param[32] to matrix[6], value:7.421177
+finish the convert: param[33] to matrix[7], value:6.447110
+finish the convert: param[34] to matrix[8], value:12.000000
+finish the convert: param[864] to matrix[162], value:8.104477
+finish the convert: param[865] to matrix[163], value:6.410383
+finish the convert: param[866] to matrix[164], value:19.000000
+finish the convert: param[928] to matrix[174], value:8.446353
+finish the convert: param[929] to matrix[175], value:7.052964
+finish the convert: param[930] to matrix[176], value:12.000000
+finish the convert: param[368] to matrix[69], value:8.497956
+finish the convert: param[369] to matrix[70], value:6.619514
+finish the convert: param[370] to matrix[71], value:8.000000
+finish the convert: param[576] to matrix[108], value:7.616392
+finish the convert: param[577] to matrix[109], value:5.912350
+finish the convert: param[578] to matrix[110], value:9.000000
+finish the convert: param[656] to matrix[123], value:8.471786
+finish the convert: param[657] to matrix[124], value:6.681591
+finish the convert: param[658] to matrix[125], value:3.000000
+finish the convert: param[896] to matrix[168], value:7.370595
+finish the convert: param[897] to matrix[169], value:5.776263
+finish the convert: param[898] to matrix[170], value:4.000000
+finish the convert: param[336] to matrix[63], value:8.793500
+finish the convert: param[337] to matrix[64], value:5.520468
+finish the convert: param[338] to matrix[65], value:4.000000
+finish the convert: param[16] to matrix[3], value:8.976280
+finish the convert: param[17] to matrix[4], value:6.715059
+finish the convert: param[18] to matrix[5], value:19.000000
+finish the convert: param[96] to matrix[18], value:7.116158
+finish the convert: param[97] to matrix[19], value:5.764791
+finish the convert: param[98] to matrix[20], value:13.000000
+finish the convert: param[640] to matrix[120], value:8.469268
+finish the convert: param[641] to matrix[121], value:5.911357
+finish the convert: param[642] to matrix[122], value:13.000000
+finish the convert: param[352] to matrix[66], value:7.141299
+finish the convert: param[353] to matrix[67], value:5.593930
+finish the convert: param[354] to matrix[68], value:6.000000
+finish the convert: param[912] to matrix[171], value:8.693589
+finish the convert: param[913] to matrix[172], value:6.428687
+finish the convert: param[914] to matrix[173], value:20.000000
+finish the convert: param[608] to matrix[114], value:8.327187
+finish the convert: param[609] to matrix[115], value:5.471828
+finish the convert: param[610] to matrix[116], value:6.000000
+finish the convert: param[80] to matrix[15], value:7.783465
+finish the convert: param[81] to matrix[16], value:6.607408
+finish the convert: param[82] to matrix[17], value:0.000000
+finish the convert: param[48] to matrix[9], value:8.326628
+finish the convert: param[49] to matrix[10], value:6.623961
+finish the convert: param[50] to matrix[11], value:11.000000
+finish the convert: param[624] to matrix[117], value:8.225271
+finish the convert: param[625] to matrix[118], value:6.099364
+finish the convert: param[626] to matrix[119], value:4.000000
+finish the convert: param[64] to matrix[12], value:7.568305
+finish the convert: param[65] to matrix[13], value:5.523969
+finish the convert: param[66] to matrix[14], value:16.000000
+finish the convert: param[288] to matrix[54], value:8.345836
+finish the convert: param[289] to matrix[55], value:6.912732
+finish the convert: param[290] to matrix[56], value:13.000000
+finish the convert: param[848] to matrix[159], value:7.332214
+finish the convert: param[849] to matrix[160], value:5.873182
+finish the convert: param[850] to matrix[161], value:7.000000
+finish the convert: param[272] to matrix[51], value:8.817684
+finish the convert: param[273] to matrix[52], value:6.941226
+finish the convert: param[274] to matrix[53], value:11.000000
+finish the convert: param[832] to matrix[156], value:7.663496
+finish the convert: param[833] to matrix[157], value:5.546004
+finish the convert: param[834] to matrix[158], value:5.000000
+finish the convert: param[560] to matrix[105], value:7.748410
+finish the convert: param[561] to matrix[106], value:6.896092
+finish the convert: param[562] to matrix[107], value:9.000000
+finish the convert: param[0] to matrix[0], value:8.074143
+finish the convert: param[1] to matrix[1], value:6.172715
+finish the convert: param[2] to matrix[2], value:6.000000
+row:0 col:0 host_param_matrix:8.074143 row:0 col:1 host_param_matrix:6.172715 row:0 col:2 host_param_matrix:6.000000 
+row:1 col:0 host_param_matrix:5.520468 row:1 col:1 host_param_matrix:4.000000 row:1 col:2 host_param_matrix:7.141299 
+row:2 col:0 host_param_matrix:19.000000 row:2 col:1 host_param_matrix:7.872017 row:2 col:2 host_param_matrix:5.882471 
+row:3 col:0 host_param_matrix:0.000000 row:3 col:1 host_param_matrix:0.000000 row:3 col:2 host_param_matrix:0.000000 
+row:4 col:0 host_param_matrix:0.000000 row:4 col:1 host_param_matrix:0.000000 row:4 col:2 host_param_matrix:0.000000 
+row:5 col:0 host_param_matrix:0.000000 row:5 col:1 host_param_matrix:0.000000 row:5 col:2 host_param_matrix:0.000000 
+row:6 col:0 host_param_matrix:0.000000 row:6 col:1 host_param_matrix:0.000000 row:6 col:2 host_param_matrix:0.000000 
+row:7 col:0 host_param_matrix:0.000000 row:7 col:1 host_param_matrix:0.000000 row:7 col:2 host_param_matrix:0.000000 
+row:8 col:0 host_param_matrix:0.000000 row:8 col:1 host_param_matrix:0.000000 row:8 col:2 host_param_matrix:0.000000 
+row:9 col:0 host_param_matrix:0.000000 row:9 col:1 host_param_matrix:0.000000 row:9 col:2 host_param_matrix:0.000000 
+row:10 col:0 host_param_matrix:0.000000 row:10 col:1 host_param_matrix:0.000000 row:10 col:2 host_param_matrix:0.000000 
+row:11 col:0 host_param_matrix:0.000000 row:11 col:1 host_param_matrix:0.000000 row:11 col:2 host_param_matrix:0.000000 
+row:12 col:0 host_param_matrix:0.000000 row:12 col:1 host_param_matrix:0.000000 row:12 col:2 host_param_matrix:0.000000 
+row:13 col:0 host_param_matrix:0.000000 row:13 col:1 host_param_matrix:0.000000 row:13 col:2 host_param_matrix:0.000000 
+row:14 col:0 host_param_matrix:0.000000 row:14 col:1 host_param_matrix:0.000000 row:14 col:2 host_param_matrix:0.000000 
+row:15 col:0 host_param_matrix:0.000000 row:15 col:1 host_param_matrix:0.000000 row:15 col:2 host_param_matrix:0.000000 
+row:16 col:0 host_param_matrix:0.000000 row:16 col:1 host_param_matrix:0.000000 row:16 col:2 host_param_matrix:0.000000 
+row:17 col:0 host_param_matrix:0.000000 row:17 col:1 host_param_matrix:0.000000 row:17 col:2 host_param_matrix:0.000000 
+row:18 col:0 host_param_matrix:0.000000 row:18 col:1 host_param_matrix:0.000000 row:18 col:2 host_param_matrix:0.000000 
+row:19 col:0 host_param_matrix:0.000000 row:19 col:1 host_param_matrix:0.000000 row:19 col:2 host_param_matrix:0.000000 
+row:20 col:0 host_param_matrix:0.000000 row:20 col:1 host_param_matrix:0.000000 row:20 col:2 host_param_matrix:0.000000 
+row:21 col:0 host_param_matrix:0.000000 row:21 col:1 host_param_matrix:0.000000 row:21 col:2 host_param_matrix:0.000000 
+row:22 col:0 host_param_matrix:0.000000 row:22 col:1 host_param_matrix:0.000000 row:22 col:2 host_param_matrix:0.000000 
+row:23 col:0 host_param_matrix:0.000000 row:23 col:1 host_param_matrix:0.000000 row:23 col:2 host_param_matrix:0.000000 
+row:24 col:0 host_param_matrix:0.000000 row:24 col:1 host_param_matrix:0.000000 row:24 col:2 host_param_matrix:0.000000 
+row:25 col:0 host_param_matrix:0.000000 row:25 col:1 host_param_matrix:0.000000 row:25 col:2 host_param_matrix:0.000000 
+row:26 col:0 host_param_matrix:0.000000 row:26 col:1 host_param_matrix:0.000000 row:26 col:2 host_param_matrix:0.000000 
+row:27 col:0 host_param_matrix:0.000000 row:27 col:1 host_param_matrix:0.000000 row:27 col:2 host_param_matrix:0.000000 
+row:28 col:0 host_param_matrix:0.000000 row:28 col:1 host_param_matrix:0.000000 row:28 col:2 host_param_matrix:0.000000 
+row:29 col:0 host_param_matrix:0.000000 row:29 col:1 host_param_matrix:0.000000 row:29 col:2 host_param_matrix:0.000000 
+row:30 col:0 host_param_matrix:0.000000 row:30 col:1 host_param_matrix:0.000000 row:30 col:2 host_param_matrix:0.000000 
+row:31 col:0 host_param_matrix:0.000000 row:31 col:1 host_param_matrix:0.000000 row:31 col:2 host_param_matrix:0.000000 
+row:32 col:0 host_param_matrix:0.000000 row:32 col:1 host_param_matrix:0.000000 row:32 col:2 host_param_matrix:0.000000 
+row:33 col:0 host_param_matrix:0.000000 row:33 col:1 host_param_matrix:0.000000 row:33 col:2 host_param_matrix:0.000000 
+row:34 col:0 host_param_matrix:0.000000 row:34 col:1 host_param_matrix:0.000000 row:34 col:2 host_param_matrix:0.000000 
+row:35 col:0 host_param_matrix:0.000000 row:35 col:1 host_param_matrix:0.000000 row:35 col:2 host_param_matrix:0.000000 
+row:36 col:0 host_param_matrix:0.000000 row:36 col:1 host_param_matrix:0.000000 row:36 col:2 host_param_matrix:0.000000 
+row:37 col:0 host_param_matrix:0.000000 row:37 col:1 host_param_matrix:0.000000 row:37 col:2 host_param_matrix:0.000000 
+row:38 col:0 host_param_matrix:0.000000 row:38 col:1 host_param_matrix:0.000000 row:38 col:2 host_param_matrix:0.000000 
+row:39 col:0 host_param_matrix:0.000000 row:39 col:1 host_param_matrix:0.000000 row:39 col:2 host_param_matrix:0.000000 
+row:40 col:0 host_param_matrix:0.000000 row:40 col:1 host_param_matrix:0.000000 row:40 col:2 host_param_matrix:0.000000 
+row:41 col:0 host_param_matrix:0.000000 row:41 col:1 host_param_matrix:0.000000 row:41 col:2 host_param_matrix:0.000000 
+row:42 col:0 host_param_matrix:0.000000 row:42 col:1 host_param_matrix:0.000000 row:42 col:2 host_param_matrix:0.000000 
+row:43 col:0 host_param_matrix:0.000000 row:43 col:1 host_param_matrix:0.000000 row:43 col:2 host_param_matrix:0.000000 
+row:44 col:0 host_param_matrix:0.000000 row:44 col:1 host_param_matrix:0.000000 row:44 col:2 host_param_matrix:0.000000 
+row:45 col:0 host_param_matrix:0.000000 row:45 col:1 host_param_matrix:0.000000 row:45 col:2 host_param_matrix:0.000000 
+row:46 col:0 host_param_matrix:0.000000 row:46 col:1 host_param_matrix:0.000000 row:46 col:2 host_param_matrix:0.000000 
+row:47 col:0 host_param_matrix:0.000000 row:47 col:1 host_param_matrix:0.000000 row:47 col:2 host_param_matrix:0.000000 
+row:48 col:0 host_param_matrix:0.000000 row:48 col:1 host_param_matrix:0.000000 row:48 col:2 host_param_matrix:0.000000 
+row:49 col:0 host_param_matrix:0.000000 row:49 col:1 host_param_matrix:0.000000 row:49 col:2 host_param_matrix:0.000000 
+row:50 col:0 host_param_matrix:0.000000 row:50 col:1 host_param_matrix:0.000000 row:50 col:2 host_param_matrix:0.000000 
+row:51 col:0 host_param_matrix:0.000000 row:51 col:1 host_param_matrix:0.000000 row:51 col:2 host_param_matrix:0.000000 
+row:52 col:0 host_param_matrix:0.000000 row:52 col:1 host_param_matrix:0.000000 row:52 col:2 host_param_matrix:0.000000 
+row:53 col:0 host_param_matrix:0.000000 row:53 col:1 host_param_matrix:0.000000 row:53 col:2 host_param_matrix:0.000000 
+row:54 col:0 host_param_matrix:0.000000 row:54 col:1 host_param_matrix:0.000000 row:54 col:2 host_param_matrix:0.000000 
+row:55 col:0 host_param_matrix:0.000000 row:55 col:1 host_param_matrix:0.000000 row:55 col:2 host_param_matrix:0.000000 
+row:56 col:0 host_param_matrix:0.000000 row:56 col:1 host_param_matrix:0.000000 row:56 col:2 host_param_matrix:0.000000 
+row:57 col:0 host_param_matrix:0.000000 row:57 col:1 host_param_matrix:0.000000 row:57 col:2 host_param_matrix:0.000000 
+row:58 col:0 host_param_matrix:0.000000 row:58 col:1 host_param_matrix:0.000000 row:58 col:2 host_param_matrix:0.000000 
+row:59 col:0 host_param_matrix:0.000000 row:59 col:1 host_param_matrix:0.000000 row:59 col:2 host_param_matrix:0.000000 
+row:60 col:0 host_param_matrix:0.000000 row:60 col:1 host_param_matrix:0.000000 row:60 col:2 host_param_matrix:0.000000 
+row:61 col:0 host_param_matrix:0.000000 row:61 col:1 host_param_matrix:0.000000 row:61 col:2 host_param_matrix:0.000000 
+row:62 col:0 host_param_matrix:0.000000 row:62 col:1 host_param_matrix:0.000000 row:62 col:2 host_param_matrix:0.000000 
+row:63 col:0 host_param_matrix:0.000000 row:63 col:1 host_param_matrix:0.000000 row:63 col:2 host_param_matrix:0.000000 
+cluster_data len:64
+
+Individual 0 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.074143 6.172715 6.000000 
+Individual 1 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.976280 6.715059 19.000000 
+Individual 2 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.421177 6.447110 12.000000 
+Individual 3 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.326628 6.623961 11.000000 
+Individual 4 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.568305 5.523969 16.000000 
+Individual 5 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.783465 6.607408 0.000000 
+Individual 6 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.116158 5.764791 13.000000 
+Individual 7 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.747051 6.469951 5.000000 
+Individual 8 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.453511 7.128508 2.000000 
+Individual 9 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.218261 5.999512 9.000000 
+Individual 10 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.229023 5.701791 6.000000 
+Individual 11 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.680813 6.712219 11.000000 
+Individual 12 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 7.907007 5.641687 16.000000 
+Individual 13 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.346523 6.937860 18.000000 
+Individual 14 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.676792 5.522792 20.000000 
+Individual 15 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.702342 6.816582 17.000000 
+Individual 16 fitness: 0.000000, lshade params(f,f1,cr): 0.500000 0.500000 0.500000
+Params: 8.703158 6.801819 9.710399 
+Individual 17 fitness: 0.000000, lshade params(f,f1,cr): 0.594066 0.602942 0.896098
+Params: 8.758883 6.306654 6.749978 
+Individual 18 fitness: 0.000000, lshade params(f,f1,cr): 0.617301 0.600097 0.925515
+Params: 7.975244 6.113711 11.599125 
+Individual 19 fitness: 0.000000, lshade params(f,f1,cr): 0.588821 0.598650 0.902205
+Params: 8.642841 6.941226 11.000000 
+Individual 20 fitness: 0.000000, lshade params(f,f1,cr): 0.613950 0.585572 0.899221
+Params: 8.510743 7.346654 4.216413 
+Individual 21 fitness: 0.000000, lshade params(f,f1,cr): 0.583498 0.600174 0.911531
+Params: 7.636008 6.143888 9.000000 
+Individual 22 fitness: 0.000000, lshade params(f,f1,cr): 0.600462 0.600254 0.900905
+Params: 8.281187 5.646782 6.602791 
+Individual 23 fitness: 0.000000, lshade params(f,f1,cr): 0.601377 0.602150 0.899323
+Params: 8.665800 6.396042 8.817196 
+Individual 24 fitness: 0.000000, lshade params(f,f1,cr): 0.584970 0.608323 0.877272
+Params: 7.141299 5.593930 6.000000 
+Individual 25 fitness: 0.000000, lshade params(f,f1,cr): 0.596317 0.596370 0.908411
+Params: 7.726109 5.875962 8.596370 
+Individual 26 fitness: 0.000000, lshade params(f,f1,cr): 0.609032 0.601531 0.890988
+Params: 7.714542 6.321590 6.593875 
+Individual 27 fitness: 0.000000, lshade params(f,f1,cr): 0.611569 0.601099 0.912449
+Params: 7.600079 5.880282 1.584607 
+Individual 28 fitness: 0.000000, lshade params(f,f1,cr): 0.601417 0.601812 0.880010
+Params: 8.146437 5.415484 19.212681 
+Individual 29 fitness: 0.000000, lshade params(f,f1,cr): 0.616933 0.602709 0.899426
+Params: 7.562484 6.291582 10.616253 
+Individual 30 fitness: 0.000000, lshade params(f,f1,cr): 0.589759 0.604790 0.904216
+Params: 7.710958 5.940713 6.976049 
+Individual 31 fitness: 0.000000, lshade params(f,f1,cr): 0.590270 0.605567 0.902154
+Params: 7.862861 5.950926 4.606662 
+Individual 32 fitness: 0.000000, lshade params(f,f1,cr): 0.597296 0.632585 0.905155
+Params: 8.241876 6.116499 11.367415 
+Individual 33 fitness: 0.000000, lshade params(f,f1,cr): 0.604296 0.600313 0.893667
+Params: 8.704090 6.311106 19.001568 
+Individual 34 fitness: 0.000000, lshade params(f,f1,cr): 0.585930 0.589004 0.892654
+Params: 7.645493 5.705965 7.465974 
+Individual 35 fitness: 0.000000, lshade params(f,f1,cr): 0.605502 0.599029 0.891446
+Params: 7.184474 6.674844 14.000000 
+Individual 36 fitness: 0.000000, lshade params(f,f1,cr): 0.580767 0.609921 0.899764
+Params: 7.266171 6.098511 10.461103 
+Individual 37 fitness: 0.000000, lshade params(f,f1,cr): 0.613369 0.585489 0.912445
+Params: 7.268367 6.896092 9.000000 
+Individual 38 fitness: 0.000000, lshade params(f,f1,cr): 0.604502 0.597668 0.885558
+Params: 8.390528 6.793756 6.011660 
+Individual 39 fitness: 0.000000, lshade params(f,f1,cr): 0.585812 0.590823 0.909412
+Params: 7.111842 7.098180 15.000000 
+Individual 40 fitness: 0.000000, lshade params(f,f1,cr): 0.604727 0.600420 0.923147
+Params: 8.327187 5.471828 6.000000 
+Individual 41 fitness: 0.000000, lshade params(f,f1,cr): 0.607262 0.589788 0.906576
+Params: 8.388421 5.523696 9.897884 
+Individual 42 fitness: 0.000000, lshade params(f,f1,cr): 0.592042 0.594493 0.899871
+Params: 7.489305 5.906826 11.216519 
+Individual 43 fitness: 0.000000, lshade params(f,f1,cr): 0.605514 0.602205 0.899796
+Params: 8.598354 6.681591 3.000000 
+Individual 44 fitness: 0.000000, lshade params(f,f1,cr): 0.596517 0.592044 0.893013
+Params: 7.296555 5.423524 7.751162 
+Individual 45 fitness: 0.000000, lshade params(f,f1,cr): 0.590425 0.605142 0.890708
+Params: 8.175220 5.907751 5.553720 
+Individual 46 fitness: 0.000000, lshade params(f,f1,cr): 0.608841 0.628014 0.884451
+Params: 8.110810 7.015500 15.000000 
+Individual 47 fitness: 0.000000, lshade params(f,f1,cr): 0.598395 0.598610 0.899688
+Params: 8.882888 7.129023 5.605561 
+Individual 48 fitness: 0.000000, lshade params(f,f1,cr): 0.593083 0.603779 0.896038
+Params: 7.768969 6.774967 12.792442 
+Individual 49 fitness: 0.000000, lshade params(f,f1,cr): 0.595136 0.587946 0.895022
+Params: 8.376259 6.033803 9.000000 
+Individual 50 fitness: 0.000000, lshade params(f,f1,cr): 0.606552 0.596123 0.911370
+Params: 7.296497 6.387148 6.172861 
+Individual 51 fitness: 0.000000, lshade params(f,f1,cr): 0.590521 0.608374 0.894413
+Params: 9.030699 6.549583 20.000000 
+Individual 52 fitness: 0.000000, lshade params(f,f1,cr): 0.583187 0.598448 0.910792
+Params: 8.402985 6.842196 8.826389 
+Individual 53 fitness: 0.000000, lshade params(f,f1,cr): 0.597644 0.588767 0.893850
+Params: 7.539060 5.848840 9.112333 
+Individual 54 fitness: 0.000000, lshade params(f,f1,cr): 0.587579 0.597041 0.886507
+Params: 7.663496 5.546004 5.000000 
+Individual 55 fitness: 0.000000, lshade params(f,f1,cr): 0.632549 0.591400 0.898487
+Params: 8.099593 5.671320 12.322603 
+Individual 56 fitness: 0.000000, lshade params(f,f1,cr): 0.591080 0.605064 0.887769
+Params: 7.356752 6.364665 9.318975 
+Individual 57 fitness: 0.000000, lshade params(f,f1,cr): 0.597327 0.614475 0.906482
+Params: 7.906990 6.765688 5.939445 
+Individual 58 fitness: 0.000000, lshade params(f,f1,cr): 0.611684 0.599675 0.881514
+Params: 6.684137 5.182704 2.200976 
+Individual 59 fitness: 0.000000, lshade params(f,f1,cr): 0.606594 0.601962 0.911560
+Params: 7.834560 6.697857 2.543102 
+Individual 60 fitness: 0.000000, lshade params(f,f1,cr): 0.600202 0.581428 0.921227
+Params: 8.609922 6.551091 4.441435 
+Individual 61 fitness: 0.000000, lshade params(f,f1,cr): 0.601751 0.605799 0.899523
+Params: 8.966546 7.078583 11.000000 
+Individual 62 fitness: 0.000000, lshade params(f,f1,cr): 0.606070 0.605754 0.905827
+Params: 8.508245 6.532256 5.182736 
+Individual 63 fitness: 0.000000, lshade params(f,f1,cr): 0.590234 0.577343 0.914110
+Params: 7.627439 6.193659 10.422657 
+
+Problem dimensions: con_var=2, int_var=1, total=3
+finish the convert: param[512] to matrix[96], value:8.241876
+finish the convert: param[513] to matrix[97], value:6.116499
+finish the convert: param[514] to matrix[98], value:11.367415
+finish the convert: param[784] to matrix[147], value:8.376259
+finish the convert: param[785] to matrix[148], value:6.033803
+finish the convert: param[786] to matrix[149], value:9.000000
+finish the convert: param[224] to matrix[42], value:8.527159
+finish the convert: param[225] to matrix[43], value:5.657474
+finish the convert: param[226] to matrix[44], value:15.403041
+finish the convert: param[496] to matrix[93], value:7.862861
+finish the convert: param[497] to matrix[94], value:5.950926
+finish the convert: param[498] to matrix[95], value:4.606662
+finish the convert: param[768] to matrix[144], value:7.768969
+finish the convert: param[769] to matrix[145], value:6.774967
+finish the convert: param[770] to matrix[146], value:12.792442
+finish the convert: param[528] to matrix[99], value:8.704090
+finish the convert: param[529] to matrix[100], value:6.311106
+finish the convert: param[530] to matrix[101], value:19.001568
+finish the convert: param[976] to matrix[183], value:8.966546
+finish the convert: param[977] to matrix[184], value:7.078583
+finish the convert: param[978] to matrix[185], value:11.000000
+finish the convert: param[416] to matrix[78], value:7.714542
+finish the convert: param[417] to matrix[79], value:6.321590
+finish the convert: param[418] to matrix[80], value:6.593875
+finish the convert: param[208] to matrix[39], value:7.711491
+finish the convert: param[209] to matrix[40], value:7.125982
+finish the convert: param[210] to matrix[41], value:9.805435
+finish the convert: param[544] to matrix[102], value:7.645493
+finish the convert: param[545] to matrix[103], value:5.705965
+finish the convert: param[546] to matrix[104], value:7.465974
+finish the convert: param[800] to matrix[150], value:7.296497
+finish the convert: param[801] to matrix[151], value:6.387148
+finish the convert: param[802] to matrix[152], value:6.172861
+finish the convert: param[688] to matrix[129], value:8.598354
+finish the convert: param[689] to matrix[130], value:6.681591
+finish the convert: param[690] to matrix[131], value:3.000000
+finish the convert: param[816] to matrix[153], value:9.030699
+finish the convert: param[817] to matrix[154], value:6.549583
+finish the convert: param[818] to matrix[155], value:20.000000
+finish the convert: param[240] to matrix[45], value:7.944189
+finish the convert: param[241] to matrix[46], value:6.241229
+finish the convert: param[242] to matrix[47], value:18.000000
+finish the convert: param[960] to matrix[180], value:8.609922
+finish the convert: param[961] to matrix[181], value:6.551091
+finish the convert: param[962] to matrix[182], value:4.441435
+finish the convert: param[400] to matrix[75], value:7.726109
+finish the convert: param[401] to matrix[76], value:5.875962
+finish the convert: param[402] to matrix[77], value:8.596370
+finish the convert: param[128] to matrix[24], value:8.399057
+finish the convert: param[129] to matrix[25], value:6.787700
+finish the convert: param[130] to matrix[26], value:9.974977
+finish the convert: param[256] to matrix[48], value:8.703158
+finish the convert: param[257] to matrix[49], value:6.801819
+finish the convert: param[258] to matrix[50], value:9.710399
+finish the convert: param[480] to matrix[90], value:7.710958
+finish the convert: param[481] to matrix[91], value:5.940713
+finish the convert: param[482] to matrix[92], value:6.976049
+finish the convert: param[992] to matrix[186], value:8.508245
+finish the convert: param[993] to matrix[187], value:6.532256
+finish the convert: param[994] to matrix[188], value:5.182736
+finish the convert: param[432] to matrix[81], value:7.600079
+finish the convert: param[433] to matrix[82], value:5.880282
+finish the convert: param[434] to matrix[83], value:1.584607
+finish the convert: param[672] to matrix[126], value:7.489305
+finish the convert: param[673] to matrix[127], value:5.906826
+finish the convert: param[674] to matrix[128], value:11.216519
+finish the convert: param[464] to matrix[87], value:7.562484
+finish the convert: param[465] to matrix[88], value:6.291582
+finish the convert: param[466] to matrix[89], value:10.616253
+finish the convert: param[752] to matrix[141], value:8.882888
+finish the convert: param[753] to matrix[142], value:7.129023
+finish the convert: param[754] to matrix[143], value:5.605561
+finish the convert: param[112] to matrix[21], value:8.249989
+finish the convert: param[113] to matrix[22], value:7.077375
+finish the convert: param[114] to matrix[23], value:16.059326
+finish the convert: param[1008] to matrix[189], value:7.627439
+finish the convert: param[1009] to matrix[190], value:6.193659
+finish the convert: param[1010] to matrix[191], value:10.422657
+finish the convert: param[448] to matrix[84], value:8.146437
+finish the convert: param[449] to matrix[85], value:5.415484
+finish the convert: param[450] to matrix[86], value:19.212681
+finish the convert: param[736] to matrix[138], value:8.110810
+finish the convert: param[737] to matrix[139], value:7.015500
+finish the convert: param[738] to matrix[140], value:15.000000
+finish the convert: param[704] to matrix[132], value:7.296555
+finish the convert: param[705] to matrix[133], value:5.423524
+finish the convert: param[706] to matrix[134], value:7.751162
+finish the convert: param[320] to matrix[60], value:8.510743
+finish the convert: param[321] to matrix[61], value:7.346654
+finish the convert: param[322] to matrix[62], value:4.216413
+finish the convert: param[880] to matrix[165], value:8.099593
+finish the convert: param[881] to matrix[166], value:5.671320
+finish the convert: param[882] to matrix[167], value:12.322603
+finish the convert: param[192] to matrix[36], value:7.848788
+finish the convert: param[193] to matrix[37], value:5.715647
+finish the convert: param[194] to matrix[38], value:6.609571
+finish the convert: param[144] to matrix[27], value:8.026996
+finish the convert: param[145] to matrix[28], value:6.257511
+finish the convert: param[146] to matrix[29], value:8.600974
+finish the convert: param[176] to matrix[33], value:6.821105
+finish the convert: param[177] to matrix[34], value:5.061286
+finish the convert: param[178] to matrix[35], value:5.281476
+finish the convert: param[720] to matrix[135], value:8.175220
+finish the convert: param[721] to matrix[136], value:5.907751
+finish the convert: param[722] to matrix[137], value:5.553720
+finish the convert: param[592] to matrix[111], value:7.268367
+finish the convert: param[593] to matrix[112], value:6.896092
+finish the convert: param[594] to matrix[113], value:9.000000
+finish the convert: param[160] to matrix[30], value:7.278744
+finish the convert: param[161] to matrix[31], value:7.076585
+finish the convert: param[162] to matrix[32], value:2.000000
+finish the convert: param[32] to matrix[6], value:8.299867
+finish the convert: param[33] to matrix[7], value:6.266397
+finish the convert: param[34] to matrix[8], value:10.148161
+finish the convert: param[384] to matrix[72], value:7.141299
+finish the convert: param[385] to matrix[73], value:5.593930
+finish the convert: param[386] to matrix[74], value:6.000000
+finish the convert: param[944] to matrix[177], value:7.834560
+finish the convert: param[945] to matrix[178], value:6.697857
+finish the convert: param[946] to matrix[179], value:2.543102
+finish the convert: param[304] to matrix[57], value:8.642841
+finish the convert: param[305] to matrix[58], value:6.941226
+finish the convert: param[306] to matrix[59], value:11.000000
+finish the convert: param[864] to matrix[162], value:7.663496
+finish the convert: param[865] to matrix[163], value:5.546004
+finish the convert: param[866] to matrix[164], value:5.000000
+finish the convert: param[368] to matrix[69], value:8.665800
+finish the convert: param[369] to matrix[70], value:6.396042
+finish the convert: param[370] to matrix[71], value:8.817196
+finish the convert: param[928] to matrix[174], value:6.684137
+finish the convert: param[929] to matrix[175], value:5.182704
+finish the convert: param[930] to matrix[176], value:2.200976
+finish the convert: param[336] to matrix[63], value:7.636008
+finish the convert: param[337] to matrix[64], value:6.143888
+finish the convert: param[338] to matrix[65], value:9.000000
+finish the convert: param[576] to matrix[108], value:7.266171
+finish the convert: param[577] to matrix[109], value:6.098511
+finish the convert: param[578] to matrix[110], value:10.461103
+finish the convert: param[656] to matrix[123], value:8.388421
+finish the convert: param[657] to matrix[124], value:5.523696
+finish the convert: param[658] to matrix[125], value:9.897884
+finish the convert: param[896] to matrix[168], value:7.356752
+finish the convert: param[897] to matrix[169], value:6.364665
+finish the convert: param[898] to matrix[170], value:9.318975
+finish the convert: param[16] to matrix[3], value:8.074143
+finish the convert: param[17] to matrix[4], value:6.203524
+finish the convert: param[18] to matrix[5], value:6.603680
+finish the convert: param[96] to matrix[18], value:7.245833
+finish the convert: param[97] to matrix[19], value:5.147758
+finish the convert: param[98] to matrix[20], value:2.720267
+finish the convert: param[640] to matrix[120], value:8.327187
+finish the convert: param[641] to matrix[121], value:5.471828
+finish the convert: param[642] to matrix[122], value:6.000000
+finish the convert: param[352] to matrix[66], value:8.281187
+finish the convert: param[353] to matrix[67], value:5.646782
+finish the convert: param[354] to matrix[68], value:6.602791
+finish the convert: param[912] to matrix[171], value:7.906990
+finish the convert: param[913] to matrix[172], value:6.765688
+finish the convert: param[914] to matrix[173], value:5.939445
+finish the convert: param[608] to matrix[114], value:8.390528
+finish the convert: param[609] to matrix[115], value:6.793756
+finish the convert: param[610] to matrix[116], value:6.011660
+finish the convert: param[80] to matrix[15], value:8.079009
+finish the convert: param[81] to matrix[16], value:6.044321
+finish the convert: param[82] to matrix[17], value:13.966407
+finish the convert: param[48] to matrix[9], value:9.307178
+finish the convert: param[49] to matrix[10], value:6.109003
+finish the convert: param[50] to matrix[11], value:17.811146
+finish the convert: param[624] to matrix[117], value:7.111842
+finish the convert: param[625] to matrix[118], value:7.098180
+finish the convert: param[626] to matrix[119], value:15.000000
+finish the convert: param[64] to matrix[12], value:8.158196
+finish the convert: param[65] to matrix[13], value:5.748163
+finish the convert: param[66] to matrix[14], value:9.083054
+finish the convert: param[288] to matrix[54], value:7.975244
+finish the convert: param[289] to matrix[55], value:6.113711
+finish the convert: param[290] to matrix[56], value:11.599125
+finish the convert: param[848] to matrix[159], value:7.539060
+finish the convert: param[849] to matrix[160], value:5.848840
+finish the convert: param[850] to matrix[161], value:9.112333
+finish the convert: param[272] to matrix[51], value:8.758883
+finish the convert: param[273] to matrix[52], value:6.306654
+finish the convert: param[274] to matrix[53], value:6.749978
+finish the convert: param[832] to matrix[156], value:8.402985
+finish the convert: param[833] to matrix[157], value:6.842196
+finish the convert: param[834] to matrix[158], value:8.826389
+finish the convert: param[560] to matrix[105], value:7.184474
+finish the convert: param[561] to matrix[106], value:6.674844
+finish the convert: param[562] to matrix[107], value:14.000000
+finish the convert: param[0] to matrix[0], value:7.678544
+finish the convert: param[1] to matrix[1], value:6.685684
+finish the convert: param[2] to matrix[2], value:11.398480
+row:0 col:0 host_param_matrix:7.678544 row:0 col:1 host_param_matrix:6.685684 row:0 col:2 host_param_matrix:11.398480 
+row:1 col:0 host_param_matrix:6.143888 row:1 col:1 host_param_matrix:9.000000 row:1 col:2 host_param_matrix:8.281187 
+row:2 col:0 host_param_matrix:11.216519 row:2 col:1 host_param_matrix:8.598354 row:2 col:2 host_param_matrix:6.681591 
+row:3 col:0 host_param_matrix:0.000000 row:3 col:1 host_param_matrix:0.000000 row:3 col:2 host_param_matrix:0.000000 
+row:4 col:0 host_param_matrix:0.000000 row:4 col:1 host_param_matrix:0.000000 row:4 col:2 host_param_matrix:0.000000 
+row:5 col:0 host_param_matrix:0.000000 row:5 col:1 host_param_matrix:0.000000 row:5 col:2 host_param_matrix:0.000000 
+row:6 col:0 host_param_matrix:0.000000 row:6 col:1 host_param_matrix:0.000000 row:6 col:2 host_param_matrix:0.000000 
+row:7 col:0 host_param_matrix:0.000000 row:7 col:1 host_param_matrix:0.000000 row:7 col:2 host_param_matrix:0.000000 
+row:8 col:0 host_param_matrix:0.000000 row:8 col:1 host_param_matrix:0.000000 row:8 col:2 host_param_matrix:0.000000 
+row:9 col:0 host_param_matrix:0.000000 row:9 col:1 host_param_matrix:0.000000 row:9 col:2 host_param_matrix:0.000000 
+row:10 col:0 host_param_matrix:0.000000 row:10 col:1 host_param_matrix:0.000000 row:10 col:2 host_param_matrix:0.000000 
+row:11 col:0 host_param_matrix:0.000000 row:11 col:1 host_param_matrix:0.000000 row:11 col:2 host_param_matrix:0.000000 
+row:12 col:0 host_param_matrix:0.000000 row:12 col:1 host_param_matrix:0.000000 row:12 col:2 host_param_matrix:0.000000 
+row:13 col:0 host_param_matrix:0.000000 row:13 col:1 host_param_matrix:0.000000 row:13 col:2 host_param_matrix:0.000000 
+row:14 col:0 host_param_matrix:0.000000 row:14 col:1 host_param_matrix:0.000000 row:14 col:2 host_param_matrix:0.000000 
+row:15 col:0 host_param_matrix:0.000000 row:15 col:1 host_param_matrix:0.000000 row:15 col:2 host_param_matrix:0.000000 
+row:16 col:0 host_param_matrix:0.000000 row:16 col:1 host_param_matrix:0.000000 row:16 col:2 host_param_matrix:0.000000 
+row:17 col:0 host_param_matrix:0.000000 row:17 col:1 host_param_matrix:0.000000 row:17 col:2 host_param_matrix:0.000000 
+row:18 col:0 host_param_matrix:0.000000 row:18 col:1 host_param_matrix:0.000000 row:18 col:2 host_param_matrix:0.000000 
+row:19 col:0 host_param_matrix:0.000000 row:19 col:1 host_param_matrix:0.000000 row:19 col:2 host_param_matrix:0.000000 
+row:20 col:0 host_param_matrix:0.000000 row:20 col:1 host_param_matrix:0.000000 row:20 col:2 host_param_matrix:0.000000 
+row:21 col:0 host_param_matrix:0.000000 row:21 col:1 host_param_matrix:0.000000 row:21 col:2 host_param_matrix:0.000000 
+row:22 col:0 host_param_matrix:0.000000 row:22 col:1 host_param_matrix:0.000000 row:22 col:2 host_param_matrix:0.000000 
+row:23 col:0 host_param_matrix:0.000000 row:23 col:1 host_param_matrix:0.000000 row:23 col:2 host_param_matrix:0.000000 
+row:24 col:0 host_param_matrix:0.000000 row:24 col:1 host_param_matrix:0.000000 row:24 col:2 host_param_matrix:0.000000 
+row:25 col:0 host_param_matrix:0.000000 row:25 col:1 host_param_matrix:0.000000 row:25 col:2 host_param_matrix:0.000000 
+row:26 col:0 host_param_matrix:0.000000 row:26 col:1 host_param_matrix:0.000000 row:26 col:2 host_param_matrix:0.000000 
+row:27 col:0 host_param_matrix:0.000000 row:27 col:1 host_param_matrix:0.000000 row:27 col:2 host_param_matrix:0.000000 
+row:28 col:0 host_param_matrix:0.000000 row:28 col:1 host_param_matrix:0.000000 row:28 col:2 host_param_matrix:0.000000 
+row:29 col:0 host_param_matrix:0.000000 row:29 col:1 host_param_matrix:0.000000 row:29 col:2 host_param_matrix:0.000000 
+row:30 col:0 host_param_matrix:0.000000 row:30 col:1 host_param_matrix:0.000000 row:30 col:2 host_param_matrix:0.000000 
+row:31 col:0 host_param_matrix:0.000000 row:31 col:1 host_param_matrix:0.000000 row:31 col:2 host_param_matrix:0.000000 
+row:32 col:0 host_param_matrix:0.000000 row:32 col:1 host_param_matrix:0.000000 row:32 col:2 host_param_matrix:0.000000 
+row:33 col:0 host_param_matrix:0.000000 row:33 col:1 host_param_matrix:0.000000 row:33 col:2 host_param_matrix:0.000000 
+row:34 col:0 host_param_matrix:0.000000 row:34 col:1 host_param_matrix:0.000000 row:34 col:2 host_param_matrix:0.000000 
+row:35 col:0 host_param_matrix:0.000000 row:35 col:1 host_param_matrix:0.000000 row:35 col:2 host_param_matrix:0.000000 
+row:36 col:0 host_param_matrix:0.000000 row:36 col:1 host_param_matrix:0.000000 row:36 col:2 host_param_matrix:0.000000 
+row:37 col:0 host_param_matrix:0.000000 row:37 col:1 host_param_matrix:0.000000 row:37 col:2 host_param_matrix:0.000000 
+row:38 col:0 host_param_matrix:0.000000 row:38 col:1 host_param_matrix:0.000000 row:38 col:2 host_param_matrix:0.000000 
+row:39 col:0 host_param_matrix:0.000000 row:39 col:1 host_param_matrix:0.000000 row:39 col:2 host_param_matrix:0.000000 
+row:40 col:0 host_param_matrix:0.000000 row:40 col:1 host_param_matrix:0.000000 row:40 col:2 host_param_matrix:0.000000 
+row:41 col:0 host_param_matrix:0.000000 row:41 col:1 host_param_matrix:0.000000 row:41 col:2 host_param_matrix:0.000000 
+row:42 col:0 host_param_matrix:0.000000 row:42 col:1 host_param_matrix:0.000000 row:42 col:2 host_param_matrix:0.000000 
+row:43 col:0 host_param_matrix:0.000000 row:43 col:1 host_param_matrix:0.000000 row:43 col:2 host_param_matrix:0.000000 
+row:44 col:0 host_param_matrix:0.000000 row:44 col:1 host_param_matrix:0.000000 row:44 col:2 host_param_matrix:0.000000 
+row:45 col:0 host_param_matrix:0.000000 row:45 col:1 host_param_matrix:0.000000 row:45 col:2 host_param_matrix:0.000000 
+row:46 col:0 host_param_matrix:0.000000 row:46 col:1 host_param_matrix:0.000000 row:46 col:2 host_param_matrix:0.000000 
+row:47 col:0 host_param_matrix:0.000000 row:47 col:1 host_param_matrix:0.000000 row:47 col:2 host_param_matrix:0.000000 
+row:48 col:0 host_param_matrix:0.000000 row:48 col:1 host_param_matrix:0.000000 row:48 col:2 host_param_matrix:0.000000 
+row:49 col:0 host_param_matrix:0.000000 row:49 col:1 host_param_matrix:0.000000 row:49 col:2 host_param_matrix:0.000000 
+row:50 col:0 host_param_matrix:0.000000 row:50 col:1 host_param_matrix:0.000000 row:50 col:2 host_param_matrix:0.000000 
+row:51 col:0 host_param_matrix:0.000000 row:51 col:1 host_param_matrix:0.000000 row:51 col:2 host_param_matrix:0.000000 
+row:52 col:0 host_param_matrix:0.000000 row:52 col:1 host_param_matrix:0.000000 row:52 col:2 host_param_matrix:0.000000 
+row:53 col:0 host_param_matrix:0.000000 row:53 col:1 host_param_matrix:0.000000 row:53 col:2 host_param_matrix:0.000000 
+row:54 col:0 host_param_matrix:0.000000 row:54 col:1 host_param_matrix:0.000000 row:54 col:2 host_param_matrix:0.000000 
+row:55 col:0 host_param_matrix:0.000000 row:55 col:1 host_param_matrix:0.000000 row:55 col:2 host_param_matrix:0.000000 
+row:56 col:0 host_param_matrix:0.000000 row:56 col:1 host_param_matrix:0.000000 row:56 col:2 host_param_matrix:0.000000 
+row:57 col:0 host_param_matrix:0.000000 row:57 col:1 host_param_matrix:0.000000 row:57 col:2 host_param_matrix:0.000000 
+row:58 col:0 host_param_matrix:0.000000 row:58 col:1 host_param_matrix:0.000000 row:58 col:2 host_param_matrix:0.000000 
+row:59 col:0 host_param_matrix:0.000000 row:59 col:1 host_param_matrix:0.000000 row:59 col:2 host_param_matrix:0.000000 
+row:60 col:0 host_param_matrix:0.000000 row:60 col:1 host_param_matrix:0.000000 row:60 col:2 host_param_matrix:0.000000 
+row:61 col:0 host_param_matrix:0.000000 row:61 col:1 host_param_matrix:0.000000 row:61 col:2 host_param_matrix:0.000000 
+row:62 col:0 host_param_matrix:0.000000 row:62 col:1 host_param_matrix:0.000000 row:62 col:2 host_param_matrix:0.000000 
+row:63 col:0 host_param_matrix:0.000000 row:63 col:1 host_param_matrix:0.000000 row:63 col:2 host_param_matrix:0.000000 
 Solver completed successfully!
-========= CUDA-MEMCHECK
-========= LEAK SUMMARY: 0 bytes leaked in 0 allocations
-========= ERROR SUMMARY: 0 errors

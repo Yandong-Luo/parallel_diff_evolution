@@ -3,7 +3,7 @@
 
 # compile CUDA with /usr/local/cuda-11.1/bin/nvcc
 # compile CXX with /usr/bin/c++
-CUDA_FLAGS = -g -G -g -G -g -O0  
+CUDA_FLAGS = -g  
 
 CUDA_DEFINES = 
 

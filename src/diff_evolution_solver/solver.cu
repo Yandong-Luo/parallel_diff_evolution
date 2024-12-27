@@ -156,22 +156,22 @@ void CudaDiffEvolveSolver::WarmStart(ProblemEvaluator* evaluator, CudaParamIndiv
     // CHECK_CUDA(cudaMemcpyAsync(output_sol, &new_cluster_vec_->data[cet], sizeof(CudaParamIndividual), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
 
     // Evaluate random solutions or potential solutions in warmstart
-    // Evaluation(CUDA_SOLVER_POP_SIZE);
+    Evaluation(CUDA_SOLVER_POP_SIZE);
 
-    // // SortParamBasedBitonic<64><<<16, 64, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_->all_param, new_cluster_data_->fitness);
+    // SortParamBasedBitonic<64><<<16, 64, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_->all_param, new_cluster_data_->fitness);
 
-    // // Find the best solution among the random solutions or potential solutions in warmstart and put it in the first place
-    // ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, default_pop_size_, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_);
+    // Find the best solution among the random solutions or potential solutions in warmstart and put it in the first place
+    ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, default_pop_size_, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_);
 
-    // // based on warm start result to generate random solution. Further improve the quality of the initial population
-    // GenerativeRandSolNearBest<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, default_pop_size_);
+    // based on warm start result to generate random solution. Further improve the quality of the initial population
+    GenerativeRandSolNearBest<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, default_pop_size_);
 
-    // // convert the parameter from warm start to old parameter
-    // SaveNewParamAsOldParam<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, old_cluster_data_, 0, default_pop_size_, 0);
+    // convert the parameter from warm start to old parameter
+    SaveNewParamAsOldParam<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, old_cluster_data_, 0, default_pop_size_, 0);
 
-    // // Based on all old parameter to update the warm start of evolve data
-    // // 将 old_cluster_data_<192> 中索引为0的数据提取出来,填充到evolve data单个CudaParamIndividual结构中,记为warm start。索引为0的解是warm start过程中最优的
-    // UpdateEvolveWarmStartBasedClusterData<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_);
+    // Based on all old parameter to update the warm start of evolve data
+    // 将 old_cluster_data_<192> 中索引为0的数据提取出来,填充到evolve data单个CudaParamIndividual结构中,记为warm start。索引为0的解是warm start过程中最优的
+    UpdateEvolveWarmStartBasedClusterData<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_);
 
     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 }
@@ -184,16 +184,14 @@ __global__ void MainEvaluation(CudaEvolveData *evolve, CudaParamClusterData<T> *
 }
 
 void CudaDiffEvolveSolver::Evaluation(int size){
-    CHECK_CUDA(cudaMemcpyAsync(host_new_cluster_data_, new_cluster_data_, sizeof(CudaParamClusterData<64>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
-    PrintClusterData(host_new_cluster_data_);
-    // printf("evolve_data_->dims:%d\n", evolve_data_->dims);
-    ConvertClusterToMatrix<64><<<dims_, size, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, param_matrix);
+    ConvertClusterToMatrix<64><<<size, dims_, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, param_matrix);
+    cudaStreamSynchronize(cuda_utils_->streams_[0]); 
+    cudaMemcpy(host_param_matrix, param_matrix, dims_ * size * sizeof(float), cudaMemcpyDeviceToHost);
 
-    cudaMemcpy(host_param_matrix, param_matrix, size * sizeof(float), cudaMemcpyDeviceToHost);
-
-    for(int i = 0; i < size; ++i){
-        for(int j = 0; j < dims_; ++j){
-            printf("row:%d col:%d host_param_matrix:%f ", i, j, host_param_matrix[i*size+j]);
+    printf("check param_matrix:\n");
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < dims_; ++j) {
+            printf("row:%d col:%d host_param_matrix:%f ", i, j, host_param_matrix[i * dims_ + j]);
         }
         printf("\n");
     }
@@ -365,22 +363,6 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_, default_pop_size_);
 
     WarmStart(host_evaluator, output_sol);
-
-    // 在使用uniform_data_之前添加这段代码
-    float* host_uniform = new float[512000];  // uniform_size_ = 512000
-    CHECK_CUDA(cudaMemcpy(host_uniform, random_center_->uniform_data_, 
-                        512000 * sizeof(float), cudaMemcpyDeviceToHost));
-
-    printf("Uniform random numbers:\n");
-    for(int i = 0; i < 512000; i++) {
-        printf("uniform_data_[%d] = %f\n", i, host_uniform[i]);
-        // 如果数据太多，可以每100个打印一次或者只打印前N个
-        if(i > 100) {
-            printf("...\n");
-            break;
-        }
-    }
-    delete[] host_uniform;
 
     if (DEBUG_PRINT_FLAG){
         CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));

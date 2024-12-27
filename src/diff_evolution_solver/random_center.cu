@@ -60,9 +60,9 @@ namespace cudaprocess{
         Generate();
         cudaDeviceSynchronize();
 
-        printf("\nChecking random states:\n");
-        CheckStates<<<50, 1024>>>(states_, state_size_);
-        cudaDeviceSynchronize();
+        // printf("\nChecking random states:\n");
+        // CheckStates<<<50, 1024>>>(states_, state_size_);
+        // cudaDeviceSynchronize();
     }
     
     CudaRandomCenter::~CudaRandomCenter()
