@@ -60,12 +60,12 @@ struct ProblemEvaluator{
     int row_lambda = 2, col_lambda = 1;
 
     float obj[4][1] = {{-4}, {-3}, {-5}, {0}};
-    // float obj_constant[64][1] = {0};
     // float constraint_mat[2][4] = {{2, 3, 1, -12}, {2, 1, 3, -12}};
     float constraint_mat[4][2] = {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
     // float constraint_constant_mat[2][1] = {{-12}, {-12}};
 
-    float lambda[2][1] = {{10}, {10}};
+    // float lambda[2][1] = {10};
+    float lambda[2] = {10, 10};
 
 
     float constraint_param[2][4] = {
@@ -80,7 +80,9 @@ struct ProblemEvaluator{
     float objective_param[3] = {-4., -3, -5};
     int num_objective_param = 3;
 
-    int generation = 1;
+    int max_lambda = 100;
+    int init_lambda = 1;
+    int max_round = 60;
 };
 
 /*
@@ -134,6 +136,9 @@ struct CudaEvolveData{
     float lambda[CUDA_PARAM_MAX_SIZE];
 
     // int generation;
+    int max_lambda;
+    int init_lambda;
+    int max_round;
 };
 
 struct CudaSolverInput{

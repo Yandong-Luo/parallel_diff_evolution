@@ -28,7 +28,7 @@ void printArrays(float* fitness, float* params, int size) {
     printf("\n\n");
 }
 
-__device__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
+__device__ __forceinline__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
     float mapping_param = __shfl_xor_sync(0xffffffff, param, lane_mask);
     float mapping_fitness = __shfl_xor_sync(0xffffffff, fitness, lane_mask);
     // determine current sort order is increase (1.0) or decrease (-1.0)

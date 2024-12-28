@@ -92,7 +92,7 @@ void PrintTmpScoreWithParam(float *tmp_score_matrix, float *param_mat, int row, 
         }
 
         for (int j = 0; j < tmp_mat_col; ++j){
-            printf("tmp score[%d, %d]:%f", i, j, tmp_score_matrix[i * tmp_mat_col +j]);
+            printf("tmp score[%d, %d]:%f ", i, j, tmp_score_matrix[i * tmp_mat_col +j]);
         }
         printf("\n");
     }
@@ -121,6 +121,14 @@ __global__ void printDeviceMatrix(float *matrix){
 
     printf("matrix parameter[%d] is %f\n", threadIdx.x, matrix[threadIdx.x]);
     // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * evolve->dims + threadIdx.x, param_matrix[blockIdx.x * evolve->dims + threadIdx.x]);
+}
+
+void printFinalResult(float fitness, float *param, float dims){
+    printf("Fitness:%f param: ", fitness);
+    for(int i = 0; i < dims; ++i){
+        printf("%f ", param[i]);
+    }
+    printf("\n");
 }
 
 

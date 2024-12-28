@@ -57,3 +57,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.14] - 2024-12-26
 ### Changed
 - Yandong Luo: Complete and verify all the contents of evaluate calculations, and perform floor() on the integer part.
+
+## [0.1.14] - 2024-12-27
+### Changed
+- Yandong Luo: Completed a test of a MILP problem. The overall process is correct and the result is correct.

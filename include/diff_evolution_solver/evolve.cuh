@@ -232,7 +232,7 @@ namespace cudaprocess{
 
     }
 
-    __device__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
+    __device__ __forceinline__ void BitonicWarpCompare(float &param, float &fitness, int lane_mask){
         float mapping_param = __shfl_xor_sync(0xffffffff, param, lane_mask);
         float mapping_fitness = __shfl_xor_sync(0xffffffff, fitness, lane_mask);
         // determine current sort order is increase (1.0) or decrease (-1.0)
@@ -248,7 +248,7 @@ namespace cudaprocess{
      * Sort the first 64 of old param (0 - 63)
      */
     template <int T=64>
-    __device__ void SortCurrentParamBasedBitonic(float *all_param, float *all_fitness){
+    __device__ __forceinline__ void SortCurrentParamBasedBitonic(float *all_param, float *all_fitness){
         // each block have a share memory
         __shared__ float sm_sorted_fitness[T];
         __shared__ float sm_sorted_param[T];
@@ -449,7 +449,7 @@ namespace cudaprocess{
      * Sort the current parameter and delete part of old param (0 - 127)
      */
     template <int T=64> // T is the pop size
-    __device__ void SortOldParamBasedBitonic(float *all_param, float *all_fitness){
+    __device__ __forceinline__ void SortOldParamBasedBitonic(float *all_param, float *all_fitness){
         if (all_param == nullptr || all_fitness == nullptr) return;
         // each block have a share memory
         __shared__ float sm_sorted_fitness[T * 2];

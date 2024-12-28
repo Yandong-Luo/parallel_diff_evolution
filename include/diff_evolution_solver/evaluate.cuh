@@ -43,7 +43,7 @@ __global__ void DynamicEvaluation(CudaEvolveData *evolve, CudaParamClusterData<T
  * In the future we can use matrix to present the constraint
  */
 template<int T>
-__device__ void DynamicEvaluation2(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data, const float *lambda){
+__device__ __forceinline__ void DynamicEvaluation2(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data, const float *lambda){
     float score = 0.0;
     int idx = threadIdx.x;
     
@@ -77,7 +77,7 @@ __global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterD
     if (blockIdx.x >= T)    return;
     if(threadIdx.x == evolve->dims){
         param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = 1.0;
-        printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
+        // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
         return;
     }
     if(threadIdx.x >= evolve->con_var_dims){
@@ -87,10 +87,28 @@ __global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterD
         param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
     }
     
-
-    printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
+    // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
 }
 
+template<int T>
+__global__ void UpdateFitnessBasedMatrix(CudaParamClusterData<T> *cluster_data, float *evaluate_score){
+    if (threadIdx.x >= T) return;
+    cluster_data->fitness[threadIdx.x] = evaluate_score[threadIdx.x];
+}
+
+__device__ __forceinline__ float Interpolation(float x0, float x1, float x, float y0, float y1) {
+  if (x <= x0) return y0;
+  if (x >= x1) return y1;
+  return y0 + (x - x0) / (x1 - x0) * (y1 - y0);
+}
+
+__global__ void UpdateLambdaBasedInterpolation(CudaEvolveData *evolve_data, float *lambda_matrix, int epoch){
+    lambda_matrix[threadIdx.x] = Interpolation(0, evolve_data->max_round, epoch, evolve_data->init_lambda, evolve_data->max_lambda);
+}
+
+__global__ void InequalityMask(float *tmp_score){
+    if(tmp_score[threadIdx.x] <= 0.) tmp_score[threadIdx.x] = 0.;
+}
 
 }
 

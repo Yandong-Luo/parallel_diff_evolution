@@ -33,9 +33,9 @@ namespace cudaprocess{
             void WarmStart(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol);
             void InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
             void SetBoundary(ProblemEvaluator* evaluator);
-            void Evaluation(int size);
+            void Evaluation(int size, int epoch);
             void Evolution(int epoch, CudaEvolveType search_type);
-            void Solver(int evolve_round);
+            CudaParamIndividual Solver();
         private:
             int gpu_device_;
             int default_pop_size_;
@@ -88,6 +88,10 @@ namespace cudaprocess{
             // int row_obj_constant, col_obj_constant;
 
             cublasHandle_t cublas_handle_; 
+
+            int max_lambda;
+
+            CudaParamIndividual *host_result;
     };
 }
 
