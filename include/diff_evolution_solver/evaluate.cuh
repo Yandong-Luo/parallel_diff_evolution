@@ -73,17 +73,24 @@ __device__ void DynamicEvaluation2(CudaEvolveData *evolve, CudaParamClusterData<
 
 template<int T>
 __global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data, float *param_matrix){
-    if (threadIdx.x >= evolve->dims) return;
+    if (threadIdx.x > evolve->dims) return;
     if (blockIdx.x >= T)    return;
-    int sol_id = blockIdx.x;
-    int param_id = threadIdx.x;
-    param_matrix[blockIdx.x * evolve->dims + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
+    if(threadIdx.x == evolve->dims){
+        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = 1.0;
+        printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
+        return;
+    }
+    // int sol_id = blockIdx.x;
+    // int param_id = threadIdx.x;
+    param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
     // param_matrix[blockIdx.x * evolve->dims + threadIdx.x] =
     // cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
 
 
-    printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * evolve->dims + threadIdx.x, param_matrix[blockIdx.x * evolve->dims + threadIdx.x]);
+    printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
 }
+
+
 }
 
 

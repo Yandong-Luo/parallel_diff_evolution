@@ -4,7 +4,7 @@ namespace cudaprocess{
     __global__ void RndInit(curandState_t *states, long long unsigned seed, int total_size) {
         int idx = blockIdx.x * blockDim.x + threadIdx.x;
         if (idx < total_size) {
-            curand_init(seed, idx, idx, &states[idx]);
+            curand_init(seed, idx, 0, &states[idx]);
         }
     }
 
@@ -12,10 +12,9 @@ namespace cudaprocess{
         int idx = (blockIdx.x * blockDim.x + threadIdx.x) * 10;
         int state_idx = blockIdx.x * blockDim.x + threadIdx.x;
         if (idx + 9 < total_size) {
-            curandState_t localState = states[state_idx];  // 本地副本提高效率
         #pragma unroll
             for (int i = 0; i < 10; ++i) {
-            res[idx + i] = curand_uniform(&localState);
+            res[idx + i] = curand_uniform(&states[state_idx]);
             if (res[idx + i] >= 1.0) {
                 res[idx + i] = 0.;
             }
@@ -30,16 +29,6 @@ namespace cudaprocess{
         }
     }
 
-    // 添加一个辅助kernel来检查states的初始化
-    __global__ void CheckStates(curandState_t *states, int n) {
-        int idx = blockIdx.x * blockDim.x + threadIdx.x;
-        if (idx < n) {
-            // 生成一个测试随机数
-            float test = curand_uniform(&states[idx]);
-            printf("State[%d] test random: %f\n", idx, test);
-        }
-    }
-
     CudaRandomCenter::CudaRandomCenter(int gpu_device)
     {
         normal_size_ = size_ * 3 * CUDA_MAX_ROUND_NUM;
@@ -49,9 +38,7 @@ namespace cudaprocess{
         CHECK_CUDA(cudaMalloc(&states_, sizeof(curandState_t) * state_size_));
         CHECK_CUDA(cudaMalloc(&uniform_data_, sizeof(float) * uniform_size_));
         CHECK_CUDA(cudaMalloc(&normal_data_, sizeof(float) * normal_size_));
-        // auto seed_ = 0;
-        // 使用时间作为种子
-        auto seed_ = static_cast<long long unsigned>(time(nullptr));
+        auto seed_ = 0;
         RndInit<<<50, 1024>>>(states_, seed_, state_size_);
 
         normal_grid_size_ = (normal_size_ - 1) / 1024 + 1;
@@ -59,10 +46,6 @@ namespace cudaprocess{
         uniform_grid_size_ = 50;
         Generate();
         cudaDeviceSynchronize();
-
-        // printf("\nChecking random states:\n");
-        // CheckStates<<<50, 1024>>>(states_, state_size_);
-        // cudaDeviceSynchronize();
     }
     
     CudaRandomCenter::~CudaRandomCenter()

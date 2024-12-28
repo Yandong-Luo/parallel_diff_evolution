@@ -53,15 +53,15 @@ struct ProblemEvaluator{
     }
 
     // matrix dims
-    int row_obj = 3, col_obj = 1;
-    int row_obj_constant = 1, col_obj_constant = 1;
-    int row_constraint_mat = 2, col_constraint_mat = 3;   // row x col should equal to num_constraint x constraint variable
-    int row_constraint_constant_mat = 2, col_constraint_constant_mat = 1;   // row x col equal to num_constraint x 1
+    int row_obj = 4, col_obj = 1;
+    // int row_obj_constant = 64, col_obj_constant = 1;
+    int row_constraint_mat = 2, col_constraint_mat = 4;   // row x col should equal to num_constraint x constraint variable + 1 (constant).
+    // int row_constraint_constant_mat = 2, col_constraint_constant_mat = 1;   // row x col equal to num_constraint x 1
 
-    float obj[3] = {-4, -3, -5};
-    float obj_constant[1] = {0};
-    float constraint_mat[6] = {2, 3, 1, 2, 1, 3};
-    float constraint_constant_mat[2] = {-12, -12};
+    float obj[4][1] = {{-4}, {-3}, {-5}, {0}};
+    // float obj_constant[64][1] = {0};
+    float constraint_mat[2][4] = {{2, 3, 1, -12}, {2, 1, 3, -12}};
+    // float constraint_constant_mat[2][1] = {{-12}, {-12}};
 
     float lambda[2] = {10, 10};
 

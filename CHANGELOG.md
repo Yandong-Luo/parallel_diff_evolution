@@ -49,3 +49,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.12] - 2024-12-25
 ### Changed
 - Yandong Luo: Remove the compilation flag in CMakeList to solve the random center failure problem. Sucessfully verify the parameter matrix.
+
+## [0.1.13] - 2024-12-26
+### Changed
+- Yandong Luo: The matrix calculation and verification of objective function based on cublas has been completed. It is worth noting that the matrix used to receive the result must be cleared to zero. Otherwise, the result will continue to accumulate.

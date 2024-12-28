@@ -27,6 +27,8 @@ utils/utils.cuh
 ../include/diff_evolution_solver/utils/utils.cuh
 
 ../include/diff_evolution_solver/debug.cuh
+string
+-
 diff_evolution_solver/data_type.h
 ../include/diff_evolution_solver/diff_evolution_solver/data_type.h
 

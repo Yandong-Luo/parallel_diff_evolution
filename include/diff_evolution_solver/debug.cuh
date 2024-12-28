@@ -1,6 +1,6 @@
 #ifndef CUDAPROCESS_DEBUG_OUTPUT_H
 #define CUDAPROCESS_DEBUG_OUTPUT_H
-
+#include<string>
 #include "diff_evolution_solver/data_type.h"
 
 // template <int T>
@@ -47,5 +47,63 @@ void PrintEvolveData(cudaprocess::CudaEvolveData *evolve){
         printf("warmstart:%f ", evolve->warm_start.param[i]);
     }
 }
+
+/**
+ * EVALUATE OUTPUT
+ */
+void PrintMatrix(float *obj_mat, int row, int col, std::string output_msg){
+    // printf("%s\n",output_msg);
+    std::cout<<output_msg<<std::endl;
+
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            // printf("row:%d col:%d objective mat:%f ", i, j, h_objective_matrix[i * col_obj +j]);
+            printf("matrix[%d,%d]=%f ", i, j, obj_mat[i * col + j]);
+        }
+        printf("\n");
+    }
+}
+
+void PrintFitnesssWithParam(float *obj_mat, float *param_mat, int row, int obj_mat_col, int dims, std::string output_msg){
+    // printf("%s\n",output_msg);
+    std::cout<<output_msg<<std::endl;
+
+    for(int i = 0; i < row; ++i){
+        for (int j = 0; j < obj_mat_col; ++j){
+            printf("individual:%d fitness:%f param", i, obj_mat[i * obj_mat_col +j]);
+        }
+        
+        for (int j = 0; j < dims; ++j) {
+            printf("[%d, %d]=%f ", i, j, param_mat[i * dims + j]);
+        }
+        printf("\n");
+    }
+}
+
+void printMatrix2(float* matrix, int row, int col) {
+    printf("%d %d", row, col);
+    for(int i=0;i<row;i++)
+    {
+        std::cout << std::endl;
+        std::cout << " [ ";
+        for (int j=0; j<col; j++) {
+         std::cout << matrix[i * col + j] << " ";
+        }
+        std::cout << " ] ";
+    }
+    std::cout << std::endl;
+}
+
+__global__ void printDeviceMatrix(float *matrix){
+    // int sol_id = blockIdx.x;
+    // int param_id = threadIdx.x;
+    // param_matrix[blockIdx.x * evolve->dims + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
+    // param_matrix[blockIdx.x * evolve->dims + threadIdx.x] =
+    // cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
+
+    printf("matrix parameter[%d] is %f\n", threadIdx.x, matrix[threadIdx.x]);
+    // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * evolve->dims + threadIdx.x, param_matrix[blockIdx.x * evolve->dims + threadIdx.x]);
+}
+
 
 #endif
