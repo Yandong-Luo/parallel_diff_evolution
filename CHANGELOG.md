@@ -53,3 +53,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.13] - 2024-12-26
 ### Changed
 - Yandong Luo: The matrix calculation and verification of objective function based on cublas has been completed. It is worth noting that the matrix used to receive the result must be cleared to zero. Otherwise, the result will continue to accumulate.
+
+## [0.1.14] - 2024-12-26
+### Changed
+- Yandong Luo: Complete and verify all the contents of evaluate calculations, and perform floor() on the integer part.

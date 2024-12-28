@@ -205,10 +205,20 @@ void CudaDiffEvolveSolver::Evaluation(int size){
         // check obj matrix before matrix multiplication
         CHECK_CUDA(cudaMemcpy(h_objective_matrix, objective_matrix, row_obj * col_obj * sizeof(float), cudaMemcpyDeviceToHost));
         PrintMatrix(h_objective_matrix, row_obj, col_obj, "CHECK OBJ MATRIX BEFORE MATRIX MULTIPLICATION");
+
+        // check constraint matrix before matrix multiplication
+        CHECK_CUDA(cudaMemcpy(h_constraint_matrix, constraint_matrix, row_constraint * col_constraint * sizeof(float), cudaMemcpyDeviceToHost));
+        PrintMatrix(h_constraint_matrix, row_constraint, col_constraint, "CHECK CONSTRAINT MATRIX BEFORE MATRIX MULTIPLICATION");
+
+        // check lambda matrix before matrix multiplication
+        CHECK_CUDA(cudaMemcpy(h_lambda_matrix, lambda_matrix, row_lambda * col_lambda * sizeof(float), cudaMemcpyDeviceToHost));
+        PrintMatrix(h_lambda_matrix, row_lambda, col_lambda, "CHECK LAMBDA MATRIX BEFORE MATRIX MULTIPLICATION");
     }
 
-    // reset the evaluate score
+    // reset the evaluate score and tmp score
     cudaMemset(evaluate_score_, 0, size * sizeof(float));
+
+    cudaMemset(tmp_score, 0, size * col_constraint * sizeof(float));
 
     // objective part
     // example:
@@ -221,18 +231,30 @@ void CudaDiffEvolveSolver::Evaluation(int size){
     //     CUBLAS_OP_T,  // B is stored in row-major order, so it is considered transposed, otherwise CUBLAS_OP_N
     //     m, n, k,     // m: the number of rows in C; n: the number of columns in C; k: the number of columns in A; 
     //     &alpha,
-    //     A, lda,  // A 的 leading dimension. If the matrix is ​​stored row-major, lda should be the number of columns in the matrix. Otherwise, lda should be the number of rows.
-    //     B, ldb,  // B 的 leading dimension
+    //     A, lda,  // leading dimension of A. If the matrix is ​​stored row-major, lda should be the number of columns in the matrix. Otherwise, lda should be the number of rows.
+    //     B, ldb,  // leading dimension of B
     //     &beta,
     //     C, ldc   // C 的 leading dimension
     // );
+
     // printf("CHECK THE PARAM OF cublasSgemm: %d %d %d %d %d %d\n", row_obj_constant, col_obj_constant, dims_, dims_, col_obj , row_obj_constant);
-    cublasSgemm(cublas_handle_, CUBLAS_OP_T, CUBLAS_OP_T, size, 1, dims_ + 1, &alpha, param_matrix, dims_ + 1, objective_matrix, col_obj, &beta, evaluate_score_, size);
+    // Strongly recommend reading this blog: https://blog.csdn.net/HaoBBNuanMM/article/details/103054357
+    cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_N, 1, size, dims_ + 1, &alpha, objective_matrix, col_obj, param_matrix, dims_ + 1, &beta, evaluate_score_, col_obj);
+
+    // printf("CHECK THE PARAM OF cublasSgemm: %d %d %d %d %d %d\n", col_constraint, size, dims_+1, dims_+1, col_constraint , size);
+    cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_N, col_constraint, size, dims_ + 1, &alpha, constraint_matrix, col_constraint, param_matrix, dims_ + 1, &beta, tmp_score, col_constraint);
+
+    cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_N, 1, size, row_lambda, &alpha, lambda_matrix, col_lambda, tmp_score, col_constraint, &beta, evaluate_score_, col_lambda);
 
     if(DEBUG_PRINT_FLAG){
         // GPU DEBUG
         // printf("device obj_constant_matrix\n");
         // printMatrix<<<1, row_obj_constant*col_obj_constant, 0, cuda_utils_->streams_[0]>>>(obj_constant_matrix);
+
+        // check tmp score with individual after matrix multiplication
+        CHECK_CUDA(cudaMemcpy(host_tmp_score, tmp_score, size * col_constraint * sizeof(float), cudaMemcpyDeviceToHost));
+        // CHECK_CUDA(cudaMemcpy(host_param_matrix, param_matrix, (dims_ + 1) * size * sizeof(float), cudaMemcpyDeviceToHost));
+        PrintTmpScoreWithParam(host_tmp_score, host_param_matrix, size, col_constraint, dims_ + 1, "CHECK TMP SCORE");
         
         // check fitness with individual after matrix multiplication
         CHECK_CUDA(cudaMemcpy(host_evaluate_score_, evaluate_score_, size * sizeof(float), cudaMemcpyDeviceToHost));
@@ -307,9 +329,9 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     host_evolve_data_->constraints = host_evaluator->constraints;
     host_evolve_data_->objective = host_evaluator->objective;
 
-    for(int i = 0; i < host_evaluator->num_constraint; ++i){
-        host_evolve_data_->lambda[i] = host_evaluator->lambda[i];
-    }
+    // for(int i = 0; i < host_evaluator->num_constraint; ++i){
+    //     host_evolve_data_->lambda[i] = host_evaluator->lambda[i];
+    // }
 
     
     // initial constraint matrix
@@ -322,6 +344,9 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     col_obj = host_evaluator->col_obj;
     // row_obj_constant = host_evaluator->row_obj_constant;
     // col_obj_constant = host_evaluator->col_obj_constant;
+
+    row_lambda = host_evaluator->row_lambda;
+    col_lambda = host_evaluator->col_lambda;
     
     size_t size_constraint_mat = row_constraint * col_constraint * sizeof(float);
     // size_t size_constraint_constant_mat = row_constraint_constant * col_constraint_constant * sizeof(float);
@@ -344,6 +369,15 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     //     }
     //     printf("\n");
     // }
+
+    CHECK_CUDA(cudaMalloc(&tmp_score, default_pop_size_ * host_evaluator->col_constraint_mat * sizeof(float)));
+    CHECK_CUDA(cudaHostAlloc(&host_tmp_score, default_pop_size_ * host_evaluator->col_constraint_mat * sizeof(float), cudaHostAllocDefault));
+
+    CHECK_CUDA(cudaMalloc(&lambda_matrix, row_lambda * col_lambda * sizeof(float)));
+    CHECK_CUDA(cudaHostAlloc(&h_lambda_matrix, row_lambda * col_lambda * sizeof(float), cudaHostAllocDefault));
+
+    memcpy(h_lambda_matrix, host_evaluator->lambda, row_lambda * col_lambda * sizeof(float));
+    CHECK_CUDA(cudaMemcpy(lambda_matrix, h_lambda_matrix, row_lambda * col_lambda * sizeof(float), cudaMemcpyHostToDevice));
 
     CHECK_CUDA(cudaMalloc(&constraint_matrix, size_constraint_mat));
     // CHECK_CUDA(cudaMalloc(&constraint_constant_matrix, size_constraint_constant_mat));
@@ -473,6 +507,8 @@ CudaDiffEvolveSolver::~CudaDiffEvolveSolver(){
         // CHECK_CUDA(cudaFree(obj_constant_matrix));
         CHECK_CUDA(cudaFree(param_matrix));
         CHECK_CUDA(cudaFree(evaluate_score_));
+        CHECK_CUDA(cudaFree(tmp_score));
+        CHECK_CUDA(cudaFree(lambda_matrix));
 
         // CPU host
         CHECK_CUDA(cudaFreeHost(host_decoder_));
@@ -485,6 +521,8 @@ CudaDiffEvolveSolver::~CudaDiffEvolveSolver(){
         CHECK_CUDA(cudaFreeHost(host_old_cluster_data_));
         CHECK_CUDA(cudaFreeHost(host_evaluate_score_));
         CHECK_CUDA(cudaFreeHost(host_param_matrix));
+        CHECK_CUDA(cudaFreeHost(host_tmp_score));
+        CHECK_CUDA(cudaFreeHost(h_lambda_matrix));
     }
     
 }

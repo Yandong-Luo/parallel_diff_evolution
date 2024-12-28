@@ -80,6 +80,24 @@ void PrintFitnesssWithParam(float *obj_mat, float *param_mat, int row, int obj_m
     }
 }
 
+void PrintTmpScoreWithParam(float *tmp_score_matrix, float *param_mat, int row, int tmp_mat_col, int dims, std::string output_msg){
+    // printf("%s\n",output_msg);
+    std::cout<<output_msg<<std::endl;
+
+    for(int i = 0; i < row; ++i){
+        
+        printf("%d param: ", i);
+        for (int j = 0; j < dims; ++j) {
+            printf("%f ", param_mat[i * dims + j]);
+        }
+
+        for (int j = 0; j < tmp_mat_col; ++j){
+            printf("tmp score[%d, %d]:%f", i, j, tmp_score_matrix[i * tmp_mat_col +j]);
+        }
+        printf("\n");
+    }
+}
+
 void printMatrix2(float* matrix, int row, int col) {
     printf("%d %d", row, col);
     for(int i=0;i<row;i++)

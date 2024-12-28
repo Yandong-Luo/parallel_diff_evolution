@@ -14,9 +14,13 @@
 #include "diff_evolution_solver/converter.cuh"
 #include "diff_evolution_solver/random_center.cuh"
 
+// #define M 64
+// #define N 1
+// #define K 3
+
 #define M 64
-#define N 1
-#define K 3
+#define N 2
+#define K 4
 
 namespace cudaprocess{
     
@@ -63,19 +67,24 @@ namespace cudaprocess{
             float *param_matrix, *host_param_matrix;
 
             float *constraint_matrix;
-            float *constraint_constant_matrix;
+            // float *constraint_constant_matrix;
             float *objective_matrix;
-            float *obj_constant_matrix;
+            float *lambda_matrix;
+            // float *obj_constant_matrix;
 
             float *h_constraint_matrix;
-            float *h_constraint_constant_matrix;
+            // float *h_constraint_constant_matrix;
             float *h_objective_matrix;
-            float *h_obj_constant_matrix;
+            float *h_lambda_matrix;
+            // float *h_obj_constant_matrix;
 
             int row_constraint, col_constraint;
             // int row_constraint_constant, col_constraint_constant;
             int row_obj, col_obj;
+            int row_lambda, col_lambda;
             float *evaluate_score_, *host_evaluate_score_;
+            // record the result of param matrix x constraint matrix
+            float *tmp_score, *host_tmp_score; 
             // int row_obj_constant, col_obj_constant;
 
             cublasHandle_t cublas_handle_; 

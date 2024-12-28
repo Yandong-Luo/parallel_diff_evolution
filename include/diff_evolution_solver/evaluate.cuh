@@ -80,12 +80,13 @@ __global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterD
         printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
         return;
     }
-    // int sol_id = blockIdx.x;
-    // int param_id = threadIdx.x;
-    param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
-    // param_matrix[blockIdx.x * evolve->dims + threadIdx.x] =
-    // cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
-
+    if(threadIdx.x >= evolve->con_var_dims){
+        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = floor(cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x]);
+    }
+    else{
+        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
+    }
+    
 
     printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
 }

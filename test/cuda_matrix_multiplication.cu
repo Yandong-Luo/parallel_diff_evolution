@@ -105,8 +105,8 @@
 #include <cstdint>
  
 #define M 2
-#define N 4
-#define K 3
+#define N 2
+#define K 4
 
 
 void printMatrix2(float* matrix, int row, int col) {
@@ -139,11 +139,16 @@ int main(void)
 {
         float alpha=1.0;
         float beta=1.0;
-        float h_A[M][K]={ {1,2,3}, {4,5,6} };
-        float h_B[K][N]={ {1,2,3,4}, {5,6,7,8}, {9,10,11,12} };
+        // float h_A[M][K]={ {1,2,3}, {4,5,6} };
+        // float h_B[K][N]={ {1,2,3,4}, {5,6,7,8}, {9,10,11,12} };
+        // float h_C[M][N] = {0};
+
+        float h_A[M][K]= {{6.514935, 4.181858, 18.865396, 1.000000},{7.550661, 3.893548, 17.858698, 1.000000}};
+        float h_B[K][N]= {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
         float h_C[M][N] = {0};
-        float result[8];
+        float result[2];
         float *d_a,*d_b,*d_c;
+        float host_A[4], host_B[8];
         cudaMalloc((void**)&d_a,M*K*sizeof(float));
         cudaMalloc((void**)&d_b,K*N*sizeof(float));
         cudaMalloc((void**)&d_c,M*N*sizeof(float));
@@ -152,11 +157,16 @@ int main(void)
         cudaMemcpy(d_c,h_C,M*N*sizeof(float), cudaMemcpyHostToDevice);
 
         cudaMemcpy(result, d_c, M * N * sizeof(float), cudaMemcpyDeviceToHost);
-        printMatrix2(result, M, N);
+        cudaMemcpy(host_A, d_a, M * K * sizeof(float), cudaMemcpyDeviceToHost);
+        printMatrix2(host_A, M, K);
+        cudaMemcpy(host_B, d_b, K * N * sizeof(float), cudaMemcpyDeviceToHost);
+        printMatrix2(host_B, K, N);
+
         cublasHandle_t handle;
         cublasCreate(&handle);
-        cublasSgemm(handle,CUBLAS_OP_T,CUBLAS_OP_T, M, N, K,&alpha, d_a, K, d_b, N,&beta, d_c, M);
+        printf("CHECK THE PARAM OF cublasSgemm: %d %d %d %d %d %d\n", M, N, K, K, N , M);
+        cublasSgemm(handle,CUBLAS_OP_N,CUBLAS_OP_N, N, M, K,&alpha, d_b, N, d_a, K,&beta, d_c, N);
         cudaMemcpy(result,d_c,M*N*sizeof(float),cudaMemcpyDeviceToHost);//此处的h_C是按列存储的C
-        printMatrix2(result, N, M);//按行优先N行M列的顺序读取h_C相当于做了CT的结果
+        printMatrix2(result, M, N);//按行优先N行M列的顺序读取h_C相当于做了CT的结果
         return 0;
 }
