@@ -14,7 +14,7 @@ namespace cudaprocess{
         CudaParamIndividual *tasks_best_sol_;
         CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *tasks_potential_sol_;
         CudaDiffEvolveSolver diff_evolve_solvers_[CUDA_MAX_TASKS];
-        ProblemEvaluator *tasks_evaluator_;
+        Problem *tasks_problem_;
         std::shared_ptr<CudaRandomCenter> rnd_manager_;
 
         bool cudamalloc_flag{false};
@@ -25,9 +25,9 @@ namespace cudaprocess{
         void GenerateSolution(int task_id);
         void ParallelGenerateMultiTaskSol();
 
-        ProblemEvaluator *GetEvaluator(int task_id){
+        Problem *Getproblem(int task_id){
             assert(task_id < task_id);
-            return &tasks_evaluator_[task_id];
+            return &tasks_problem_[task_id];
         };
         
         CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *GetPotentialSol(int task_id) {

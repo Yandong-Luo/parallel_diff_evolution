@@ -7,7 +7,7 @@
 
 int main(int argc,char** argv){
     // CPU 计时
-    auto cpu_start = std::chrono::high_resolution_clock::now();
+    // auto cpu_start = std::chrono::high_resolution_clock::now();
 
     // Set the number of tasks and GPU device ID
     // each task use a differential evolution
@@ -22,20 +22,11 @@ int main(int argc,char** argv){
 
     solver_center.ParallelGenerateMultiTaskSol();
 
-    // // Set constraints
-    // solver.SetConstraints();
-
-    // // Run the solver
-    // solver.Solver();
-
-    // Print the result (assume the final result is stored in the class)
-    // std::cout << "Solver completed successfully!" << std::endl;
-
     // CPU 计时结束
-    auto cpu_end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<float, std::milli> cpu_duration = cpu_end - cpu_start;
+    // auto cpu_end = std::chrono::high_resolution_clock::now();
+    // std::chrono::duration<float, std::milli> cpu_duration = cpu_end - cpu_start;
 
-    std::cout << "CPU time: " << cpu_duration.count() << " ms" << std::endl;
+    // std::cout << "CPU time: " << cpu_duration.count() << " ms" << std::endl;
 
     return 0;
 }

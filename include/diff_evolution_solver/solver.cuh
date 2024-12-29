@@ -23,9 +23,9 @@ namespace cudaprocess{
             ~CudaDiffEvolveSolver();
             void MallocSetup();
             void InitDiffEvolveParam(float best = 0.0, float d_top = 0. /*0.002*/, float min_top = 0.0, float diff = 5.0, float d_diff = 0.05, float min_diff = 0.05, float pf = 0.6, float pr = 0.9);
-            void WarmStart(ProblemEvaluator* evaluator, CudaParamIndividual* last_sol);
-            void InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* evaluator, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
-            void SetBoundary(ProblemEvaluator* evaluator);
+            void WarmStart(Problem* problem, CudaParamIndividual* last_sol);
+            void InitSolver(int gpu_device, CudaRandomCenter *random_center, Problem* problem, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
+            void SetBoundary(Problem* problem);
             void Evaluation(int size, int epoch);
             void Evolution(int epoch, CudaEvolveType search_type);
             CudaParamIndividual Solver();
@@ -44,7 +44,6 @@ namespace cudaprocess{
             CudaLShadePair lshade_param_;
 
             CudaEvolveData *host_evolve_data_, *evolve_data_;
-            CudaProblemDecoder *host_decoder_, *decoder_;
 
             std::shared_ptr<CudaUtil> cuda_utils_;
             CudaParamClusterData<64>* new_cluster_data_;
@@ -53,32 +52,22 @@ namespace cudaprocess{
             CudaParamClusterData<192>* host_old_cluster_data_;
 
             CudaRandomCenter *random_center_;
-            ProblemEvaluator *evaluator_;
-
-            CudaSolverInput *host_solver_input_, *device_solver_input_;
 
             float *param_matrix, *host_param_matrix;
 
             float *constraint_matrix;
-            // float *constraint_constant_matrix;
             float *objective_matrix;
             float *lambda_matrix;
-            // float *obj_constant_matrix;
 
             float *h_constraint_matrix;
-            // float *h_constraint_constant_matrix;
             float *h_objective_matrix;
             float *h_lambda_matrix;
-            // float *h_obj_constant_matrix;
 
             int row_constraint, col_constraint;
-            // int row_constraint_constant, col_constraint_constant;
             int row_obj, col_obj;
             int row_lambda, col_lambda;
             float *evaluate_score_, *host_evaluate_score_;
-            // record the result of param matrix x constraint matrix
             float *tmp_score, *host_tmp_score; 
-            // int row_obj_constant, col_obj_constant;
 
             cublasHandle_t cublas_handle_; 
 

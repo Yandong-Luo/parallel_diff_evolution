@@ -23,62 +23,29 @@ struct CudaVector {
   int len{0};
 };
 
-struct ProblemEvaluator{
+struct Problem{
     int num_con_variable = 2;
     int num_int_variable = 1;
-    // float binary_upper_bound[2] = {1, 1};
-    // float binary_lower_bound[2] = {0, 0};
-    // float con_upper_bound[3] = {10., 10., 10.};
-    // float con_lower_bound[3] = {0, 0, 0};
 
     float int_upper_bound[1] = {20};
     float int_lower_bound[1] = {0};
     float con_upper_bound[2] = {10., 10.};
     float con_lower_bound[2] = {0, 0};
 
-    float* (*constraints)(const float*);
-    float (*objective)(const float*);
-
-    ProblemEvaluator(){
-        constraints = [](const float* param) -> float* {
-            float* result = new float[2];
-            result[0] = 2 * param[0] + 3 * param[1] + param[2] - 12; 
-            result[1] = 2 * param[0] + param[1] + 3 * param[2] - 12;
-            return result; 
-        };
-
-        objective = [](const float* param) -> float {
-            return -4*param[0]-3*param[1]-5*param[2];
-        };
-    }
-
     // matrix dims
     int row_obj = 4, col_obj = 1;
-    // int row_obj_constant = 64, col_obj_constant = 1;
     int row_constraint_mat = 4, col_constraint_mat = 2;   // row x col should equal to num_constraint x constraint variable + 1 (constant).
-    // int row_constraint_constant_mat = 2, col_constraint_constant_mat = 1;   // row x col equal to num_constraint x 1
     int row_lambda = 2, col_lambda = 1;
 
-    float obj[4][1] = {{-4}, {-3}, {-5}, {0}};
-    // float constraint_mat[2][4] = {{2, 3, 1, -12}, {2, 1, 3, -12}};
+    float obj_mat[4][1] = {{-4}, {-3}, {-5}, {0}};
     float constraint_mat[4][2] = {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
-    // float constraint_constant_mat[2][1] = {{-12}, {-12}};
 
-    // float lambda[2][1] = {10};
     float lambda[2] = {10, 10};
-
 
     float constraint_param[2][4] = {
         {2, 3, 1, -12},
         {2, 1, 3, -12}
     };
-
-    int num_constraint = 2;
-    int num_constraint_variable = 4;
-
-    // objective function
-    float objective_param[3] = {-4., -3, -5};
-    int num_objective_param = 3;
 
     int max_lambda = 100;
     int init_lambda = 1;
@@ -86,6 +53,13 @@ struct ProblemEvaluator{
 
     float accuracy_rng = 0.5;
     int elite_eval_count = 8;
+
+    // // (Abandoned) Use for loop to evaluate 
+    // int num_constraint = 2;
+    // int num_constraint_variable = 4;
+    // // objective function
+    // float objective_param[3] = {-4., -3, -5};
+    // int num_objective_param = 3;
 };
 
 /*
@@ -127,35 +101,19 @@ struct CudaEvolveData{
     CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> last_potential_sol;
     CudaParamIndividual warm_start;
 
-    int num_constraint;
-    float constraint_para[CUDA_MAX_NUM_CONSTRAINT][CUDA_PARAM_MAX_SIZE + 1];
-    int num_constraint_variable;
-
-    float objective_param[CUDA_PARAM_MAX_SIZE];
-    int num_objective_param;
-
-    float* (*constraints)(const float*);
-    float (*objective)(const float*);
-    float lambda[CUDA_PARAM_MAX_SIZE];
-
-    // int generation;
     int max_lambda;
     int init_lambda;
     int max_round;
 
     float accuracy_rng;
     int elite_eval_count;
-};
 
-struct CudaSolverInput{
-    CudaParamClusterData<64> *new_param;
-    CudaParamClusterData<192> *old_param;
-    ProblemEvaluator *evaluator;
-};
-
-struct CudaProblemDecoder{
-    int dims_{0}, con_var_dims_{0}, int_var_dims_{0};
-    
+    // (Abandoned) Use for loop to evaluate 
+    // int num_constraint;
+    // float constraint_para[CUDA_MAX_NUM_CONSTRAINT][CUDA_PARAM_MAX_SIZE + 1];
+    // int num_constraint_variable;
+    // float objective_param[CUDA_PARAM_MAX_SIZE];
+    // int num_objective_param;
 };
 
 }

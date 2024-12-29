@@ -214,6 +214,10 @@ nvtxInit.h
 
 ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu
+diff_evolution_solver/random_center.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/random_center.cuh
+
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 diff_evolution_solver/solver.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/solver.cuh

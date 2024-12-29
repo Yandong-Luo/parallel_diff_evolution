@@ -10,14 +10,14 @@
 #include "data_type.h"
 
 namespace cudaprocess{
-    __global__ void InitParameter(CudaProblemDecoder* decoder, CudaEvolveData* evolve_data, int size, CudaParamClusterData<64>* new_cluster_data, CudaParamClusterData<192>* old_cluster_data, float *uniform_data){
+    __global__ void InitParameter(CudaEvolveData* evolve_data, int size, CudaParamClusterData<64>* new_cluster_data, CudaParamClusterData<192>* old_cluster_data, float *uniform_data){
         int idx = threadIdx.x;
         if (idx >= size)    return;
 
         // initial evolve data
-        evolve_data->new_cluster_vec->data[idx].con_var_dims = decoder->con_var_dims_;
-        evolve_data->new_cluster_vec->data[idx].int_var_dims = decoder->int_var_dims_;
-        evolve_data->new_cluster_vec->data[idx].dims = decoder->dims_;
+        evolve_data->new_cluster_vec->data[idx].con_var_dims = evolve_data->con_var_dims;
+        evolve_data->new_cluster_vec->data[idx].int_var_dims = evolve_data->int_var_dims;
+        evolve_data->new_cluster_vec->data[idx].dims = evolve_data->dims;
         evolve_data->new_cluster_vec->data[idx].fitness = 0.f;
         evolve_data->new_cluster_vec->data[idx].cur_scale_f1 = 0.5f;
         evolve_data->new_cluster_vec->data[idx].cur_scale_f = 0.5f;
@@ -41,9 +41,9 @@ namespace cudaprocess{
         }
         // printf("\n");
         if(idx == 0){
-            old_cluster_data->con_var_dims = new_cluster_data->con_var_dims = decoder->con_var_dims_;
-            old_cluster_data->int_var_dims = new_cluster_data->int_var_dims = decoder->int_var_dims_;
-            old_cluster_data->dims = new_cluster_data->dims = decoder->dims_;
+            old_cluster_data->con_var_dims = new_cluster_data->con_var_dims = evolve_data->con_var_dims;
+            old_cluster_data->int_var_dims = new_cluster_data->int_var_dims = evolve_data->int_var_dims;
+            old_cluster_data->dims = new_cluster_data->dims = evolve_data->dims;
 
             // printf("Thread 0: first few params = [%f, %f, %f]\n",
             // new_cluster_data->all_param[0],
