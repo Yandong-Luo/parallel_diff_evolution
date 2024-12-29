@@ -65,3 +65,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.16] - 2024-12-27
 ### Changed
 - Yandong Luo: Early termination is implemented by comparing the fitness values of the top 8 elite individuals with the best fitness from the previous generation.
+
+## [0.1.16] - 2024-12-27
+### Analysis
+- Yandong Luo: Added nvtx analysis to the solver part and init_solver part.

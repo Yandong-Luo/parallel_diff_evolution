@@ -17,6 +17,15 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
  ../include/diff_evolution_solver/solver.cuh
  ../include/utils/utils.cuh
  ../include/utils/utils_fun.cuh
+ ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
  /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
  ../include/diff_evolution_solver/converter.cuh
@@ -25,6 +34,15 @@ CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
  ../include/diff_evolution_solver/solver.cuh
  ../include/solver_center/solver_center.h
  ../include/utils/utils.cuh
+ ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
  /home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
  ../include/diff_evolution_solver/converter.cuh
@@ -33,6 +51,15 @@ CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
  ../include/diff_evolution_solver/solver.cuh
  ../include/solver_center/solver_center.h
  ../include/utils/utils.cuh
+ ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+ ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
  /home/chris/parallel_diff_evolution/src/main.cpp
  /usr/local/cuda-11.1/include/builtin_types.h
  /usr/local/cuda-11.1/include/channel_descriptor.h

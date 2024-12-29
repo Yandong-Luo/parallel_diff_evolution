@@ -294,6 +294,8 @@ void CudaDiffEvolveSolver::Evolution(int epoch, CudaEvolveType search_type){
 }
 
 void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* host_evaluator, CudaParamIndividual *output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
+    if(DEBUG_ENABLE_NVTX)   init_range = nvtxRangeStart("Init Different Evolvution Solver");
+
     gpu_device_ = gpu_device;
     random_center_ = random_center;
 
@@ -463,6 +465,8 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
 
     InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_, default_pop_size_);
 
+    if (DEBUG_ENABLE_NVTX)  nvtxRangeEnd(init_range);
+
     WarmStart(host_evaluator, output_sol);
 
     // if (DEBUG_PRINT_FLAG){
@@ -487,6 +491,9 @@ __global__ void GetSolFromOldParam(CudaParamClusterData<192> *old_param, CudaPar
 }
 
 CudaParamIndividual CudaDiffEvolveSolver::Solver(){
+    // nvtx3::mark("Different Evolvution Solver!");
+    if(DEBUG_ENABLE_NVTX)   solver_range = nvtxRangeStart("Different Evolvution Solver");
+
     init_pop_size_ = default_pop_size_;
     pop_size_ = default_pop_size_;
 
@@ -531,6 +538,8 @@ CudaParamIndividual CudaDiffEvolveSolver::Solver(){
     }
 
     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_SOLVER_FLAG)   printFinalResult(host_result->fitness, host_result->param, dims_);
+
+    if(DEBUG_ENABLE_NVTX)   nvtxRangeEnd(solver_range);
 
     return *host_result;
 }

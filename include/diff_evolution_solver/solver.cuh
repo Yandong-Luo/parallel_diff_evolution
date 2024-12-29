@@ -8,6 +8,7 @@
 #include <sys/time.h>
 #include <algorithm>
 #include <memory>
+#include <nvtx3/nvtx3.hpp>
 #include <cublas_v2.h>
 #include "diff_evolution_solver/data_type.h"
 #include "utils/utils.cuh"
@@ -88,6 +89,10 @@ namespace cudaprocess{
             float accuracy_rng;
             float *last_fitness;
             int *terminate_flag, *h_terminate_flag;
+
+            // NVTX
+            nvtxRangeId_t solver_range;
+            nvtxRangeId_t init_range;
     };
 }
 

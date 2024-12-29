@@ -10,6 +10,18 @@ find_package(CUDA REQUIRED)
 # Find CUBLAS
 find_library(CUBLAS_LIBRARY cublas HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 
+# Find nvToolsExt
+# find_library(NVTOOLSEXT_LIBRARY nvToolsExt HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
+
+# Create NVTX interface target
+add_library(nvtx3-cpp INTERFACE)
+target_include_directories(nvtx3-cpp INTERFACE 
+    ${PROJECT_SOURCE_DIR}/thirdparty/nvtx/c/include
+)
+if(UNIX)
+    target_link_libraries(nvtx3-cpp INTERFACE ${NVTOOLSEXT_LIBRARY})
+endif()
+
 # Include CUDA headers and libraries
 include_directories(${CUDA_INCLUDE_DIRS})
 link_directories(${CUDA_LIBRARIES})
@@ -54,7 +66,8 @@ set_target_properties(diff_evolution_solver PROPERTIES
 target_include_directories(diff_evolution_solver PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 # Link the executable with CUBLAS
-target_link_libraries(diff_evolution_solver 
+target_link_libraries(diff_evolution_solver PRIVATE
     ${CUDA_LIBRARIES}
     ${CUBLAS_LIBRARY}
+    nvtx3-cpp
 )

@@ -22,7 +22,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Debug
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -348,6 +348,9 @@ CUDA_nvToolsExt_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libnvToolsExt.so
 
 //Path to a library.
 CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
+
+//Path to a library.
+NVTOOLSEXT_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libnvToolsExt.so
 
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build

@@ -16,6 +16,15 @@ CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../i
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../include/diff_evolution_solver/solver.cuh
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../include/utils/utils.cuh
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../include/utils/utils_fun.cuh
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o: ../src/diff_evolution_solver/solver.cu
 
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/diff_evolution_solver/converter.cuh
@@ -24,6 +33,15 @@ CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../in
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/diff_evolution_solver/solver.cuh
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/solver_center/solver_center.h
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../include/utils/utils.cuh
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o: ../src/solver_center/solver_center.cu
 
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/diff_evolution_solver/converter.cuh
@@ -32,6 +50,15 @@ CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/diff_evolution_s
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/diff_evolution_solver/solver.cuh
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/solver_center/solver_center.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../include/utils/utils.cuh
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
+CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/builtin_types.h
 CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o: /usr/local/cuda-11.1/include/channel_descriptor.h

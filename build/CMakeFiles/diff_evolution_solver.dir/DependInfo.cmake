@@ -14,6 +14,7 @@ set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 # The include file search paths:
 set(CMAKE_CUDA_TARGET_INCLUDE_PATH
   "../include"
+  "../thirdparty/nvtx/c/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/chris/parallel_diff_evolution/src/main.cpp" "/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o"
@@ -24,6 +25,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/cuda-11.1/include"
   "../include"
+  "../thirdparty/nvtx/c/include"
   )
 
 # Targets to which this target links.

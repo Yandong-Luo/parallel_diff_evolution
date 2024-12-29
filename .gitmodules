@@ -1,0 +1,3 @@
+[submodule "thirdparty/nvtx_new"]
+	path = thirdparty/nvtx_new
+	url = https://github.com/NVIDIA/NVTX.git
