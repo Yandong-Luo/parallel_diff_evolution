@@ -578,8 +578,54 @@ namespace cudaprocess{
         }
     }
 
+    // __device__ __forceinline__ void EvolveTerminate(CudaEvolveData *evolve, float *last_best_fitness, float *all_fitness, int *terminate_flag){
+    //     if(threadIdx.x > 0)    return;
+    //     if(*terminate_flag != 0)    return;
+    //     if(blockIdx.x > evolve->elite_eval_count)   return;
+        
+    //     float elite_eval_sum = all_fitness[blockIdx.x];
+
+    //     if (evolve->elite_eval_count == 8){
+    //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 8);
+    //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 4);
+    //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 2);
+    //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 1);
+    //     }
+    //     printf("elite_eval_sum:%f\n",elite_eval_sum);
+    //     if(abs((elite_eval_sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count) < evolve->accuracy_rng){
+    //         *terminate_flag = 1;
+    //     }
+    // }
+    __device__ __forceinline__ void EvolveTerminate(CudaEvolveData *evolve, float *last_best_fitness, float *all_fitness, int *terminate_flag){
+        if(threadIdx.x > 0)    return;
+        if(*terminate_flag != 0)    return;
+        // if(blockIdx.x > evolve->elite_eval_count)   return;
+        __shared__ float shared_sum;  // 用于存储每个block内的结果
+        
+        if(blockIdx.x < evolve->elite_eval_count) {
+            shared_sum = all_fitness[blockIdx.x];
+            __syncthreads();
+
+            // 第0个block负责收集和累加所有block的结果
+            if(blockIdx.x == 0) {
+                float sum = 0.0;
+                // 累加其他block的值
+                for(int i = 1; i < evolve->elite_eval_count; i++) {
+                    sum += all_fitness[i];
+                    // printf("individual %d fitness:%f\n",i, sum );
+                }
+                
+                // printf("elite_eval_sum:%f bias:%f\n", sum, abs((sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count));
+                if(abs((sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count) < evolve->accuracy_rng){
+                    *terminate_flag = 1;
+                }
+            }
+        }
+    }
+
     template <int T = CUDA_SOLVER_POP_SIZE>
-    __global__ void UpdateParameter(int epoch, CudaEvolveData *evolve, CudaParamClusterData<64> *new_param, CudaParamClusterData<192> *old_param){
+    __global__ void UpdateParameter(int epoch, CudaEvolveData *evolve, CudaParamClusterData<64> *new_param, CudaParamClusterData<192> *old_param, int* terminate_flag, float *last_f){
+        if ((*terminate_flag & 1) > 0) return;
         // for old_param (current sol, delete sol, replaced sol), we select the fitness of current sol for all old param
         // so threadIdx.x & (T-1) equal to threadIdx.x % (T-1) which can help us to mapping all old_param to current sol
         float old_fitness = old_param->fitness[threadIdx.x & (T-1)], new_fitness = new_param->fitness[threadIdx.x & (T-1)];
@@ -690,6 +736,21 @@ namespace cudaprocess{
         __syncthreads();
 
         SortOldParamBasedBitonic(old_param->all_param, old_param->fitness);
+
+        // The following this method is only compare current fitness and last fitness. When the bias of these two fitness lower than accuracy_rng then stop evaluation
+        // __syncthreads();
+        // if(threadIdx.x == 0 && blockIdx.x == 0 && *terminate_flag == 0){
+        //     // printf("evolve->accuracy_rng:%f\n",evolve->accuracy_rng);
+        //     if(abs(old_param->fitness[0] - *last_f) < evolve->accuracy_rng){
+        //         *terminate_flag = 1;
+        //         // printf("stop stop stop");
+        //     }
+        //     *last_f = old_param->fitness[threadIdx.x];
+        // }
+
+        // This method consider the average fitness of top 8 individual. when the avg lower than accuracy_rng then stop evaluation
+        EvolveTerminate(evolve, last_f, old_param->fitness, terminate_flag);
+        *last_f = old_param->fitness[threadIdx.x];
     }
 }
 

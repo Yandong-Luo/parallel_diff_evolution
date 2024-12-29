@@ -58,6 +58,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Complete and verify all the contents of evaluate calculations, and perform floor() on the integer part.
 
-## [0.1.14] - 2024-12-27
+## [0.1.15] - 2024-12-27
 ### Changed
 - Yandong Luo: Completed a test of a MILP problem. The overall process is correct and the result is correct.
+
+## [0.1.16] - 2024-12-27
+### Changed
+- Yandong Luo: Early termination is implemented by comparing the fitness values of the top 8 elite individuals with the best fitness from the previous generation.

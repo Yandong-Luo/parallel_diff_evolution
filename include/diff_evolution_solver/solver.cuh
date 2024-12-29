@@ -14,14 +14,6 @@
 #include "diff_evolution_solver/converter.cuh"
 #include "diff_evolution_solver/random_center.cuh"
 
-// #define M 64
-// #define N 1
-// #define K 3
-
-#define M 64
-#define N 2
-#define K 4
-
 namespace cudaprocess{
     
     class CudaDiffEvolveSolver{
@@ -90,8 +82,12 @@ namespace cudaprocess{
             cublasHandle_t cublas_handle_; 
 
             int max_lambda;
-
+            // CudaParamIndividual *result;
             CudaParamIndividual *host_result;
+
+            float accuracy_rng;
+            float *last_fitness;
+            int *terminate_flag, *h_terminate_flag;
     };
 }
 

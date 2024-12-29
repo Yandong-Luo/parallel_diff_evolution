@@ -20,6 +20,8 @@ void CudaDiffEvolveSolver::MallocSetup(){
     CHECK_CUDA(cudaMalloc(&device_solver_input_, sizeof(CudaSolverInput)));
     CHECK_CUDA(cudaMalloc(&evaluator_, sizeof(ProblemEvaluator)));
     CHECK_CUDA(cudaMalloc(&evaluate_score_, default_pop_size_ * sizeof(float)));
+    CHECK_CUDA(cudaMalloc(&last_fitness, sizeof(float)));
+    CHECK_CUDA(cudaMalloc(&terminate_flag, sizeof(int)));
     // CHECK_CUDA(cudaMalloc(&new_param, sizeof(CudaParamClusterData<192>)));
 
     // CPU Host
@@ -30,6 +32,7 @@ void CudaDiffEvolveSolver::MallocSetup(){
     CHECK_CUDA(cudaHostAlloc(&host_solver_input_, sizeof(CudaSolverInput), cudaHostAllocDefault));
     CHECK_CUDA(cudaHostAlloc(&host_evaluate_score_, default_pop_size_ * sizeof(float), cudaHostAllocDefault));
     CHECK_CUDA(cudaHostAlloc(&host_result, sizeof(CudaParamIndividual), cudaHostAllocDefault));
+    CHECK_CUDA(cudaHostAlloc(&h_terminate_flag, sizeof(int), cudaHostAllocDefault));
     cuda_utils_ = std::make_shared<CudaUtil>();
 
     cudamalloc_flag = true;
@@ -284,9 +287,10 @@ void CudaDiffEvolveSolver::Evolution(int epoch, CudaEvolveType search_type){
     Evaluation(default_pop_size_, epoch);
 
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
-    UpdateParameter<64><<<CUDA_PARAM_MAX_SIZE, 128, 0, cuda_utils_->streams_[0]>>>(epoch, evolve_data_, new_cluster_data_, old_cluster_data_);
+    UpdateParameter<64><<<CUDA_PARAM_MAX_SIZE, 128, 0, cuda_utils_->streams_[0]>>>(epoch, evolve_data_, new_cluster_data_, old_cluster_data_, terminate_flag, last_fitness);
 
-
+    CHECK_CUDA(cudaMemcpyAsync(h_terminate_flag, terminate_flag, sizeof(int), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 }
 
 void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_center, ProblemEvaluator* host_evaluator, CudaParamIndividual *output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
@@ -382,6 +386,9 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
     host_evolve_data_->init_lambda = host_evaluator->init_lambda;
     host_evolve_data_->max_round = host_evaluator->max_round;
 
+    host_evolve_data_->accuracy_rng = host_evaluator->accuracy_rng;
+    host_evolve_data_->elite_eval_count = host_evaluator->elite_eval_count;
+
     CHECK_CUDA(cudaMalloc(&tmp_score, default_pop_size_ * host_evaluator->col_constraint_mat * sizeof(float)));
     CHECK_CUDA(cudaHostAlloc(&host_tmp_score, default_pop_size_ * host_evaluator->col_constraint_mat * sizeof(float), cudaHostAllocDefault));
 
@@ -412,6 +419,11 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, CudaRandomCenter *random_c
         throw std::runtime_error("CUBLAS initialization failed");
     }
     
+    *h_terminate_flag = 0;
+    cudaMemset(terminate_flag, 0, sizeof(int));
+    float init_last_f = CUDA_MAX_FLOAT;
+    CHECK_CUDA(cudaMemcpy(last_fitness, &init_last_f, sizeof(float), cudaMemcpyHostToDevice));
+    // cudaMemset(last_fitness, CUDA_MAX_FLOAT, sizeof(float));
     
     // host_evolve_data_->lower_bound = host_lower_bound_;
     // host_evolve_data_->upper_bound = host_upper_bound_;
@@ -493,7 +505,8 @@ CudaParamIndividual CudaDiffEvolveSolver::Solver(){
 
     SaveNewParamAsOldParam<<<default_pop_size_, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, old_cluster_data_, 0, default_pop_size_, 0);
 
-    for (int i = 0; i < host_evolve_data_->max_round; ++i) {
+    for (int i = 0; i < host_evolve_data_->max_round && !*h_terminate_flag; ++i) {
+        // printf("generation i:%d\n", i);
         Evolution(i, CudaEvolveType::GLOBAL);
     }
 
@@ -539,6 +552,7 @@ CudaDiffEvolveSolver::~CudaDiffEvolveSolver(){
         CHECK_CUDA(cudaFree(evaluate_score_));
         CHECK_CUDA(cudaFree(tmp_score));
         CHECK_CUDA(cudaFree(lambda_matrix));
+        // CHECK_CUDA(cudaFree(result));
 
         // CPU host
         CHECK_CUDA(cudaFreeHost(host_decoder_));

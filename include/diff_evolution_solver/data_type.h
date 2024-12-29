@@ -83,6 +83,9 @@ struct ProblemEvaluator{
     int max_lambda = 100;
     int init_lambda = 1;
     int max_round = 60;
+
+    float accuracy_rng = 0.5;
+    int elite_eval_count = 8;
 };
 
 /*
@@ -139,6 +142,9 @@ struct CudaEvolveData{
     int max_lambda;
     int init_lambda;
     int max_round;
+
+    float accuracy_rng;
+    int elite_eval_count;
 };
 
 struct CudaSolverInput{
