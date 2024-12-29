@@ -70,6 +70,6 @@ All notable changes to this project will be documented in this file.
 ### Analysis
 - Yandong Luo: Added nvtx analysis to the solver part and init_solver part.
 
-## [0.1.17] - 2024-12-28
+## [0.1.18] - 2024-12-28
 ### Changed
-- Yandong Luo: Remove all unnecessary implementations and selectively allocate memory space based on debug mode or not.
+- Yandong Luo: Remove all unnecessary implementations and selectively allocate memory space based on debug mode or not. And stop tracking existing qdrep files.
