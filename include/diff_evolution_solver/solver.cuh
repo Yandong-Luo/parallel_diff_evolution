@@ -24,7 +24,7 @@ namespace cudaprocess{
             void MallocSetup();
             void InitDiffEvolveParam(float best = 0.0, float d_top = 0. /*0.002*/, float min_top = 0.0, float diff = 5.0, float d_diff = 0.05, float min_diff = 0.05, float pf = 0.6, float pr = 0.9);
             void WarmStart(Problem* problem, CudaParamIndividual* last_sol);
-            void InitSolver(int gpu_device, CudaRandomCenter *random_center, Problem* problem, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
+            void InitSolver(int gpu_device, cublasHandle_t handle, int taks_id, CudaRandomCenter *random_center, Problem* problem, CudaParamIndividual* last_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol);
             void SetBoundary(Problem* problem);
             void Evaluation(int size, int epoch);
             void Evolution(int epoch, CudaEvolveType search_type);
@@ -70,7 +70,6 @@ namespace cudaprocess{
             float *tmp_score, *host_tmp_score; 
 
             cublasHandle_t cublas_handle_; 
-
             int max_lambda;
             CudaParamIndividual *result;
             CudaParamIndividual *host_result;
@@ -85,6 +84,8 @@ namespace cudaprocess{
             nvtxRangeId_t setting_boundary_range;
 
             nvtxRangeId_t loading_last_sol_range;
+
+            int task_id_ = 0;
     };
 }
 

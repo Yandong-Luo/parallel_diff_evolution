@@ -10,8 +10,11 @@ find_package(CUDA REQUIRED)
 # Find CUBLAS
 find_library(CUBLAS_LIBRARY cublas HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 
-# Find nvToolsExt
-# find_library(NVTOOLSEXT_LIBRARY nvToolsExt HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
+# # Find nlohmann_json
+# find_package(nlohmann_json 3.2.0 REQUIRED)
+
+# Find yaml-cpp
+find_package(yaml-cpp REQUIRED)
 
 # Create NVTX interface target
 add_library(nvtx3-cpp INTERFACE)
@@ -31,6 +34,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 # IF YOU ENABLE THE FOLLOWING THIS LINE, RANDOM CENTER WILL BECOME WEIRD!!!!!!
 # set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -G -g")
+# set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo")
 
 # Set CUDA compilation options (optional)
 set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17")
@@ -70,4 +74,6 @@ target_link_libraries(diff_evolution_solver PRIVATE
     ${CUDA_LIBRARIES}
     ${CUBLAS_LIBRARY}
     nvtx3-cpp
+    # nlohmann_json::nlohmann_json
+    yaml-cpp::yaml-cpp
 )

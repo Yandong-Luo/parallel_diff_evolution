@@ -349,14 +349,17 @@ CUDA_nvToolsExt_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libnvToolsExt.so
 //Path to a library.
 CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 
-//Path to a library.
-NVTOOLSEXT_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libnvToolsExt.so
-
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build
 
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_SOURCE_DIR:STATIC=/home/chris/parallel_diff_evolution
+
+//The directory containing a CMake configuration file for YAML_CPP.
+YAML_CPP_DIR:PATH=YAML_CPP_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for yaml-cpp.
+yaml-cpp_DIR:PATH=/usr/local/lib/cmake/yaml-cpp
 
 
 ########################

@@ -62,18 +62,22 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Completed a test of a MILP problem. The overall process is correct and the result is correct.
 
-## [0.1.16] - 2024-12-27
+## [0.1.16] - 2024-12-28
 ### Changed
 - Yandong Luo: Early termination is implemented by comparing the fitness values of the top 8 elite individuals with the best fitness from the previous generation.
 
-## [0.1.17] - 2024-12-28
+## [0.1.17] - 2024-12-29
 ### Analysis
 - Yandong Luo: Added nvtx analysis to the solver part and init_solver part.
 
-## [0.1.18] - 2024-12-28
+## [0.1.18] - 2024-12-29
 ### Changed
 - Yandong Luo: Remove all unnecessary implementations and selectively allocate memory space based on debug mode or not. And stop tracking existing qdrep files.
 
 ## [0.1.19] - 2024-12-29
 ### Changed
 - Yandong Luo: To optimize the efficiency of host->device, evolve_data was used for memory alignment and multi-stream transmission. However, there was still no significant efficiency improvement. Currently, Nsight shows that the process of host->device is too slow when comparing to the solution of the differential evolution algorithm.
+
+## [0.1.20] - 2024-12-30
+### Changed
+- Yandong Luo: Configure optimization problem parameters via YAML

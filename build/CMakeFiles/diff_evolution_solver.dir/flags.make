@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 CUDA_FLAGS = -g  
 
-CUDA_DEFINES = 
+CUDA_DEFINES = -DYAML_CPP_STATIC_DEFINE
 
 CUDA_INCLUDES = -I/home/chris/parallel_diff_evolution/include -I/home/chris/parallel_diff_evolution/thirdparty/nvtx/c/include 
 
 CXX_FLAGS = -g   -std=gnu++17
 
-CXX_DEFINES = 
+CXX_DEFINES = -DYAML_CPP_STATIC_DEFINE
 
 CXX_INCLUDES = -I/usr/local/cuda-11.1/include -I/home/chris/parallel_diff_evolution/include -I/home/chris/parallel_diff_evolution/thirdparty/nvtx/c/include 
 

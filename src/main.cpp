@@ -18,7 +18,7 @@ int main(int argc,char** argv){
     cudaprocess::CudaSolverCenter solver_center(gpu_device, num_enable_tasks);
 
     // Initialize the solver
-    solver_center.Init();
+    solver_center.Init("test_config.yaml");
 
     solver_center.ParallelGenerateMultiTaskSol();
 
