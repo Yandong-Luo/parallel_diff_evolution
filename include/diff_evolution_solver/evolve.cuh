@@ -60,7 +60,9 @@ namespace cudaprocess{
     template <CudaEvolveType SearchType = CudaEvolveType::GLOBAL>
     __global__ void CudaEvolveProcess(int epoch, CudaParamClusterData<192> *old_param, CudaParamClusterData<64> *new_param, float *uniform_data,
                                       float *normal_data, CudaEvolveData *evolve_data, int pop_size, float eliteRatio){
-        int dims = evolve_data->dims, con_dims = evolve_data->con_var_dims, int_dims = evolve_data->int_var_dims;
+        int dims = evolve_data->problem_param.dims, con_dims = evolve_data->problem_param.con_var_dims;
+        // int int_dims = evolve_data->problem_param.int_var_dims;
+
         int sol_idx = blockIdx.x;
         // int param_idx = threadIdx.x;
         int UsingEliteStrategy = 0;
@@ -116,7 +118,7 @@ namespace cudaprocess{
 
             mutationStartDim = min((int)floor(uniform_data[uniform_rnd_evolve_pos + 3] * dims), dims - 1);
 
-            int num_top = int(pop_size * evolve_data->top_ratio) + 1;
+            int num_top = int(pop_size * evolve_data->problem_param.top_ratio) + 1;
             // The index of an individual randomly selected from the top proportion of high-quality individuals in the population
             // Due to uniform_rnd_evolve_pos to uniform_rnd_evolve_pos + 3 have been used for parent_param_idx and mutationStartDim. So, starting from 4
             guideEliteIdx = max(0, min((num_top - 1), (int)floor(uniform_data[uniform_rnd_evolve_pos + 4] * num_top)));
@@ -581,44 +583,39 @@ namespace cudaprocess{
     // __device__ __forceinline__ void EvolveTerminate(CudaEvolveData *evolve, float *last_best_fitness, float *all_fitness, int *terminate_flag){
     //     if(threadIdx.x > 0)    return;
     //     if(*terminate_flag != 0)    return;
-    //     if(blockIdx.x > evolve->elite_eval_count)   return;
+    //     if(blockIdx.x > evolve->problem_param.elite_eval_count)   return;
         
     //     float elite_eval_sum = all_fitness[blockIdx.x];
 
-    //     if (evolve->elite_eval_count == 8){
+    //     if (evolve->problem_param.elite_eval_count == 8){
     //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 8);
     //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 4);
     //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 2);
     //         elite_eval_sum += __shfl_down_sync(0x000000ff, elite_eval_sum, 1);
     //     }
     //     printf("elite_eval_sum:%f\n",elite_eval_sum);
-    //     if(abs((elite_eval_sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count) < evolve->accuracy_rng){
+    //     if(abs((elite_eval_sum - evolve->problem_param.elite_eval_count * *last_best_fitness)/evolve->problem_param.elite_eval_count) < evolve->problem_param.accuracy_rng){
     //         *terminate_flag = 1;
     //     }
     // }
+
     __device__ __forceinline__ void EvolveTerminate(CudaEvolveData *evolve, float *last_best_fitness, float *all_fitness, int *terminate_flag){
         if(threadIdx.x > 0)    return;
+        if(blockIdx.x > 0)  return;
         if(*terminate_flag != 0)    return;
-        // if(blockIdx.x > evolve->elite_eval_count)   return;
-        __shared__ float shared_sum;  // 用于存储每个block内的结果
-        
-        if(blockIdx.x < evolve->elite_eval_count) {
-            shared_sum = all_fitness[blockIdx.x];
-            __syncthreads();
-
-            // 第0个block负责收集和累加所有block的结果
-            if(blockIdx.x == 0) {
-                float sum = 0.0;
-                // 累加其他block的值
-                for(int i = 1; i < evolve->elite_eval_count; i++) {
-                    sum += all_fitness[i];
-                    // printf("individual %d fitness:%f\n",i, sum );
-                }
                 
-                // printf("elite_eval_sum:%f bias:%f\n", sum, abs((sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count));
-                if(abs((sum - evolve->elite_eval_count * *last_best_fitness)/evolve->elite_eval_count) < evolve->accuracy_rng){
-                    *terminate_flag = 1;
-                }
+        // 第0个block负责收集和累加所有block的结果
+        if(blockIdx.x == 0) {
+            float sum = 0.0;
+            // 累加其他block的值
+            for(int i = 1; i < evolve->problem_param.elite_eval_count; ++i) {
+                sum += all_fitness[i];
+                // printf("individual %d fitness:%f\n",i, sum );
+            }
+            
+            // printf("elite_eval_sum:%f bias:%f\n", sum, abs((sum - evolve->problem_param.elite_eval_count * *last_best_fitness)/evolve->problem_param.elite_eval_count));
+            if(abs((sum - evolve->problem_param.elite_eval_count * *last_best_fitness)/evolve->problem_param.elite_eval_count) < evolve->problem_param.accuracy_rng){
+                *terminate_flag = 1;
             }
         }
     }
@@ -633,7 +630,6 @@ namespace cudaprocess{
         int sol_id = threadIdx.x;
         int param_id = blockIdx.x;
         float current_fitness = CUDA_MAX_FLOAT;
-        float current_deleted_fitness = CUDA_MAX_FLOAT;
 
         // Update parameter
         if (sol_id < T){
@@ -654,10 +650,9 @@ namespace cudaprocess{
                     old_param->all_param[(sol_id + 2 * T) * CUDA_PARAM_MAX_SIZE + param_id] = new_param_value;
                 }
             }
-            current_deleted_fitness = old_param->fitness[T + sol_id];
         }
         else{
-            current_deleted_fitness = (new_fitness < old_fitness) ? old_fitness : new_fitness;
+            // old_param->fitness[sol_id ] = (new_fitness < old_fitness) ? old_fitness : new_fitness;
         }
 
         // wait for all thread finish above all computation
@@ -740,8 +735,8 @@ namespace cudaprocess{
         // The following this method is only compare current fitness and last fitness. When the bias of these two fitness lower than accuracy_rng then stop evaluation
         // __syncthreads();
         // if(threadIdx.x == 0 && blockIdx.x == 0 && *terminate_flag == 0){
-        //     // printf("evolve->accuracy_rng:%f\n",evolve->accuracy_rng);
-        //     if(abs(old_param->fitness[0] - *last_f) < evolve->accuracy_rng){
+        //     // printf("evolve->problem_param.accuracy_rng:%f\n",evolve->problem_param.accuracy_rng);
+        //     if(abs(old_param->fitness[0] - *last_f) < evolve->problem_param.accuracy_rng){
         //         *terminate_flag = 1;
         //         // printf("stop stop stop");
         //     }
@@ -749,7 +744,7 @@ namespace cudaprocess{
         // }
 
         // This method consider the average fitness of top 8 individual. when the avg lower than accuracy_rng then stop evaluation
-        EvolveTerminate(evolve, last_f, old_param->fitness, terminate_flag);
+        // EvolveTerminate(evolve, last_f, old_param->fitness, terminate_flag);
         *last_f = old_param->fitness[threadIdx.x];
     }
 }

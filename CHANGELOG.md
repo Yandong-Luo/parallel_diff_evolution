@@ -73,3 +73,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.18] - 2024-12-28
 ### Changed
 - Yandong Luo: Remove all unnecessary implementations and selectively allocate memory space based on debug mode or not. And stop tracking existing qdrep files.
+
+## [0.1.19] - 2024-12-29
+### Changed
+- Yandong Luo: To optimize the efficiency of host->device, evolve_data was used for memory alignment and multi-stream transmission. However, there was still no significant efficiency improvement. Currently, Nsight shows that the process of host->device is too slow when comparing to the solution of the differential evolution algorithm.

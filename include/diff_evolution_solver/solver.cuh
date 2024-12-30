@@ -72,7 +72,7 @@ namespace cudaprocess{
             cublasHandle_t cublas_handle_; 
 
             int max_lambda;
-            // CudaParamIndividual *result;
+            CudaParamIndividual *result;
             CudaParamIndividual *host_result;
 
             float accuracy_rng;
@@ -82,6 +82,9 @@ namespace cudaprocess{
             // NVTX
             nvtxRangeId_t solver_range;
             nvtxRangeId_t init_range;
+            nvtxRangeId_t setting_boundary_range;
+
+            nvtxRangeId_t loading_last_sol_range;
     };
 }
 

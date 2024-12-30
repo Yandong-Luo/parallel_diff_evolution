@@ -50,18 +50,18 @@ namespace cudaprocess{
 
 template<int T>
 __global__ void ConvertClusterToMatrix(CudaEvolveData *evolve, CudaParamClusterData<T> *cluster_data, float *param_matrix){
-    if (threadIdx.x > evolve->dims) return;
+    if (threadIdx.x > evolve->problem_param.dims) return;
     if (blockIdx.x >= T)    return;
-    if(threadIdx.x == evolve->dims){
-        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = 1.0;
+    if(threadIdx.x == evolve->problem_param.dims){
+        param_matrix[blockIdx.x * (evolve->problem_param.dims + 1) + threadIdx.x] = 1.0;
         // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
         return;
     }
-    if(threadIdx.x >= evolve->con_var_dims){
-        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = floor(cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x]);
+    if(threadIdx.x >= evolve->problem_param.con_var_dims){
+        param_matrix[blockIdx.x * (evolve->problem_param.dims + 1) + threadIdx.x] = floor(cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x]);
     }
     else{
-        param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
+        param_matrix[blockIdx.x * (evolve->problem_param.dims + 1) + threadIdx.x] = cluster_data->all_param[blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x];
     }
     
     // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
@@ -80,7 +80,7 @@ __device__ __forceinline__ float Interpolation(float x0, float x1, float x, floa
 }
 
 __global__ void UpdateLambdaBasedInterpolation(CudaEvolveData *evolve_data, float *lambda_matrix, int epoch){
-    lambda_matrix[threadIdx.x] = Interpolation(0, evolve_data->max_round, epoch, evolve_data->init_lambda, evolve_data->max_lambda);
+    lambda_matrix[threadIdx.x] = Interpolation(0, evolve_data->problem_param.max_round, epoch, evolve_data->problem_param.init_lambda, evolve_data->problem_param.max_lambda);
 }
 
 __global__ void InequalityMask(float *tmp_score){

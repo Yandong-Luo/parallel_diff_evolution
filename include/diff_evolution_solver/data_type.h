@@ -68,7 +68,7 @@ struct Problem{
  * Cr:      Crossover Probability
  * weight:  weight factor
  */
-struct CudaLShadePair {
+struct ALIGN(16) CudaLShadePair {
     float scale_f, scale_f1, Cr, weight;
 };
 
@@ -91,22 +91,27 @@ struct ALIGN(64) CudaParamClusterData{
     int len{0};
 };
 
-struct CudaEvolveData{
-    float top_ratio;
+struct ALIGN(64) CudaProblemParam{
     int con_var_dims, int_var_dims, dims;
-    CudaLShadePair hist_lshade_param;
-    CudaVector<CudaParamIndividual, CUDA_SOLVER_POP_SIZE> *new_cluster_vec;
-    float upper_bound[CUDA_PARAM_MAX_SIZE];
-    float lower_bound[CUDA_PARAM_MAX_SIZE];
-    CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> last_potential_sol;
-    CudaParamIndividual warm_start;
-
     int max_lambda;
     int init_lambda;
     int max_round;
 
     float accuracy_rng;
     int elite_eval_count;
+
+    float top_ratio;
+};
+
+struct CudaEvolveData{
+    
+    CudaLShadePair hist_lshade_param;
+    ALIGN(64) float upper_bound[CUDA_PARAM_MAX_SIZE];
+    ALIGN(64) float lower_bound[CUDA_PARAM_MAX_SIZE];
+    CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> last_potential_sol;
+    CudaParamIndividual warm_start;
+
+    CudaProblemParam problem_param;
 
     // (Abandoned) Use for loop to evaluate 
     // int num_constraint;
