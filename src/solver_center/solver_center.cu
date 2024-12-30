@@ -36,13 +36,13 @@ void CudaSolverCenter::Init(std::string filename){
     // for (int i = 0; i < num_enable_tasks; ++i){
     //     diff_evolve_solvers_[i].MallocSetup()
     // }
-    cudamalloc_flag = true;
 
     for(int i = 0; i < num_tasks_; ++i) {
         YAML::Node node = config["problems"][i];
         
         tasks_problem_[i] = LoadProblemFromYaml(node);  // 复制到分配的内存中
     }
+    cudamalloc_flag = true;
 }
 
 Problem CudaSolverCenter::LoadProblemFromYaml(const YAML::Node& node){
@@ -116,7 +116,7 @@ CudaSolverCenter::~CudaSolverCenter(){
     if (cudamalloc_flag){
         CHECK_CUDA(cudaFreeHost(tasks_best_sol_));
         CHECK_CUDA(cudaFreeHost(tasks_potential_sol_));
-        CHECK_CUDA(cudaFreeHost(tasks_problem_));
+        // CHECK_CUDA(cudaFreeHost(tasks_problem_));
         
     }
     cublasDestroy(cublas_handle_);

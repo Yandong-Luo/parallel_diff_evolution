@@ -81,3 +81,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.20] - 2024-12-30
 ### Changed
 - Yandong Luo: Configure optimization problem parameters via YAML
+
+## [0.1.21] - 2024-12-30
+### Changed
+- Yandong Luo: Fixed the error when running multiple tasks. Currently, multiple solving tasks can be automatically generated according to YAML and the solving can be completed.
