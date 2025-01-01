@@ -11,13 +11,16 @@ namespace cudaprocess {
 
     
     #define DEBUG_PRINT_FLAG false
-    #define DEBUG_PRINT_EVALUATE_FLAG false
+    #define DEBUG_PRINT_EVALUATE_FLAG true
     #define DEBUG_PRINT_SOLVER_FLAG false
     #define DEBUG_PRINT_INIT_SOLVER_FLAG true
     #define DEBUG_ENABLE_NVTX true
 
     #define HOST_DEVICE __device__ __forceinline__ __host__
     #define CUDA_SOLVER_POP_SIZE 64
+
+    #define INT_VARIABLE 0
+    #define CONTINUOUS_VARIABLE 1
 
     // check the ouput of CUDA API function
     #define CHECK_CUDA(call)                                                \

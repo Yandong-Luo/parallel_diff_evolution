@@ -16,20 +16,20 @@ problems:
       upper: [10.0, 10.0]
       lower: [0.0, 0.0]
     objective_dims:
-      rows: 4
-      cols: 1
+      rows: 1
+      cols: 4
     constraint_dims:
-      rows: 4
-      cols: 2
-    lambda_dims:
       rows: 2
-      cols: 1
+      cols: 4
+    lambda_dims:
+      rows: 1
+      cols: 2
     objective_matrix: [-4, -3, -5, 0]
-    constraint_matrix: [2, 2, 3, 1, 1, 3, -12, -12]
-    lambda_matrix: [10, 10]
+    constraint_matrix: [2, 3, 1, -12, 2, 1, 3, -12]
+    lambda_matrix: [1, 1]
     evolve_params:
       max_lambda: 100
-      init_lambda: 1
+      init_lambda: 5
       max_evolve_round: 60
       accuracy_rng: 0.5
       elite_eval_count: 8
@@ -41,30 +41,31 @@ problems:
   #       z <= 20
   #       x, y, z >= 0
   #       z integer
-  - name: problem2
-    num_con_variable: 2
-    num_int_variable: 1
-    int_bounds:
-      upper: [20]
-      lower: [0]
-    con_bounds:
-      upper: [10.0, 10.0]
-      lower: [0.0, 0.0]
-    objective_dims:
-      rows: 4
-      cols: 1
-    constraint_dims:
-      rows: 4
-      cols: 2
-    lambda_dims:
-      rows: 2
-      cols: 1
-    objective_matrix: [-4, -3, -5, 0]
-    constraint_matrix: [2, 2, 3, 1, 1, 3, -12, -12]
-    lambda_matrix: [10, 10]
-    evolve_params:
-      max_lambda: 100
-      init_lambda: 1
-      max_evolve_round: 60
-      accuracy_rng: 0.5
-      elite_eval_count: 8
+  # - name: problem2
+  #   num_con_variable: 2
+  #   num_int_variable: 1
+  #   int_bounds:
+  #     upper: [20]
+  #     lower: [0]
+  #   con_bounds:
+  #     upper: [10.0, 10.0]
+  #     lower: [0.0, 0.0]
+  #   objective_dims:
+  #     rows: 4
+  #     cols: 1
+  #   constraint_dims:
+  #     rows: 4
+  #     cols: 2
+  #   lambda_dims:
+  #     rows: 2
+  #     cols: 1
+  #   objective_matrix: [-4, -3, -5, 0]
+  #   constraint_matrix: [2, 2, 3, 1, 1, 3, -12, -12]
+  #   hessian_matrix: [2, 1, 0, 0, 1, 2, 1, 0, 0, 1, 2, 0, 0, 0, 0, 0]
+  #   lambda_matrix: [10, 10]
+  #   evolve_params:
+  #     max_lambda: 1000
+  #     init_lambda: 10
+  #     max_evolve_round: 60
+  #     accuracy_rng: 0.5
+  #     elite_eval_count: 8

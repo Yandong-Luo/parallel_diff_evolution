@@ -1,6 +1,6 @@
 #ifndef CUDA_DIFF_EVOLUTION_DATA_TYPE_H
 #define CUDA_DIFF_EVOLUTION_DATA_TYPE_H
-
+#include <unordered_map>
 #include "utils/utils.cuh"
 namespace cudaprocess{
 
@@ -23,6 +23,36 @@ struct CudaVector {
   int len{0};
 };
 
+// struct ProblemV2{
+//     int num_continous = 0;
+//     int num_int = 0;
+//     int num_variable = 0;
+
+//     float upper_bound[CUDA_PARAM_MAX_SIZE];
+//     float lower_bound[CUDA_PARAM_MAX_SIZE];
+//     // float *con_upper_bound[CUDA_PARAM_MAX_SIZE];
+//     // float *con_lower_bound[CUDA_PARAM_MAX_SIZE];
+
+//     float variable_order[CUDA_PARAM_MAX_SIZE];
+
+//     float variable_type[CUDA_PARAM_MAX_SIZE];
+
+//     char objective_operator[CUDA_PARAM_MAX_SIZE];
+
+//     char objective_operator[CUDA_PARAM_MAX_SIZE];
+
+//     std::unordered_map<std::string, int> var_idx_map; 
+
+//     // Add a single decision variable to the problem
+//     void addVar(float lb, float ub, float coefficient, char type, std::string name){
+//         lower_bound[num_variable] = lb;
+//         upper_bound[num_variable] = ub;
+//         variable_type[num_variable] = coefficient;
+//         var_idx_map[name] = num_variable;
+//         num_variable++;
+//     }
+// };
+
 struct Problem{
     int num_continous = 2;
     int num_int = 1;
@@ -38,9 +68,9 @@ struct Problem{
     // float con_lower_bound[2] = {0, 0};
 
     // matrix dims
-    int row_objective_mat = 4, col_objective_mat = 1;
-    int row_constraint_mat = 4, col_constraint_mat = 2;   // row x col should equal to num_constraint x constraint variable + 1 (constant).
-    int row_lambda = 2, col_lambda = 1;
+    int row_objective_mat, col_objective_mat;
+    int row_constraint_mat, col_constraint_mat;   // row x col should equal to num_constraint x constraint variable + 1 (constant).
+    int row_lambda, col_lambda;
 
     float *objective_mat;
     float *constraint_mat;
@@ -48,11 +78,11 @@ struct Problem{
     // float objective_mat[4] = {-4, -3, -5, 0};
     // float constraint_mat[4][2] = {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
 
-    float lambda[2] = {10, 10};
+    // float lambda[2] = {100, 100};
 
-    int max_lambda = 100;
-    int init_lambda = 1;
-    int max_evolve_round = 60;
+    int max_lambda;
+    int init_lambda;
+    int max_evolve_round;
 
     float accuracy_rng = 0.5;
     int elite_eval_count = 8;

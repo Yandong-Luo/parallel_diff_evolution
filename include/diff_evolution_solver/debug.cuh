@@ -51,7 +51,7 @@ void PrintEvolveData(cudaprocess::CudaEvolveData *evolve){
 /**
  * EVALUATE OUTPUT
  */
-void PrintMatrix(float *obj_mat, int row, int col, std::string output_msg){
+void PrintMatrixByRow(float *obj_mat, int row, int col, std::string output_msg){
     // printf("%s\n",output_msg);
     std::cout<<output_msg<<std::endl;
 
@@ -64,17 +64,35 @@ void PrintMatrix(float *obj_mat, int row, int col, std::string output_msg){
     }
 }
 
+void PrintMatrixByCol(float *obj_mat, int row, int size, std::string output_msg) {
+    std::cout << output_msg << std::endl;
+    
+    for(int i = 0; i < row; ++i) {
+        for(int j = 0; j < size; ++j) {
+            printf("matrix[%d,%d]=%f ", i, j, obj_mat[j * row + i]);
+        }
+        printf("\n");
+    }
+}
+
 void PrintFitnesssWithParam(float *obj_mat, float *param_mat, int row, int obj_mat_col, int dims, std::string output_msg){
     // printf("%s\n",output_msg);
     std::cout<<output_msg<<std::endl;
 
-    for(int i = 0; i < row; ++i){
-        for (int j = 0; j < obj_mat_col; ++j){
-            printf("individual:%d fitness:%f param", i, obj_mat[i * obj_mat_col +j]);
-        }
+    // for(int i = 0; i < row; ++i){
+    //     for (int j = 0; j < obj_mat_col; ++j){
+    //         printf("individual:%d fitness:%f param", i, obj_mat[i * obj_mat_col +j]);
+    //     }
         
+    //     for (int j = 0; j < dims; ++j) {
+    //         printf("[%d, %d]=%f ", i, j, param_mat[i * dims + j]);
+    //     }
+    //     printf("\n");
+    // }
+    for(int i = 0; i < obj_mat_col; ++i){
+        printf("individual:%d fitness:%f param", i, obj_mat[i]);
         for (int j = 0; j < dims; ++j) {
-            printf("[%d, %d]=%f ", i, j, param_mat[i * dims + j]);
+            printf("[%d, %d]=%f ", i, j, param_mat[j * obj_mat_col + i]);
         }
         printf("\n");
     }
@@ -83,16 +101,16 @@ void PrintFitnesssWithParam(float *obj_mat, float *param_mat, int row, int obj_m
 void PrintTmpScoreWithParam(float *tmp_score_matrix, float *param_mat, int row, int tmp_mat_col, int dims, std::string output_msg){
     // printf("%s\n",output_msg);
     std::cout<<output_msg<<std::endl;
-
-    for(int i = 0; i < row; ++i){
+    // 64
+    for(int i = 0; i < tmp_mat_col; ++i){
         
         printf("%d param: ", i);
         for (int j = 0; j < dims; ++j) {
-            printf("%f ", param_mat[i * dims + j]);
+            printf("%f ", param_mat[j * tmp_mat_col + i]);
         }
-
-        for (int j = 0; j < tmp_mat_col; ++j){
-            printf("tmp score[%d, %d]:%f ", i, j, tmp_score_matrix[i * tmp_mat_col +j]);
+        // 2
+        for (int j = 0; j < row; ++j){
+            printf("tmp score[%d, %d]:%f ", i, j, tmp_score_matrix[j * tmp_mat_col +i]);
         }
         printf("\n");
     }
