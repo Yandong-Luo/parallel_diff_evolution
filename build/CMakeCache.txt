@@ -349,6 +349,9 @@ CUDA_nvToolsExt_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libnvToolsExt.so
 //Path to a library.
 CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 
+//Path to a library.
+CURAND_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libcurand.so
+
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build
 
@@ -515,6 +518,9 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_64_BIT_DEVICE_CODE
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
+//List of intermediate files that are part of the cuda dependency
+// scanning.
+CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.depend
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_BUILD_CUBIN

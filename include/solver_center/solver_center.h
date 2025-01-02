@@ -4,6 +4,7 @@
 #include "diff_evolution_solver/data_type.h"
 #include "diff_evolution_solver/solver.cuh"
 #include "diff_evolution_solver/random_center.cuh"
+#include "diff_evolution_solver/random_manager.cuh"
 #include "yaml-cpp/yaml.h"
 
 namespace cudaprocess{
@@ -17,12 +18,12 @@ namespace cudaprocess{
         CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *tasks_potential_sol_;
         CudaDiffEvolveSolver diff_evolve_solvers_[CUDA_MAX_TASKS];
         Problem *tasks_problem_;
-        std::shared_ptr<CudaRandomCenter> rnd_manager_;
-
+        std::shared_ptr<CudaRandomCenter> rnd_center_;
+        std::shared_ptr<CudaRandomManager> rnd_manager_;
         bool cudamalloc_flag{false};
         cublasHandle_t cublas_handle_; 
     public:
-        CudaSolverCenter(int gpu_device, int num_enable_tasks){gpu_device_ = gpu_device;};
+        CudaSolverCenter(int gpu_device) : cudamalloc_flag(false) {gpu_device_ = gpu_device;};
         ~CudaSolverCenter();
         void Init(std::string filename);
         void GenerateSolution(int task_id);

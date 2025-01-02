@@ -57,10 +57,10 @@ struct Problem{
     int num_continous = 2;
     int num_int = 1;
 
-    float *int_upper_bound;
-    float *int_lower_bound;
-    float *con_upper_bound;
-    float *con_lower_bound;
+    float *int_upper_bound = nullptr;
+    float *int_lower_bound = nullptr;
+    float *con_upper_bound = nullptr;
+    float *con_lower_bound = nullptr;
 
     // float int_upper_bound[1] = {20};
     // float int_lower_bound[1] = {0};
@@ -74,11 +74,11 @@ struct Problem{
 
     int row_objective_Q, col_objective_Q;
 
-    float *objective_mat;
-    float *constraint_mat;
-    float *lambda_mat;
+    float *objective_mat = nullptr;
+    float *constraint_mat = nullptr;
+    float *lambda_mat = nullptr;
 
-    float *objective_Q_mat;
+    float *objective_Q_mat = nullptr;
     
     // float objective_mat[4] = {-4, -3, -5, 0};
     // float constraint_mat[4][2] = {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
@@ -91,6 +91,17 @@ struct Problem{
 
     float accuracy_rng = 0.5;
     int elite_eval_count = 8;
+
+    // ~Problem() {
+    //     delete[] int_upper_bound;
+    //     delete[] int_lower_bound;
+    //     delete[] con_upper_bound;
+    //     delete[] con_lower_bound;
+    //     delete[] objective_mat;
+    //     delete[] constraint_mat;
+    //     delete[] lambda_mat;
+    //     delete[] objective_Q_mat;
+    // }
 
     // // (Abandoned) Use for loop to evaluate 
     // int num_constraint = 2;

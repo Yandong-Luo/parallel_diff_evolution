@@ -11,11 +11,10 @@ int main(int argc,char** argv){
 
     // Set the number of tasks and GPU device ID
     // each task use a differential evolution
-    int num_enable_tasks = 1;
     int gpu_device = 0;
 
     // Create an instance of the CudaDiffEvolveSolver class
-    cudaprocess::CudaSolverCenter solver_center(gpu_device, num_enable_tasks);
+    cudaprocess::CudaSolverCenter solver_center(gpu_device);
 
     // Initialize the solver
     solver_center.Init("test_config.yaml");

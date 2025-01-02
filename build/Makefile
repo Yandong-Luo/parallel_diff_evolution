@@ -123,60 +123,6 @@ diff_evolution_solver/fast:
 	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/build
 .PHONY : diff_evolution_solver/fast
 
-src/diff_evolution_solver/random_center.o: src/diff_evolution_solver/random_center.cu.o
-
-.PHONY : src/diff_evolution_solver/random_center.o
-
-# target to build an object file
-src/diff_evolution_solver/random_center.cu.o:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.o
-.PHONY : src/diff_evolution_solver/random_center.cu.o
-
-src/diff_evolution_solver/random_center.i: src/diff_evolution_solver/random_center.cu.i
-
-.PHONY : src/diff_evolution_solver/random_center.i
-
-# target to preprocess a source file
-src/diff_evolution_solver/random_center.cu.i:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.i
-.PHONY : src/diff_evolution_solver/random_center.cu.i
-
-src/diff_evolution_solver/random_center.s: src/diff_evolution_solver/random_center.cu.s
-
-.PHONY : src/diff_evolution_solver/random_center.s
-
-# target to generate assembly for a file
-src/diff_evolution_solver/random_center.cu.s:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/random_center.cu.s
-.PHONY : src/diff_evolution_solver/random_center.cu.s
-
-src/diff_evolution_solver/solver.o: src/diff_evolution_solver/solver.cu.o
-
-.PHONY : src/diff_evolution_solver/solver.o
-
-# target to build an object file
-src/diff_evolution_solver/solver.cu.o:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.o
-.PHONY : src/diff_evolution_solver/solver.cu.o
-
-src/diff_evolution_solver/solver.i: src/diff_evolution_solver/solver.cu.i
-
-.PHONY : src/diff_evolution_solver/solver.i
-
-# target to preprocess a source file
-src/diff_evolution_solver/solver.cu.i:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.i
-.PHONY : src/diff_evolution_solver/solver.cu.i
-
-src/diff_evolution_solver/solver.s: src/diff_evolution_solver/solver.cu.s
-
-.PHONY : src/diff_evolution_solver/solver.s
-
-# target to generate assembly for a file
-src/diff_evolution_solver/solver.cu.s:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/solver.cu.s
-.PHONY : src/diff_evolution_solver/solver.cu.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -204,33 +150,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/solver_center/solver_center.o: src/solver_center/solver_center.cu.o
-
-.PHONY : src/solver_center/solver_center.o
-
-# target to build an object file
-src/solver_center/solver_center.cu.o:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.o
-.PHONY : src/solver_center/solver_center.cu.o
-
-src/solver_center/solver_center.i: src/solver_center/solver_center.cu.i
-
-.PHONY : src/solver_center/solver_center.i
-
-# target to preprocess a source file
-src/solver_center/solver_center.cu.i:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.i
-.PHONY : src/solver_center/solver_center.cu.i
-
-src/solver_center/solver_center.s: src/solver_center/solver_center.cu.s
-
-.PHONY : src/solver_center/solver_center.s
-
-# target to generate assembly for a file
-src/solver_center/solver_center.cu.s:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/solver_center/solver_center.cu.s
-.PHONY : src/solver_center/solver_center.cu.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -240,18 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... diff_evolution_solver"
-	@echo "... src/diff_evolution_solver/random_center.o"
-	@echo "... src/diff_evolution_solver/random_center.i"
-	@echo "... src/diff_evolution_solver/random_center.s"
-	@echo "... src/diff_evolution_solver/solver.o"
-	@echo "... src/diff_evolution_solver/solver.i"
-	@echo "... src/diff_evolution_solver/solver.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/solver_center/solver_center.o"
-	@echo "... src/solver_center/solver_center.i"
-	@echo "... src/solver_center/solver_center.s"
 .PHONY : help
 
 

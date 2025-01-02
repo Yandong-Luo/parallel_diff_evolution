@@ -6,9 +6,12 @@ namespace cudaprocess{
 void CudaSolverCenter::Init(std::string filename){
     config = YAML::LoadFile(filename);
     num_tasks_ = config["problems"].size();
-
     // Initialize cuBLAS handle
     cublasStatus_t status = cublasCreate(&cublas_handle_);
+
+    // rnd_manager_ = std::make_shared<CudaRandomCenter>(gpu_device_);
+
+    rnd_manager_ = std::make_shared<CudaRandomManager>(gpu_device_);
 
     if (status != CUBLAS_STATUS_SUCCESS) {
         const char* error_msg;
@@ -27,8 +30,6 @@ void CudaSolverCenter::Init(std::string filename){
         }
         printf("cuBLAS initialization failed: %s\n", error_msg);
     }
-
-    rnd_manager_ = std::make_shared<CudaRandomCenter>(gpu_device_);
 
     CHECK_CUDA(cudaHostAlloc(&tasks_best_sol_, sizeof(CudaParamIndividual) * num_tasks_, cudaHostAllocDefault));
     CHECK_CUDA(cudaHostAlloc(&tasks_potential_sol_, sizeof(CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION>) * num_tasks_, cudaHostAllocDefault));
@@ -67,22 +68,31 @@ Problem CudaSolverCenter::LoadProblemFromYaml(const YAML::Node& node){
     problem.max_lambda = node["evolve_params"]["max_lambda"].as<int>();
     problem.init_lambda = node["evolve_params"]["init_lambda"].as<int>();
     problem.accuracy_rng = node["evolve_params"]["accuracy_rng"].as<float>();
-    problem.elite_eval_count = node["evolve_params"]["elite_eval_count"].as<int>();
-
-    if (problem.row_objective_mat * problem.col_objective_mat != 0) problem.objective_mat = new float[problem.row_objective_mat * problem.col_objective_mat];
-    if (problem.row_constraint_mat * problem.col_constraint_mat != 0) problem.constraint_mat = new float[problem.row_constraint_mat * problem.col_constraint_mat];
-    if (problem.row_lambda * problem.col_lambda != 0)    problem.lambda_mat = new float[problem.row_lambda * problem.col_lambda];
+    problem.elite_eval_count = node["evolve_params"]["elite_eval_count"].as<int>(); 
 
         
+    if (problem.row_objective_mat * problem.col_objective_mat != 0){
+        problem.objective_mat = new float[problem.row_objective_mat * problem.col_objective_mat];
 
-    for (int i = 0; i < problem.row_objective_mat * problem.col_objective_mat; ++i){
-        problem.objective_mat[i] = node["objective_matrix"][i].as<float>();
+        for (int i = 0; i < problem.row_objective_mat * problem.col_objective_mat; ++i){
+            problem.objective_mat[i] = node["objective_matrix"][i].as<float>();
+        }
     }
-    for (int i = 0; i < problem.row_constraint_mat * problem.col_constraint_mat; ++i){
-        problem.constraint_mat[i] = node["constraint_matrix"][i].as<float>();
+    
+    if (problem.row_constraint_mat * problem.col_constraint_mat != 0){
+        problem.constraint_mat = new float[problem.row_constraint_mat * problem.col_constraint_mat];
+
+        for (int i = 0; i < problem.row_constraint_mat * problem.col_constraint_mat; ++i){
+            problem.constraint_mat[i] = node["constraint_matrix"][i].as<float>();
+        }
     }
-    for (int i = 0; i < problem.row_lambda * problem.col_lambda; ++i){
-        problem.lambda_mat[i] = node["lambda_matrix"][i].as<float>();
+    
+    if (problem.row_lambda * problem.col_lambda != 0){
+        problem.lambda_mat = new float[problem.row_lambda * problem.col_lambda];
+     
+        for (int i = 0; i < problem.row_lambda * problem.col_lambda; ++i){
+            problem.lambda_mat[i] = node["lambda_matrix"][i].as<float>();
+        }
     }
     
     if (problem.row_objective_Q * problem.col_objective_Q != 0){
@@ -122,19 +132,73 @@ void CudaSolverCenter::ParallelGenerateMultiTaskSol(){
 
 void CudaSolverCenter::GenerateSolution(int task_id){
     // printf("tasks_problem_[task_id]:%d\n", tasks_problem_[task_id].num_int_variable);
-    printf("start the initialization of task %d\n", task_id);
+    // printf("start the initialization of task %d\n", task_id);
+    printf("???????????????:%d\n",cudamalloc_flag);
+    // auto task_rnd_manager = std::make_shared<CudaRandomCenter>(gpu_device_);
     diff_evolve_solvers_[task_id].InitSolver(gpu_device_, cublas_handle_, task_id, rnd_manager_.get(), &tasks_problem_[task_id], &tasks_best_sol_[task_id], &tasks_potential_sol_[task_id]);
-    printf("finish the initialization of task %d\n", task_id);
+    // printf("finish the initialization of task %d\n", task_id);
+    printf("???????????????:%d\n",cudamalloc_flag);
     tasks_best_sol_[task_id] = diff_evolve_solvers_[task_id].Solver();
 }
 
-CudaSolverCenter::~CudaSolverCenter(){
-    if (cudamalloc_flag){
-        CHECK_CUDA(cudaFreeHost(tasks_best_sol_));
-        CHECK_CUDA(cudaFreeHost(tasks_potential_sol_));
-        // CHECK_CUDA(cudaFreeHost(tasks_problem_));
+// CudaSolverCenter::~CudaSolverCenter(){
+//     if (cudamalloc_flag){
         
+//         // for(int i = 0; i < num_tasks_; ++i){
+//         //     // 先释放每个Problem对象中的动态内存
+//         //     if(tasks_problem_[i].int_upper_bound) delete[] tasks_problem_[i].int_upper_bound;
+            
+//         //     if(tasks_problem_[i].int_lower_bound) delete[] tasks_problem_[i].int_lower_bound;
+//         //     if(tasks_problem_[i].con_upper_bound) delete[] tasks_problem_[i].con_upper_bound;
+//         //     if(tasks_problem_[i].con_lower_bound) delete[] tasks_problem_[i].con_lower_bound;
+//         //     if(tasks_problem_[i].objective_mat) delete[] tasks_problem_[i].objective_mat;
+//         //     if(tasks_problem_[i].constraint_mat) delete[] tasks_problem_[i].constraint_mat;
+//         //     if(tasks_problem_[i].lambda_mat) delete[] tasks_problem_[i].lambda_mat;
+//         //     if(tasks_problem_[i].objective_Q_mat) delete[] tasks_problem_[i].objective_Q_mat;
+//         // }
+        
+//         // CHECK_CUDA(cudaFreeHost(tasks_problem_));
+        
+//         // CHECK_CUDA(cudaFreeHost(tasks_best_sol_));
+        
+//         // CHECK_CUDA(cudaFreeHost(tasks_potential_sol_));
+//         // 
+//     }
+//     // cublasDestroy(cublas_handle_);
+//     if (cublas_handle_) {
+//         cublasStatus_t destroy_status = cublasDestroy(cublas_handle_);
+//         if (destroy_status != CUBLAS_STATUS_SUCCESS) {
+//             printf("cuBLAS destroy failed: %d\n", destroy_status);
+//         }
+//     }
+// }
+
+CudaSolverCenter::~CudaSolverCenter() {
+    // rnd_manager_.reset();
+    
+    if (cudamalloc_flag) {
+        // for (int i = 0; i < num_tasks_; ++i) {
+        //     if (tasks_problem_[i].int_upper_bound) delete[] tasks_problem_[i].int_upper_bound;
+        //     if (tasks_problem_[i].int_lower_bound) delete[] tasks_problem_[i].int_lower_bound;
+        //     if (tasks_problem_[i].con_upper_bound) delete[] tasks_problem_[i].con_upper_bound;
+        //     if (tasks_problem_[i].con_lower_bound) delete[] tasks_problem_[i].con_lower_bound;
+        //     if (tasks_problem_[i].objective_mat) delete[] tasks_problem_[i].objective_mat;
+        //     if (tasks_problem_[i].constraint_mat) delete[] tasks_problem_[i].constraint_mat;
+        //     if (tasks_problem_[i].lambda_mat) delete[] tasks_problem_[i].lambda_mat;
+        //     if (tasks_problem_[i].objective_Q_mat) delete[] tasks_problem_[i].objective_Q_mat;
+        // }
+        printf("???????????????\n");
+        if (tasks_problem_) {
+            CHECK_CUDA(cudaFreeHost(tasks_problem_));
+        }
+        if (tasks_best_sol_) {
+            CHECK_CUDA(cudaFreeHost(tasks_best_sol_));
+        }
+        if (tasks_potential_sol_) {
+            CHECK_CUDA(cudaFreeHost(tasks_potential_sol_));
+        }
     }
-    cublasDestroy(cublas_handle_);
+    
 }
+
 }

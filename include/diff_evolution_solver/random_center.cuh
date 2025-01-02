@@ -24,9 +24,6 @@ namespace cudaprocess{
         float *uniform_data_, *normal_data_;
         long long unsigned seed_;
     };
-    
-    
-    
 }
 
 #endif

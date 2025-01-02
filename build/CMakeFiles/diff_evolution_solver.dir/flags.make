@@ -9,7 +9,7 @@ CUDA_DEFINES = -DYAML_CPP_STATIC_DEFINE
 
 CUDA_INCLUDES = -I/home/chris/parallel_diff_evolution/include -I/home/chris/parallel_diff_evolution/thirdparty/nvtx/c/include 
 
-CXX_FLAGS = -g   -std=gnu++17
+CXX_FLAGS =  -g -g   -std=gnu++17
 
 CXX_DEFINES = -DYAML_CPP_STATIC_DEFINE
 

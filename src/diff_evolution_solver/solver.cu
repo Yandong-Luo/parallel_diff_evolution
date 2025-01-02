@@ -199,41 +199,41 @@ __global__ void GenerativeRandSolNearBest(CudaEvolveData *evolve, CudaParamClust
 
 
 void CudaDiffEvolveSolver::WarmStart(Problem* problem, CudaParamIndividual* output_sol){
-    InitParameter<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, CUDA_SOLVER_POP_SIZE, new_cluster_data_, old_cluster_data_, random_center_->uniform_data_);
-    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    InitParameter<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, CUDA_SOLVER_POP_SIZE, new_cluster_data_, old_cluster_data_, random_center_->uniform_data_);
+    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // if(last_potential_sol_.len > 0){
     //     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_INIT_SOLVER_FLAG) printf("USING LAST POTENTIAL SOL\n");
     //     // int half_pop_size = CUDA_SOLVER_POP_SIZE >> 1;
     //     int quad_pop_size = CUDA_SOLVER_POP_SIZE >> 2;
     //     // one cluster generate one solution, each cluster works on one block. 
     //     // We need to generate quad_pop_size new solutions based on last potential solution, so init the new cluster in quad_pop_size grid.
-    //     UpdateClusterDataBasedEvolve<<<quad_pop_size, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_, last_potential_sol_.len);
+    //     UpdateClusterDataBasedEvolve<<<quad_pop_size, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, last_potential_sol_.len);
     // }
-    // UpdateVecParamBasedClusterData<64><<<CUDA_SOLVER_POP_SIZE, 16, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_vec_->data, new_cluster_data_);
+    // UpdateVecParamBasedClusterData<64><<<CUDA_SOLVER_POP_SIZE, 16, 0, cuda_utils_->streams_[0]>>>(new_cluster_vec_->data, new_cluster_data_);
 
     // int cet = 10;
     // Update the output param based on warm start.
-    // CHECK_CUDA(cudaMemcpyAsync(output_sol, &new_cluster_vec_->data[cet], sizeof(CudaParamIndividual), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+    // CHECK_CUDA(cudaMemcpyAsync(output_sol, &new_cluster_vec_->data[cet], sizeof(CudaParamIndividual), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
 
     // Evaluate random solutions or potential solutions in warmstart
     Evaluation(CUDA_SOLVER_POP_SIZE, 0);
 
-    // SortParamBasedBitonic<64><<<16, 64, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_->all_param, new_cluster_data_->fitness);
+    // SortParamBasedBitonic<64><<<16, 64, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_->all_param, new_cluster_data_->fitness);
 
     // Find the best solution among the random solutions or potential solutions in warmstart and put it in the first place
-    ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_);
+    ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_);
 
     // based on warm start result to generate random solution. Further improve the quality of the initial population
-    GenerativeRandSolNearBest<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, CUDA_SOLVER_POP_SIZE);
+    GenerativeRandSolNearBest<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, CUDA_SOLVER_POP_SIZE);
 
     // convert the parameter from warm start to old parameter
-    SaveNewParamAsOldParam<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_, old_cluster_data_, 0, CUDA_SOLVER_POP_SIZE, 0);
+    SaveNewParamAsOldParam<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, old_cluster_data_, 0, CUDA_SOLVER_POP_SIZE, 0);
 
     // Based on all old parameter to update the warm start of evolve data
     // 将 old_cluster_data_<192> 中索引为0的数据提取出来,填充到evolve data单个CudaParamIndividual结构中,记为warm start。索引为0的解是warm start过程中最优的
-    UpdateEvolveWarmStartBasedClusterData<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, old_cluster_data_);
+    UpdateEvolveWarmStartBasedClusterData<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_);
 
-    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 }
 
 // (Abandoned) Use for loop to evaluate 
@@ -244,16 +244,16 @@ void CudaDiffEvolveSolver::WarmStart(Problem* problem, CudaParamIndividual* outp
 
 void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
     // Row-major arrangement (size x dims+1 matrix)
-    // ConvertClusterToMatrix<64><<<size, dims_ + 1, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_, param_matrix);
+    // ConvertClusterToMatrix<64><<<size, dims_ + 1, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, param_matrix);
 
     // row-major arrangement (dims+1 x size matrix)
-    ConvertClusterToMatrix2<64><<<dims_ + 1, size, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_, param_matrix, size);
+    ConvertClusterToMatrix2<64><<<dims_ + 1, size, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, param_matrix, size);
 
     // printf("device obj_constant_matrix\n");
-    // printMatrix<<<1, row_obj_constant*col_obj_constant, 0, cuda_utils_->streams_[task_id_]>>>(obj_constant_matrix);
+    // printMatrix<<<1, row_obj_constant*col_obj_constant, 0, cuda_utils_->streams_[0]>>>(obj_constant_matrix);
 
     // printf("device objective_matrix\n");
-    // printMatrix<<<1, row_obj*col_obj, 0, cuda_utils_->streams_[task_id_]>>>(objective_matrix);
+    // printMatrix<<<1, row_obj*col_obj, 0, cuda_utils_->streams_[0]>>>(objective_matrix);
     
     float alpha = 1.;
     float beta = 1.;
@@ -264,7 +264,7 @@ void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
     cudaMemset(constraint_score, 0, size * row_constraint * sizeof(float));
 
     // Based on current epoch and interpolation to update lambda
-    UpdateLambdaBasedInterpolation<<<1, row_lambda * col_lambda, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, lambda_matrix, epoch);
+    UpdateLambdaBasedInterpolation<<<1, row_lambda * col_lambda, 0, cuda_utils_->streams_[0]>>>(evolve_data_, lambda_matrix, epoch);
 
     // checking before matrix multiplication
     if(DEBUG_PRINT_FLAG || DEBUG_PRINT_EVALUATE_FLAG){
@@ -274,7 +274,7 @@ void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
         CHECK_CUDA(cudaMemcpy(h_constraint_matrix, constraint_matrix, row_constraint * col_constraint * sizeof(float), cudaMemcpyDeviceToHost));
         CHECK_CUDA(cudaMemcpy(h_lambda_matrix, lambda_matrix, row_lambda * col_lambda * sizeof(float), cudaMemcpyDeviceToHost));
 
-        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 
         // check parameter matrix before matrix multiplication
         PrintMatrixByRow(host_param_matrix,  dims_+1, size, "CHECK PARAMETER MATRIX BEFORE MATRIX MULTIPLICATION");
@@ -317,22 +317,22 @@ void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
         // quad_matrix size x size
         cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_T, size, size,  dims_ + 1, &alpha, param_matrix, size, quad_transform, size, &beta, quad_matrix, size);
 
-        extractDiagonal<<<1, size, 0, cuda_utils_->streams_[task_id_]>>>(quad_matrix, quadratic_score, size);
+        extractDiagonal<<<1, size, 0, cuda_utils_->streams_[0]>>>(quad_matrix, quadratic_score, size);
     }
 
     // printf("CHECK THE PARAM OF cublasSgemm: %d %d %d %d %d %d\n", col_constraint, size, dims_+1, dims_+1, col_constraint , size);
     cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_N, size, row_constraint, dims_ + 1, &alpha, param_matrix, size, constraint_matrix, col_constraint, &beta, constraint_score, size);
 
-    InequalityMask<<<1, size * row_constraint, 0, cuda_utils_->streams_[task_id_]>>>(constraint_score);
+    InequalityMask<<<1, size * row_constraint, 0, cuda_utils_->streams_[0]>>>(constraint_score);
 
     cublasSgemm(cublas_handle_, CUBLAS_OP_N, CUBLAS_OP_N, size, 1, col_lambda, &alpha, constraint_score, size, lambda_matrix, col_lambda, &beta, evaluate_score_, size);
 
-    MatrixAdd<<<1, size, 0, cuda_utils_->streams_[task_id_]>>>(quadratic_score, evaluate_score_, size);
+    MatrixAdd<<<1, size, 0, cuda_utils_->streams_[0]>>>(quadratic_score, evaluate_score_, size);
 
     if(DEBUG_PRINT_FLAG || DEBUG_PRINT_EVALUATE_FLAG){
         // GPU DEBUG
         // printf("device obj_constant_matrix\n");
-        // printMatrix<<<1, row_obj_constant*col_obj_constant, 0, cuda_utils_->streams_[task_id_]>>>(obj_constant_matrix);
+        // printMatrix<<<1, row_obj_constant*col_obj_constant, 0, cuda_utils_->streams_[0]>>>(obj_constant_matrix);
 
         CHECK_CUDA(cudaMemcpy(host_constraint_score, constraint_score, size * row_constraint * sizeof(float), cudaMemcpyDeviceToHost));
         CHECK_CUDA(cudaMemcpy(host_evaluate_score_, evaluate_score_, size * sizeof(float), cudaMemcpyDeviceToHost));
@@ -340,7 +340,7 @@ void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
         CHECK_CUDA(cudaMemcpy(host_quad_matrix, quad_matrix, size * size * sizeof(float), cudaMemcpyDeviceToHost));
         CHECK_CUDA(cudaMemcpy(h_quadratic_score, quadratic_score, 1 * size * sizeof(float), cudaMemcpyDeviceToHost));
         // CHECK_CUDA(cudaMemcpy(host_param_matrix, param_matrix, (dims_ + 1) * size * sizeof(float), cudaMemcpyDeviceToHost));
-        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 
         // check tmp Q score
         PrintQScore(h_quad_transform, row_obj_Q, size, "CHECK TEMP Q SCORE");
@@ -356,25 +356,25 @@ void CudaDiffEvolveSolver::Evaluation(int size, int epoch){
         // check fitness with individual after matrix multiplication
         PrintFitnesssWithParam(host_evaluate_score_, host_param_matrix, 1, size, dims_ + 1, "CHECK FITNESS WITH PARAM");
     }
-    UpdateFitnessBasedMatrix<64><<<1, size, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_, evaluate_score_);
+    UpdateFitnessBasedMatrix<64><<<1, size, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, evaluate_score_);
 
     // (Abandoned) Use for loop to evaluate 
-    // MainEvaluation<64><<<1, size, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_);
+    // MainEvaluation<64><<<1, size, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_);
 }
 
 void CudaDiffEvolveSolver::Evolution(int epoch, CudaEvolveType search_type){
-    DuplicateBestAndReorganize<<<CUDA_PARAM_MAX_SIZE, 192, 0, cuda_utils_->streams_[task_id_]>>>(epoch, old_cluster_data_, 2);
-    CudaEvolveProcess<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(epoch, old_cluster_data_, new_cluster_data_, random_center_->uniform_data_, random_center_->normal_data_, evolve_data_, CUDA_SOLVER_POP_SIZE, true);
+    DuplicateBestAndReorganize<<<CUDA_PARAM_MAX_SIZE, 192, 0, cuda_utils_->streams_[0]>>>(epoch, old_cluster_data_, 2);
+    CudaEvolveProcess<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(epoch, old_cluster_data_, new_cluster_data_, random_center_->uniform_data_, random_center_->normal_data_, evolve_data_, CUDA_SOLVER_POP_SIZE, true);
     Evaluation(CUDA_SOLVER_POP_SIZE, epoch);
 
-    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
-    UpdateParameter<64><<<CUDA_PARAM_MAX_SIZE, 128, 0, cuda_utils_->streams_[task_id_]>>>(epoch, evolve_data_, new_cluster_data_, old_cluster_data_, terminate_flag, last_fitness);
+    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
+    UpdateParameter<64><<<CUDA_PARAM_MAX_SIZE, 128, 0, cuda_utils_->streams_[0]>>>(epoch, evolve_data_, new_cluster_data_, old_cluster_data_, terminate_flag, last_fitness);
 
-    CHECK_CUDA(cudaMemcpyAsync(h_terminate_flag, terminate_flag, sizeof(int), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
-    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    CHECK_CUDA(cudaMemcpyAsync(h_terminate_flag, terminate_flag, sizeof(int), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 }
 
-void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int task_id, CudaRandomCenter *random_center, Problem* host_problem, CudaParamIndividual *output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
+void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int task_id, CudaRandomManager *random_center, Problem* host_problem, CudaParamIndividual *output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
     if(DEBUG_ENABLE_NVTX)   init_range = nvtxRangeStart("Init Different Evolution Solver");
 
     gpu_device_ = gpu_device;
@@ -481,43 +481,44 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int
 
     // Host --> GPU device
     // Split evolve_data_data content for asynchronous transmission
-    // CHECK_CUDA(cudaMemcpyAsync(&evolve_data_->problem_param, &host_evolve_data_->problem_param, sizeof(CudaProblemParam), cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
+    // CHECK_CUDA(cudaMemcpyAsync(&evolve_data_->problem_param, &host_evolve_data_->problem_param, sizeof(CudaProblemParam), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
     // CHECK_CUDA(cudaMemcpyAsync(evolve_data_->lower_bound, host_evolve_data_->lower_bound, CUDA_PARAM_MAX_SIZE * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[1]));
     // CHECK_CUDA(cudaMemcpyAsync(evolve_data_->upper_bound, host_evolve_data_->upper_bound, CUDA_PARAM_MAX_SIZE * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[1]));
     // CHECK_CUDA(cudaMemcpyAsync(&evolve_data_->hist_lshade_param, &host_evolve_data_->hist_lshade_param, sizeof(CudaLShadePair), cudaMemcpyHostToDevice, cuda_utils_->streams_[1]));
     // CHECK_CUDA(cudaMemcpyAsync(&evolve_data_->last_potential_sol, &host_evolve_data_->last_potential_sol, sizeof(CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION>), cudaMemcpyHostToDevice, cuda_utils_->streams_[2]));
     
-    CHECK_CUDA(cudaMemcpyAsync(evolve_data_, host_evolve_data_, sizeof(CudaEvolveData), cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
-    CHECK_CUDA(cudaMemcpyAsync(constraint_matrix, host_problem->constraint_mat, size_constraint_mat, cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
-    CHECK_CUDA(cudaMemcpyAsync(objective_matrix, host_problem->objective_mat, size_obj, cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
-    CHECK_CUDA(cudaMemcpyAsync(lambda_matrix, host_problem->lambda_mat, row_lambda * col_lambda * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
-    if (host_problem->objective_Q_mat != nullptr)   CHECK_CUDA(cudaMemcpyAsync(objective_Q_matrix, host_problem->objective_Q_mat, row_obj_Q * col_obj_Q * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[task_id_]));
+    CHECK_CUDA(cudaMemcpyAsync(evolve_data_, host_evolve_data_, sizeof(CudaEvolveData), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaMemcpyAsync(constraint_matrix, host_problem->constraint_mat, size_constraint_mat, cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaMemcpyAsync(objective_matrix, host_problem->objective_mat, size_obj, cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaMemcpyAsync(lambda_matrix, host_problem->lambda_mat, row_lambda * col_lambda * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
+    if (host_problem->objective_Q_mat != nullptr)   CHECK_CUDA(cudaMemcpyAsync(objective_Q_matrix, host_problem->objective_Q_mat, row_obj_Q * col_obj_Q * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
 
-    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[1]));
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[2]));
 
     // if (last_sol == nullptr){
-    //     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    //     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // }
 
     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_INIT_SOLVER_FLAG) printf("MEMORY ASYNC SUBMIT\n");
 
-    InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, old_cluster_data_, CUDA_SOLVER_POP_SIZE);
+    InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_, CUDA_SOLVER_POP_SIZE);
 
 
     WarmStart(host_problem, output_sol);
 
     // if (DEBUG_PRINT_FLAG){
-    //     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
-    //     CHECK_CUDA(cudaMemcpyAsync(host_new_cluster_data_, new_cluster_data_, sizeof(CudaParamClusterData<64>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+    //     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
+    //     CHECK_CUDA(cudaMemcpyAsync(host_new_cluster_data_, new_cluster_data_, sizeof(CudaParamClusterData<64>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
     //     PrintClusterData(host_new_cluster_data_);
-    //     // CHECK_CUDA(cudaMemcpyAsync(host_old_cluster_data_, old_cluster_data_, sizeof(CudaParamClusterData<192>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+    //     // CHECK_CUDA(cudaMemcpyAsync(host_old_cluster_data_, old_cluster_data_, sizeof(CudaParamClusterData<192>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
     //     // PrintClusterData(host_old_cluster_data_);
 
-    //     // CHECK_CUDA(cudaMemcpyAsync(host_evolve_data_, evolve_data_, sizeof(CudaEvolveData), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+    //     // CHECK_CUDA(cudaMemcpyAsync(host_evolve_data_, evolve_data_, sizeof(CudaEvolveData), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
     //     // printf("CUDA_MAX_FLOAT %f\n", CUDA_MAX_FLOAT);
     // }
+    cudaDeviceSynchronize();  // 添加同步点
 }
 
 __global__ void LoadWarmStartResultForSolver(CudaEvolveData *evolve, CudaParamClusterData<64> *new_param){
@@ -536,20 +537,20 @@ CudaParamIndividual CudaDiffEvolveSolver::Solver(){
     init_pop_size_ = CUDA_SOLVER_POP_SIZE;
     pop_size_ = CUDA_SOLVER_POP_SIZE;
 
-    InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, old_cluster_data_, CUDA_SOLVER_POP_SIZE);
+    InitCudaEvolveData<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, old_cluster_data_, CUDA_SOLVER_POP_SIZE);
 
-    InitParameter<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, CUDA_SOLVER_POP_SIZE, new_cluster_data_, old_cluster_data_, random_center_->uniform_data_);
+    InitParameter<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, CUDA_SOLVER_POP_SIZE, new_cluster_data_, old_cluster_data_, random_center_->uniform_data_);
 
-    LoadWarmStartResultForSolver<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_);
+    LoadWarmStartResultForSolver<<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_);
 
     // based on warm start result to generate 
-    GenerativeRandSolNearBest<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, CUDA_SOLVER_POP_SIZE);
+    GenerativeRandSolNearBest<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, random_center_->uniform_data_, 16, 0.1, 0.1, CUDA_SOLVER_POP_SIZE);
 
     Evaluation(CUDA_SOLVER_POP_SIZE, 0);
 
-    ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_);
+    ParaFindMax2<CUDA_SOLVER_POP_SIZE, 64><<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_);
 
-    SaveNewParamAsOldParam<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(new_cluster_data_, old_cluster_data_, 0, CUDA_SOLVER_POP_SIZE, 0);
+    SaveNewParamAsOldParam<<<CUDA_SOLVER_POP_SIZE, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(new_cluster_data_, old_cluster_data_, 0, CUDA_SOLVER_POP_SIZE, 0);
 
     for (int i = 0; i < host_evolve_data_->problem_param.max_round && !*h_terminate_flag; ++i) {
         // printf("generation i:%d\n", i);
@@ -557,20 +558,20 @@ CudaParamIndividual CudaDiffEvolveSolver::Solver(){
     }
 
     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_SOLVER_FLAG){
-        // CHECK_CUDA(cudaMemcpyAsync(host_new_cluster_data_, new_cluster_data_, sizeof(CudaParamClusterData<64>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+        // CHECK_CUDA(cudaMemcpyAsync(host_new_cluster_data_, new_cluster_data_, sizeof(CudaParamClusterData<64>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
         // PrintClusterData(host_new_cluster_data_);
-        CHECK_CUDA(cudaMemcpyAsync(host_old_cluster_data_, old_cluster_data_, sizeof(CudaParamClusterData<192>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
-        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+        CHECK_CUDA(cudaMemcpyAsync(host_old_cluster_data_, old_cluster_data_, sizeof(CudaParamClusterData<192>), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
         PrintClusterData<192>(host_old_cluster_data_);
 
-        // CHECK_CUDA(cudaMemcpyAsync(host_evolve_data_, evolve_data_, sizeof(CudaEvolveData), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
+        // CHECK_CUDA(cudaMemcpyAsync(host_evolve_data_, evolve_data_, sizeof(CudaEvolveData), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
         // printf("CUDA_MAX_FLOAT %f\n", CUDA_MAX_FLOAT);
     }
     
     // Get the first individual from old param (after sorting, the first one is the best one)
-    GetSolFromOldParam<192><<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[task_id_]>>>(old_cluster_data_, result);
-    CHECK_CUDA(cudaMemcpyAsync(host_result, result, sizeof(CudaParamIndividual), cudaMemcpyDeviceToHost, cuda_utils_->streams_[task_id_]));
-    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[task_id_]));
+    GetSolFromOldParam<192><<<1, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(old_cluster_data_, result);
+    CHECK_CUDA(cudaMemcpyAsync(host_result, result, sizeof(CudaParamIndividual), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 
     for(int i = con_var_dims_; i < dims_; ++i){
         host_result->param[i] = floor(host_result->param[i]);

@@ -7,6 +7,9 @@
 
 #include "diff_evolution_solver/data_type.h"
 
+#include <cuda_runtime.h>
+#include <curand.h>
+
 namespace cudaprocess {
 
     
@@ -23,15 +26,35 @@ namespace cudaprocess {
     #define CONTINUOUS_VARIABLE 1
 
     // check the ouput of CUDA API function
-    #define CHECK_CUDA(call)                                                \
-    {                                                                       \
-        const cudaError_t error = call;                                     \
-        if (error != cudaSuccess) {                                         \
-        printf("ERROR: %s:%d,", __FILE__, __LINE__);                        \
-        printf("code:%d,reason:%s\n", error, cudaGetErrorString(error));    \
-        exit(1);                                                            \
-        }                                                                   \
-    }
+    // #define CHECK_CUDA(call)                                                \
+    // {                                                                       \
+    //     const cudaError_t error = call;                                     \
+    //     if (error != cudaSuccess) {                                         \
+    //     printf("ERROR: %s:%d,", __FILE__, __LINE__);                        \
+    //     printf("code:%d,reason:%s\n", error, cudaGetErrorString(error));    \
+    //     exit(1);                                                            \
+    //     }                                                                   \
+    // }
+
+    // CUDA API error checking
+    #define CHECK_CUDA(err)                                                         \
+    do {                                                                            \
+        cudaError_t err_ = (err);                                                   \
+        if (err_ != cudaSuccess) {                                                  \
+            printf("CUDA error %d at %s:%d\n", err_, __FILE__, __LINE__);           \
+            exit(1);                                                                \
+        }                                                                           \
+    } while (0)
+
+    // curand API error checking
+    #define CURAND_CHECK(err)                                                       \
+    do {                                                                            \
+        curandStatus_t err_ = (err);                                                \
+        if (err_ != CURAND_STATUS_SUCCESS) {                                        \
+            printf("curand error %d at %s:%d\n", err_, __FILE__, __LINE__);         \
+            exit(1);                                                                \
+        }                                                                           \
+    } while (0)
 
     constexpr int stream_cnt = 7;
     struct CudaUtil {
