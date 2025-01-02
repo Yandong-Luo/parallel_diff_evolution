@@ -106,6 +106,18 @@ diff_evolution_solver/converter.cuh
 diff_evolution_solver/random_center.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/random_center.cuh
 
+../include/solver_center/solver_center.h
+cassert
+-
+diff_evolution_solver/data_type.h
+../include/solver_center/diff_evolution_solver/data_type.h
+diff_evolution_solver/solver.cuh
+../include/solver_center/diff_evolution_solver/solver.cuh
+diff_evolution_solver/random_center.cuh
+../include/solver_center/diff_evolution_solver/random_center.cuh
+yaml-cpp/yaml.h
+../include/solver_center/yaml-cpp/yaml.h
+
 ../include/utils/utils.cuh
 stdio.h
 -
@@ -221,4 +233,8 @@ utils/utils_fun.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 math.h
 -
+
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
+solver_center/solver_center.h
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center/solver_center.h
 

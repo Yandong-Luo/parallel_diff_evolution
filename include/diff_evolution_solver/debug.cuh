@@ -98,7 +98,29 @@ void PrintFitnesssWithParam(float *obj_mat, float *param_mat, int row, int obj_m
     }
 }
 
-void PrintTmpScoreWithParam(float *tmp_score_matrix, float *param_mat, int row, int tmp_mat_col, int dims, std::string output_msg){
+void PrintQScore(float *Q_score, int row, int col, std::string output_msg){
+    // printf("%s\n",output_msg);
+    std::cout<<output_msg<<std::endl;
+
+    // for(int i = 0; i < row; ++i){
+    //     for (int j = 0; j < obj_mat_col; ++j){
+    //         printf("individual:%d fitness:%f param", i, obj_mat[i * obj_mat_col +j]);
+    //     }
+        
+    //     for (int j = 0; j < dims; ++j) {
+    //         printf("[%d, %d]=%f ", i, j, param_mat[i * dims + j]);
+    //     }
+    //     printf("\n");
+    // }
+    for(int i = 0; i < row; ++i){
+        for (int j = 0; j < col; ++j) {
+            printf("[%d, %d]=%f ", i, j, Q_score[i * col + j]);
+        }
+        printf("\n");
+    }
+}
+
+void PrintConstraintScoreWithParam(float *tmp_score_matrix, float *param_mat, int row, int tmp_mat_col, int dims, std::string output_msg){
     // printf("%s\n",output_msg);
     std::cout<<output_msg<<std::endl;
     // 64

@@ -72,9 +72,14 @@ struct Problem{
     int row_constraint_mat, col_constraint_mat;   // row x col should equal to num_constraint x constraint variable + 1 (constant).
     int row_lambda, col_lambda;
 
+    int row_objective_Q, col_objective_Q;
+
     float *objective_mat;
     float *constraint_mat;
     float *lambda_mat;
+
+    float *objective_Q_mat;
+    
     // float objective_mat[4] = {-4, -3, -5, 0};
     // float constraint_mat[4][2] = {{2, 2}, {3, 1}, {1, 3}, {-12, -12}};
 

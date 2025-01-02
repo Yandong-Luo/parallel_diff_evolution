@@ -59,16 +59,23 @@ namespace cudaprocess{
             float *constraint_matrix;
             float *objective_matrix;
             float *lambda_matrix;
+            float *objective_Q_matrix;
 
             float *h_constraint_matrix;
             float *h_objective_matrix;
             float *h_lambda_matrix;
+            float *h_objective_Q_matrix;
 
             int row_constraint, col_constraint;
             int row_obj, col_obj;
             int row_lambda, col_lambda;
+            int row_obj_Q, col_obj_Q;
             float *evaluate_score_, *host_evaluate_score_;
-            float *tmp_score, *host_tmp_score; 
+            float *constraint_score, *host_constraint_score;
+            float *quad_matrix, *host_quad_matrix;
+            float *quad_transform, *h_quad_transform;
+            float *quadratic_score, *h_quadratic_score;
+
 
             cublasHandle_t cublas_handle_; 
             int max_lambda;

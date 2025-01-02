@@ -86,6 +86,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Fixed the error when running multiple tasks. Currently, multiple solving tasks can be automatically generated according to YAML and the solving can be completed.
 
-## [0.1.21] - 2025-1-1
+## [0.1.22] - 2025-1-1
 ### Changed
 - Yandong Luo: Adjust the expression of the matrix for evaluation. Now fill in the yaml in the form of rows.
+
+## [0.1.23] - 2025-1-1
+### Changed
+- Yandong Luo: Supports solving QP problems

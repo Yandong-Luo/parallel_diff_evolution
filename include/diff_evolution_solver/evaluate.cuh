@@ -88,6 +88,24 @@ __global__ void ConvertClusterToMatrix2(CudaEvolveData *evolve, CudaParamCluster
     // printf("finish the convert: param[%d] to matrix[%d], value:%f\n", blockIdx.x * CUDA_PARAM_MAX_SIZE + threadIdx.x, blockIdx.x * (evolve->dims + 1) + threadIdx.x, param_matrix[blockIdx.x * (evolve->dims + 1) + threadIdx.x]);
 }
 
+/**
+ * extractDiagonal
+ */
+__global__ void extractDiagonal(float* input, float* output, int size) {
+    if (threadIdx.x < size) {
+        output[threadIdx.x] = input[threadIdx.x * size + threadIdx.x];  // 提取对角线元素
+    }
+}
+
+/**
+ * Matrix Add operator
+ */
+__global__ void MatrixAdd(float* quadratic, float* evaluate_score, int size) {
+    if (threadIdx.x < size) {
+        evaluate_score[threadIdx.x] += quadratic[threadIdx.x];
+    }
+}
+
 template<int T>
 __global__ void UpdateFitnessBasedMatrix(CudaParamClusterData<T> *cluster_data, float *evaluate_score){
     if (threadIdx.x >= T) return;

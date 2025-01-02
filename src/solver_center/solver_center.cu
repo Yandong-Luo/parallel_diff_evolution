@@ -60,20 +60,20 @@ Problem CudaSolverCenter::LoadProblemFromYaml(const YAML::Node& node){
     problem.row_lambda = node["lambda_dims"]["rows"].as<int>();
     problem.col_lambda = node["lambda_dims"]["cols"].as<int>();
 
+    problem.row_objective_Q = node["objective_Q_dims"]["rows"].as<int>();
+    problem.col_objective_Q = node["objective_Q_dims"]["cols"].as<int>();
+
     problem.max_evolve_round = node["evolve_params"]["max_evolve_round"].as<int>();
     problem.max_lambda = node["evolve_params"]["max_lambda"].as<int>();
     problem.init_lambda = node["evolve_params"]["init_lambda"].as<int>();
     problem.accuracy_rng = node["evolve_params"]["accuracy_rng"].as<float>();
     problem.elite_eval_count = node["evolve_params"]["elite_eval_count"].as<int>();
 
-    problem.int_upper_bound = new float[problem.num_int];
-    problem.int_lower_bound = new float[problem.num_int];
-    problem.con_upper_bound = new float[problem.num_continous];
-    problem.con_lower_bound = new float[problem.num_continous];
+    if (problem.row_objective_mat * problem.col_objective_mat != 0) problem.objective_mat = new float[problem.row_objective_mat * problem.col_objective_mat];
+    if (problem.row_constraint_mat * problem.col_constraint_mat != 0) problem.constraint_mat = new float[problem.row_constraint_mat * problem.col_constraint_mat];
+    if (problem.row_lambda * problem.col_lambda != 0)    problem.lambda_mat = new float[problem.row_lambda * problem.col_lambda];
 
-    problem.objective_mat = new float[problem.row_objective_mat * problem.col_objective_mat];
-    problem.constraint_mat = new float[problem.row_constraint_mat * problem.col_constraint_mat];
-    problem.lambda_mat = new float[problem.row_lambda * problem.col_lambda];
+        
 
     for (int i = 0; i < problem.row_objective_mat * problem.col_objective_mat; ++i){
         problem.objective_mat[i] = node["objective_matrix"][i].as<float>();
@@ -84,15 +84,31 @@ Problem CudaSolverCenter::LoadProblemFromYaml(const YAML::Node& node){
     for (int i = 0; i < problem.row_lambda * problem.col_lambda; ++i){
         problem.lambda_mat[i] = node["lambda_matrix"][i].as<float>();
     }
+    
+    if (problem.row_objective_Q * problem.col_objective_Q != 0){
+        problem.objective_Q_mat = new float[problem.row_objective_Q * problem.col_objective_Q];
 
-    for(int i = 0; i < problem.num_int; i++) {
-        problem.int_upper_bound[i] = node["int_bounds"]["upper"][i].as<float>();
-        problem.int_lower_bound[i] = node["int_bounds"]["lower"][i].as<float>();
+        for (int i = 0; i < problem.row_objective_Q * problem.col_objective_Q; ++i){
+            problem.objective_Q_mat[i] = node["objective_Q_matrix"][i].as<float>();
+        }
+    }
+
+    if (problem.num_int != 0){
+        problem.int_upper_bound = new float[problem.num_int];
+        problem.int_lower_bound = new float[problem.num_int];
+        for(int i = 0; i < problem.num_int; i++) {
+            problem.int_upper_bound[i] = node["int_bounds"]["upper"][i].as<float>();
+            problem.int_lower_bound[i] = node["int_bounds"]["lower"][i].as<float>();
+        }
     }
     
-    for(int i = 0; i < problem.num_continous; i++) {
-        problem.con_upper_bound[i] = node["con_bounds"]["upper"][i].as<float>();
-        problem.con_lower_bound[i] = node["con_bounds"]["lower"][i].as<float>();
+    if (problem.num_continous != 0){
+        problem.con_upper_bound = new float[problem.num_continous];
+        problem.con_lower_bound = new float[problem.num_continous];
+        for(int i = 0; i < problem.num_continous; i++) {
+            problem.con_upper_bound[i] = node["con_bounds"]["upper"][i].as<float>();
+            problem.con_lower_bound[i] = node["con_bounds"]["lower"][i].as<float>();
+        }
     }
 
     return problem;
