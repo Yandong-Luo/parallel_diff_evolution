@@ -41,8 +41,10 @@ set(CMAKE_BUILD_TYPE Debug)
 
 # Set CUDA compilation options (optional)
 # set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
-set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17 -lineinfo")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_CUDA_FLAGS_DEBUG "-g")
+set(CMAKE_CUDA_FLAGS_RELEASE "-O3 --use_fast_math -Xcompiler -fPIC -lineinfo")
+# set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17 -lineinfo")
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
@@ -65,6 +67,10 @@ cuda_add_executable(diff_evolution_solver ${SOURCE_FILES})
 # Set the CUDA architecture (adjust based on your hardware)
 set_target_properties(diff_evolution_solver PROPERTIES
     CUDA_ARCHITECTURES "86"
+)
+
+set_target_properties(diff_evolution_solver PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
 )
 
 # Set the C++ standard

@@ -97,3 +97,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.24] - 2025-1-2
 ### Changed
 - Yandong Luo: Based on cuRand to generate the random number. (random_manager)
+
+## [0.1.24] - 2025-1-4
+### Changed
+- Yandong Luo: Update CMakeList and Add README.md

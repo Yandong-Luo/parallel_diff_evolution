@@ -72,7 +72,7 @@ set(generated_file_internal "/home/chris/parallel_diff_evolution/build/CMakeFile
 set(generated_cubin_file_internal "/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/solver_center/./diff_evolution_solver_generated_solver_center.cu.o.cubin.txt") # path
 
 set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-11.1/bin/nvcc") # path
-set(CUDA_NVCC_FLAGS  -std=c++17 -lineinfo ;; ) # list
+set(CUDA_NVCC_FLAGS  ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
@@ -105,7 +105,7 @@ endif()
 
 # This is the list of host compilation flags.  It C or CXX should already have
 # been chosen by FindCUDA.cmake.
-set(CMAKE_HOST_FLAGS  -g )
+set(CMAKE_HOST_FLAGS  )
 set(CMAKE_HOST_FLAGS_DEBUG -g)
 set(CMAKE_HOST_FLAGS_MINSIZEREL -Os -DNDEBUG)
 set(CMAKE_HOST_FLAGS_RELEASE -O3 -DNDEBUG)

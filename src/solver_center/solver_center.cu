@@ -187,10 +187,6 @@ CudaSolverCenter::~CudaSolverCenter() {
         //     if (tasks_problem_[i].lambda_mat) delete[] tasks_problem_[i].lambda_mat;
         //     if (tasks_problem_[i].objective_Q_mat) delete[] tasks_problem_[i].objective_Q_mat;
         // }
-        printf("???????????????\n");
-        if (tasks_problem_) {
-            CHECK_CUDA(cudaFreeHost(tasks_problem_));
-        }
         if (tasks_best_sol_) {
             CHECK_CUDA(cudaFreeHost(tasks_best_sol_));
         }
