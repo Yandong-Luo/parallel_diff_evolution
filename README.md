@@ -8,23 +8,54 @@ x+y-1 \leq 0\\\
 x, y, z \geq 0\\\
 x, y, z \leq 100
 $$
-$$
+
+$
 f(x)=x^TQx+k^Tx + \lambda Cx$$
-$$
+$
+
+$
 x=\begin{bmatrix}x\\\ y\\\ z \\\ 1\end{bmatrix},
-$$
-$$
+$
+$
 Q=\begin{bmatrix}1&0.5 &0&0\\\1&0.5&1&0\\\0&1&2&0\\\0&0&0&0 \end{bmatrix},
-$$
-$$
+$
+$
 k=\begin{bmatrix}1&1&0&0\end{bmatrix},
-$$
-$$
+$
+$
 \lambda = \begin{bmatrix}\lambda_1\\\ \lambda_2 \end{bmatrix},
-$$
-$$
-C=\begin{bmatrix}-1&-2&-3&4\\\-1&-1&0&1\end{bmatrix}
-$$
+$
+$
+C=\begin{bmatrix}-1&-2&-3&4\\\ -1&-1&0&1\end{bmatrix}
+$
+
+<!-- x = 
+      _
+     | x |
+x  = | y |
+     | z |
+     |_1_|
+
+Q = 
+      _                            _
+     |  1    0.5    0    0         |
+     | 0.5     1    0    0         |
+Q  = |   0     1    2    0         |
+     |_  0     0    0    0        _|
+
+k = [ 1, 1, 0, 0 ]
+
+λ = 
+       _
+      | λ₁ |
+λ  =  |_λ₂_|
+
+C = 
+      _                       _
+     | -1   -2   -3    4      |
+C  = | -1   -1    0    1      |
+     |_                     _| -->
+
 ### Crossover
 $$
 u_{j, i} = \begin{aligned}v_{j, i}&& \text{if rand[0,1)}\leq CR_i \\\ x_{j,i} &&\text{otherwise} \end{aligned}
