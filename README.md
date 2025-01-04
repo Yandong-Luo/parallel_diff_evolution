@@ -22,28 +22,8 @@ f(x) = x^T Q x + k^T x + \lambda^T C x,
 $$
 
 where:
-- $$x = \left\{\begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}\right\]$$
-- $$Q = \begin{bmatrix} 
-1 & 0.5 & 0 & 0 \\ 
-0.5 & 1 & 0 & 0 \\ 
-0 & 0 & 2 & 0 \\ 
-0 & 0 & 0 & 0 
-\end{bmatrix}, \;
-k = \begin{bmatrix} 
-1 \\ 
-1 \\ 
-0 \\ 
-0 
-\end{bmatrix}, \;
-\lambda = \begin{bmatrix} 
-\lambda_1 \\ 
-\lambda_2 
-\end{bmatrix}, \;
-C = \begin{bmatrix} 
--1 & -2 & -3 & 4 \\ 
--1 & -1 & 0 & 1 
-\end{bmatrix}.
-$$
+- https://latex.codecogs.com/svg.image?$$x=\begin{bmatrix}x\\y\\z\\1\end{bmatrix}$$
+- https://latex.codecogs.com/svg.image?$$x=\begin{bmatrix}x\\y\\z\\1\end{bmatrix}$$$$Q=\begin{bmatrix}1&0.5&0&0\\0.5&1&0&0\\0&0&2&0\\0&0&0&0\end{bmatrix},\;k=\begin{bmatrix}1\\1\\0\\0\end{bmatrix},\;\lambda=\begin{bmatrix}\lambda_1\\\lambda_2\end{bmatrix},\;C=\begin{bmatrix}-1&-2&-3&4\\-1&-1&0&1\end{bmatrix}.$$
 
 ### Crossover
 
