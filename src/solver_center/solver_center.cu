@@ -133,11 +133,11 @@ void CudaSolverCenter::ParallelGenerateMultiTaskSol(){
 void CudaSolverCenter::GenerateSolution(int task_id){
     // printf("tasks_problem_[task_id]:%d\n", tasks_problem_[task_id].num_int_variable);
     // printf("start the initialization of task %d\n", task_id);
-    printf("???????????????:%d\n",cudamalloc_flag);
+    // printf("???????????????:%d\n",cudamalloc_flag);
     // auto task_rnd_manager = std::make_shared<CudaRandomCenter>(gpu_device_);
     diff_evolve_solvers_[task_id].InitSolver(gpu_device_, cublas_handle_, task_id, rnd_manager_.get(), &tasks_problem_[task_id], &tasks_best_sol_[task_id], &tasks_potential_sol_[task_id]);
     // printf("finish the initialization of task %d\n", task_id);
-    printf("???????????????:%d\n",cudamalloc_flag);
+    // printf("???????????????:%d\n",cudamalloc_flag);
     tasks_best_sol_[task_id] = diff_evolve_solvers_[task_id].Solver();
 }
 

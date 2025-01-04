@@ -42,7 +42,7 @@ set(CMAKE_BUILD_TYPE Debug)
 # Set CUDA compilation options (optional)
 # set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17")
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
-set(CMAKE_CUDA_FLAGS_DEBUG "-g")
+# set(CMAKE_CUDA_FLAGS_DEBUG "-g")
 set(CMAKE_CUDA_FLAGS_RELEASE "-O3 --use_fast_math -Xcompiler -fPIC -lineinfo")
 # set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17 -lineinfo")
 
