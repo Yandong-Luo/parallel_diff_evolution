@@ -9,9 +9,8 @@ x, y, z \geq 0\\\
 x, y, z \leq 100
 $$
 
-$
-f(x)=x^TQx+k^Tx + \lambda Cx$$
-$
+<!-- $
+f(x)=x^TQx+k^Tx + \lambda Cx$
 
 $
 x=\begin{bmatrix}x\\\ y\\\ z \\\ 1\end{bmatrix},
@@ -27,9 +26,9 @@ $
 $
 $
 C=\begin{bmatrix}-1&-2&-3&4\\\ -1&-1&0&1\end{bmatrix}
-$
+$ -->
 
-<!-- x = 
+x = 
       _
      | x |
 x  = | y |
@@ -54,7 +53,7 @@ C =
       _                       _
      | -1   -2   -3    4      |
 C  = | -1   -1    0    1      |
-     |_                     _| -->
+     |_                     _|
 
 ### Crossover
 $$
