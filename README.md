@@ -17,11 +17,11 @@ $$
 
 $$
 f(x)=x^TQx+k^Tx + \lambda Cx\\
-x=\left[\begin{matrix}x\\y\\z\\1\end{matrix}\right],
-Q=\left[\begin{matrix}1&0.5 &0&0\\1&0.5&1&0\\0&1&2&0\\0&0&0&0\end{matrix}\right],
-k=\left[\begin{matrix}1&1&0&0\end{matrix}\right],
-\lambda = \left[\begin{matrix}\lambda_1\\\lambda_2\end{matrix}\right],
-C=\left[\begin{matrix}-1&-2&-3&4\\-1&-1&0&1\end{matrix}\right]
+x=\begin{matrix}x\\y\\z\\1\end{matrix},
+Q=\begin{matrix}1&0.5 &0&0\\1&0.5&1&0\\0&1&2&0\\0&0&0&0\end{matrix}\right],
+k=\begin{matrix}1&1&0&0\end{matrix},
+\lambda = \begin{matrix}\lambda_1\\\lambda_2\end{matrix},
+C=\begin{matrix}-1&-2&-3&4\\-1&-1&0&1\end{matrix}
 $$
 
 ### Crossover
