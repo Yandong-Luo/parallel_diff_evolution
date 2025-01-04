@@ -18,18 +18,39 @@ $$
 
 
 $$
-f(x)=x^TQx+k^Tx + \lambda Cx\\
-x=\begin{matrix}x\\y\\z\\1\end{matrix},
-Q=\begin{matrix}1&0.5 &0&0\\1&0.5&1&0\\0&1&2&0\\0&0&0&0\end{matrix}\right],
-k=\begin{matrix}1&1&0&0\end{matrix},
-\lambda = \begin{matrix}\lambda_1\\\lambda_2\end{matrix},
-C=\begin{matrix}-1&-2&-3&4\\-1&-1&0&1\end{matrix}
+f(x) = x^T Q x + k^T x + \lambda^T C x \\
+x = \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}, \;
+Q = \begin{bmatrix} 
+1 & 0.5 & 0 & 0 \\ 
+0.5 & 1 & 0 & 0 \\ 
+0 & 0 & 2 & 0 \\ 
+0 & 0 & 0 & 0 
+\end{bmatrix}, \;
+k = \begin{bmatrix} 
+1 \\ 
+1 \\ 
+0 \\ 
+0 
+\end{bmatrix}, \;
+\lambda = \begin{bmatrix} 
+\lambda_1 \\ 
+\lambda_2 
+\end{bmatrix}, \;
+C = \begin{bmatrix} 
+-1 & -2 & -3 & 4 \\ 
+-1 & -1 & 0 & 1 
+\end{bmatrix}.
 $$
 
 ### Crossover
 
 $$
-u_{j, i} = \left\{ \begin{aligned}v_{j, i}&& \text{if rand[0,1)}\leq CR_i\\x_{j,i} &&\text{otherwise} \end{aligned} \right.
+u_{j,i} =
+\begin{cases} 
+v_{j,i} & \text{if } \text{rand}[0,1) \leq CR_i, \\
+x_{j,i} & \text{otherwise}.
+\end{cases}
+
 $$
 
 - j: the j dimension of  individual
@@ -54,15 +75,35 @@ $$
 
 ### Reorganize
 
-$$
-x_{i, G+1} = \left\{ \begin{aligned}u_{i, G}&& \text{if }f(u_{i, G})\leq f(x_{i, G})\\x_{i, G} &&\text{otherwise} \end{aligned} \right.\\
-M_{CR, k, G+1} = \left\{ \begin{aligned}\frac{\sum_{k=1}^{S_{CR}}w_k S_{CR, k}^2}{\sum_{k=1}^{S_{CR}}w_k S_{CR, k}}\\
-M_{CR,k, G}&& \text{otherwise}\end{aligned} \right.\\
-M_{F, k, G+1} = \left\{ \begin{aligned}\frac{\sum_{k=1}^{S_{F}}w_k S_{F, k}^2}{\sum_{k=1}^{S_{F}}w_k S_{F, k}}\\
-M_{F,k, G}&& \text{otherwise}\end{aligned} \right.\\
-w_k = \frac{\Delta f_k}{\sum_{k=1}^{|S_{CR}|}\Delta f_i}\\
-\Delta f_k=|f(\mu_{k,G}) - f(x_k, G)|
-$$
+\[
+x_{i, G+1} = 
+\begin{cases} 
+u_{i, G} & \text{if } f(u_{i, G}) \leq f(x_{i, G}), \\
+x_{i, G} & \text{otherwise}.
+\end{cases}
+\]
+
+\[
+M_{CR, k, G+1} = 
+\begin{cases} 
+\frac{\sum_{k=1}^{S_{CR}} w_k S_{CR, k}^2}{\sum_{k=1}^{S_{CR}} w_k S_{CR, k}} & \\
+M_{CR, k, G} & \text{otherwise}.
+\end{cases}
+\]
+
+\[
+M_{F, k, G+1} = 
+\begin{cases} 
+\frac{\sum_{k=1}^{S_{F}} w_k S_{F, k}^2}{\sum_{k=1}^{S_{F}} w_k S_{F, k}} & \\
+M_{F, k, G} & \text{otherwise}.
+\end{cases}
+\]
+
+\[
+w_k = \frac{\Delta f_k}{\sum_{k=1}^{|S_{CR}|} \Delta f_i}, \quad
+\Delta f_k = |f(\mu_{k,G}) - f(x_{k, G})|.
+\]
+
 
 - G: the index of generation G 
 - u_{i,G}$ : New individuals generated after mutation
