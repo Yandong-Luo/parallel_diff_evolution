@@ -7,11 +7,13 @@
 ### Problem Example
 
 $$
+\begin{aligned}
 \text{min} \space x+y+x^2+xy+y^2+yz+z^2\\
-\text{s.t.} \space x+2y+3z-4 \leq 0\\
-x+y-1 \leq 0\\
-x, y, z \geq 0\\
-x, y, z \leq 100
+\text{s.t.} \space x+2y+3z-4 &\leq 0\\
+x+y-1 &\leq 0\\
+x, y, z &\geq 0\\
+x, y, z &\leq 100
+\end{aligned}
 $$
 
 
