@@ -9,11 +9,20 @@ x, y, z \geq 0\\\
 x, y, z \leq 100
 $$
 $$
-f(x)=x^TQx+k^Tx + \lambda Cx\\\
+f(x)=x^TQx+k^Tx + \lambda Cx$$
+$$
 x=\begin{bmatrix}x\\\ y\\\ z \\\ 1\end{bmatrix},
-Q=\begin{bmatrix}1&0.5 &0&0\\\1&0.5&1&0\\\0&1&2&0\\\0&0&0&0\end{bmatrix},
+$$
+$$
+Q=\begin{bmatrix}1&0.5 &0&0\\\1&0.5&1&0\\\0&1&2&0\\\0&0&0&0 \end{bmatrix},
+$$
+$$
 k=\begin{bmatrix}1&1&0&0\end{bmatrix},
-\lambda = \begin{bmatrix}\lambda_1\\\lambda_2\end{bmatrix},
+$$
+$$
+\lambda = \begin{bmatrix}\lambda_1\\\ \lambda_2 \end{bmatrix},
+$$
+$$
 C=\begin{bmatrix}-1&-2&-3&4\\\-1&-1&0&1\end{bmatrix}
 $$
 ### Crossover
@@ -37,7 +46,7 @@ $$
 - $M_{F}$: Randomly select from historical memory $M_F$
 ### Reorganize
 $$
-x_{i, G+1} = \lbrace \begin{aligned}u_{i, G}&& \text{if }f(u_{i, G})\leq f(x_{i, G})\\x_{i, G} &&\text{otherwise} \end{aligned} \right.\\
+x_{i, G+1} = \lbrace \begin{aligned}u_{i, G}&& \text{if }f(u_{i, G})\leq f(x_{i, G})\\x_{i, G} &&\text{otherwise} \end{aligned} \\
 $$
 
 $$
@@ -45,7 +54,7 @@ M_{CR, k, G+1} = \lbrace \begin{aligned}\frac{\sum_{k=1}^{S_{CR}}w_k S_{CR, k}^2
 $$
 
 $$
-M_{CR,k, G}&& \text{otherwise}\end{aligned} \right.\\
+M_{CR,k, G}&& \text{otherwise}\end{aligned}
 $$
 
 $$
@@ -53,7 +62,7 @@ M_{F, k, G+1} = \lbrace \begin{aligned}\frac{\sum_{k=1}^{S_{F}}w_k S_{F, k}^2}{\
 $$
 
 $$
-M_{F,k, G}&& \text{otherwise}\end{aligned} \right
+M_{F,k, G}&& \text{otherwise}\end{aligned} 
 $$
 
 $$
