@@ -18,6 +18,7 @@ $$
 
 
 $$
+<<<<<<< HEAD
 f(x) = x^T Q x + k^T x + \lambda^T C x,
 $$
 
