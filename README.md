@@ -19,7 +19,7 @@ $$
 
 $$
 f(x) = x^T Q x + k^T x + \lambda^T C x \\
-x = \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}, \;
+x = \begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix};
 Q = \begin{bmatrix} 
 1 & 0.5 & 0 & 0 \\ 
 0.5 & 1 & 0 & 0 \\ 
