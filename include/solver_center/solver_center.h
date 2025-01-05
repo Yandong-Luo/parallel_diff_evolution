@@ -8,7 +8,6 @@
 #include "yaml-cpp/yaml.h"
 
 namespace cudaprocess{
-
     class CudaSolverCenter
     {
     private:

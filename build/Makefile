@@ -111,17 +111,111 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named diff_evolution_solver
+# Target rules for targets named Parallel_DiffEvolutionSolver
 
 # Build rule for target.
-diff_evolution_solver: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diff_evolution_solver
-.PHONY : diff_evolution_solver
+Parallel_DiffEvolutionSolver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Parallel_DiffEvolutionSolver
+.PHONY : Parallel_DiffEvolutionSolver
 
 # fast build rule for target.
-diff_evolution_solver/fast:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/build
-.PHONY : diff_evolution_solver/fast
+Parallel_DiffEvolutionSolver/fast:
+	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/build
+.PHONY : Parallel_DiffEvolutionSolver/fast
+
+#=============================================================================
+# Target rules for targets named cuda_DE
+
+# Build rule for target.
+cuda_DE: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cuda_DE
+.PHONY : cuda_DE
+
+# fast build rule for target.
+cuda_DE/fast:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/build
+.PHONY : cuda_DE/fast
+
+src/diff_evolution_solver/random_center.o: src/diff_evolution_solver/random_center.cu.o
+
+.PHONY : src/diff_evolution_solver/random_center.o
+
+# target to build an object file
+src/diff_evolution_solver/random_center.cu.o:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o
+.PHONY : src/diff_evolution_solver/random_center.cu.o
+
+src/diff_evolution_solver/random_center.i: src/diff_evolution_solver/random_center.cu.i
+
+.PHONY : src/diff_evolution_solver/random_center.i
+
+# target to preprocess a source file
+src/diff_evolution_solver/random_center.cu.i:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.i
+.PHONY : src/diff_evolution_solver/random_center.cu.i
+
+src/diff_evolution_solver/random_center.s: src/diff_evolution_solver/random_center.cu.s
+
+.PHONY : src/diff_evolution_solver/random_center.s
+
+# target to generate assembly for a file
+src/diff_evolution_solver/random_center.cu.s:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.s
+.PHONY : src/diff_evolution_solver/random_center.cu.s
+
+src/diff_evolution_solver/random_manager.o: src/diff_evolution_solver/random_manager.cu.o
+
+.PHONY : src/diff_evolution_solver/random_manager.o
+
+# target to build an object file
+src/diff_evolution_solver/random_manager.cu.o:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o
+.PHONY : src/diff_evolution_solver/random_manager.cu.o
+
+src/diff_evolution_solver/random_manager.i: src/diff_evolution_solver/random_manager.cu.i
+
+.PHONY : src/diff_evolution_solver/random_manager.i
+
+# target to preprocess a source file
+src/diff_evolution_solver/random_manager.cu.i:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.i
+.PHONY : src/diff_evolution_solver/random_manager.cu.i
+
+src/diff_evolution_solver/random_manager.s: src/diff_evolution_solver/random_manager.cu.s
+
+.PHONY : src/diff_evolution_solver/random_manager.s
+
+# target to generate assembly for a file
+src/diff_evolution_solver/random_manager.cu.s:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.s
+.PHONY : src/diff_evolution_solver/random_manager.cu.s
+
+src/diff_evolution_solver/solver.o: src/diff_evolution_solver/solver.cu.o
+
+.PHONY : src/diff_evolution_solver/solver.o
+
+# target to build an object file
+src/diff_evolution_solver/solver.cu.o:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o
+.PHONY : src/diff_evolution_solver/solver.cu.o
+
+src/diff_evolution_solver/solver.i: src/diff_evolution_solver/solver.cu.i
+
+.PHONY : src/diff_evolution_solver/solver.i
+
+# target to preprocess a source file
+src/diff_evolution_solver/solver.cu.i:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.i
+.PHONY : src/diff_evolution_solver/solver.cu.i
+
+src/diff_evolution_solver/solver.s: src/diff_evolution_solver/solver.cu.s
+
+.PHONY : src/diff_evolution_solver/solver.s
+
+# target to generate assembly for a file
+src/diff_evolution_solver/solver.cu.s:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.s
+.PHONY : src/diff_evolution_solver/solver.cu.s
 
 src/main.o: src/main.cpp.o
 
@@ -129,7 +223,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -138,7 +232,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -147,8 +241,35 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/diff_evolution_solver.dir/build.make CMakeFiles/diff_evolution_solver.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/solver_center/solver_center.o: src/solver_center/solver_center.cu.o
+
+.PHONY : src/solver_center/solver_center.o
+
+# target to build an object file
+src/solver_center/solver_center.cu.o:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o
+.PHONY : src/solver_center/solver_center.cu.o
+
+src/solver_center/solver_center.i: src/solver_center/solver_center.cu.i
+
+.PHONY : src/solver_center/solver_center.i
+
+# target to preprocess a source file
+src/solver_center/solver_center.cu.i:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.i
+.PHONY : src/solver_center/solver_center.cu.i
+
+src/solver_center/solver_center.s: src/solver_center/solver_center.cu.s
+
+.PHONY : src/solver_center/solver_center.s
+
+# target to generate assembly for a file
+src/solver_center/solver_center.cu.s:
+	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.s
+.PHONY : src/solver_center/solver_center.cu.s
 
 # Help Target
 help:
@@ -158,10 +279,23 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... diff_evolution_solver"
+	@echo "... Parallel_DiffEvolutionSolver"
+	@echo "... cuda_DE"
+	@echo "... src/diff_evolution_solver/random_center.o"
+	@echo "... src/diff_evolution_solver/random_center.i"
+	@echo "... src/diff_evolution_solver/random_center.s"
+	@echo "... src/diff_evolution_solver/random_manager.o"
+	@echo "... src/diff_evolution_solver/random_manager.i"
+	@echo "... src/diff_evolution_solver/random_manager.s"
+	@echo "... src/diff_evolution_solver/solver.o"
+	@echo "... src/diff_evolution_solver/solver.i"
+	@echo "... src/diff_evolution_solver/solver.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/solver_center/solver_center.o"
+	@echo "... src/solver_center/solver_center.i"
+	@echo "... src/solver_center/solver_center.s"
 .PHONY : help
 
 

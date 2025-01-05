@@ -60,7 +60,6 @@ void CudaDiffEvolveSolver::MallocSetup(){
         CHECK_CUDA(cudaHostAlloc(&h_quadratic_score, 1 * CUDA_SOLVER_POP_SIZE * sizeof(float), cudaHostAllocDefault));
     }
 
-
     cuda_utils_ = std::make_shared<CudaUtil>();
 
     cudamalloc_flag = true;
@@ -518,7 +517,7 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int
     //     // CHECK_CUDA(cudaMemcpyAsync(host_evolve_data_, evolve_data_, sizeof(CudaEvolveData), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
     //     // printf("CUDA_MAX_FLOAT %f\n", CUDA_MAX_FLOAT);
     // }
-    cudaDeviceSynchronize();  // 添加同步点
+    // cudaDeviceSynchronize();  // 添加同步点
 }
 
 __global__ void LoadWarmStartResultForSolver(CudaEvolveData *evolve, CudaParamClusterData<64> *new_param){

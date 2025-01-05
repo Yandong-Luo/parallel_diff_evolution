@@ -2,8 +2,10 @@
 
 
 namespace cudaprocess{
+__global__ void warmup_kernel() { }
 
 void CudaSolverCenter::Init(std::string filename){
+    // warmup_kernel<<<1,1>>>();
     config = YAML::LoadFile(filename);
     num_tasks_ = config["problems"].size();
     // Initialize cuBLAS handle
@@ -70,7 +72,6 @@ Problem CudaSolverCenter::LoadProblemFromYaml(const YAML::Node& node){
     problem.accuracy_rng = node["evolve_params"]["accuracy_rng"].as<float>();
     problem.elite_eval_count = node["evolve_params"]["elite_eval_count"].as<int>(); 
 
-        
     if (problem.row_objective_mat * problem.col_objective_mat != 0){
         problem.objective_mat = new float[problem.row_objective_mat * problem.col_objective_mat];
 

@@ -98,6 +98,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Yandong Luo: Based on cuRand to generate the random number. (random_manager)
 
-## [0.1.24] - 2025-1-4
+## [0.1.25] - 2025-1-4
 ### Changed
 - Yandong Luo: Update CMakeList and Add README.md
+
+## [0.1.26] - 2025-1-4
+### Changed
+- Yandong Luo: Update CMakeList for static CUDA Runtime

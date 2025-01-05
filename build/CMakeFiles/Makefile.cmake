@@ -11,14 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCUDACompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.depend"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.depend"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.depend"
-  "CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.depend"
   "/usr/local/lib/cmake/yaml-cpp/yaml-cpp-config-version.cmake"
   "/usr/local/lib/cmake/yaml-cpp/yaml-cpp-config.cmake"
   "/usr/local/lib/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake"
@@ -40,7 +32,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.16/Modules/Compiler/GNU.cmake"
   "/usr/share/cmake-3.16/Modules/Compiler/NVIDIA-CUDA.cmake"
   "/usr/share/cmake-3.16/Modules/FindCUDA.cmake"
-  "/usr/share/cmake-3.16/Modules/FindCUDA/run_nvcc.cmake"
   "/usr/share/cmake-3.16/Modules/FindCUDA/select_compute_arch.cmake"
   "/usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.16/Modules/FindPackageMessage.cmake"
@@ -60,18 +51,11 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.cmake.pre-gen"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.Debug.cmake"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.Debug.cmake"
-  "CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.Debug.cmake"
-  "CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.Debug.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/diff_evolution_solver.dir/DependInfo.cmake"
+  "CMakeFiles/Parallel_DiffEvolutionSolver.dir/DependInfo.cmake"
+  "CMakeFiles/cuda_DE.dir/DependInfo.cmake"
   )

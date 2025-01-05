@@ -56,7 +56,7 @@ namespace cudaprocess {
         }                                                                           \
     } while (0)
 
-    constexpr int stream_cnt = 1;
+    constexpr int stream_cnt = 7;
     struct CudaUtil {
     cudaStream_t streams_[stream_cnt];
     cudaEvent_t events_[stream_cnt];

@@ -82,7 +82,6 @@ $$
 
 $$
 M_{CR, k, G+1} = \lbrace \begin{aligned}\frac{\sum_{k=1}^{S_{CR}}w_k S_{CR, k}^2}{\sum_{k=1}^{S_{CR}}w_k S_{CR, k}} \\\
-
 M_{CR,k, G}&& \text{otherwise}\end{aligned}
 $$
 
