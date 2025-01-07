@@ -65,31 +65,6 @@ void CudaDiffEvolveSolver::MallocSetup(){
     cudamalloc_flag = true;
 }
 
-__global__ void ResetEvolveData(CudaEvolveData* evolve) {
-    // 重置LSHADE参数
-    evolve->hist_lshade_param = {0.6f, 0.6f, 0.9f, 0.0f};  // 默认初始值
-    
-    // 清空last_potential_sol
-    evolve->last_potential_sol.len = 0;
-    
-    // 重置warm_start
-    evolve->warm_start.fitness = CUDA_MAX_FLOAT;
-    
-    // 重置problem参数
-    evolve->problem_param.top_ratio = 0.0f;
-}
-
-template <int T>
-__global__ void ResetClusterData(CudaParamClusterData<T>* data) {
-    int idx = threadIdx.x;
-    if (idx == 0) {
-        data->len = 0;
-    }
-    if (idx < T) {
-        data->fitness[idx] = CUDA_MAX_FLOAT;
-    }
-}
-
 void CudaDiffEvolveSolver::InitDiffEvolveParam(float top, float d_top, float min_top, float diff, float d_diff, float min_diff, float scale_f, float prob_crossover){
     top_ = top;
     d_top_ = d_top;

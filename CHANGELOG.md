@@ -105,3 +105,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.26] - 2025-1-4
 ### Changed
 - Yandong Luo: Update CMakeList for static CUDA Runtime
+
+## [0.1.27] - 2025-1-7
+### Changed
+- Yandong Luo: QP and MILP problem solver branch

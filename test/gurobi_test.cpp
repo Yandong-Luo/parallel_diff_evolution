@@ -24,9 +24,9 @@ int main(int argc, char* argv[])
 		GRBModel model = GRBModel(* env);
 
 		// Create Variables
-		GRBVar x = model.addVar(0, GRB_INFINITY, 1.0, GRB_CONTINUOUS, "x");
-		GRBVar y = model.addVar(0, GRB_INFINITY, 1.0, GRB_CONTINUOUS, "y");
-		GRBVar z = model.addVar(0, GRB_INFINITY, 1.0, GRB_CONTINUOUS, "z");
+		GRBVar x = model.addVar(0, 100.0, 1.0, GRB_CONTINUOUS, "x");
+		GRBVar y = model.addVar(0, 100.0, 1.0, GRB_CONTINUOUS, "y");
+		GRBVar z = model.addVar(0, 100.0, 1.0, GRB_CONTINUOUS, "z");
 
 		model.setObjective(x + y + x * x + x * y + y * y + y * z + z * z, GRB_MINIMIZE);
 		

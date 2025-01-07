@@ -42,32 +42,32 @@ problems:
   # s.t.  x + 2y + 3z - 4 <= 0
   #       x + y - 1 <= 0
   #       x, y, z >= 0
-  # - name: problem2
-  #   num_con_variable: 3
-  #   num_int_variable: 0
-  #   con_bounds:
-  #     # upper: [3.4e+38, 3.4e+38, 3.4e+38]
-  #     upper: [100, 100, 100]
-  #     lower: [0.0, 0.0, 0.0]
-  #   objective_dims:
-  #     rows: 1
-  #     cols: 4
-  #   constraint_dims:
-  #     rows: 2
-  #     cols: 4
-  #   lambda_dims:
-  #     rows: 1
-  #     cols: 2
-  #   objective_Q_dims:
-  #     rows: 4
-  #     cols: 4
-  #   objective_matrix: [1, 1, 0, 0]
-  #   objective_Q_matrix: [1, 0.5, 0, 0, 0.5, 1, 0.5, 0, 0, 0.5, 1, 0, 0, 0, 0, 0]
-  #   constraint_matrix: [-1, -2, -3, 4, -1, -1, 0, 1]
-  #   lambda_matrix: [1, 1]
-  #   evolve_params:
-  #     max_lambda: 100
-  #     init_lambda: 5
-  #     max_evolve_round: 60
-  #     accuracy_rng: 0.5
-  #     elite_eval_count: 8
+  - name: problem2
+    num_con_variable: 3
+    num_int_variable: 0
+    con_bounds:
+      # upper: [3.4e+38, 3.4e+38, 3.4e+38]
+      upper: [100, 100, 100]
+      lower: [0.0, 0.0, 0.0]
+    objective_dims:
+      rows: 1
+      cols: 4
+    constraint_dims:
+      rows: 2
+      cols: 4
+    lambda_dims:
+      rows: 1
+      cols: 2
+    objective_Q_dims:
+      rows: 4
+      cols: 4
+    objective_matrix: [1, 1, 0, 0]
+    objective_Q_matrix: [1, 0.5, 0, 0, 0.5, 1, 0.5, 0, 0, 0.5, 1, 0, 0, 0, 0, 0]
+    constraint_matrix: [-1, -2, -3, 4, -1, -1, 0, 1]
+    lambda_matrix: [1, 1]
+    evolve_params:
+      max_lambda: 100
+      init_lambda: 5
+      max_evolve_round: 60
+      accuracy_rng: 0.5
+      elite_eval_count: 8
