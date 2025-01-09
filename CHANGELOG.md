@@ -109,3 +109,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.27] - 2025-1-7
 ### Changed
 - Yandong Luo: QP and MILP problem solver branch
+
+## [0.2.1] - 2025-1-8
+### Changed
+- Yandong Luo: Start cart pole system
