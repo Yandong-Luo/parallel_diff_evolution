@@ -175,15 +175,15 @@ __global__ void GenerativeRandSolNearBest(CudaEvolveData *evolve, CudaParamClust
 void CudaDiffEvolveSolver::WarmStart(Problem* problem, CudaParamIndividual* output_sol){
     InitParameter<<<1, CUDA_SOLVER_POP_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, CUDA_SOLVER_POP_SIZE, new_cluster_data_, old_cluster_data_, random_center_->uniform_data_);
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
-    // if(last_potential_sol_.len > 0){
-    //     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_INIT_SOLVER_FLAG) printf("USING LAST POTENTIAL SOL\n");
-    //     // int half_pop_size = CUDA_SOLVER_POP_SIZE >> 1;
-    //     int quad_pop_size = CUDA_SOLVER_POP_SIZE >> 2;
-    //     // one cluster generate one solution, each cluster works on one block. 
-    //     // We need to generate quad_pop_size new solutions based on last potential solution, so init the new cluster in quad_pop_size grid.
-    //     UpdateClusterDataBasedEvolve<<<quad_pop_size, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, last_potential_sol_.len);
-    // }
-    // UpdateVecParamBasedClusterData<64><<<CUDA_SOLVER_POP_SIZE, 16, 0, cuda_utils_->streams_[0]>>>(new_cluster_vec_->data, new_cluster_data_);
+    if(last_potential_sol_.len > 0){
+        if (DEBUG_PRINT_FLAG || DEBUG_PRINT_INIT_SOLVER_FLAG) printf("USING LAST POTENTIAL SOL\n");
+        // int half_pop_size = CUDA_SOLVER_POP_SIZE >> 1;
+        int quad_pop_size = CUDA_SOLVER_POP_SIZE >> 2;
+        // one cluster generate one solution, each cluster works on one block. 
+        // We need to generate quad_pop_size new solutions based on last potential solution, so init the new cluster in quad_pop_size grid.
+        UpdateClusterDataBasedEvolve<<<quad_pop_size, CUDA_PARAM_MAX_SIZE, 0, cuda_utils_->streams_[0]>>>(evolve_data_, new_cluster_data_, last_potential_sol_.len);
+    }
+    UpdateVecParamBasedClusterData<64><<<CUDA_SOLVER_POP_SIZE, 16, 0, cuda_utils_->streams_[0]>>>(new_cluster_vec_->data, new_cluster_data_);
 
     // int cet = 10;
     // Update the output param based on warm start.

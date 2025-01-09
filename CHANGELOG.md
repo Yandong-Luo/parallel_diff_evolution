@@ -113,3 +113,7 @@ All notable changes to this project will be documented in this file.
 ## [0.2.1] - 2025-1-8
 ### Changed
 - Yandong Luo: Start cart pole system
+
+## [0.2.2] - 2025-1-8
+### Changed
+- Yandong Luo: Add Cartpole environment and add constant variable/matrix for cuda
