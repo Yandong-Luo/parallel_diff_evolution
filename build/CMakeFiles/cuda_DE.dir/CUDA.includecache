@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../include/cart_pole/cart_pole_utils.cuh
+
 ../include/diff_evolution_solver/converter.cuh
 iostream
 -
@@ -231,6 +233,8 @@ diff_evolution_solver/evolve.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evolve.cuh
 diff_evolution_solver/evaluate.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evaluate.cuh
+cart_pole/cart_pole_utils.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/cart_pole/cart_pole_utils.cuh
 utils/utils_fun.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 math.h

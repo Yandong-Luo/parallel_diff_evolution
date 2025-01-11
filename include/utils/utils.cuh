@@ -18,6 +18,7 @@ namespace cudaprocess {
     #define DEBUG_PRINT_SOLVER_FLAG false
     #define DEBUG_PRINT_INIT_SOLVER_FLAG false
     #define DEBUG_ENABLE_NVTX true
+    #define DEBUG_CART_POLE true
 
     #define HOST_DEVICE __device__ __forceinline__ __host__
     #define CUDA_SOLVER_POP_SIZE 64

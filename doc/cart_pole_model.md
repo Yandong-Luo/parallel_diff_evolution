@@ -1,3 +1,39 @@
+![cart pole system](../img/cart pole system.png)
+
+Set the state variable as $x_1 = pos, x_2 = \theta, x_3 = v, x_4 = \dot \theta$. The system can be described as:
+$$
+\dot{\mathbf{x}} = Ax+Bu+E\lambda\\
+
+\dot{\mathbf{x}} = 
+\begin{bmatrix}
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & \frac{g m_p}{m_c} & 0 & 0 \\
+0 & \frac{g (m_c + m_p)}{l m_c} & 0 & 0
+\end{bmatrix}
+\mathbf{x}
++
+\begin{bmatrix}
+0 \\
+0 \\
+\frac{1}{m_c} \\
+\frac{1}{l m_c}
+\end{bmatrix}
+u
++
+\begin{bmatrix}
+0 & 0 \\
+0 & 0 \\
+0 & 0 \\
+\frac{1}{l m_p} & -\frac{1}{l m_p}
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 \\
+\lambda_2
+\end{bmatrix}.
+
+$$
+
 $$
 E = I + \Delta T \begin{bmatrix}
 0 & 0 & 1 & 0 \\

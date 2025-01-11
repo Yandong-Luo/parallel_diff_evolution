@@ -31,6 +31,8 @@ namespace cudaprocess{
             void Evaluation(int size, int epoch);
             void Evolution(int epoch, CudaEvolveType search_type);
             CudaParamIndividual Solver();
+
+            void UpdateCartPoleState(float state[4], float env_constraint[20]);
         private:
             int gpu_device_;
             int default_pop_size_;
@@ -95,6 +97,14 @@ namespace cudaprocess{
             nvtxRangeId_t loading_last_sol_range;
 
             int task_id_ = 0;
+
+            // !--------------- CART POLE ---------------!
+            float4 state;
+            float *h_state;             // pos, speed, theta, angular velocity from environment (x in paper)
+            float *env_constraint, *h_env_constraint;     // h(\theta) in paper
+
+            float *C_matrix, *h_C_matrix;
+            float *A_matrix, *h_A_matrix;
     };
 }
 

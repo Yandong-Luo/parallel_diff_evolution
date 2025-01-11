@@ -117,3 +117,7 @@ All notable changes to this project will be documented in this file.
 ## [0.2.2] - 2025-1-8
 ### Changed
 - Yandong Luo: Add Cartpole environment and add constant variable/matrix for cuda
+
+## [0.2.3] - 2025-1-9
+### Changed
+- Yandong Luo: Construct A and C matrix for MPC model

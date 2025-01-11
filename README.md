@@ -11,23 +11,25 @@ $$
 
 $$
 f(x)=x^TQx+k^Tx + \lambda Cx$$
-
 $$
 x=\begin{bmatrix}x\\\ y\\\ z \\\ 1\end{bmatrix},
 $$
+
 $$
 Q=\begin{bmatrix}1&0.5 &0&0\\\1&0.5&1&0\\\0&1&2&0\\\0&0&0&0 \end{bmatrix},
 $$
+
 $$
 k=\begin{bmatrix}1&1&0&0\end{bmatrix},
 $$
+
 $$
 \lambda = \begin{bmatrix}\lambda_1\\\ \lambda_2 \end{bmatrix},
 $$
+
 $$
 C=\begin{bmatrix}-1&-2&-3&4\\\ -1&-1&0&1\end{bmatrix}
 $$
-
 <!-- x = 
       _
      | x |
@@ -87,7 +89,7 @@ $$
 
 $$
 M_{F, k, G+1} = \lbrace \begin{aligned}\frac{\sum_{k=1}^{S_{F}}w_k S_{F, k}^2}{\sum_{k=1}^{S_{F}}w_k S_{F, k}} \\\
-M_{F,k, G}&& \text{otherwise}\end{aligned} 
+M_{F,k, G}&& \text{otherwise}\end{aligned}
 $$
 
 $$

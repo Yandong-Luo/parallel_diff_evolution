@@ -51,14 +51,14 @@ void PrintEvolveData(cudaprocess::CudaEvolveData *evolve){
 /**
  * EVALUATE OUTPUT
  */
-void PrintMatrixByRow(float *obj_mat, int row, int col, std::string output_msg){
+void PrintMatrixByRow(float *mat, int row, int col, std::string output_msg){
     // printf("%s\n",output_msg);
     std::cout<<output_msg<<std::endl;
 
     for(int i = 0; i < row; ++i){
         for(int j = 0; j < col; ++j){
             // printf("row:%d col:%d objective mat:%f ", i, j, h_objective_matrix[i * col_obj +j]);
-            printf("matrix[%d,%d]=%f ", i, j, obj_mat[i * col + j]);
+            printf("matrix[%d,%d]=%f ", i, j, mat[i * col + j]);
         }
         printf("\n");
     }

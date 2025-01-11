@@ -3,6 +3,7 @@
 #include "diff_evolution_solver/debug.cuh"
 #include "diff_evolution_solver/evolve.cuh"
 #include "diff_evolution_solver/evaluate.cuh"
+#include "cart_pole/cart_pole_utils.cuh"
 #include "utils/utils_fun.cuh"
 #include <math.h>
 
@@ -58,6 +59,20 @@ void CudaDiffEvolveSolver::MallocSetup(){
         CHECK_CUDA(cudaHostAlloc(&host_quad_matrix, CUDA_SOLVER_POP_SIZE * CUDA_SOLVER_POP_SIZE * sizeof(float), cudaHostAllocDefault));
         CHECK_CUDA(cudaHostAlloc(&h_quad_transform, row_obj_Q * CUDA_SOLVER_POP_SIZE * sizeof(float), cudaHostAllocDefault));
         CHECK_CUDA(cudaHostAlloc(&h_quadratic_score, 1 * CUDA_SOLVER_POP_SIZE * sizeof(float), cudaHostAllocDefault));
+    }
+
+    // !--------------- CART POLE ---------------!
+    CHECK_CUDA(cudaMalloc(&env_constraint, cart_pole::num_constraints * sizeof(float)));
+    CHECK_CUDA(cudaMalloc(&C_matrix, cart_pole::row_C * cart_pole::col_C * sizeof(float)));
+
+    CHECK_CUDA(cudaMalloc(&A_matrix, cart_pole::row_A * cart_pole::col_A * sizeof(float)));
+    
+
+    if (DEBUG_CART_POLE){
+        CHECK_CUDA(cudaHostAlloc(&h_state, cart_pole::state_dims * sizeof(float), cudaHostAllocDefault));
+        CHECK_CUDA(cudaHostAlloc(&h_env_constraint, cart_pole::num_constraints * sizeof(float), cudaHostAllocDefault));
+        CHECK_CUDA(cudaHostAlloc(&h_C_matrix, cart_pole::row_C * cart_pole::col_C * sizeof(float), cudaHostAllocDefault));
+        CHECK_CUDA(cudaHostAlloc(&h_A_matrix, cart_pole::row_A * cart_pole::col_A * sizeof(float), cudaHostAllocDefault));
     }
 
     cuda_utils_ = std::make_shared<CudaUtil>();
@@ -348,6 +363,56 @@ void CudaDiffEvolveSolver::Evolution(int epoch, CudaEvolveType search_type){
     CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
 }
 
+__global__ void ConstructMatrix_A(float *A_matrix){
+    if (threadIdx.x >= cart_pole::state_dims * (cart_pole::col_E + cart_pole::col_F + cart_pole::col_Inx))   return;
+    if(blockIdx.x == 0){
+        if (threadIdx.x >= cart_pole::row_Inx * cart_pole::col_Inx) return;
+        int row_idx = threadIdx.x / cart_pole::col_Inx;
+        int col_idx = threadIdx.x % cart_pole::col_Inx;
+        if (row_idx == col_idx) {            
+            A_matrix[row_idx * cart_pole::col_A + col_idx] = cart_pole::Inx[row_idx * cart_pole::col_Inx + col_idx];
+        }
+    }
+    else{
+        int local_row_idx = threadIdx.x / (cart_pole::col_E + cart_pole::col_F + cart_pole::col_Inx);
+        int local_col_idx = threadIdx.x % (cart_pole::col_E + cart_pole::col_F + cart_pole::col_Inx);
+
+        int global_row_idx = (blockIdx.x - 1) * cart_pole::state_dims + local_row_idx + cart_pole::row_Inx;
+        int global_col_idx = (blockIdx.x - 1) * (cart_pole::col_E + cart_pole::col_F) + local_col_idx;
+
+        int matrix_idx = global_row_idx * cart_pole::col_A + global_col_idx;
+
+        if (local_col_idx < cart_pole::col_E) {
+            A_matrix[matrix_idx] = -cart_pole::E[local_row_idx * cart_pole::col_E + local_col_idx];
+        } 
+        else if (local_col_idx < cart_pole::col_E + cart_pole::col_F) {
+            A_matrix[matrix_idx] = -cart_pole::F[local_row_idx * cart_pole::col_F + (local_col_idx - cart_pole::col_E)];
+        }
+        else if (local_col_idx < cart_pole::col_E + cart_pole::col_F + cart_pole::col_Inx) {
+            A_matrix[matrix_idx] = cart_pole::Inx[local_row_idx * cart_pole::col_Inx + (local_col_idx - (cart_pole::col_E + cart_pole::col_F))];
+        }
+    }
+}
+
+__global__ void ConstructMatrix_C(float *C_matrix){
+    if (threadIdx.x >= cart_pole::num_constraints * (cart_pole::col_H1 + cart_pole::col_H2))   return;
+
+    int local_row_idx = threadIdx.x / (cart_pole::col_H1 + cart_pole::col_H2);
+    int local_col_idx = threadIdx.x % (cart_pole::col_H1 + cart_pole::col_H2);
+
+    int global_row_id = blockIdx.x * cart_pole::num_constraints + local_row_idx;
+    int global_col_id = blockIdx.x * (cart_pole::col_H1 + cart_pole::col_H2) + local_col_idx;
+
+    int matrix_idx = global_row_id * cart_pole::col_C + global_col_id;
+
+    if (local_col_idx < cart_pole::col_H1){
+        C_matrix[matrix_idx] = cart_pole::H1[local_row_idx * cart_pole::col_H1 + local_col_idx];
+    }
+    else{
+        C_matrix[matrix_idx] = cart_pole::H2[local_row_idx * cart_pole::col_H2 + local_col_idx];
+    }
+}
+
 void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int task_id, CudaRandomManager *random_center, Problem* host_problem, CudaParamIndividual *output_sol, const CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *last_potential_sol){
     if(DEBUG_ENABLE_NVTX)   init_range = nvtxRangeStart("Init Different Evolution Solver");
 
@@ -380,6 +445,24 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int
     MallocSetup();
 
     InitDiffEvolveParam();
+
+    // initialize the C matrix as zero
+    CHECK_CUDA(cudaMemset(C_matrix, 0, cart_pole::row_C * cart_pole::col_C * sizeof(float)));
+
+    CHECK_CUDA(cudaMemset(A_matrix, 0, cart_pole::row_A * cart_pole::col_A * sizeof(float)));
+
+    ConstructMatrix_A<<<cart_pole::N + 1, cart_pole::state_dims * (cart_pole::col_E + cart_pole::col_F + cart_pole::col_Inx), 0, cuda_utils_->streams_[0]>>>(A_matrix);
+
+    ConstructMatrix_C<<<cart_pole::N, cart_pole::num_constraints * (cart_pole::state_dims + cart_pole::control_input_dims), 0, cuda_utils_->streams_[0]>>>(C_matrix);
+
+    if(DEBUG_PRINT_FLAG || DEBUG_CART_POLE){
+        CHECK_CUDA(cudaMemcpyAsync(h_A_matrix, A_matrix, cart_pole::row_A * cart_pole::col_A * sizeof(float), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+        CHECK_CUDA(cudaMemcpyAsync(h_C_matrix, C_matrix, cart_pole::row_C * cart_pole::col_C * sizeof(float), cudaMemcpyDeviceToHost, cuda_utils_->streams_[0]));
+        CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
+
+        PrintMatrixByRow(h_A_matrix, cart_pole::row_A, cart_pole::col_A, "A matrix:");
+        PrintMatrixByRow(h_C_matrix, cart_pole::row_C, cart_pole::col_C, "C matrix:");
+    }
     
     if (DEBUG_PRINT_FLAG || DEBUG_PRINT_INIT_SOLVER_FLAG) printf("INIT PARAM FOR DE\n");
 
@@ -467,7 +550,7 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int
     CHECK_CUDA(cudaMemcpyAsync(lambda_matrix, host_problem->lambda_mat, row_lambda * col_lambda * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
     if (host_problem->objective_Q_mat != nullptr)   CHECK_CUDA(cudaMemcpyAsync(objective_Q_matrix, host_problem->objective_Q_mat, row_obj_Q * col_obj_Q * sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
 
-    CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
+    // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[0]));
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[1]));
     // CHECK_CUDA(cudaStreamSynchronize(cuda_utils_->streams_[2]));
 
@@ -493,6 +576,12 @@ void CudaDiffEvolveSolver::InitSolver(int gpu_device, cublasHandle_t handle, int
     //     // printf("CUDA_MAX_FLOAT %f\n", CUDA_MAX_FLOAT);
     // }
     // cudaDeviceSynchronize();  // 添加同步点
+}
+
+void CudaDiffEvolveSolver::UpdateCartPoleState(float sys_state[4], float sys_constraint[20]){
+    CHECK_CUDA(cudaMemcpyToSymbol(state, sys_state, sizeof(float4)));
+
+    CHECK_CUDA(cudaMemcpyAsync(env_constraint, &sys_constraint, 20*sizeof(float), cudaMemcpyHostToDevice, cuda_utils_->streams_[0]));
 }
 
 __global__ void LoadWarmStartResultForSolver(CudaEvolveData *evolve, CudaParamClusterData<64> *new_param){
