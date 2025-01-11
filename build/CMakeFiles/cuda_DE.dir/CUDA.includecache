@@ -118,6 +118,20 @@ diff_evolution_solver/random_center.cuh
 diff_evolution_solver/random_manager.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/random_manager.cuh
 
+../include/solver_center/solver_center.h
+cassert
+-
+diff_evolution_solver/data_type.h
+../include/solver_center/diff_evolution_solver/data_type.h
+diff_evolution_solver/solver.cuh
+../include/solver_center/diff_evolution_solver/solver.cuh
+diff_evolution_solver/random_center.cuh
+../include/solver_center/diff_evolution_solver/random_center.cuh
+diff_evolution_solver/random_manager.cuh
+../include/solver_center/diff_evolution_solver/random_manager.cuh
+yaml-cpp/yaml.h
+../include/solver_center/yaml-cpp/yaml.h
+
 ../include/utils/utils.cuh
 stdio.h
 -
@@ -222,6 +236,14 @@ nvtxInit.h
 
 ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu
+diff_evolution_solver/random_center.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/random_center.cuh
+
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_manager.cu
+diff_evolution_solver/random_manager.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/random_manager.cuh
+
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu
 diff_evolution_solver/solver.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/solver.cuh
@@ -239,4 +261,8 @@ utils/utils_fun.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 math.h
 -
+
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu
+solver_center/solver_center.h
+/home/chris/parallel_diff_evolution/src/solver_center/solver_center/solver_center.h
 

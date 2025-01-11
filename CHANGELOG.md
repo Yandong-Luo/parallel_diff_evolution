@@ -120,4 +120,8 @@ All notable changes to this project will be documented in this file.
 
 ## [0.2.3] - 2025-1-9
 ### Changed
-- Yandong Luo: Construct A and C matrix for MPC model
+- Yandong Luo: Construct A and C matrix for MPC model. Adjust constant variable and matrix.
+
+## [0.2.4] - 2025-1-11
+### Changed
+- Yandong Luo: Cart_pole.py file can run cuda based on .so file. CMakeList.txt file has been modified so that can support pybind11

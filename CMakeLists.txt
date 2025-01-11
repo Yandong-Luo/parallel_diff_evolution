@@ -7,6 +7,9 @@ project(Parallel_DiffEvolutionSolver LANGUAGES CXX CUDA)
 # Find the CUDA Toolkit
 find_package(CUDA REQUIRED)
 
+# Find the pybind11
+# find_package(pybind11 REQUIRED)
+
 # Find CUBLAS
 find_library(CUBLAS_LIBRARY cublas HINTS ${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 
@@ -28,6 +31,8 @@ if(UNIX)
     target_link_libraries(nvtx3-cpp INTERFACE ${NVTOOLSEXT_LIBRARY})
 endif()
 
+add_subdirectory(${PROJECT_SOURCE_DIR}/thirdparty/pybind11)
+
 # Include CUDA headers and libraries
 include_directories(${CUDA_INCLUDE_DIRS})
 link_directories(${CUDA_LIBRARIES})
@@ -47,7 +52,7 @@ set(CMAKE_CUDA_FLAGS_RELEASE "-O3 --use_fast_math -Xcompiler -fPIC -lineinfo")
 # set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -std=c++17 -lineinfo")
 
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 # Include the directory for header files
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/thirdparty/nvtx/c/include)
@@ -65,7 +70,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/thirdpar
 file(GLOB_RECURSE ALL_CUDA "${PROJECT_SOURCE_DIR}/src/*.cu")
 
 # find main.cpp
-file(GLOB_RECURSE MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/main.cpp")
+# file(GLOB_RECURSE MAIN_SOURCE "${PROJECT_SOURCE_DIR}/src/diff_evolution_solver/solver.cu")
+
+pybind11_add_module(cuda_solver 
+    ${PROJECT_SOURCE_DIR}/src/solver_center/solver_center.cpp
+)
 
 # Specify the search path for header files
 # target_include_directories(diff_evolution_solver PRIVATE ${PROJECT_SOURCE_DIR}/include)
@@ -81,6 +90,7 @@ set_property(TARGET cuda_DE PROPERTY
 # Enable separate compilation, allowing __device__ functions to be used in different compilation units
 set_target_properties(cuda_DE PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
+    POSITION_INDEPENDENT_CODE ON
 )
 
 # Use the static version of the CUDA runtime library
@@ -93,11 +103,18 @@ set(CMAKE_CUDA_RUNTIME_LIBRARY STATIC)
 # )
 
 # Add the executable target
-add_executable(${PROJECT_NAME} ${MAIN_SOURCE})
+# add_executable(${PROJECT_NAME} ${MAIN_SOURCE})
+
+set_target_properties(cuda_solver PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib
+    OUTPUT_NAME "DE_cuda_solver"  # 设置输出名称
+    PREFIX ""  # 删除 lib 前缀
+    SUFFIX ".so"  # 直接使用 .so 后缀
+)
 
 
 # Link the executable with CUBLAS
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(cuda_solver PRIVATE
     cuda_DE
     # ${CUDA_LIBRARIES}
     ${CUBLAS_LIBRARY}
@@ -108,7 +125,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 # Enable device symbol resolution to ensure device code is linked correctly
-set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+set_target_properties(cuda_solver PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 
 
 # # Set the minimum required CMake version

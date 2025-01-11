@@ -10,6 +10,14 @@ import pdb
 from pybullet_dynamics.cart_pole_soft_wall_dynamics_pybullet import cart_pole_dynamics
 from utils import *
 
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 添加lib目录
+lib_path = os.path.join(project_root, 'lib')
+if lib_path not in sys.path:
+    sys.path.append(lib_path)
+
+import DE_cuda_solver
+
 def load_or_generate_wall_motion(load_wall_motion, total_sim_steps):
     """Load or generate wall motion data"""
     if load_wall_motion:
@@ -55,7 +63,7 @@ def run_simulation(env, solver, wall_motion, list_delta_d_left, list_delta_d_rig
     u_input = 0.0
     
     for i_loop in range(total_sim_steps):
-        print(f"Run time: {i_loop}")
+        # print(f"Run time: {i_loop}")
         
         # Get wall motion
         if load_wall_motion:
@@ -181,6 +189,12 @@ def main():
     # Configuration
     load_wall_motion = True
     use_Gurobi = False
+
+    solver = DE_cuda_solver.Create()
+    print("Solver object created successfully")
+
+    solver.init_solver(0)
+    print("Solver initialized successfully")
     
     # Initialize system
     """Initialize the cart-pole system and simulation parameters"""

@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Parallel_DiffEvolutionSolver
-
-# Build rule for target.
-Parallel_DiffEvolutionSolver: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Parallel_DiffEvolutionSolver
-.PHONY : Parallel_DiffEvolutionSolver
-
-# fast build rule for target.
-Parallel_DiffEvolutionSolver/fast:
-	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/build
-.PHONY : Parallel_DiffEvolutionSolver/fast
-
-#=============================================================================
 # Target rules for targets named cuda_DE
 
 # Build rule for target.
@@ -135,6 +122,19 @@ cuda_DE: cmake_check_build_system
 cuda_DE/fast:
 	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/build
 .PHONY : cuda_DE/fast
+
+#=============================================================================
+# Target rules for targets named cuda_solver
+
+# Build rule for target.
+cuda_solver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cuda_solver
+.PHONY : cuda_solver
+
+# fast build rule for target.
+cuda_solver/fast:
+	$(MAKE) -f CMakeFiles/cuda_solver.dir/build.make CMakeFiles/cuda_solver.dir/build
+.PHONY : cuda_solver/fast
 
 src/diff_evolution_solver/random_center.o: src/diff_evolution_solver/random_center.cu.o
 
@@ -217,32 +217,32 @@ src/diff_evolution_solver/solver.cu.s:
 	$(MAKE) -f CMakeFiles/cuda_DE.dir/build.make CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.s
 .PHONY : src/diff_evolution_solver/solver.cu.s
 
-src/main.o: src/main.cpp.o
+src/solver_center/solver_center.o: src/solver_center/solver_center.cpp.o
 
-.PHONY : src/main.o
+.PHONY : src/solver_center/solver_center.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/solver_center/solver_center.cpp.o:
+	$(MAKE) -f CMakeFiles/cuda_solver.dir/build.make CMakeFiles/cuda_solver.dir/src/solver_center/solver_center.cpp.o
+.PHONY : src/solver_center/solver_center.cpp.o
 
-src/main.i: src/main.cpp.i
+src/solver_center/solver_center.i: src/solver_center/solver_center.cpp.i
 
-.PHONY : src/main.i
+.PHONY : src/solver_center/solver_center.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/solver_center/solver_center.cpp.i:
+	$(MAKE) -f CMakeFiles/cuda_solver.dir/build.make CMakeFiles/cuda_solver.dir/src/solver_center/solver_center.cpp.i
+.PHONY : src/solver_center/solver_center.cpp.i
 
-src/main.s: src/main.cpp.s
+src/solver_center/solver_center.s: src/solver_center/solver_center.cpp.s
 
-.PHONY : src/main.s
+.PHONY : src/solver_center/solver_center.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/Parallel_DiffEvolutionSolver.dir/build.make CMakeFiles/Parallel_DiffEvolutionSolver.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/solver_center/solver_center.cpp.s:
+	$(MAKE) -f CMakeFiles/cuda_solver.dir/build.make CMakeFiles/cuda_solver.dir/src/solver_center/solver_center.cpp.s
+.PHONY : src/solver_center/solver_center.cpp.s
 
 src/solver_center/solver_center.o: src/solver_center/solver_center.cu.o
 
@@ -279,8 +279,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Parallel_DiffEvolutionSolver"
 	@echo "... cuda_DE"
+	@echo "... cuda_solver"
 	@echo "... src/diff_evolution_solver/random_center.o"
 	@echo "... src/diff_evolution_solver/random_center.i"
 	@echo "... src/diff_evolution_solver/random_center.s"
@@ -290,9 +290,9 @@ help:
 	@echo "... src/diff_evolution_solver/solver.o"
 	@echo "... src/diff_evolution_solver/solver.i"
 	@echo "... src/diff_evolution_solver/solver.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/solver_center/solver_center.o"
+	@echo "... src/solver_center/solver_center.i"
+	@echo "... src/solver_center/solver_center.s"
 	@echo "... src/solver_center/solver_center.o"
 	@echo "... src/solver_center/solver_center.i"
 	@echo "... src/solver_center/solver_center.s"

@@ -53,6 +53,13 @@ struct CudaVector {
 //     }
 // };
 
+struct CartState{
+    float position;
+    float speed;
+    float theta;
+    float dtheta;   // dot theta
+};
+
 struct Problem{
     int num_continous = 2;
     int num_int = 1;
@@ -165,13 +172,6 @@ struct CudaEvolveData{
     CudaParamIndividual warm_start;
 
     CudaProblemParam problem_param;
-
-    // (Abandoned) Use for loop to evaluate 
-    // int num_constraint;
-    // float constraint_para[CUDA_MAX_NUM_CONSTRAINT][CUDA_PARAM_MAX_SIZE + 1];
-    // int num_constraint_variable;
-    // float objective_param[CUDA_PARAM_MAX_SIZE];
-    // int num_objective_param;
 };
 
 }

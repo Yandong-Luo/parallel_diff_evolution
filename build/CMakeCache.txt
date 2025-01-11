@@ -92,8 +92,56 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 
+//User executables (bin)
+CMAKE_INSTALL_BINDIR:PATH=bin
+
+//Read-only architecture-independent data (DATAROOTDIR)
+CMAKE_INSTALL_DATADIR:PATH=
+
+//Read-only architecture-independent data root (share)
+CMAKE_INSTALL_DATAROOTDIR:PATH=share
+
+//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
+CMAKE_INSTALL_DOCDIR:PATH=
+
+//C header files (include)
+CMAKE_INSTALL_INCLUDEDIR:PATH=include
+
+//Info documentation (DATAROOTDIR/info)
+CMAKE_INSTALL_INFODIR:PATH=
+
+//Object code libraries (lib)
+CMAKE_INSTALL_LIBDIR:PATH=lib
+
+//Program executables (libexec)
+CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
+
+//Locale-dependent data (DATAROOTDIR/locale)
+CMAKE_INSTALL_LOCALEDIR:PATH=
+
+//Modifiable single-machine data (var)
+CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
+
+//Man documentation (DATAROOTDIR/man)
+CMAKE_INSTALL_MANDIR:PATH=
+
+//C header files for non-gcc (/usr/include)
+CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
+
+//Run-time variable data (LOCALSTATEDIR/run)
+CMAKE_INSTALL_RUNSTATEDIR:PATH=
+
+//System admin executables (sbin)
+CMAKE_INSTALL_SBINDIR:PATH=sbin
+
+//Modifiable architecture-independent data (com)
+CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
+
+//Read-only single-machine data (etc)
+CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
@@ -138,6 +186,21 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=Parallel_DiffEvolutionSolver
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=2.14.0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=2
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=14
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -352,11 +415,59 @@ CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 //Path to a library.
 CURAND_LIBRARY:FILEPATH=/usr/local/cuda-11.1/lib64/libcurand.so
 
+//To enforce that a handle_type_name<> specialization exists
+PYBIND11_DISABLE_HANDLE_TYPE_NAME_DEFAULT_IMPLEMENTATION:BOOL=OFF
+
+//Force new FindPython
+PYBIND11_FINDPYTHON:BOOL=OFF
+
+//Install pybind11 header files?
+PYBIND11_INSTALL:BOOL=OFF
+
+//Override the ABI version, may be used to enable the unstable
+// ABI.
+PYBIND11_INTERNALS_VERSION:STRING=
+
+//Disable search for Python
+PYBIND11_NOPYTHON:BOOL=OFF
+
+//Disable NumPy 2 support to avoid changes to previous pybind11
+// versions.
+PYBIND11_NUMPY_1_ONLY:BOOL=OFF
+
+//Overwrite cached values read from Python library (classic search).
+// Turn off if cross-compiling and manually setting these values.
+PYBIND11_PYTHONLIBS_OVERWRITE:BOOL=ON
+
+//Python version to use for compiling modules
+PYBIND11_PYTHON_VERSION:STRING=
+
+//Use simpler GIL management logic that does not support disassociation
+PYBIND11_SIMPLE_GIL_MANAGEMENT:BOOL=OFF
+
+//Build pybind11 test suite?
+PYBIND11_TEST:BOOL=OFF
+
+//Respect CMAKE_CROSSCOMPILING
+PYBIND11_USE_CROSSCOMPILING:BOOL=OFF
+
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/home/chris/anaconda3/envs/lab_env/bin/python
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/home/chris/anaconda3/envs/lab_env/lib/libpython3.9.so
+
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build
 
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_SOURCE_DIR:STATIC=/home/chris/parallel_diff_evolution
+
+//Value Computed by CMake
+pybind11_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build/thirdparty/pybind11
+
+//Value Computed by CMake
+pybind11_SOURCE_DIR:STATIC=/home/chris/parallel_diff_evolution/thirdparty/pybind11
 
 //The directory containing a CMake configuration file for yaml-cpp.
 yaml-cpp_DIR:PATH=/usr/local/lib/cmake/yaml-cpp
@@ -451,8 +562,40 @@ CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/chris/parallel_diff_evolution
+//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
+CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
+CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
+CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
+CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
+CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
+CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
+CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
+CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
+CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
+CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
+CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
+CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
+CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
+CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
+CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
+CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM
@@ -470,7 +613,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -515,9 +658,6 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_64_BIT_DEVICE_CODE
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
-//List of intermediate files that are part of the cuda dependency
-// scanning.
-CUDA_ADDITIONAL_CLEAN_FILES:INTERNAL=/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_solver.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_center.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/diff_evolution_solver/diff_evolution_solver_generated_random_manager.cu.o.depend;/home/chris/parallel_diff_evolution/build/CMakeFiles/diff_evolution_solver.dir/src/solver_center/diff_evolution_solver_generated_solver_center.cu.o.depend
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_BUILD_CUBIN
@@ -615,6 +755,37 @@ CUDA_parse_cubin:INTERNAL=/usr/share/cmake-3.16/Modules/FindCUDA/parse_cubin.cma
 CUDA_run_nvcc:INTERNAL=/usr/share/cmake-3.16/Modules/FindCUDA/run_nvcc.cmake
 //Details about finding CUDA
 FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr/local/cuda-11.1][/usr/local/cuda-11.1/bin/nvcc][/usr/local/cuda-11.1/include][/usr/local/cuda-11.1/lib64/libcudart_static.a][v11.1()]
+//Details about finding PYTHON
+FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/home/chris/anaconda3/envs/lab_env/bin/python3.9.20
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/home/chris/anaconda3/envs/lab_env/bin/python][v3.9.20(3.8)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Test HAS_FLTO
+HAS_FLTO:INTERNAL=1
+PYBIND11_INCLUDE_DIR:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
+PYTHON_INCLUDE_DIRS:INTERNAL=/home/chris/anaconda3/envs/lab_env/include/python3.9
+PYTHON_IS_DEBUG:INTERNAL=0
+PYTHON_LIBRARIES:INTERNAL=/home/chris/anaconda3/envs/lab_env/lib/libpython3.9.so
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+PYTHON_MODULE_DEBUG_POSTFIX:INTERNAL=
+PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-39-x86_64-linux-gnu.so
+PYTHON_MODULE_PREFIX:INTERNAL=
+PYTHON_VERSION:INTERNAL=3.9.20
+PYTHON_VERSION_MAJOR:INTERNAL=3
+PYTHON_VERSION_MINOR:INTERNAL=9
+Python_ADDITIONAL_VERSIONS:INTERNAL=3.12;3.11;3.10;3.9;3.8
+//CMAKE_INSTALL_PREFIX during last run
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+_PYBIND11_CROSSCOMPILING:INTERNAL=OFF
+_Python:INTERNAL=PYTHON
+//True if pybind11 and all required components found on the system
+pybind11_FOUND:INTERNAL=TRUE
+//Directory where pybind11 headers are located
+pybind11_INCLUDE_DIR:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include
+//Directories where pybind11 and possibly Python headers are located
+pybind11_INCLUDE_DIRS:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include;/home/chris/anaconda3/envs/lab_env/include/python3.9
 
