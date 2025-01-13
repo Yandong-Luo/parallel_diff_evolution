@@ -22,15 +22,6 @@ CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../include/diff_ev
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../include/diff_evolution_solver/solver.cuh
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../include/utils/utils.cuh
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../include/utils/utils_fun.cuh
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../src/diff_evolution_solver/solver.cu
 
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../include/cart_pole/cart_pole_utils.cuh
@@ -40,14 +31,5 @@ CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../include/diff_evo
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../include/diff_evolution_solver/solver.cuh
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../include/solver_center/solver_center.h
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../include/utils/utils.cuh
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvToolsExt.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtx3.hpp
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImpl.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxImplCore.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInit.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDecls.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxInitDefs.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxLinkOnce.h
-CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../src/solver_center/solver_center.cu
 
