@@ -91,6 +91,7 @@ set_property(TARGET cuda_DE PROPERTY
 set_target_properties(cuda_DE PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
     POSITION_INDEPENDENT_CODE ON
+    CUDA_RESOLVE_DEVICE_SYMBOLS ON
 )
 
 # Use the static version of the CUDA runtime library

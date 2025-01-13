@@ -1,2 +1,3 @@
-/usr/bin/ar qc libcuda_DE.a  CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o
+/usr/bin/ar qc libcuda_DE.a  CMakeFiles/cuda_DE.dir/src/cart_pole/cart_pole_utils.cu.o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o
+/usr/bin/ar q  libcuda_DE.a  CMakeFiles/cuda_DE.dir/cmake_device_link.o
 /usr/bin/ranlib libcuda_DE.a

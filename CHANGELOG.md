@@ -129,3 +129,7 @@ All notable changes to this project will be documented in this file.
 ## [0.2.5] - 2025-1-12
 ### Changed
 - Yandong Luo: Add none-linear model for cart pole.
+
+## [0.2.5] - 2025-1-13
+### Changed
+- Yandong Luo: Fixed "nvlink error   : Undefined reference to"
