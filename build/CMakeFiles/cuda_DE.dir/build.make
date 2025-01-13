@@ -57,22 +57,9 @@ include CMakeFiles/cuda_DE.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cuda_DE.dir/flags.make
 
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o: CMakeFiles/cuda_DE.dir/flags.make
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o: ../src/diff_evolution_solver/random_center.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o"
-	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc /home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu -o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o
-
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
-
-CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
-
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o: CMakeFiles/cuda_DE.dir/flags.make
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o: ../src/diff_evolution_solver/random_manager.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o"
 	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc /home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_manager.cu -o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o
 
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.i: cmake_force
@@ -85,7 +72,7 @@ CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.s: cmake_forc
 
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: CMakeFiles/cuda_DE.dir/flags.make
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o: ../src/diff_evolution_solver/solver.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o"
 	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc /home/chris/parallel_diff_evolution/src/diff_evolution_solver/solver.cu -o CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o
 
 CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.i: cmake_force
@@ -98,7 +85,7 @@ CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.s: cmake_force
 
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: CMakeFiles/cuda_DE.dir/flags.make
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o: ../src/solver_center/solver_center.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o"
 	/usr/local/cuda-11.1/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc /home/chris/parallel_diff_evolution/src/solver_center/solver_center.cu -o CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o
 
 CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.i: cmake_force
@@ -111,7 +98,6 @@ CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.s: cmake_force
 
 # Object files for target cuda_DE
 cuda_DE_OBJECTS = \
-"CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o" \
 "CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o" \
 "CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o" \
 "CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o"
@@ -119,13 +105,12 @@ cuda_DE_OBJECTS = \
 # External object files for target cuda_DE
 cuda_DE_EXTERNAL_OBJECTS =
 
-libcuda_DE.a: CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_center.cu.o
 libcuda_DE.a: CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/random_manager.cu.o
 libcuda_DE.a: CMakeFiles/cuda_DE.dir/src/diff_evolution_solver/solver.cu.o
 libcuda_DE.a: CMakeFiles/cuda_DE.dir/src/solver_center/solver_center.cu.o
 libcuda_DE.a: CMakeFiles/cuda_DE.dir/build.make
 libcuda_DE.a: CMakeFiles/cuda_DE.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CUDA static library libcuda_DE.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chris/parallel_diff_evolution/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CUDA static library libcuda_DE.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/cuda_DE.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cuda_DE.dir/link.txt --verbose=$(VERBOSE)
 

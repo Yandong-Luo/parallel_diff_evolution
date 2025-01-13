@@ -13,7 +13,7 @@
 #include "diff_evolution_solver/data_type.h"
 #include "utils/utils.cuh"
 #include "diff_evolution_solver/converter.cuh"
-#include "diff_evolution_solver/random_center.cuh"
+// #include "diff_evolution_solver/random_center.cuh"
 #include "diff_evolution_solver/random_manager.cuh"
 
 namespace cudaprocess{
@@ -106,6 +106,8 @@ namespace cudaprocess{
 
             float *C_matrix, *h_C_matrix;
             float *A_matrix, *h_A_matrix;
+
+            CartStateList *cluster_state, *h_cluster_state;
     };
 }
 

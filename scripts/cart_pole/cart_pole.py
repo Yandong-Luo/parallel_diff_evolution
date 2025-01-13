@@ -79,7 +79,7 @@ def run_simulation(env, solver, wall_motion, list_delta_d_left, list_delta_d_rig
             
         # Forward propagate dynamics
         state = env.forward(u=u_input, deltaT=delta_T_dyn, 
-                             delta_d_left=delta_d_left, 
+                             delta_d_left=-delta_d_left, 
                              delta_d_right=delta_d_right)
         
         # Stop logging on last iteration
@@ -90,6 +90,8 @@ def run_simulation(env, solver, wall_motion, list_delta_d_left, list_delta_d_rig
         x1, dx1 = state['x'], state['dx']
         theta1, dtheta1 = state['theta'], state['dtheta']
         contact_force = state['contact_force']
+        # print("=====================")
+        # print("dtheta:", dtheta1)
         
         # Store trajectories
         x_traj.append(np.array([x1, theta1, dx1, dtheta1]))
@@ -97,11 +99,11 @@ def run_simulation(env, solver, wall_motion, list_delta_d_left, list_delta_d_rig
         
         # Update initial state for GBD
         x0_GBD = np.array([x1, theta1, dx1, dtheta1])
-        c_left = d_left + delta_d_left
-        c_right = d_right + delta_d_right
+        left_wall_pos = d_left - delta_d_left
+        right_wall_pos = d_right + delta_d_right
         
         # Update constraints
-        h_theta = compute_h_theta(c_left, c_right)
+        h_theta = compute_h_theta(left_wall_pos, right_wall_pos)
         
     #     # Solve GBD
     #     t1 = time.time()
@@ -198,6 +200,7 @@ def main():
     
     # Initialize system
     """Initialize the cart-pole system and simulation parameters"""
+    print(d_left, d_right)
     env = cart_pole_dynamics(mc, mp, ll, k1, k2, d_left, d_right, d_max, 
                                 u_max, x_ini, theta_ini, dx_ini, dtheta_ini, 1)
 

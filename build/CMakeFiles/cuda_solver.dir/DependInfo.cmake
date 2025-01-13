@@ -20,7 +20,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "../thirdparty/nvtx/c/include"
   "../thirdparty/pybind11/include"
-  "/home/chris/anaconda3/envs/lab_env/include/python3.9"
+  "/usr/include/python3.8"
   )
 
 # Targets to which this target links.

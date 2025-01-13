@@ -16,7 +16,7 @@ g = 9.81  # Gravity constant
 # Control and constraint parameters
 k1 = 50  # Spring constant 1
 k2 = 50  # Spring constant 2
-d_left = 0.40  # Left wall position
+d_left = -0.40  # Left wall position
 d_right = 0.35  # Right wall position
 d_max = 0.6  # Maximum displacement
 u_max = 20.0  # Maximum control input

@@ -2,6 +2,8 @@
 #define CUDA_DIFF_EVOLUTION_DATA_TYPE_H
 #include <unordered_map>
 #include "utils/utils.cuh"
+#include "cart_pole/cart_pole_utils.cuh"
+
 namespace cudaprocess{
 
 #define ALIGN(n) __align__(n)
@@ -53,11 +55,21 @@ struct CudaVector {
 //     }
 // };
 
-struct CartState{
-    float position;
-    float speed;
-    float theta;
-    float dtheta;   // dot theta
+// struct CartState{
+//     float position;
+//     float speed;
+//     float theta;
+//     float dtheta;   // dot theta
+// };
+
+struct ALIGN(64) CartStateList{
+    // float position[cart_pole::N * CUDA_SOLVER_POP_SIZE];
+    // float speed[cart_pole::N * CUDA_SOLVER_POP_SIZE];
+    // float theta[cart_pole::N * CUDA_SOLVER_POP_SIZE];
+    // float dtheta[cart_pole::N * CUDA_SOLVER_POP_SIZE];   // dot theta
+    // float force[cart_pole::N * CUDA_SOLVER_POP_SIZE * 2];
+    float4 state[10 * CUDA_SOLVER_POP_SIZE];
+    float2 force[10 * CUDA_SOLVER_POP_SIZE];
 };
 
 struct Problem{
@@ -129,6 +141,7 @@ struct Problem{
  * weight:  weight factor
  */
 struct ALIGN(16) CudaLShadePair {
+    // float3 will better than this struct
     float scale_f, scale_f1, Cr, weight;
 };
 

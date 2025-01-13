@@ -125,3 +125,7 @@ All notable changes to this project will be documented in this file.
 ## [0.2.4] - 2025-1-11
 ### Changed
 - Yandong Luo: Cart_pole.py file can run cuda based on .so file. CMakeList.txt file has been modified so that can support pybind11
+
+## [0.2.5] - 2025-1-12
+### Changed
+- Yandong Luo: Add none-linear model for cart pole.

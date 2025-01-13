@@ -1,5 +1,7 @@
 ### System
 
+The coordination of this system is located at the center. right side is positive, left side is negative. The pole swings leftwards for positive, and vice versa for negative.
+
 ![cart pole system](../img/cart pole system.png)
 
 Set the state variable as $x_1 = pos, x_2 = \theta, x_3 = v, x_4 = \dot \theta$. And the runtime step is $\Delta t = 0.2$. The system can be described as:
@@ -90,7 +92,7 @@ Constraints of system:
 
   - $x_1 + l x_2 \geq c_{left} - D_{max}$, 
 
-  - $D_{max} = 0.6$
+  - $D_{max} = 1.2$
 
     where $D_{max}$ is the maximal distance from origin, $c_{left, right}$ is the bias of left or right wall from the $D_{max}$
 

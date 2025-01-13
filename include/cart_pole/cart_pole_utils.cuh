@@ -53,130 +53,157 @@ const int col_A = N * (state_dims + control_input_dims) + state_dims;       // N
 
 // E Matrix (4x4), Row priority
 const int row_E = 4, col_E = 4;
-__constant__ float E[16] = {
-    1.0f + 0.0f*runtime_step, 0.0f*runtime_step,        runtime_step,      0.0f*runtime_step,
-    0.0f*runtime_step,        1.0f + 0.0f*runtime_step, 0.0f,    runtime_step,
-    0.0f*runtime_step,        g*mp/mc*runtime_step,      1.0f,    0.0f*runtime_step,
-    0.0f*runtime_step,        g*(mc+mp)/(ll*mc)*runtime_step, 0.0f, 1.0f
-};
+extern __constant__ float E[16];
+// __constant__ float E[16] = {
+//     1.0f + 0.0f*runtime_step, 0.0f*runtime_step,        runtime_step,      0.0f*runtime_step,
+//     0.0f*runtime_step,        1.0f + 0.0f*runtime_step, 0.0f,    runtime_step,
+//     0.0f*runtime_step,        g*mp/mc*runtime_step,      1.0f,    0.0f*runtime_step,
+//     0.0f*runtime_step,        g*(mc+mp)/(ll*mc)*runtime_step, 0.0f, 1.0f
+// };
 
-// Matrix F (4x3), Row priority
-const int row_F = 4, col_F = 3;
-__constant__ float F[12] = {
-    0.0f,         0.0f,         0.0f,
-    0.0f,         0.0f,         0.0f,
-    runtime_step/mc,        0.0f,         0.0f,
-    runtime_step/(ll*mc),   runtime_step/(ll*mp),  -runtime_step/(ll*mp)
-};
+// // Matrix F (4x3), Row priority
+// const int row_F = 4, col_F = 3;
+// __constant__ float F[12] = {
+//     0.0f,         0.0f,         0.0f,
+//     0.0f,         0.0f,         0.0f,
+//     runtime_step/mc,        0.0f,         0.0f,
+//     runtime_step/(ll*mc),   runtime_step/(ll*mp),  runtime_step/(ll*mp)
+// };
 
-// Matrix G (4x2), Row priority
+// Matrix F (4x1), Row priority
+const int row_F = 4, col_F = 1;
+extern __constant__ float F[4];
+// __constant__ float F[4] = {
+//     0.0f,
+//     0.0f,
+//     runtime_step/mc,
+//     runtime_step/(ll*mc)
+// };
+
+// Matrix F (4x1), Row priority
 const int row_G = 4, col_G = 2;
-__constant__ float G[8] = {
-    0.0f, 0.0f,
-    0.0f, 0.0f,
-    0.0f, 0.0f,
-    0.0f, 0.0f
-};
+extern __constant__ float G[8];
+// __constant__ float G[8] = {
+//     0.0f,                   0.0f,
+//     0.0f,                   0.0f,
+//     0.0f,                   0.0f,
+//     runtime_step/(ll*mp),  runtime_step/(ll*mp)
+// };
+
+// // Matrix G (4x2), Row priority
+// const int row_G = 4, col_G = 2;
+// __constant__ float G[8] = {
+//     0.0f, 0.0f,
+//     0.0f, 0.0f,
+//     0.0f, 0.0f,
+//     0.0f, 0.0f
+// };
 
 // Q M (4x4), Row priority
 const int row_Q = 4, col_Q = 4;
-__constant__ float Q[16] = {
-    1.0f,  0.0f,  0.0f,  0.0f,
-    0.0f, 50.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  1.0f,  0.0f,
-    0.0f,  0.0f,  0.0f, 50.0f
-};
+extern __constant__ float Q[16]; 
+// __constant__ float Q[16] = {
+//     1.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f, 50.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  1.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f, 50.0f
+// };
 
 // R Matrix (3x3), Row priority
 const int row_R = 3, col_R = 3;
-__constant__ float R[9] = {
-    0.1f, 0.0f, 0.0f,
-    0.0f, 0.1f, 0.0f,
-    0.0f, 0.0f, 0.1f
-};
+extern __constant__ float R[9];
+// __constant__ float R[9] = {
+//     0.1f, 0.0f, 0.0f,
+//     0.0f, 0.1f, 0.0f,
+//     0.0f, 0.0f, 0.1f
+// };
 
 // H1 Matrix (20x4), Row priority
 const int row_H1 = 20, col_H1 = 4;
-__constant__ float H1[80] = {
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    -1.0f,  ll,   0.0f,  0.0f,
-    1.0f,  -ll,   0.0f,  0.0f,
-    1.0f,  -ll,   0.0f,  0.0f,
-    -1.0f,  ll,   0.0f,  0.0f,
-    1.0f,  0.0f,  0.0f,  0.0f,
-    -1.0f, 0.0f,  0.0f,  0.0f,
-    0.0f,  1.0f,  0.0f,  0.0f,
-    0.0f, -1.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  1.0f,  0.0f,
-    0.0f,  0.0f, -1.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  1.0f,
-    0.0f,  0.0f,  0.0f, -1.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f,
-    0.0f,  0.0f,  0.0f,  0.0f
-};
+extern __constant__ float H1[80];
+// __constant__ float H1[80] = {
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     -1.0f,  ll,   0.0f,  0.0f,
+//     1.0f,  -ll,   0.0f,  0.0f,
+//     1.0f,  -ll,   0.0f,  0.0f,
+//     -1.0f,  ll,   0.0f,  0.0f,
+//     1.0f,  0.0f,  0.0f,  0.0f,
+//     -1.0f, 0.0f,  0.0f,  0.0f,
+//     0.0f,  1.0f,  0.0f,  0.0f,
+//     0.0f, -1.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  1.0f,  0.0f,
+//     0.0f,  0.0f, -1.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  1.0f,
+//     0.0f,  0.0f,  0.0f, -1.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f,
+//     0.0f,  0.0f,  0.0f,  0.0f
+// };
 
 // H2 Matrix (20x3), Row priority
 const int row_H2 = 20, col_H2 = 3;
-__constant__ float H2[60] = {
-    0.0f,     1.0f,     0.0f,
-    0.0f,     0.0f,     1.0f,
-    0.0f,  1.0f/k1,     0.0f,
-    0.0f, -1.0f/k1,     0.0f,
-    0.0f,     0.0f,  1.0f/k2,
-    0.0f,     0.0f, -1.0f/k2,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    0.0f,     0.0f,     0.0f,
-    1.0f,     0.0f,     0.0f,
-    -1.0f,    0.0f,     0.0f,
-    0.0f,     1.0f,     0.0f,
-    0.0f,    -1.0f,     0.0f,
-    0.0f,     0.0f,     1.0f,
-    0.0f,     0.0f,    -1.0f
-};
+extern __constant__ float H2[60];
+// __constant__ float H2[60] = {
+//     0.0f,     1.0f,     0.0f,
+//     0.0f,     0.0f,     1.0f,
+//     0.0f,  1.0f/k1,     0.0f,
+//     0.0f, -1.0f/k1,     0.0f,
+//     0.0f,     0.0f,  1.0f/k2,
+//     0.0f,     0.0f, -1.0f/k2,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     0.0f,     0.0f,     0.0f,
+//     1.0f,     0.0f,     0.0f,
+//     -1.0f,    0.0f,     0.0f,
+//     0.0f,     1.0f,     0.0f,
+//     0.0f,    -1.0f,     0.0f,
+//     0.0f,     0.0f,     1.0f,
+//     0.0f,     0.0f,    -1.0f
+// };
 
 // H3 Matrix (20x2), Row priority
 const int row_H3 = 20, col_H3 = 2;
-__constant__ float H3[40] = {
-    -lam_max,      0.0f,
-         0.0f, -lam_max,
-       d_max,      0.0f,
-         0.0f,      0.0f,
-         0.0f,    d_max,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f,
-         0.0f,      0.0f
-};
+extern __constant__ float H3[40];
+// __constant__ float H3[40] = {
+//     -lam_max,      0.0f,
+//          0.0f, -lam_max,
+//        d_max,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,    d_max,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f,
+//          0.0f,      0.0f
+// };
 
 const int row_Inx = state_dims, col_Inx = state_dims;
-__constant__ float Inx[16] = {
-    1.0f, 0.0f, 0.0f, 0.0f,
-    0.0f, 1.0f, 0.0f, 0.0f,
-    0.0f, 0.0f, 1.0f, 0.0f,
-    0.0f, 0.0f, 0.0f, 1.0f
-};
+extern __constant__ float Inx[16];
+// __constant__ float Inx[16] = {
+//     1.0f, 0.0f, 0.0f, 0.0f,
+//     0.0f, 1.0f, 0.0f, 0.0f,
+//     0.0f, 0.0f, 1.0f, 0.0f,
+//     0.0f, 0.0f, 0.0f, 1.0f
+// };
 }
 
 #endif

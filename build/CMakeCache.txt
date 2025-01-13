@@ -452,10 +452,10 @@ PYBIND11_TEST:BOOL=OFF
 PYBIND11_USE_CROSSCOMPILING:BOOL=OFF
 
 //Path to a program.
-PYTHON_EXECUTABLE:FILEPATH=/home/chris/anaconda3/envs/lab_env/bin/python
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3.8
 
 //Path to a library.
-PYTHON_LIBRARY:FILEPATH=/home/chris/anaconda3/envs/lab_env/lib/libpython3.9.so
+PYTHON_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpython3.8.so
 
 //Value Computed by CMake
 Parallel_DiffEvolutionSolver_BINARY_DIR:STATIC=/home/chris/parallel_diff_evolution/build
@@ -756,9 +756,9 @@ CUDA_run_nvcc:INTERNAL=/usr/share/cmake-3.16/Modules/FindCUDA/run_nvcc.cmake
 //Details about finding CUDA
 FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr/local/cuda-11.1][/usr/local/cuda-11.1/bin/nvcc][/usr/local/cuda-11.1/include][/usr/local/cuda-11.1/lib64/libcudart_static.a][v11.1()]
 //Details about finding PYTHON
-FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/home/chris/anaconda3/envs/lab_env/bin/python3.9.20
+FIND_PACKAGE_MESSAGE_DETAILS_PYTHON:INTERNAL=/usr/bin/python3.83.8.10
 //Details about finding PythonInterp
-FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/home/chris/anaconda3/envs/lab_env/bin/python][v3.9.20(3.8)]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3.8][v3.8.10(3.8)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Test HAS_FLTO
@@ -766,17 +766,17 @@ HAS_FLTO:INTERNAL=1
 PYBIND11_INCLUDE_DIR:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
-PYTHON_INCLUDE_DIRS:INTERNAL=/home/chris/anaconda3/envs/lab_env/include/python3.9
+PYTHON_INCLUDE_DIRS:INTERNAL=/usr/include/python3.8
 PYTHON_IS_DEBUG:INTERNAL=0
-PYTHON_LIBRARIES:INTERNAL=/home/chris/anaconda3/envs/lab_env/lib/libpython3.9.so
+PYTHON_LIBRARIES:INTERNAL=/usr/lib/x86_64-linux-gnu/libpython3.8.so
 //ADVANCED property for variable: PYTHON_LIBRARY
 PYTHON_LIBRARY-ADVANCED:INTERNAL=1
 PYTHON_MODULE_DEBUG_POSTFIX:INTERNAL=
-PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-39-x86_64-linux-gnu.so
+PYTHON_MODULE_EXTENSION:INTERNAL=.cpython-38-x86_64-linux-gnu.so
 PYTHON_MODULE_PREFIX:INTERNAL=
-PYTHON_VERSION:INTERNAL=3.9.20
+PYTHON_VERSION:INTERNAL=3.8.10
 PYTHON_VERSION_MAJOR:INTERNAL=3
-PYTHON_VERSION_MINOR:INTERNAL=9
+PYTHON_VERSION_MINOR:INTERNAL=8
 Python_ADDITIONAL_VERSIONS:INTERNAL=3.12;3.11;3.10;3.9;3.8
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
@@ -787,5 +787,5 @@ pybind11_FOUND:INTERNAL=TRUE
 //Directory where pybind11 headers are located
 pybind11_INCLUDE_DIR:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include
 //Directories where pybind11 and possibly Python headers are located
-pybind11_INCLUDE_DIRS:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include;/home/chris/anaconda3/envs/lab_env/include/python3.9
+pybind11_INCLUDE_DIRS:INTERNAL=/home/chris/parallel_diff_evolution/thirdparty/pybind11/include;/usr/include/python3.8
 

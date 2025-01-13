@@ -8,6 +8,16 @@
 
 ../include/cart_pole/cart_pole_utils.cuh
 
+../include/cart_pole/model.cuh
+diff_evolution_solver/data_type.h
+../include/cart_pole/diff_evolution_solver/data_type.h
+cart_pole/cart_pole_utils.cuh
+../include/cart_pole/cart_pole/cart_pole_utils.cuh
+cublas_v2.h
+-
+math.h
+-
+
 ../include/diff_evolution_solver/converter.cuh
 iostream
 -
@@ -29,6 +39,8 @@ unordered_map
 -
 utils/utils.cuh
 ../include/diff_evolution_solver/utils/utils.cuh
+cart_pole/cart_pole_utils.cuh
+../include/diff_evolution_solver/cart_pole/cart_pole_utils.cuh
 
 ../include/diff_evolution_solver/debug.cuh
 string
@@ -72,14 +84,6 @@ cuda_runtime_api.h
 diff_evolution_solver/data_type.h
 ../include/diff_evolution_solver/diff_evolution_solver/data_type.h
 
-../include/diff_evolution_solver/random_center.cuh
-curand.h
--
-curand_kernel.h
--
-utils/utils.cuh
-../include/diff_evolution_solver/utils/utils.cuh
-
 ../include/diff_evolution_solver/random_manager.cuh
 curand.h
 -
@@ -113,8 +117,6 @@ utils/utils.cuh
 ../include/diff_evolution_solver/utils/utils.cuh
 diff_evolution_solver/converter.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/converter.cuh
-diff_evolution_solver/random_center.cuh
-../include/diff_evolution_solver/diff_evolution_solver/random_center.cuh
 diff_evolution_solver/random_manager.cuh
 ../include/diff_evolution_solver/diff_evolution_solver/random_manager.cuh
 
@@ -125,8 +127,6 @@ diff_evolution_solver/data_type.h
 ../include/solver_center/diff_evolution_solver/data_type.h
 diff_evolution_solver/solver.cuh
 ../include/solver_center/diff_evolution_solver/solver.cuh
-diff_evolution_solver/random_center.cuh
-../include/solver_center/diff_evolution_solver/random_center.cuh
 diff_evolution_solver/random_manager.cuh
 ../include/solver_center/diff_evolution_solver/random_manager.cuh
 yaml-cpp/yaml.h
@@ -236,10 +236,6 @@ nvtxInit.h
 
 ../thirdparty/nvtx/c/include/nvtx3/nvtxDetail/nvtxTypes.h
 
-/home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_center.cu
-diff_evolution_solver/random_center.cuh
-/home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/random_center.cuh
-
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/random_manager.cu
 diff_evolution_solver/random_manager.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/random_manager.cuh
@@ -257,6 +253,8 @@ diff_evolution_solver/evaluate.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/diff_evolution_solver/evaluate.cuh
 cart_pole/cart_pole_utils.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/cart_pole/cart_pole_utils.cuh
+cart_pole/model.cuh
+/home/chris/parallel_diff_evolution/src/diff_evolution_solver/cart_pole/model.cuh
 utils/utils_fun.cuh
 /home/chris/parallel_diff_evolution/src/diff_evolution_solver/utils/utils_fun.cuh
 math.h

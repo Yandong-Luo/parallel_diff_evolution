@@ -4,6 +4,7 @@
 #include "diff_evolution_solver/evolve.cuh"
 #include "diff_evolution_solver/evaluate.cuh"
 #include "cart_pole/cart_pole_utils.cuh"
+#include "cart_pole/model.cuh"
 #include "utils/utils_fun.cuh"
 #include <math.h>
 
@@ -67,12 +68,15 @@ void CudaDiffEvolveSolver::MallocSetup(){
 
     CHECK_CUDA(cudaMalloc(&A_matrix, cart_pole::row_A * cart_pole::col_A * sizeof(float)));
     
+    CHECK_CUDA(cudaMalloc(&cluster_state, sizeof(CartStateList)));
 
     if (DEBUG_CART_POLE){
         CHECK_CUDA(cudaHostAlloc(&h_state, cart_pole::state_dims * sizeof(float), cudaHostAllocDefault));
         CHECK_CUDA(cudaHostAlloc(&h_env_constraint, cart_pole::num_constraints * sizeof(float), cudaHostAllocDefault));
         CHECK_CUDA(cudaHostAlloc(&h_C_matrix, cart_pole::row_C * cart_pole::col_C * sizeof(float), cudaHostAllocDefault));
         CHECK_CUDA(cudaHostAlloc(&h_A_matrix, cart_pole::row_A * cart_pole::col_A * sizeof(float), cudaHostAllocDefault));
+
+        CHECK_CUDA(cudaHostAlloc(&h_cluster_state, sizeof(CartStateList), cudaHostAllocDefault));
     }
 
     cuda_utils_ = std::make_shared<CudaUtil>();

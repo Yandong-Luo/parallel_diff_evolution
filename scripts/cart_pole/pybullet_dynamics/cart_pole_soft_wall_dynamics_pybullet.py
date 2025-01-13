@@ -78,7 +78,7 @@ class cart_pole_dynamics:
         self.cuid_left = pybullet.createCollisionShape(pybullet.GEOM_BOX, halfExtents=[0.1, 0.1, 0.2])
         self.cuid_right = pybullet.createCollisionShape(pybullet.GEOM_BOX, halfExtents=[0.1, 0.1, 0.2])
         mass= 0 #static box
-        self.box_left = pybullet.createMultiBody(mass, self.cuid_left, basePosition=[-self.d_left-0.1, 0, 1+self.ll], baseOrientation=[0.0, 0.0, 0.0, 1.0])
+        self.box_left = pybullet.createMultiBody(mass, self.cuid_left, basePosition=[self.d_left-0.1, 0, 1+self.ll], baseOrientation=[0.0, 0.0, 0.0, 1.0])
         self.box_right = pybullet.createMultiBody(mass, self.cuid_right, basePosition=[self.d_right+0.1, 0, 1+self.ll], baseOrientation=[0.0, 0.0, 0.0, 1.0])
         pybullet.changeDynamics(self.cuid_left, -1, contactStiffness=50, contactDamping=0.01, restitution=0.9)
         pybullet.changeDynamics(self.cuid_right, -1, contactStiffness=50, contactDamping=0.01, restitution=0.9)
@@ -140,7 +140,7 @@ class cart_pole_dynamics:
         
     def forward(self, u, deltaT, delta_d_left, delta_d_right):
 
-        pybullet.resetBasePositionAndOrientation(self.box_left, posObj=(-self.d_left-0.1+delta_d_left, 0, 1+self.ll), ornObj=(0.0, 0.0, 0.0, 1.0))
+        pybullet.resetBasePositionAndOrientation(self.box_left, posObj=(self.d_left-0.1+delta_d_left, 0, 1+self.ll), ornObj=(0.0, 0.0, 0.0, 1.0))
         pybullet.resetBasePositionAndOrientation(self.box_right, posObj=(self.d_right+0.1+delta_d_right, 0, 1+self.ll), ornObj=(0.0, 0.0, 0.0, 1.0))
 
         if self.read_noise_from_file:
@@ -173,7 +173,7 @@ class cart_pole_dynamics:
         lam2 = 0.0
 
         # Angle definition is negative
-        return {'x': x1, 'dx': dx1, 'theta': -theta1, 'dtheta': -dtheta1, 'contact_force': np.array([lam1, lam2])}
+        return {'x': x1, 'dx': dx1, 'theta': theta1, 'dtheta': dtheta1, 'contact_force': np.array([lam1, lam2])}
     
     def change_pole_mass_length(self, mp_new, ll_new):
         pybullet.removeUserDebugItem(self.tt)

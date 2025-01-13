@@ -3,7 +3,7 @@
 #include <cassert>
 #include "diff_evolution_solver/data_type.h"
 #include "diff_evolution_solver/solver.cuh"
-#include "diff_evolution_solver/random_center.cuh"
+// #include "diff_evolution_solver/random_center.cuh"
 #include "diff_evolution_solver/random_manager.cuh"
 #include "yaml-cpp/yaml.h"
 
@@ -17,7 +17,7 @@ namespace cudaprocess{
         CudaVector<CudaParamIndividual, CUDA_MAX_POTENTIAL_SOLUTION> *tasks_potential_sol_;
         CudaDiffEvolveSolver diff_evolve_solvers_[CUDA_MAX_TASKS];
         Problem *tasks_problem_;
-        std::shared_ptr<CudaRandomCenter> rnd_center_;
+        // std::shared_ptr<CudaRandomCenter> rnd_center_;
         std::shared_ptr<CudaRandomManager> rnd_manager_;
         bool cudamalloc_flag{false};
         cublasHandle_t cublas_handle_; 
